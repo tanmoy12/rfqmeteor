@@ -23,7 +23,9 @@ export default class SignUp extends Component {
             username: username,
             email: email,
             password: password,
-            designation: designation
+            profile: {
+                designation: designation
+            }
         };
         Accounts.createUser(User, function (err) {
             if(err){

@@ -9,6 +9,9 @@ export default class DashHeader extends Component {
 
 
     render() {
+        let user= "";
+        if(Meteor.user()) user= Meteor.user().username;
+        else user= "Loading";
         return (
             <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div className="navbar-header">
@@ -47,12 +50,12 @@ export default class DashHeader extends Component {
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                         <img src="img.jpg" className="profile-image img-circle"/>
 
-                                        <span>{this.props.username}</span></a>
+                                        <span>{user}</span></a>
                                     <ul className="dropdown-menu">
                                         <li className="user-header">
                                             <img src="img.jpg" className="img-circle center-block" alt="User Image"/>
 
-                                            <h3>{this.props.username}</h3>
+                                            <h3>{user}</h3>
                                         </li>
 
                                         <li><a href="#"><i className="fa fa-cog"></i> Account</a></li>

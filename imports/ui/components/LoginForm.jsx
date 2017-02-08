@@ -34,15 +34,7 @@ export default class App extends Component {
             <form onSubmit={this.handleLogin.bind(this)}>
                 <div className="form-group">
                     <div className="form-group">
-                        <div className="row">
-                            <div className="form-group col-md-10 col-sm-6">
-                                <select className="form-control">
-                                    <option>Scientific Officer</option>
-                                    <option>Trader</option>
-                                    <option>Normal user</option>
-                                </select>
-                            </div>
-                        </div>
+
                     </div>
                     <label htmlFor="username" >Username</label>
                     <input type="text" name="username" ref="username" className="form-control" placeholder="Username"/>
