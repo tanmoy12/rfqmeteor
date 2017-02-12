@@ -61,8 +61,8 @@ export default class SignUp extends Component {
                         <div className="form-group col-md-10 col-sm-6">
                             <select ref="designation" className="form-control">
                                 <option>Scientific Officer</option>
-                                <option>Trader</option>
-                                <option>Normal user</option>
+                                <option>Accountant</option>
+                                <option>Director</option>
                             </select>
                         </div>
                         <button type="submit" className="btn btn-md btn-success">Sign Up</button>

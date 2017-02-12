@@ -48,7 +48,7 @@ export default class DashHeader extends Component {
 
                                 <li className="dropdown">
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="img.jpg" className="profile-image img-circle"/>
+                                        <img id="profile" src="img.jpg" className="profile-image img-circle"/>
 
                                         <span>{user}</span></a>
                                     <ul className="dropdown-menu">
