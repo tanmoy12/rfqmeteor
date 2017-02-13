@@ -3,11 +3,10 @@ import {mount} from 'react-mounter';
 
 import {LayoutLogin} from '../imports/ui/layouts/LayoutLogin';
 import {LayoutDash} from '../imports/ui/layouts/LayoutDash';
-import {LayoutChahida} from '../imports/ui/layouts/ChahidaLayout';
 import App from '../imports/ui/components/App';
 import Dash from '../imports/ui/components/Dash';
 import ChahidaPotro from '../imports/ui/components/ChahidaPotro';
-
+import Note from '../imports/ui/components/Note';
 FlowRouter.route('/', {
     action(){
         mount(LayoutLogin, {
@@ -24,10 +23,18 @@ FlowRouter.route('/dashboard', {
     }
 });
 
-FlowRouter.route('/createRFQ', {
+FlowRouter.route('/Chahidapotro', {
     action(){
-        mount(LayoutChahida, {
+        mount(LayoutDash, {
             content: (<ChahidaPotro />)
+        })
+    }
+});
+
+FlowRouter.route('/Note', {
+    action(){
+        mount(LayoutDash, {
+            content: (<Note />)
         })
     }
 });

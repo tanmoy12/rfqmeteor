@@ -53,7 +53,7 @@ export default class DashHeader extends Component {
                                         <span>{user}</span></a>
                                     <ul className="dropdown-menu">
                                         <li className="user-header">
-                                            <img src="img.jpg" className="img-circle center-block" alt="User Image"/>
+                                            <img id="profile" src="img.jpg" className="img-circle center-block" alt="User Image"/>
 
                                             <h3>{user}</h3>
                                         </li>

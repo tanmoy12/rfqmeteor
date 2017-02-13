@@ -90,7 +90,10 @@ li>a{display: block; color: white; line-height:75px;
     background-color: #514463;
 }
 
-
+#profile{
+    height: 40px;
+    weight: 40px;
+}
 
 
 h2{
@@ -99,13 +102,6 @@ h2{
     margin-bottom: 1.0em
 }
 
-#h2{
-    text-align: center;
-    font-size: 28px;
-    margin-top: 10px;
-    margin-bottom: 1.67em;
-
-}
 
 h3{
     text-align: center;
@@ -119,30 +115,8 @@ p.text{
     line-height: 1.5;
     margin-top: 2em;
     margin-bottom: 2em;
-
-
 }
 
-
-select.form-control{
-    margin-left: 5%
-}
-
-
-
-
-
-
-p.FORWARD{
-    padding-top: 15%;
-    text-align: center;
-    font-size: 15px;
-    line-height: 1.8;
-    margin-top: 2em;
-    margin-bottom: 1.67em;
-    margin-right: 0;
-
-}
 
 .form-control {
     height: 28px;
@@ -157,16 +131,32 @@ p.FORWARD{
 
 
 
-#sidekick{
 
-    background: white;
-    width:50px;
-    margin-top: -28px;
-    margin-left: 1%;
-    margin-right: 3%;
-    box-shadow: 1px 5px 14px 2px violet;
+#chahidajumbo{
+    margin: 0px;
+    padding: 40px;
+    box-shadow: 1px 5px 14px 2px skyblue;
 
 }
+
+
+#submit-all{
+    width: 100%;
+}
+
+
+.tableinput{
+    width: 100%;
+}
+
+.jumbotron{
+    background:#ffffff;
+    font-size: 12px;
+    padding: 10px;
+    box-shadow: 1px 5px 14px 2px skyblue;
+
+}
+
 #sidekickjumbo{
 
     padding: 15px;
@@ -174,60 +164,7 @@ p.FORWARD{
 
 }
 
-#username1{
-    width: 85%;
-    text-align: center;
-    margin: 1px;
-    font-size: 12px;
-    line-height: 1.8;
-    margin-top: 2em;
-    margin-bottom: 1.67em;
-    margin-left: 15px;
-    margin-right: 0;
 
-}
-
-
-#login-submit{
-    margin-left: 4%;
-}
-
-#password1{
-    width: 85%;
-    text-align: center;
-    margin: 1px;
-    font-size: 12px;
-    line-height: 1.8;
-    margin-top: 2em;
-    margin-bottom: 1.67em;
-    margin-left: 15px;
-    margin-right: 0;
-
-}
-
-#submit-all{
-    width: 400px;
-    margin-left: 30%;
-    margin-bottom: 120px;
-}
-
-
-
-
-.jumbotron{
-    background:#ffffff;
-    font-size: 12px;
-    padding: 20px;
-    box-shadow: 1px 5px 14px 2px skyblue;
-
-}
-
-
-
-
-img{
-    width: 60px;
-}
 
 p.verify{
     text-align: center;

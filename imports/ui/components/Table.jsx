@@ -71,16 +71,15 @@ class ProductTable extends React.Component {
                                 product={product} onDelEvent={rowDel.bind(this)} key={product.id}/>)
         });
         return (
-            <div>
-                <button type="button" onClick={this.props.onRowAdd} className="btn btn-success pull-right">Add</button>
-                <table className="table table-bordered table-hover table-condensed table-responsive Mongol_editable">
+            <div className="col-md-12">
+                <table className="table table-bordered table-hover">
                     <thead>
                     <tr>
                         <th>Item No.</th>
-                        <th>    Description    </th>
+                        <th>Description</th>
                         <th>Unit of Measurement</th>
                         <th>Quantity</th>
-                        <th>Rate in Figure</th>
+                        <th>Rate/unit</th>
                         <th>Total Amount</th>
                         <th></th>
                     </tr>
@@ -92,6 +91,7 @@ class ProductTable extends React.Component {
                     </tbody>
 
                 </table>
+                <button type="button" onClick={this.props.onRowAdd} className="btn btn-success pull-right">Add</button>
             </div>
         );
 
@@ -115,7 +115,8 @@ class ProductRow extends React.Component {
                 }}/>
                 <EditableCell onProductTableUpdate={this.props.onProductTableUpdate} cellData={{
                     type: "desc",
-                    value: this.props.product.desc,
+                    value: "",
+                    placeholder : this.props.product.desc,
                     id: this.props.product.desc
                 }}/>
                 <EditableCell onProductTableUpdate={this.props.onProductTableUpdate} cellData={{
@@ -152,7 +153,8 @@ class EditableCell extends React.Component {
     render() {
         return (
             <td >
-                <input type='text' name={this.props.cellData.type} id={this.props.cellData.id} value={this.props.cellData.value} onChange={this.props.onProductTableUpdate}/>
+                <input className="tableinput" type='text' name={this.props.cellData.type} id={this.props.cellData.id}
+                       value={this.props.cellData.value} onChange={this.props.onProductTableUpdate}/>
             </td>
         );
 
