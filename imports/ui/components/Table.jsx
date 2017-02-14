@@ -71,29 +71,56 @@ class ProductTable extends React.Component {
                                 product={product} onDelEvent={rowDel.bind(this)} key={product.id}/>)
         });
         return (
-            <div className="col-md-12">
-                <table className="table table-bordered table-hover">
+        <div class="col-md-9">
+            <div id="tabledesc" class="table">
+                <table id="tabledesc" class="table table-responsive table-bordered table-condensed">
+
                     <thead>
                     <tr>
-                        <th>Item No.</th>
-                        <th>Description</th>
-                        <th>Unit of Measurement</th>
-                        <th>Quantity</th>
-                        <th>Rate/unit</th>
-                        <th>Total Amount</th>
+                        <th class="col-md-1 text-center">Item</th>
+                        <th class="col-md-6 text-center">Description Of Item</th>
+                        <th class="col-md-1 text-center">Quantity</th>
+                        <th class="col-md-2 text-center">Unit rate of price</th>
+                        <th class="col-md-2 text-center">Total Amount</th>
                         <th></th>
                     </tr>
                     </thead>
-
                     <tbody>
-                    {product}
+                    <tr>
+                        <td class="col-md-1">
+                            <input  class="col-md-12" type='text' />
+                        </td>
+                        <td class="col-md-6">
+                            <input class="col-md-12" type='text'/>
+                        </td>
+                        <td class="col-md-1">
+                            <input class="col-md-12" type='text'/>
+                        </td>
+                        <td class="col-md-2">
+                            <input class="col-md-12" type='text'/>
+                        </td>
+                        <td class="col-md-2">
+                            <input class="col-md-12" type='text'/>
+                        </td>
+                        <td className="del-cell">
+                            <button type="button" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-remove"></span></button>
 
+                        </td>
+                    </tr>
                     </tbody>
 
                 </table>
-                <button type="button" onClick={this.props.onRowAdd} className="btn btn-success pull-right">Add</button>
+                <button type="button" class="btn btn-table-made btn-md pull-right">Add items</button>
+
             </div>
-        );
+
+        </div>
+        <div class="col-md-3">
+
+            </div>
+
+    );
 
     }
 
@@ -161,3 +188,5 @@ class EditableCell extends React.Component {
     }
 
 }
+
+

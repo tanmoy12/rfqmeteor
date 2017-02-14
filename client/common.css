@@ -1,6 +1,6 @@
 
 /*!
- * Start Bootstrap - SB Admin (http://startbootstrap.com/)
+ * Sfort Bootstrap - SB Admin (http://startbootstrap.com/)
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
@@ -14,7 +14,7 @@
     padding: 0 15px;
 }
 
-.top-nav>li {
+`.top-nav>li {
      display: inline-block;
      float: left;
  }
@@ -61,14 +61,14 @@ ul.dropdown-lr {
 }
 
 #login{
-    font-family: Arial;
+    font-family: arial, font-style: oblique;
 }
 
 *{margin:0px; padding:0px;}
 
 body{background: #eeeeee;}
 #header{width: 100%; height: 75px; background: #333;}
-#navbar{width:600px; height: 75px; float:right; }
+#navbar{width:600px; height: : 75px; float:right; }
 #navbar>li{width:150px; list-style:none; float:left; }
 li>a{display: block; color: white; line-height:75px;
     text-align: center; font-family: arial; text-decoration: none;
@@ -90,10 +90,7 @@ li>a{display: block; color: white; line-height:75px;
     background-color: #514463;
 }
 
-#profile{
-    height: 40px;
-    weight: 40px;
-}
+
 
 
 h2{
@@ -102,6 +99,13 @@ h2{
     margin-bottom: 1.0em
 }
 
+#h2{
+    text-align: center;
+    font-size: 28px;
+    margin-top: 10px;
+    margin-bottom: 1.67em;
+
+}
 
 h3{
     text-align: center;
@@ -115,8 +119,33 @@ p.text{
     line-height: 1.5;
     margin-top: 2em;
     margin-bottom: 2em;
+
+
 }
 
+
+select.form-control{
+    margin-left: 5%
+}
+
+
+
+#tabledesc {
+    margin: 0px;
+}
+
+
+p.FORWARD{
+    padding-top: 15%;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-top: 2em;
+    margin-bottom: 1.67em;
+    margin-left: 0;
+    margin-right: 0;
+
+}
 
 .form-control {
     height: 28px;
@@ -131,52 +160,114 @@ p.text{
 
 
 
-
-#chahidajumbo{
-    margin: 0px;
-    padding: 40px;
-    box-shadow: 1px 5px 14px 2px skyblue;
-
-}
-
-
-#submit-all{
-    width: 100%;
-}
-
-
-.tableinput{
-    width: 100%;
-}
-
-.jumbotron{
-    background:#ffffff;
-    font-size: 12px;
-    padding: 10px;
-    box-shadow: 1px 5px 14px 2px skyblue;
-    margin: 0px;
-}
-
-#sidekickjumbo{
-
-    padding: 15px;
+#sidekick{
+    background: white;
+    border: 1px
+    width: 1px;
+    margin-top: -28px;
     box-shadow: 1px 5px 14px 2px violet;
 
 }
 
+#username1{
+    width: 85%;
+    text-align: center;
+    margin: 1px;
+    font-size: 12px;
+    line-height: 1.8;
+    margin-top: 2em;
+    margin-bottom: 1.67em;
+    margin-left: 15px;
+    margin-right: 0;
 
+}
+
+input[type="text"], textarea {
+    outline: none;
+    box-shadow:none !important;
+    border:0px solid #ccc !important;
+}
+
+
+
+
+
+
+.btn-table-made:hover{background-color: #3e3939 ; color: white !important;}
+.btn-table-made:focus{ background-color: black; color: white !important;}
+.btn-table-made:active,
+.btn-table-made{
+    background-color: #564f4f; color: white !important;
+    outline: 0;
+}
+
+
+
+
+
+
+#login-submit{
+    margin-left: 4%;
+}
+
+#password1{
+    width: 85%;
+    text-align: center;
+    margin: 1px;
+    font-size: 12px;
+    line-height: 1.8;
+    margin-top: 2em;
+    margin-bottom: 1.67em;
+    margin-left: 15px;
+    margin-right: 0;
+
+}
+
+#submit-all{
+    width: 400px;
+    margin-left: 30%;
+    margin-bottom: 120px;
+}
+
+
+
+
+.jumbotron{
+    background:#ffffff;
+    font-size: 12px;
+    padding-top: 1px;
+    box-shadow: 1px 5px 14px 2px skyblue;
+    margin: 0px;
+}
+
+
+
+
+img{
+    width: 60px;
+}
 
 p.verify{
     text-align: center;
-    margin: 1px;
     font-size: 12px;
     line-height: .08;
     margin-top: 2em;
     margin-bottom: 1.67em;
     margin-right: 10%;
+    font-style: bold ;
 }
 
 
 #RFQ{
     margin-left: -4%;
+}
+
+
+#lekha{
+
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 1.8em;
+    margin-bottom: 1.8em;
+
 }
