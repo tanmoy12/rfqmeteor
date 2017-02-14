@@ -1,4 +1,4 @@
-RFQDetails = new Meteor.Collection('rfqdetails');
+RFQDetails = new Mongo.Collection('rfqdetails');
 
 RFQDetails.allow({
    insert: function (userId, doc) {
@@ -9,34 +9,35 @@ RFQDetails.allow({
 RFQDetailsSchema = new SimpleSchema({
     title: {
         type: String,
-        label: 'title',
-        optional: true
+        label: 'title'
     },
     estimate: {
         type: Number,
         label: 'estimate',
-        optional: true
+        autoValue: function () {
+            return 0;
+        }
     },
     step_no: {
         type: Number,
         label: 'step_no',
         autoValue: function () {
             return 1;
-        },
-        optional: true
+        }
     },
     createdAt: {
         type: Date,
         label: 'date',
         autoValue: function () {
             return new Date();
-        },
-        optional: true
+        }
     },
     initiator: {
         type: String,
         label: 'initiator',
-        optional: true
+        autoValue: function () {
+            return this.userId
+        }
     }
 });
 

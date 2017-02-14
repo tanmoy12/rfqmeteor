@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
+import { Match } from 'meteor/check';
 
 import SideKick from "./SideKick";
 import Table from "./Table";
@@ -26,9 +27,17 @@ export default class ChahidaPotro extends Component {
         var sutrono = ReactDOM.findDOMNode(this.refs.sutrono).value.trim();
         var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
 
-        RFQDetails.insert({
-            title: title
-        });
+        RFQDetailsform= {
+            title: title,
+        }
+        RFQDetailsSchema.validate(RFQDetailsform);
+        /*
+        if(Match.test(RFQDetailsform, RFQDetailsSchema)){
+            RFQDetails.insert(RFQDetailsform);
+        } else{
+            console.log("error fucking error");
+            RFQDetails.insert(RFQDetailsform);
+        }*/
     }
 
     render() {

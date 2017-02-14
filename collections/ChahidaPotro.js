@@ -1,5 +1,53 @@
 ChahidaPotro = new Meteor.Collection('chahidapotro');
 
+UserSignFalse= new SimpleSchema({
+   user_id: {
+       type: String,
+       label: "user",
+       optional: true
+   },
+    signed: {
+        type: Boolean,
+        label: "signed",
+        defaultValue: false,
+    },
+    sign_date: {
+        type: Date,
+        label: "datesign",
+        optional: true
+    }
+});
+
+Details = new SimpleSchema({
+    item_no: {
+        type: Number,
+        label: 'item_no'
+    },
+    desc: {
+        type: String,
+        label: 'desc',
+    },
+    unit: {
+        type: Number,
+        label: 'unit',
+        optional: true
+    },
+    qty: {
+        type: Number,
+        label: 'Qty'
+    },
+    rate: {
+        type: Number,
+        label: 'rate',
+        optional: true
+    },
+    total: {
+        type: Number,
+        label: 'total'
+    },
+
+});
+
 ChahidaPotroSchema = new SimpleSchema({
     RFQ_id:{
         type: String,
@@ -28,52 +76,34 @@ ChahidaPotroSchema = new SimpleSchema({
         label: 'sutro_no'
     },
     details: {
-        type: [Object],
+        type: [Details],
         minCount: 1
-    },
-    "details.$.item_no": {
-        type: Number,
-        label: 'item_no'
-    },
-    "details.$.desc": {
-        type: String,
-        label: 'desc',
-    },
-    "details.$.unit": {
-        type: Number,
-        label: 'unit'
-    },
-    "details.$.qty": {
-        type: Number,
-        label: 'Qty'
-    },
-    "details.$.rate": {
-        type: Number,
-        label: 'rate'
-    },
-    "details.$.total": {
-        type: Number,
-        label: 'total'
     },
     estimate: {
         type: Number,
-        label: 'estimate'
+        label: 'estimate',
+        autoValue: function () {
+            return 0;
+        }
     },
     initiator: {
         type: String,
-        label: 'initiator'
+        label: 'initiator',
+        autoValue: function () {
+            return this.userId
+        }
     },
     verifier: {
-        type: String,
-        label: 'verifier'
+        type: UserSignFalse,
+        optional: true
     },
     accountant: {
-        type: String,
-        label: 'accountant'
+        type: UserSignFalse,
+        optional: true
     },
     director: {
-        type: String,
-        label: 'director'
+        type: UserSignFalse,
+        optional: true
     }
 });
 
