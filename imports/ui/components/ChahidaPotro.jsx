@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
-import { Match } from 'meteor/check';
+import { check } from 'meteor/check';
 
 import SideKick from "./SideKick";
 import Table from "./Table";
@@ -27,17 +27,18 @@ export default class ChahidaPotro extends Component {
         var sutrono = ReactDOM.findDOMNode(this.refs.sutrono).value.trim();
         var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
 
-        RFQDetailsform= {
-            title: title,
+        if(title) {
+            RFQDetailsform = {
+                title: title,
+            }
+            RFQDetails.insert(RFQDetailsform, function (err, res) {
+                if(err) console.log(err)
+                else console.log("success")
+            });
+        }else{
+            console.log("error");
+            Bert.alert('fill up form', 'danger', 'fixed-top', 'fa-frown-o');
         }
-        RFQDetailsSchema.validate(RFQDetailsform);
-        /*
-        if(Match.test(RFQDetailsform, RFQDetailsSchema)){
-            RFQDetails.insert(RFQDetailsform);
-        } else{
-            console.log("error fucking error");
-            RFQDetails.insert(RFQDetailsform);
-        }*/
     }
 
     render() {
@@ -46,7 +47,7 @@ export default class ChahidaPotro extends Component {
                 <div className="row">
                     <form onSubmit={this.handleCreate.bind(this)}>
                         <div className="col-md-9">
-                            <div className=" jumbotron text-center">
+                            <div className="jumbotron text-center">
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="page-header">
