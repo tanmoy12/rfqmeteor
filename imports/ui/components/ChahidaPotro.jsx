@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { check } from 'meteor/check';
 
 import SideKick from "./SideKick";
-import Table from "./Table";
+import Table3 from "./Table3";
 
 export default class ChahidaPotro extends Component {
     dateToday() {
@@ -108,7 +108,7 @@ export default class ChahidaPotro extends Component {
                                             নিম্নক্ত
                                             ....................................... ক্রয় করা প্রয়োজন। </p>
 
-                                        <Table/>
+                                        <Table3/>
 
                                         <p className="text"> ২। এ জন্য আনুমানিক .......................................
                                             (কথায়)
