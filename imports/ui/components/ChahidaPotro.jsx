@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
-import { check } from 'meteor/check';
 
 import SideKick from "./SideKick";
-import Table3 from "./Table3";
+import Table from "./Table";
 
 export default class ChahidaPotro extends Component {
     dateToday() {
@@ -14,9 +13,9 @@ export default class ChahidaPotro extends Component {
         var year = d.getFullYear();
         var dateshow;
         if (month < 10) {
-            var dateshow = date + '/0' + month + '/' + year;
+            dateshow = date + '/0' + month + '/' + year;
         } else {
-            var dateshow = date + '/' + month + '/' + year;
+            dateshow = date + '/' + month + '/' + year;
         }
         return <p>{dateshow}</p>;
     }
@@ -30,10 +29,10 @@ export default class ChahidaPotro extends Component {
         if(title) {
             RFQDetailsform = {
                 title: title,
-            }
+            };
             RFQDetails.insert(RFQDetailsform, function (err, res) {
-                if(err) console.log(err)
-                else console.log("success")
+                if(err) console.log(err);
+                else console.log("success");
             });
         }else{
             console.log("error");
@@ -108,7 +107,7 @@ export default class ChahidaPotro extends Component {
                                             নিম্নক্ত
                                             ....................................... ক্রয় করা প্রয়োজন। </p>
 
-                                        <Table3/>
+                                        <Table/>
 
                                         <p className="text"> ২। এ জন্য আনুমানিক .......................................
                                             (কথায়)
