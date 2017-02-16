@@ -116,13 +116,36 @@ p.text{
     margin-bottom: 2em;
 }
 
-input[type="text"], textarea {
+th{
+    font-size: 13px;
+}
+td>input[type="text"], textarea {
     outline: none;
-    font-size: small;
+    font-size: medium;
     box-shadow:none !important;
     border:0px solid #ccc !important;
     margin: 0px;
     padding: 0px;
+}
+td{
+    margin: 0px;
+    padding: 0px;
+}
+td>input[type="number"], textarea {
+    outline: none;
+    font-size: medium;
+    box-shadow:none !important;
+    border:0px solid #ccc !important;
+    margin: 0px;
+    padding: 0px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#itemNo{
+    font-size: 15px;
 }
 
 .btn-table-made:hover{background-color: #3e3939 ; color: white !important;}
@@ -147,7 +170,9 @@ input[type="text"], textarea {
     outline:0;
 }
 
-
+input:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
 
 
 
@@ -182,19 +207,6 @@ input[type="text"], textarea {
     box-shadow: 1px 5px 14px 2px violet;
 
 }
-
-
-
-p.verify{
-    text-align: center;
-    margin: 1px;
-    font-size: 12px;
-    line-height: .08;
-    margin-top: 2em;
-    margin-bottom: 1.67em;
-    margin-right: 10%;
-}
-
 
 #RFQ{
     margin-left: -4%;

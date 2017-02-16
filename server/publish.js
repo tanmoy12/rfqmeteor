@@ -3,5 +3,5 @@ Meteor.publish('rfqdetails', function () {
 });
 
 Meteor.publish('chahidapotro', function () {
-    return ChahidaPotro.find();
+    return Chahida_Potro.find();
 });

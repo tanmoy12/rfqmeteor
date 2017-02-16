@@ -1,24 +1,26 @@
 import React, {Component} from "react";
 
-export default class Table3 extends Component{
+export default class Table extends Component {
 
     constructor(props) {
         super(props);
 
-        //  this.state.products = [];
-        this.state = {};
-        this.state.products = [
-        ];
+        this.state = {
+            products: [],
+            estimate: 0
+        };
 
     }
+
     handleRowDel(product) {
         var index = this.state.products.indexOf(product);
         this.state.products.splice(index, 1);
         this.setState(this.state.products);
+        this.props.sendData(this.state.products, this.state.estimate);
     };
 
     handleAddEvent(evt) {
-        var id = (+ new Date() + Math.floor(Math.random() * 999999)).toString(36);
+        var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
         var item = (this.state.products.length + 1);
 
         var product = {
@@ -26,13 +28,13 @@ export default class Table3 extends Component{
             itemNo: item,
             desc: "",
             unit: "",
-            qty: "0",
-            rate: "0",
-            total: "0"
+            qty: 0,
+            rate: 0,
+            total: 0
         }
         this.state.products.push(product);
         this.setState(this.state.products);
-
+        this.props.sendData(this.state.products, this.state.estimate);
     }
 
     handleProductTable(evt) {
@@ -41,10 +43,9 @@ export default class Table3 extends Component{
             name: evt.target.name,
             value: evt.target.value
         };
-        console.log(item);
         var products = this.state.products;
 
-        var newProducts = products.map(function(product) {
+        var newProducts = products.map(function (product) {
             for (var key in product) {
                 if (key == item.name && product.id == item.id) {
                     product[key] = item.value;
@@ -53,19 +54,25 @@ export default class Table3 extends Component{
             }
             return product;
         });
-        this.setState(newProducts);
-        console.log(this.state.products);
+        var est=0;
+        newProducts.map(function (product) {
+            est += Number(product.total);
+        });
+        this.setState({
+            estimate: est,
+            products: newProducts
+        });
+        this.props.sendData(this.state.products, this.state.estimate);
     };
     render() {
-
         return (
             <div>
-                <ProductTable onProductTableUpdate={this.handleProductTable.bind(this)} onRowAdd={this.handleAddEvent.bind(this)} onRowDel={this.handleRowDel.bind(this)} products={this.state.products}/>
+                <ProductTable onProductTableUpdate={this.handleProductTable.bind(this)}
+                              onRowAdd={this.handleAddEvent.bind(this)} onRowDel={this.handleRowDel.bind(this)}
+                              products={this.state.products} totalestimate={this.state.estimate}/>
             </div>
         );
-
     }
-
 }
 
 class ProductTable extends React.Component {
@@ -73,9 +80,25 @@ class ProductTable extends React.Component {
     render() {
         var onProductTableUpdate = this.props.onProductTableUpdate;
         var rowDel = this.props.onRowDel;
-        var product = this.props.products.map(function(product) {
-            return (<ProductRow onProductTableUpdate={onProductTableUpdate} product={product} onDelEvent={rowDel.bind(this)} key={product.id}/>)
+        var product = this.props.products.map(function (product) {
+            return (
+                <ProductRow onProductTableUpdate={onProductTableUpdate} product={product} onDelEvent={rowDel.bind(this)}
+                            key={product.id}/>)
         });
+        var totalamount = null;
+        if (this.props.products.length > 0) {
+            totalamount =
+                <tr>
+                    <th className="col-md-1 text-center"></th>
+                    <th className="col-md-5 text-center"></th>
+                    <th className="col-md-1 text-center"></th>
+                    <th className="col-md-1 text-center"></th>
+                    <th className="col-md-2 text-center"></th>
+                    <th className="col-md-2 text-right">{this.props.totalestimate}</th>
+                    <th></th>
+                </tr>
+        }
+
         return (
             <div id="tabledesc" className="table">
                 <table id="tabledesc" className="table table-responsive table-bordered table-condensed">
@@ -93,6 +116,7 @@ class ProductTable extends React.Component {
                     </thead>
                     <tbody>
                     {product}
+                    {totalamount}
                     </tbody>
                 </table>
                 <button type="button" onClick={this.props.onRowAdd} className="btn btn-default btn-sm pull-right">
@@ -111,37 +135,36 @@ class ProductRow extends React.Component {
         this.props.onDelEvent(this.props.product);
 
     }
-    render() {
 
+    render() {
         return (
             <tr>
                 <td className="col-md-1">
-                    <input className="col-md-12" type='text' name="itemNo" id={this.props.product.id}
-                           value={this.props.product.itemNo} onChange={this.props.onProductTableUpdate}/>
+                    <p id="itemNo">{this.props.product.itemNo}</p>
                 </td>
                 <td className="col-md-5">
-                    <input className="col-md-12" type='text' name="desc" id={this.props.product.id}
-                           placeholder="Description"  onChange={this.props.onProductTableUpdate}/>
+                    <input className="col-md-12 text-center" type='text' name="desc" id={this.props.product.id}
+                           placeholder="Description" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td className="col-md-1">
-                    <input className="col-md-12" type='text' name="unit" id={this.props.product.id}
+                    <input className="col-md-12 text-center" type='text' name="unit" id={this.props.product.id}
                            placeholder="Unit" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td className="col-md-1">
-                    <input className="col-md-12" type='text' name="qty" id={this.props.product.id}
+                    <input className="col-md-12 text-right" type='number' name="qty" id={this.props.product.id}
                            placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td className="col-md-2">
-                    <input className="col-md-12" type='text' name="rate" id={this.props.product.id}
+                    <input className="col-md-12 text-right" type='number' name="rate" id={this.props.product.id}
                            placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td className="col-md-2">
-                    <input className="col-md-12" type='text' name="total" id={this.props.product.id}
+                    <input className="col-md-12 text-right" type='number' name="total" id={this.props.product.id}
                            placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td>
                     <button type="button" onClick={this.onDelEvent.bind(this)} className="btn btn-default btn-xs">
-                        <span className="glyphicon glyphicon-remove"></span>
+                        <span className="glyphicon glyphicon-minus"></span>
                     </button>
                 </td>
             </tr>
