@@ -1,5 +1,8 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
+
+import { check } from 'meteor/check';
+
 import ReactDOM from "react-dom";
 import SideKick from "./SideKick";
 import Table from "./Table";
@@ -43,16 +46,36 @@ export default class ChahidaPotro extends Component {
 
         var sutrono = ReactDOM.findDOMNode(this.refs.sutrono).value.trim();
         var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
+        var that=this;
+
+        /*
+        RFQDetails.insert(RFQDetailsform, function (err, res) {
+            if(err) console.log(err);
+            else{
+                console.log(res);
+                Chahidaform = {
+                    RFQ_id: res,
+                    title: title,
+                    sutro_no: sutrono,
+                    estimate: that.state.estimate,
+                    details: that.state.products
+                }
+                Chahida_Potro.insert(Chahidaform);
+            }
+        })
+        */
 
         RFQDetailsform = {
             title: title,
-            sutro_no: sutrono,
-            estimate: this.state.estimate,
-            details: this.state.products
+            estimate: this.state.estimate
         };
-        console.log(RFQDetailsform);
+        console.log(check(RFQDetailsform, RFQDetailsSchema));
+        //var RFQDetailsContext = RFQDetailsSchema.newContext();
+        //var val= RFQDetailsSchema.validate(RFQDetailsform);
+        //console.log(val);
 
-        console.log(Chahida_Potro.schema.validate(RFQDetailsform));
+        console.log("overcome");
+        // Bert.alert( 'Please Fill up all Details!!', 'danger', 'growl-top-right' );
     }
     render() {
         return (

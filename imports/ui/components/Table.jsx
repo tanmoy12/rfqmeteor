@@ -25,12 +25,12 @@ export default class Table extends Component {
 
         var product = {
             id: id,
-            itemNo: item,
+            item_no: item,
             desc: "",
             unit: "",
-            qty: 0,
-            rate: 0,
-            total: 0
+            qty: "0",
+            rate: "0",
+            total: "0"
         }
         this.state.products.push(product);
         this.setState(this.state.products);
@@ -140,7 +140,7 @@ class ProductRow extends React.Component {
         return (
             <tr>
                 <td className="col-md-1">
-                    <p id="itemNo">{this.props.product.itemNo}</p>
+                    <p id="item_no">{this.props.product.item_no}</p>
                 </td>
                 <td className="col-md-5">
                     <input className="col-md-12 text-center" type='text' name="desc" id={this.props.product.id}
