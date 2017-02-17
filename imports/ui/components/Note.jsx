@@ -1,5 +1,7 @@
 import React, {Component} from "react";
-import SideKick from "./SideKick";
+import SideNote from "./SideNote";
+
+
 export default class Note extends Component {
 
     render() {
@@ -73,7 +75,7 @@ export default class Note extends Component {
                         </div>
 
                     </div>
-                    <SideKick/>
+                    <SideNote/>
                 </div>
             </div>
 
