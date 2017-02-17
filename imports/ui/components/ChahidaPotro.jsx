@@ -1,11 +1,29 @@
-import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
-import ReactDOM from 'react-dom';
-
+import React, {Component, PropTypes} from "react";
+import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
 import SideKick from "./SideKick";
 import Table from "./Table";
 
 export default class ChahidaPotro extends Component {
+    constructor(props) {
+        super(props);
+
+        //  this.state.products = [];
+        this.state = {
+            products: [],
+            estimate: 0
+        };
+
+    }
+
+    getdatafromtable(products, estimate) {
+        console.log("in parent");
+        this.setState({
+            products: products,
+            estimate: estimate
+        });
+    }
+
     dateToday() {
         var d = new Date();
         var date = d.getDate();
@@ -26,20 +44,16 @@ export default class ChahidaPotro extends Component {
         var sutrono = ReactDOM.findDOMNode(this.refs.sutrono).value.trim();
         var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
 
-        if(title) {
-            RFQDetailsform = {
-                title: title,
-            };
-            RFQDetails.insert(RFQDetailsform, function (err, res) {
-                if(err) console.log(err);
-                else console.log("success");
-            });
-        }else{
-            console.log("error");
-            Bert.alert('fill up form', 'danger', 'fixed-top', 'fa-frown-o');
-        }
-    }
+        RFQDetailsform = {
+            title: title,
+            sutro_no: sutrono,
+            estimate: this.state.estimate,
+            details: this.state.products
+        };
+        console.log(RFQDetailsform);
 
+        console.log(Chahida_Potro.schema.validate(RFQDetailsform));
+    }
     render() {
         return (
             <div className="container">
@@ -107,7 +121,8 @@ export default class ChahidaPotro extends Component {
                                             নিম্নক্ত
                                             ....................................... ক্রয় করা প্রয়োজন। </p>
 
-                                        <Table/>
+                                        <Table
+                                            sendData={(products, estimate) => this.getdatafromtable(products, estimate) }/>
 
                                         <p className="text"> ২। এ জন্য আনুমানিক .......................................
                                             (কথায়)

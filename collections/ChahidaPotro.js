@@ -1,4 +1,10 @@
-ChahidaPotro = new Meteor.Collection('chahidapotro');
+Chahida_Potro = new Mongo.Collection('chahidapotro');
+
+Chahida_Potro.allow({
+    insert: function (userId, doc) {
+        return !!userId;
+    }
+});
 
 UserSignFalse= new SimpleSchema({
    user_id: {
@@ -19,6 +25,10 @@ UserSignFalse= new SimpleSchema({
 });
 
 Details = new SimpleSchema({
+    id: {
+        type: String,
+        label: 'id'
+    },
     item_no: {
         type: Number,
         label: 'item_no'
@@ -45,7 +55,6 @@ Details = new SimpleSchema({
         type: Number,
         label: 'total'
     },
-
 });
 
 ChahidaPotroSchema = new SimpleSchema({
@@ -107,4 +116,4 @@ ChahidaPotroSchema = new SimpleSchema({
     }
 });
 
-ChahidaPotro.attachSchema(ChahidaPotroSchema);
+Chahida_Potro.attachSchema(ChahidaPotroSchema);
