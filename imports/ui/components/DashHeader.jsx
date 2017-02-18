@@ -33,7 +33,9 @@ export default class DashHeader extends Component {
                         <ul className="nav navbar-right top-nav">
 
                             <li className="dropdown">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-bell"></i><span className="label label-warning">6</span><b className="caret"></b></a>
+                                <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i
+                                    className="fa fa-bell"></i><span className="label label-warning">6</span><b
+                                    className="caret"></b></a>
 
                                 <ul className="dropdown-menu alert-dropdown">
 
@@ -42,11 +44,11 @@ export default class DashHeader extends Component {
                                     <li className="dropdownmenu col-md-12">
 
                                         <a href="#" id="notilink" className="col-md-12 ">
-                                            <div className="col-md-2 pull-left img-alert" >
+                                            <div className="col-md-2 pull-left img-alert">
                                                 <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
                                             </div>
                                             <div className="col-md-10 alert-text">
-                                             <p>Scientific Officer wants to verify Chahida Potro </p>
+                                                <p>Scientific Officer wants to verify Chahida Potro </p>
                                             </div>
                                             <div className="col-md-12 date-alert">
                                                 <i class="fa fa-calendar" aria-hidden="true">18-2-2017</i>
@@ -54,7 +56,7 @@ export default class DashHeader extends Component {
                                         </a>
 
                                         <a href="#" id="notilink" className="col-md-12 ">
-                                            <div className="col-md-2 pull-left img-alert" >
+                                            <div className="col-md-2 pull-left img-alert">
                                                 <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
                                             </div>
                                             <div className="col-md-10 alert-text">
@@ -66,7 +68,7 @@ export default class DashHeader extends Component {
                                         </a>
 
                                         <a href="#" id="notilink" className="col-md-12 ">
-                                            <div className="col-md-2 pull-left img-alert" >
+                                            <div className="col-md-2 pull-left img-alert">
                                                 <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
                                             </div>
                                             <div className="col-md-10 alert-text">
