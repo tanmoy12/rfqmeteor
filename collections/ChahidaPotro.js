@@ -38,21 +38,21 @@ Details = new SimpleSchema({
         label: 'desc',
     },
     unit: {
-        type: Number,
+        type: String,
         label: 'unit',
         optional: true
     },
     qty: {
-        type: Number,
+        type: String,
         label: 'Qty'
     },
     rate: {
-        type: Number,
+        type: String,
         label: 'rate',
         optional: true
     },
     total: {
-        type: Number,
+        type: String,
         label: 'total'
     },
 });
@@ -64,21 +64,23 @@ ChahidaPotroSchema = new SimpleSchema({
     },
     title: {
         type: String,
-        label: 'title'
+        label: 'title',
     },
     substep_no: {
         type: Number,
         label: 'substep_no',
+        optional: true,
         autoValue: function () {
             return 1;
-        }
+        },
     },
     createdAt: {
         type: Date,
         label: 'date',
         autoValue: function () {
             return new Date();
-        }
+        },
+        optional: true
     },
     sutro_no: {
         type: String,
@@ -90,17 +92,15 @@ ChahidaPotroSchema = new SimpleSchema({
     },
     estimate: {
         type: Number,
-        label: 'estimate',
-        autoValue: function () {
-            return 0;
-        }
+        label: 'estimate'
     },
     initiator: {
         type: String,
         label: 'initiator',
         autoValue: function () {
-            return this.userId
-        }
+            return this.userId;
+        },
+        optional: true
     },
     verifier: {
         type: UserSignFalse,

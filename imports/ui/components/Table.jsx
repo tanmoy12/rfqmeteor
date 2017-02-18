@@ -16,8 +16,18 @@ export default class Table extends Component {
         var index = this.state.products.indexOf(product);
         this.state.products.splice(index, 1);
         this.setState(this.state.products);
-        this.props.sendData(this.state.products, this.state.estimate);
-    };
+        var total=0;
+        this.state.products.map(function (product) {
+            total += Number(product.total);
+        });
+        this.setState({
+            estimate: total
+        }, function () {
+            this.props.sendData(this.state.products, this.state.estimate);
+        });
+
+
+    }
 
     handleAddEvent(evt) {
         var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
@@ -25,17 +35,26 @@ export default class Table extends Component {
 
         var product = {
             id: id,
-            itemNo: item,
+            item_no: item,
             desc: "",
             unit: "",
-            qty: 0,
-            rate: 0,
-            total: 0
+            qty: "",
+            rate: "",
+            total: ""
         }
         this.state.products.push(product);
         this.setState(this.state.products);
-        this.props.sendData(this.state.products, this.state.estimate);
+        var total=0;
+        this.state.products.map(function (product) {
+            total += Number(product.total);
+        });
+        this.setState({
+            estimate: total
+        }, function () {
+            this.props.sendData(this.state.products, this.state.estimate);
+        });
     }
+
 
     handleProductTable(evt) {
         var item = {
@@ -49,21 +68,21 @@ export default class Table extends Component {
             for (var key in product) {
                 if (key == item.name && product.id == item.id) {
                     product[key] = item.value;
-
                 }
             }
             return product;
         });
-        var est=0;
-        newProducts.map(function (product) {
-            est += Number(product.total);
+        var total=0;
+        this.state.products.map(function (product) {
+            total += Number(product.total);
         });
         this.setState({
-            estimate: est,
-            products: newProducts
+            estimate: total
+        }, function () {
+            this.props.sendData(this.state.products, this.state.estimate);
         });
-        this.props.sendData(this.state.products, this.state.estimate);
     };
+
     render() {
         return (
             <div>
@@ -133,14 +152,13 @@ class ProductTable extends React.Component {
 class ProductRow extends React.Component {
     onDelEvent() {
         this.props.onDelEvent(this.props.product);
-
     }
 
     render() {
         return (
             <tr>
                 <td className="col-md-1">
-                    <p id="itemNo">{this.props.product.itemNo}</p>
+                    <p id="item_no">{this.props.product.item_no}</p>
                 </td>
                 <td className="col-md-5">
                     <input className="col-md-12 text-center" type='text' name="desc" id={this.props.product.id}
