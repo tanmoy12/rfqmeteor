@@ -33,13 +33,49 @@ export default class DashHeader extends Component {
                         <ul className="nav navbar-right top-nav">
 
                             <li className="dropdown">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i
-                                    className="fa fa-bell"></i><span className="label label-warning">6</span><b
-                                    className="caret"></b></a>
+                                <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i className="fa fa-bell"></i><span className="label label-warning">6</span><b className="caret"></b></a>
+
                                 <ul className="dropdown-menu alert-dropdown">
-                                    <li>
-                                        <a href="#">You stink<span
-                                            className="label label-default">Alert Badge</span></a>
+
+                                    <li className="header notiheader"><strong> Notification </strong></li>
+
+                                    <li className="dropdownmenu col-md-12">
+
+                                        <a href="#" id="notilink" className="col-md-12 ">
+                                            <div className="col-md-2 pull-left img-alert" >
+                                                <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
+                                            </div>
+                                            <div className="col-md-10 alert-text">
+                                             <p>Scientific Officer wants to verify Chahida Potro </p>
+                                            </div>
+                                            <div className="col-md-12 date-alert">
+                                                <i class="fa fa-calendar" aria-hidden="true">18-2-2017</i>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" id="notilink" className="col-md-12 ">
+                                            <div className="col-md-2 pull-left img-alert" >
+                                                <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
+                                            </div>
+                                            <div className="col-md-10 alert-text">
+                                                <p>Scientific Officer wants to verify Note </p>
+                                            </div>
+                                            <div className="col-md-12 date-alert">
+                                                <i class="fa fa-calendar" aria-hidden="true">18-2-2017</i>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" id="notilink" className="col-md-12 ">
+                                            <div className="col-md-2 pull-left img-alert" >
+                                                <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
+                                            </div>
+                                            <div className="col-md-10 alert-text">
+                                                <p>Scientific Officer wants to verify JANINA </p>
+                                            </div>
+                                            <div className="col-md-12 date-alert">
+                                                <i class="fa fa-calendar" aria-hidden="true">18-2-2017</i>
+                                            </div>
+                                        </a>
                                     </li>
 
                                 </ul>
@@ -49,8 +85,8 @@ export default class DashHeader extends Component {
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                     <img id="profile" src="img.jpg" className="profile-image img-circle"/>
 
-                                    <span>{user}</span></a>
-                                <ul className="dropdown-menu">
+                                    <span id="UserId">{user}</span></a>
+                                <ul className="dropdown-menu dropdownbody">
                                     <li className="user-header">
                                         <img id="profile" src="img.jpg" className="img-circle center-block"
                                              alt="User Image"/>
@@ -58,14 +94,19 @@ export default class DashHeader extends Component {
                                         <h3>{user}</h3>
                                     </li>
 
-                                    <li><a href="#"><i className="fa fa-cog"></i> Account</a></li>
+                                    <li><a><i className="fa fa-cog"></i> Designation</a></li>
                                     <li className="divider"></li>
                                     <li>
-                                        <form onSubmit={this.logout.bind(this)}>
-                                            <button type="submit" className="btn btn-default">
-                                                Logout
-                                            </button>
-                                        </form>
+                                        <button type="submit" className="btn btn-default btn-custom pull-left">
+                                            Profile
+                                        </button>
+
+                                    </li>
+                                    <li>
+                                        <button onClick={this.logout.bind(this)} type="submit"
+                                                className="btn btn-default btn-custom pull-right">
+                                            Logout
+                                        </button>
                                     </li>
                                 </ul>
                             </li>
@@ -76,6 +117,7 @@ export default class DashHeader extends Component {
                 </div>
 
             </nav >
-        );
+        )
+            ;
     }
 }
