@@ -32,10 +32,12 @@ export default class DashHeader extends Component {
 
                         <ul className="nav navbar-right top-nav">
 
+
                             <li className="dropdown">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown"><i
-                                    className="fa fa-bell"></i><span className="label label-warning">6</span><b
-                                    className="caret"></b></a>
+                                <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                                    <i className="fa fa-bell"></i>
+                                    <span className="label label-warning">6</span>
+                                    <b className="caret"></b></a>
 
                                 <ul className="dropdown-menu alert-dropdown">
 

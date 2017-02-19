@@ -7,6 +7,9 @@ import App from '../imports/ui/components/App';
 import Dash from '../imports/ui/components/Dash';
 import ChahidaPotro from '../imports/ui/components/ChahidaPotro';
 import Note from '../imports/ui/components/Note';
+import StandardDocument from '../imports/ui/components/StandardDocument';
+
+
 FlowRouter.route('/', {
     action(){
         mount(LayoutLogin, {
@@ -38,3 +41,12 @@ FlowRouter.route('/Note', {
         })
     }
 });
+
+FlowRouter.route('/StandardDocument', {
+    action(){
+        mount(LayoutDash, {
+            content: (<StandardDocument />)
+        })
+    }
+});
+

@@ -6,12 +6,14 @@
 
 .navbar-inverse .navbar-brand{color: white;}
 .navbar-inverse .navbar-brand:hover{
-    color: aliceblue; text-decoration: underline;
+    color: lightcyan; text-decoration: underline;
 }
 
 .top-nav {
     padding: 0px;
 }
+
+
 
 .top-nav>li {
     display: inline;
@@ -27,6 +29,13 @@
     color: darkgray;
 
 }
+
+
+.fa-bell{
+    margin-top: 10px;
+    height: 30px;
+}
+
 
 
 
@@ -129,7 +138,7 @@ h3{
 
 
 p.text{
-    text-align: left;
+    text-align: justify;
     font-size: 15px;
     line-height: 1.5;
     margin-top: 2em;
@@ -223,13 +232,13 @@ input:focus::-webkit-input-placeholder {
 }
 
 #sidekickjumbo{
-
     padding: 15px;
     box-shadow: 1px 5px 14px 2px violet;
 
 }
 
 #SideJumbobody{
+
     box-shadow: 1px 5px 14px 2px darkgreen;
 
 }
@@ -293,6 +302,11 @@ h4{
 
 
 
-
+#text-stnd{
+    font-size: medium;
+    margin-top: 10px;
+    line-height: 2;
+    font-family: "Times New Roman", Times, serif;
+}
 
 
