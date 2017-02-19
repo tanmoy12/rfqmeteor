@@ -38,3 +38,10 @@ FlowRouter.route('/Note', {
         })
     }
 });
+FlowRouter.route('/Note/:id', {
+    action(params){
+        mount(LayoutDash, {
+            content: (<Note id={params.id} />)
+        })
+    }
+});

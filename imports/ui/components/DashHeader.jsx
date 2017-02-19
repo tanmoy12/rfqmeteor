@@ -51,7 +51,7 @@ export default class DashHeader extends Component {
                                                 <p>Scientific Officer wants to verify Chahida Potro </p>
                                             </div>
                                             <div className="col-md-12 date-alert">
-                                                <i class="fa fa-calendar" aria-hidden="true">18-2-2017</i>
+                                                <i className="fa fa-calendar" aria-hidden="true">18-2-2017</i>
                                             </div>
                                         </a>
 
@@ -63,7 +63,7 @@ export default class DashHeader extends Component {
                                                 <p>Scientific Officer wants to verify Note </p>
                                             </div>
                                             <div className="col-md-12 date-alert">
-                                                <i class="fa fa-calendar" aria-hidden="true">18-2-2017</i>
+                                                <i className="fa fa-calendar" aria-hidden="true">18-2-2017</i>
                                             </div>
                                         </a>
 
@@ -75,7 +75,7 @@ export default class DashHeader extends Component {
                                                 <p>Scientific Officer wants to verify JANINA </p>
                                             </div>
                                             <div className="col-md-12 date-alert">
-                                                <i class="fa fa-calendar" aria-hidden="true">18-2-2017</i>
+                                                <i className="fa fa-calendar" aria-hidden="true">18-2-2017</i>
                                             </div>
                                         </a>
                                     </li>
