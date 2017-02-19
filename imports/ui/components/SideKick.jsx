@@ -9,11 +9,11 @@ export default class SideKick extends Component {
         e.preventDefault();
         var that=this;
         var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+        console.log(password);
         var digest = Package.sha.SHA256(password);
         Meteor.call('checkPassword', digest, function (err, result) {
             if (result) {
                 console.log('the passwords match!');
-                that.props.insertChahida;
                 console.log("wtf");
             }
             else {

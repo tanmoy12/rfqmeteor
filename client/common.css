@@ -58,7 +58,12 @@
     width: 25px;
     margin: 1px;
     margin-left: -5px;
+}
 
+#signLabel {
+    font-size: small;
+    font-style: italic;
+    margin-top: 10px;
 }
 
 .alert-text{
@@ -100,21 +105,6 @@ ul.dropdown-lr {
 
 #login{
     font-family: Arial;
-}
-
-
-
-.boxed{
-    margin: 20px;
-    margin-left: 100px;
-    height: 120px;
-    width: 120px;
-    background-color: transparent;
-    border: 1px solid black;
-    font-size: 10px ;
-    color: black;
-    text-align: center;
-    line-height: 120px;
 }
 
 
@@ -243,15 +233,6 @@ input:focus::-webkit-input-placeholder {
 
 }
 
-p.verify{
-    text-align: center;
-    margin: 1px;
-    font-size: 12px;
-    line-height: .08;
-    margin-top: 2em;
-    margin-bottom: 1.67em;
-    margin-right: 10%;
-}
 
 #RFQ{
     margin-left: -4%;

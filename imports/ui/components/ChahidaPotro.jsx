@@ -10,7 +10,8 @@ export default class ChahidaPotro extends Component {
         //  this.state.products = [];
         this.state = {
             products: [],
-            estimate: 0
+            estimate: 0,
+            signed: false
         };
 
     }
@@ -47,12 +48,13 @@ export default class ChahidaPotro extends Component {
     handleCreate(e) {
         e.preventDefault();
         console.log("inserted");
+        console.log(this.state.signed);
         var sutrono = ReactDOM.findDOMNode(this.refs.sutrono).value.trim();
         var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
         var productbool = true;
         var that = this;
 
-        if (title && sutrono && this.state.products.length) {
+        if (this.state.signed && title && sutrono && this.state.products.length) {
             this.state.products.map(function (product) {
                 if (product.desc && product.qty && product.total) {
 
@@ -68,6 +70,7 @@ export default class ChahidaPotro extends Component {
                 RFQDetails.insert(RFQDetailsForm, function (err, res) {
                     if (err) Bert.alert('Unknown Error!!', 'danger', 'growl-top-right');
                     else {
+                        var Rfqid= res;
                         Chahidaform = {
                             RFQ_id: res,
                             title: title,
@@ -78,7 +81,7 @@ export default class ChahidaPotro extends Component {
                         Chahida_Potro.insert(Chahidaform, function (err, res) {
                             if (err) Bert.alert('Unknown Error!!', 'danger', 'growl-top-right');
                             else {
-
+                                FlowRouter.go('/Note/' + Rfqid);
                             }
                         });
                     }
@@ -91,7 +94,53 @@ export default class ChahidaPotro extends Component {
         }
     }
 
+    handleSignForward(e) {
+        e.preventDefault();
+        var that = this;
+        var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+        console.log(password);
+        var digest = Package.sha.SHA256(password);
+        Meteor.call('checkPassword', digest, function (err, result) {
+            if (result) {
+                console.log('the passwords match!');
+                console.log("wtf");
+                that.setState({
+                    signed: true
+                })
+            }
+            else {
+                console.log("no match");
+                Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
+            }
+        });
+    }
+
     render() {
+        var signBlock;
+        if (this.state.signed) {
+            signBlock =
+                <div className="col-md-6 center-block">
+                    <img src="sign1.png" className="img-circle" alt="User Image"/>
+                    <p id="signLabel"><strong>নিবেদক</strong></p>
+                </div>
+        } else {
+            signBlock =
+                <div className="col-md-6 center-block form-group">
+                    <div className="col-md-1">
+                    </div>
+                    <div className="col-md-10 col-md-offset-1">
+                        <input type="password" name="password" className="form-control" ref="password"
+                               placeholder="Password"/>
+                        <input onClick={this.handleSignForward.bind(this)} type="submit"
+                               name="login-submit"
+                               className="btn btn-default btn-sm" value="SIGN"/>
+                        <div>
+                            <p id="signLabel"><strong>নিবেদক</strong></p>
+                        </div>
+                    </div>
+
+                </div>
+        }
         return (
             <div className="container">
                 <div className="row">
@@ -168,14 +217,7 @@ export default class ChahidaPotro extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-md-6">
-                                    <p className="verify"> নিবেদক </p>
-                                    <div className="boxed"> Image & Signature</div>
-                                </div>
-                                <div className="col-md-6">
-                                    <p className="verify"> জাছাইকারি </p>
-                                    <div className="boxed"> Image & Signature</div>
-                                </div>
+                                {signBlock}
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
@@ -189,24 +231,24 @@ export default class ChahidaPotro extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-md-6">
-                                    <p className="verify"> হিসাবরক্ষক </p>
-                                    <div className="boxed"> Image & Signature</div>
+                                <div className="col-md-6 center-block">
+                                    <img src="sign1.png" className="img-circle" alt="User Image"/>
+                                    <p id="signLabel"><strong>নিবেদক</strong></p>
                                 </div>
-                                <div className="col-md-6">
-                                    <p className="verify"> অন্মদঙ্কারি </p>
-                                    <div className="boxed"> Image & Signature</div>
+                                <div className="col-md-6 center-block">
+                                    <img src="sign1.png" className="img-circle" alt="User Image"/>
+                                    <p id="signLabel"><strong>নিবেদক</strong></p>
                                 </div>
-
                             </div>
                         </div>
                         <div className="col-md-offset-2 col-md-8 col-md-offset-2">
-                            <input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit" id="submit-all"
+                            <input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"
+                                   id="submit-all"
                                    className="btn btn-primary" value="Submit"/>
                         </div>
                     </div>
 
-                    <SideKick insertChahida={this.handleCreate.bind(this)} />
+                    <SideKick insertChahida={this.handleCreate.bind(this)}/>
                 </div>
             </div>
         );
