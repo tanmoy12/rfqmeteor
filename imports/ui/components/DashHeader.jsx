@@ -140,7 +140,7 @@ DashHeader.propTypes = {
 };
 
 export default createContainer(() => {
-
+    Meteor.subscribe('allUserData');
     return {
         currentUser: Meteor.user()
     };

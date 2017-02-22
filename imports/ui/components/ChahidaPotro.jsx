@@ -16,7 +16,8 @@ class ChahidaPotro extends Component {
 
     }
     renderScOf(){
-        return this.props.ScOf.map(function (ScOfficers) {
+        let scc=this.props.ScOf;
+        return scc.map(function (ScOfficers) {
             return <option value={ScOfficers._id} key={ScOfficers._id}>{ScOfficers.username}</option>
         });
     }

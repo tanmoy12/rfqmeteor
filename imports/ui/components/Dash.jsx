@@ -1,17 +1,35 @@
-import React, {Component, PropTypes} from 'react';
-import {createContainer} from 'meteor/react-meteor-data';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 import RFQBox from './RFQBox';
 
-class Dash extends Component {
+export default class Dash extends TrackerReact(React.Component) {
+    constructor() {
+        super();
+        //  this.state.products = [];
+        this.state = {
+            subscription: {
+                RFQs: Meteor.subscribe('rfqdetails')
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        this.state.subscription.RFQs.stop();
+    }
+
+    RFQs() {
+        return RFQDetails.find({}).fetch(); //fetch must be called to trigger reactivity
+    }
+
     createRFQ(e) {
         e.preventDefault();
         FlowRouter.go("/chahidapotro");
     }
 
     renderRFQs() {
-        let RFQs = this.props.RFQs;
+        let RFQs = RFQDetails.find({}).fetch();
         console.log(RFQs);
         return RFQs.map(function (RFQ) {
             console.log(RFQ._id);
@@ -32,23 +50,16 @@ class Dash extends Component {
                             Create
                             RFQ
                         </button>
-                        <div>
-                            {this.renderRFQs()}
-                        </div>
 
+
+                    </div>
+                    <div>
+                        {this.RFQs().map((RFQ) => {
+                            return <RFQBox key={RFQ._id} RFQ={RFQ}/>;
+                        })}
                     </div>
                 </div>
             </div>
         );
     }
 }
-
-Dash.propTypes = {
-    RFQs: PropTypes.array.isRequired
-};
-
-export default createContainer(() => {
-    return {
-        RFQs: RFQDetails.find({}, {sort: {date: -1}}).fetch()
-    };
-}, Dash);

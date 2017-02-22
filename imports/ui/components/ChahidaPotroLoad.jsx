@@ -2,19 +2,26 @@ import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
+
 import Table from "./Table";
 
-export default class ChahidaPotroLoad extends Component {
+export default class ChahidaPotroLoad extends TrackerReact(React.Component) {
     constructor(props) {
         super(props);
         //  this.state.products = [];
-        var ChahidaPotro = Chahida_Potro.find({RFQ_id: this.props.id}).fetch();
-        console.log(ChahidaPotro);
         this.state = {
             signed: false,
-            ChahidaPotro: ChahidaPotro
+            subscription: {
+                ChahidaPotro: Meteor.subscribe('chahidapotro', this.props.id)
+            }
         };
     }
+
+    componentWillUnmount() {
+        this.state.subscription.ChahidaPotro.stop();
+    }
+
     passwordcheck(e) {
         if (e.key === 'Enter') {
             var that = this;
@@ -32,10 +39,13 @@ export default class ChahidaPotroLoad extends Component {
             });
         }
     }
+    ChahidaPotro(){
+        return Chahida_Potro.find().fetch();
+    }
 
     render() {
-        console.log(this.props.id);
-        console.log(this.state.ChahidaPotro);
+        var ChahidaPotro = this.ChahidaPotro();
+        console.log(ChahidaPotro);
         var signBlock;
         if (this.state.signed) {
             signBlock =
@@ -75,11 +85,8 @@ export default class ChahidaPotroLoad extends Component {
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="row">
-                                        <div className="col-md-12 form-style-4">
-                                            <label htmlFor="sutrono">
-                                                <span>সুত্র নং :</span>
-                                                <input ref="sutrono" id="inputtext" name="sutrono" type="text"/>
-                                            </label>
+                                        <div className="col-md-12">
+                                                <p>{this.ChahidaPotro().sutro_no}</p>
                                         </div>
                                     </div>
                                 </div>
