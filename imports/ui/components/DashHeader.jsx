@@ -1,10 +1,19 @@
-import React, {Component} from "react";
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
+import ReactDOM from 'react-dom';
 
-export default class DashHeader extends Component {
+class DashHeader extends Component {
     logout(e) {
         e.preventDefault();
         Meteor.logout();
         FlowRouter.go('/');
+    }
+    waitForUser(){
+        if(Meteor.loggingIn()){
+            return "Loading"
+        }else{
+            return Meteor.user().username
+        }
     }
 
 
@@ -125,3 +134,14 @@ export default class DashHeader extends Component {
             ;
     }
 }
+
+DashHeader.propTypes = {
+    currentUser: PropTypes.object
+};
+
+export default createContainer(() => {
+
+    return {
+        currentUser: Meteor.user()
+    };
+}, DashHeader);

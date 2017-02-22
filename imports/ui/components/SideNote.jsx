@@ -2,6 +2,9 @@ import React, {Component} from "react";
 
 
 export default class SideNote extends Component {
+    loadChahida(e){
+        FlowRouter.go('/ChahidaPotro/' + this.props.ChahidaPotro);
+    }
 
     render() {
         return (
@@ -11,7 +14,7 @@ export default class SideNote extends Component {
                         <nav className=" navbar-custom navbar navbar-default text-center">
                             <div className="container">
                                 <div className="navbar-header">
-                                    <a className="navbar-brand" href="#">Chahida Potro</a>
+                                    <a onClick={this.loadChahida.bind(this)} className="navbar-brand" href="#">Chahida Potro</a>
                                 </div>
                             </div>
                         </nav>
