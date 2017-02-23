@@ -41,7 +41,7 @@ FlowRouter.route('/Note', {
         })
     }
 });
-<<<<<<< HEAD
+
 
 FlowRouter.route('/StandardDocument', {
     action(){
@@ -51,7 +51,7 @@ FlowRouter.route('/StandardDocument', {
     }
 });
 
-=======
+
 FlowRouter.route('/Note/:id', {
     action(params){
         mount(LayoutDash, {
@@ -59,4 +59,3 @@ FlowRouter.route('/Note/:id', {
         })
     }
 });
->>>>>>> 7a249586e3789f6b668c7e33951eb00735e27379
