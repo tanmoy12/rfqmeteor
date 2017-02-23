@@ -3,7 +3,7 @@ import React, {Component} from "react";
 
 export default class SideNote extends Component {
     loadChahida(e){
-        FlowRouter.go('/ChahidaPotro/' + this.props.ChahidaPotro);
+        FlowRouter.go('/ChahidaPotroload/' + this.props.RFQ.chahida_id);
     }
 
     render() {

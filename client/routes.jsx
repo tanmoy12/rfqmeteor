@@ -35,14 +35,6 @@ FlowRouter.route('/Chahidapotro', {
     }
 });
 
-FlowRouter.route('/Note', {
-    action(){
-        mount(LayoutDash, {
-            content: (<Note />)
-        })
-    }
-});
-
 FlowRouter.route('/StandardDocument', {
     action(){
         mount(LayoutDash, {
@@ -58,7 +50,7 @@ FlowRouter.route('/Note/:id', {
         })
     }
 });
-FlowRouter.route('/Chahidapotro/:id', {
+FlowRouter.route('/Chahidapotroload/:id', {
     action(params){
         mount(LayoutDash, {
             content: (<ChahidaPotroLoad id={params.id} />)

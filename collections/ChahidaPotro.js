@@ -58,10 +58,6 @@ Details = new SimpleSchema({
 });
 
 ChahidaPotroSchema = new SimpleSchema({
-    RFQ_id:{
-        type: String,
-        label: 'RFQ_id'
-    },
     title: {
         type: String,
         label: 'title',

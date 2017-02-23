@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import React, {Component, PropTypes} from 'react';
+import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 
 import Table from "./Table";
@@ -15,8 +15,18 @@ class ChahidaPotro extends Component {
         };
 
     }
-    renderScOf(){
-        let scc=this.props.ScOf;
+
+    renderRFQs() {
+        console.log(this.props.RFQList);
+        return this.props.RFQList.map(function (RFQ) {
+            console.log(RFQ);
+            return
+            <p key={RFQ._id}>{RFQ.title}</p>
+        });
+    }
+
+    renderScOf() {
+        let scc = this.props.ScOf;
         return scc.map(function (ScOfficers) {
             return <option value={ScOfficers._id} key={ScOfficers._id}>{ScOfficers.username}</option>
         });
@@ -61,26 +71,25 @@ class ChahidaPotro extends Component {
                 }
             });
             if (productbool) {
-                RFQDetailsForm = {
+                Chahidaform = {
                     title: title,
-                    estimate: this.state.estimate
+                    sutro_no: sutrono,
+                    estimate: that.state.estimate,
+                    details: that.state.products,
+                    verifier: {
+                        user_id: ScOff
+                    }
                 }
-                RFQDetails.insert(RFQDetailsForm, function (err, res) {
+                Chahida_Potro.insert(Chahidaform, function (err, res) {
                     if (err) Bert.alert('Unknown Error!!', 'danger', 'growl-top-right');
                     else {
                         var Rfqid = res;
-                        Chahidaform = {
-                            RFQ_id: res,
+                        RFQDetailsForm = {
+                            chahida_id: res,
                             title: title,
-                            sutro_no: sutrono,
-                            estimate: that.state.estimate,
-                            details: that.state.products,
-                            verifier: {
-                                user_id: ScOff
-                            }
-
+                            estimate: that.state.estimate
                         }
-                        Chahida_Potro.insert(Chahidaform, function (err, res) {
+                        RFQDetails.insert(RFQDetailsForm, function (err, res) {
                             if (err) Bert.alert('Unknown Error!!', 'danger', 'growl-top-right');
                             else {
                                 FlowRouter.go('/Note/' + Rfqid);
@@ -232,7 +241,7 @@ class ChahidaPotro extends Component {
                     </div>
                     <div className="col-md-10">
                         <div className="col-md-2"></div>
-                        <div  id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
+                        <div id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
                             <div className="form-group text-center">
                                 <p>FORWARD TO <strong>যাচাইকারী :</strong></p>
                                 <div className="form-group">
@@ -263,6 +272,6 @@ ChahidaPotro.propTypes = {
 export default createContainer(() => {
 
     return {
-        ScOf: Meteor.users.find({'profile.designation' : "Scientific Officer"}).fetch()
+        ScOf: Meteor.users.find({'profile.designation': "Scientific Officer"}).fetch()
     };
 }, ChahidaPotro);

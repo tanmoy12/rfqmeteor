@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class RFQBox extends Component {
     constructor(props) {
@@ -7,12 +6,12 @@ export default class RFQBox extends Component {
     }
     gotoNote (e){
         e.preventDefault();
-        FlowRouter.go('/Note/' + this.props.RFQ._id);
+        FlowRouter.go('/Note/' + this.props.RFQItem._id);
     }
     render() {
         return (
-            <div className="container-fluid">
-                <button onClick={this.gotoNote.bind(this)} className="btn btn-link">{this.props.RFQ.title}</button>
+            <div className="container">
+                <button onClick={this.gotoNote.bind(this)} className="btn btn-link">{this.props.RFQItem.title}</button>
 
             </div>
         );

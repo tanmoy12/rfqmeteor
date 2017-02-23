@@ -2,24 +2,15 @@ import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 
-import TrackerReact from 'meteor/ultimatejs:tracker-react';
-
 import Table from "./Table";
 
-export default class ChahidaPotroLoad extends TrackerReact(React.Component) {
+class ChahidaPotroLoad extends Component {
     constructor(props) {
         super(props);
         //  this.state.products = [];
         this.state = {
-            signed: false,
-            subscription: {
-                ChahidaPotro: Meteor.subscribe('chahidapotro', this.props.id)
-            }
+            signed: false
         };
-    }
-
-    componentWillUnmount() {
-        this.state.subscription.ChahidaPotro.stop();
     }
 
     passwordcheck(e) {
@@ -39,13 +30,8 @@ export default class ChahidaPotroLoad extends TrackerReact(React.Component) {
             });
         }
     }
-    ChahidaPotro(){
-        return Chahida_Potro.find().fetch();
-    }
-
     render() {
-        var ChahidaPotro = this.ChahidaPotro();
-        console.log(ChahidaPotro);
+        console.log(this.props.chahidapotro);
         var signBlock;
         if (this.state.signed) {
             signBlock =
@@ -85,8 +71,8 @@ export default class ChahidaPotroLoad extends TrackerReact(React.Component) {
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="row">
-                                        <div className="col-md-12">
-                                                <p>{this.ChahidaPotro().sutro_no}</p>
+                                        <div className="col-md-12 pull-left">
+                                            <p></p>
                                         </div>
                                     </div>
                                 </div>
@@ -115,8 +101,6 @@ export default class ChahidaPotroLoad extends TrackerReact(React.Component) {
                                         নিম্নক্ত
                                         ....................................... ক্রয় করা প্রয়োজন। </p>
 
-                                    <Table
-                                        sendData={(products, estimate) => this.getdatafromtable(products, estimate) }/>
 
                                     <p className="text">
                                         ২। এ জন্য আনুমানিক .......................................
@@ -186,3 +170,14 @@ export default class ChahidaPotroLoad extends TrackerReact(React.Component) {
         );
     }
 }
+
+
+ChahidaPotroLoad.propTypes = {
+    chahidapotro: PropTypes.object
+};
+
+export default createContainer( props => {
+    return {
+        chahidapotro: Chahida_Potro.findOne(props.id)
+    };
+}, ChahidaPotroLoad);
