@@ -4,17 +4,15 @@ import ReactDOM from 'react-dom';
 
 import Table from "./Table";
 
-export default class ChahidaPotroLoad extends Component {
+class ChahidaPotroLoad extends Component {
     constructor(props) {
         super(props);
         //  this.state.products = [];
-        var ChahidaPotro = Chahida_Potro.find({RFQ_id: this.props.id}).fetch();
-        console.log(ChahidaPotro);
         this.state = {
-            signed: false,
-            ChahidaPotro: ChahidaPotro
+            signed: false
         };
     }
+
     passwordcheck(e) {
         if (e.key === 'Enter') {
             var that = this;
@@ -34,14 +32,13 @@ export default class ChahidaPotroLoad extends Component {
     }
 
     render() {
-        console.log(this.props.id);
-        console.log(this.state.ChahidaPotro);
+        console.log(this.props.chahidapotro);
         var signBlock;
         if (this.state.signed) {
             signBlock =
                 <div className="col-md-6 center-block">
                     <img src="sign1.png" className="img-circle" alt="User Image"/>
-                    <p id="signLabel"><strong>নিবেদক</strong></p>
+                    <p id="signLabel"><strong>যাচাইকারী </strong></p>
                 </div>
         } else {
             signBlock =
@@ -53,7 +50,7 @@ export default class ChahidaPotroLoad extends Component {
                                placeholder="Password"/><br/>
                     </div>
                     <div>
-                        <p id="signLabel"><strong>নিবেদক</strong></p>
+                        <p id="signLabel"><strong>যাচাইকারী </strong></p>
                     </div>
 
                 </div>
@@ -75,16 +72,12 @@ export default class ChahidaPotroLoad extends Component {
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="row">
-                                        <div className="col-md-12 form-style-4">
-                                            <label htmlFor="sutrono">
-                                                <span>সুত্র নং :</span>
-                                                <input ref="sutrono" id="inputtext" name="sutrono" type="text"/>
-                                            </label>
+                                        <div className="col-md-12 pull-left">
+                                            <p>sutro no ekhane boshbe</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-md-6">
-
 
 
                                 </div>
@@ -108,26 +101,42 @@ export default class ChahidaPotroLoad extends Component {
                                         নিম্নক্ত
                                         ....................................... ক্রয় করা প্রয়োজন। </p>
 
-                                    <Table
-                                        sendData={(products, estimate) => this.getdatafromtable(products, estimate) }/>
 
+                                    <div id="tabledesc" className="table">
+                                        <table id="customers"
+                                               className="table table-responsive table-bordered table-condensed">
+
+                                            <thead>
+                                            <tr>
+                                                <th className="col-md-1 text-center">Item</th>
+                                                <th className="col-md-4 text-center">Description Of Item</th>
+                                                <th className="col-md-2 text-center">Unit</th>
+                                                <th className="col-md-1 text-center">Quantity</th>
+                                                <th className="col-md-2 text-center">Rate/unit</th>
+                                                <th className="col-md-2 text-center">Total Amount</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
                                     <p className="text">
                                         ২। এ জন্য আনুমানিক .......................................
                                         (কথায়)
                                         ................................. টাকা ব্যয়।
                                         <br/>
                                         ৩। অতএব ড়ুক্ত
+
                                     </p>
-
-
                                 </div>
                             </div>
                             <div className="row">
-                                {signBlock}
                                 <div className="col-md-6 center-block">
-
-                                    <p id="unsignLabel"><strong>যাচাইকারী </strong></p>
+                                    <img src="sign1.png" className="img-circle" alt="User Image"/>
+                                    <p id="signLabel"><strong>নিবেদক</strong></p>
                                 </div>
+                                {signBlock}
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
@@ -137,7 +146,6 @@ export default class ChahidaPotroLoad extends Component {
                                         ও সেবা খাতের (ঊপখাতঃ রসায়ন দ্রব্যাদি ক্রয় নং-৪৮৫২) হতে ক্রয় প্রক্রিয়া
                                         মাধ্যমে
                                         নির্বাহ করা যেতে পারে। </p>
-
                                 </div>
                             </div>
                             <div className="row">
@@ -162,7 +170,6 @@ export default class ChahidaPotroLoad extends Component {
                                     <select ref="ScOf" className="form-control">
 
 
-
                                     </select>
                                 </div>
 
@@ -179,3 +186,14 @@ export default class ChahidaPotroLoad extends Component {
         );
     }
 }
+
+
+ChahidaPotroLoad.propTypes = {
+    chahidapotro: PropTypes.object
+};
+
+export default createContainer(props => {
+    return {
+        chahidapotro: Chahida_Potro.findOne(props.id)
+    };
+}, ChahidaPotroLoad);

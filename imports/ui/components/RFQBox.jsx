@@ -1,17 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 
-
 export default class RFQBox extends Component {
     constructor(props) {
         super(props);
-        var RFQ= RFQDetails.findOne(this.props.id);
-        console.log(this.props.id);
+    }
+    gotoNote (e){
+        e.preventDefault();
+        FlowRouter.go('/Note/' + this.props.RFQItem._id);
     }
     render() {
-        console.log("dhur");
         return (
-            <div className="container-fluid">
-                <p>title</p>
+            <div className="container">
+                <button onClick={this.gotoNote.bind(this)} className="btn btn-link">{this.props.RFQItem.title}</button>
 
             </div>
         );

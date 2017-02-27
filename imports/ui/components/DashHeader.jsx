@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-import ReactDOM from 'react-dom';
 
 class DashHeader extends Component {
     logout(e) {
@@ -140,7 +139,7 @@ DashHeader.propTypes = {
 };
 
 export default createContainer(() => {
-
+    Meteor.subscribe('allUserData');
     return {
         currentUser: Meteor.user()
     };

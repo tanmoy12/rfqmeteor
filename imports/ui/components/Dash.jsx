@@ -1,29 +1,30 @@
-import React, {Component, PropTypes} from 'react';
-import {createContainer} from 'meteor/react-meteor-data';
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 
 import RFQBox from './RFQBox';
 
 class Dash extends Component {
+    constructor() {
+        super();
+        //  this.state.products = [];
+
+    }
+
     createRFQ(e) {
         e.preventDefault();
         FlowRouter.go("/chahidapotro");
     }
 
     renderRFQs() {
-        let RFQs = this.props.RFQs;
-        console.log(RFQs);
-        return RFQs.map(function (RFQ) {
-            console.log(RFQ._id);
-            return
-                <RFQBox key={RFQ._id} id={RFQ._id}/>
+        return this.props.RFQList.map(function (RFQItem) {
+            return <RFQBox key={RFQItem._id} RFQItem={RFQItem}/>
         });
     }
 
     render() {
         return (
             <div>
-
                 <div className="container">
                     <div className="jumbotron text-center">
                         <h1 className="page-header"> Designated Reference for Institute of Chemical Measurements</h1>
@@ -32,10 +33,11 @@ class Dash extends Component {
                             Create
                             RFQ
                         </button>
-                        <div>
-                            {this.renderRFQs()}
-                        </div>
 
+
+                    </div>
+                    <div>
+                        {this.renderRFQs()}
                     </div>
                 </div>
             </div>
@@ -43,12 +45,14 @@ class Dash extends Component {
     }
 }
 
+
 Dash.propTypes = {
-    RFQs: PropTypes.array.isRequired
+    RFQList : PropTypes.array.isRequired
 };
 
 export default createContainer(() => {
+    Meteor.subscribe('rfqdetails');
     return {
-        RFQs: RFQDetails.find({}, {sort: {date: -1}}).fetch()
+        RFQList : RFQDetails.find({}).fetch()
     };
 }, Dash);

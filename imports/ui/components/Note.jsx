@@ -1,9 +1,14 @@
-import React, {Component} from "react";
+import React, {Component, PropTypes} from 'react';
+import {createContainer} from 'meteor/react-meteor-data';
+import ReactDOM from 'react-dom';
+
 import SideNote from "./SideNote";
 
 
-export default class Note extends Component {
-
+class Note extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <div className="container">
@@ -75,7 +80,7 @@ export default class Note extends Component {
                         </div>
 
                     </div>
-                    <SideNote ChahidaPotro={this.props.id}/>
+                    <SideNote RFQ={this.props.RFQ}/>
                 </div>
             </div>
 
@@ -83,3 +88,14 @@ export default class Note extends Component {
         );
     }
 }
+
+
+Note.propTypes = {
+    RFQ: PropTypes.object
+};
+
+export default createContainer( props => {
+    return {
+        RFQ: RFQDetails.findOne(props.id)
+    };
+}, Note);
