@@ -10,7 +10,7 @@
 }
 
 .top-nav {
-    padding: 0px;
+    padding: 0;
 }
 
 
@@ -29,7 +29,6 @@
     color: darkgray;
 
 }
-
 
 .fa-bell{
     margin-top: 10px;
@@ -56,8 +55,7 @@
 
 .img-alert{
     width: 25px;
-    margin: 1px;
-    margin-left: -5px;
+    margin: 1px 1px 1px -5px;
 }
 
 
@@ -69,7 +67,7 @@
 
 .date-alert{
     text-align: right;
-    padding-top: 0px;
+    padding-top: 0;
 }
 
 .notiheader{
@@ -85,7 +83,6 @@
 
 #UserId{
     margin: 5px;
-
 }
 
 /* Fixed navbar */
@@ -100,7 +97,7 @@ ul.dropdown-lr {
 
 
 #login{
-    font-family: Arial;
+    font-family: Arial, serif;
 }
 
 
@@ -122,9 +119,134 @@ h3{
 
 .main-layout{
     background: #EAEBEF;
-    margin: 0px;
+    margin: 0;
     padding-top: 30px;
 }
+
+.form-control {
+    height: 28px;
+    width: 100%;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    border-color: darkred;
+    outline:0;
+}
+
+input:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
+
+#submit-all{
+    width: 100%;
+}
+
+.tableinput{
+    width: 100%;
+}
+
+.jumbotron{
+    background:#ffffff;
+    margin:0;
+    padding: 10px;
+    box-shadow: 1px 5px 14px 2px skyblue;
+}
+
+#chahidatitle{
+    margin-bottom: 25px;
+}
+#title {
+    width: 90%;
+}
+
+
+#sidekickjumbo{
+    padding: 15px;
+    box-shadow: 1px 5px 14px 2px violet;
+
+}
+
+
+
+
+#SideJumbobody{
+    box-shadow: 1px 5px 14px 2px darkgreen;
+    margin-bottom: 30px;
+}
+
+
+#sidejumbotron{
+    margin: 0;
+    padding: 0;
+}
+
+
+#RFQ{
+    margin-left: -4%;
+}
+
+
+
+
+#StandardJumbo{
+    margin-bottom: 20px;
+
+}
+
+.navbar-custom{
+    background: black;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .navbar-brand:active{
+    color: white;
+}
+
+.navbar-custom .navbar-brand:hover{
+    color: white; text-decoration: underline}
+
+
+#SideJumbobody{
+    margin-top: -15px;
+    padding:15px;
+
+}
+
+#chahidajumbo{
+    border: 1px solid;
+    margin: 0 0 20px;
+    padding: 25px;
+    box-shadow: 1px 5px 14px 2px skyblue;
+}
+
+.title-top{
+    padding:15px;
+}
+
+hr {
+    border: 1px solid #000;
+}
+
+#TITLERFQ{
+    font-size:10px;
+    font-style: italic;
+}
+
+
+
+#text-stnd{
+    font-size: medium;
+    margin-top: 10px;
+    line-height: 2;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.main-layout {
+    background: #EAEBEF;
+}
+
+/* tanmoy's css parts */
 
 .form-style-4 label {
     display:block;
@@ -141,7 +263,7 @@ h3{
     border-bottom: 1px solid darkred;
     width: 85%;
     outline: none;
-    padding: 0px 0px 0px 0px;
+    padding: 0 0 0 0;
     font-size: medium;
     float: left;
     margin-left: 10px;
@@ -155,7 +277,7 @@ h3{
     border-bottom: 1px solid darkred;
     width: 85%;
     outline: none;
-    padding: 0px 0px 0px 0px;
+    padding: 0 0 0 0;
     font-size: medium;
     float: left;
     margin-left: 10px;
@@ -217,22 +339,22 @@ td>input[type="text"], textarea {
     outline: none;
     font-size: medium;
     box-shadow:none !important;
-    border:0px solid #ccc !important;
-    margin: 0px;
-    padding: 0px;
+    border:0 solid #ccc !important;
+    margin: 0;
+    padding: 0;
     width: 100%;
 }
 td{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 td>input[type="number"], textarea {
     outline: none;
     font-size: medium;
     box-shadow:none !important;
-    border:0px solid #ccc !important;
-    margin: 0px;
-    padding: 0px;
+    border:0 solid #ccc !important;
+    margin: 0;
+    padding: 0;
     width: 100%;
 }
 
@@ -244,9 +366,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 #item_no{
     font-size: 16px;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
+
+
 
 .btn-table-made:hover{background-color: #3e3939 ; color: white !important;}
 .btn-table-made:focus{ background-color: black; color: white !important;}
@@ -278,132 +402,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 .table{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
-
-.form-control {
-    height: 28px;
-    width: 100%;
-    background-color: transparent;
-    border-style: solid;
-    border-width: 0px 0px 1px 0px;
-    border-color: darkred;
-    outline:0;
-}
-
-input:focus::-webkit-input-placeholder {
-    opacity: 0;
-}
-
-#submit-all{
-    width: 100%;
-}
-
-.tableinput{
-    width: 100%;
-}
-
-.jumbotron{
-    background:#ffffff;
-    margin:0px;
-    padding: 10px;
-    box-shadow: 1px 5px 14px 2px skyblue;
-}
-
-#chahidatitle{
-    margin-bottom: 25px;
-}
-#title {
-    width: 90%;
-}
-
-
-#sidekickjumbo{
-    padding: 15px;
-    box-shadow: 1px 5px 14px 2px violet;
-
-}
-
-
-
-
-#SideJumbobody{
-    box-shadow: 1px 5px 14px 2px darkgreen;
-    margin-bottom: 30px;
-}
-
-
-#sidejumbotron{
-    margin: 0px;
-    padding: 0px;
-}
-
-
-#RFQ{
-    margin-left: -4%;
-}
-
-
-
-
-#StandardJumbo{
-    margin-bottom: 20px;
-
-}
-
-.navbar-custom{
-    background: black;
-}
-
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-brand:focus,
-.navbar-custom .navbar-brand:active{
-    color: white;
-}
-
-.navbar-custom .navbar-brand:hover{
-    color: white; text-decoration: underline}
-
-
-#SideJumbobody{
-    margin-top: -15px;
-    padding:15px;
-
-}
-
-#chahidajumbo{
-    border: 1px solid;
-    margin: 0px;
-    margin-bottom: 20px;
-    padding: 25px;
-    box-shadow: 1px 5px 14px 2px skyblue;
-}
-
-.title-top{
-    padding:15px;
-}
-
-hr {
-    border: 1px solid #000;
-}
-
-#TITLERFQ{
-    font-size:10px;
-    font-style: italic;
-}
-
-
-
-#text-stnd{
-    font-size: medium;
-    margin-top: 10px;
-    line-height: 2;
-    font-family: "Times New Roman", Times, serif;
-}
-
-.main-layout {
-    background: #EAEBEF;
-}
-
-
+/* tanmoy's css parts */
