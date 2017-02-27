@@ -60,11 +60,7 @@
     margin-left: -5px;
 }
 
-#signLabel {
-    font-size: small;
-    font-style: italic;
-    margin-top: 10px;
-}
+
 
 .alert-text{
     margin: 2px;
@@ -94,7 +90,7 @@
 
 /* Fixed navbar */
 body {
-    padding-top: 90px;
+    padding-top: 52px;
 }
 /* General sizing */
 ul.dropdown-lr {
@@ -116,22 +112,101 @@ ul.dropdown-lr {
 
 h2{
     text-align: center;
-    font-size: 25px;
-    margin-bottom: 1.0em
 }
 
 
 h3{
     text-align: center;
-    font-size: 25px;
+    margin: 5px;
 }
 
+.main-layout{
+    background: #EAEBEF;
+    margin: 0px;
+    padding-top: 30px;
+}
+
+.form-style-4 label {
+    display:block;
+}
+.form-style-4 label > span{
+    display: inline-block;
+    float: left;
+    width: auto;
+}
+.form-style-4 input[type=text]
+{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid darkred;
+    width: 85%;
+    outline: none;
+    padding: 0px 0px 0px 0px;
+    font-size: medium;
+    float: left;
+    margin-left: 10px;
+
+}
+
+.form-style-4 input[type=password]
+{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid darkred;
+    width: 85%;
+    outline: none;
+    padding: 0px 0px 0px 0px;
+    font-size: medium;
+    float: left;
+    margin-left: 10px;
+}
+
+.form-style-4 input[type=text]:focus
+{
+    border-bottom: 1px solid deepskyblue;
+}
+
+.form-style-4 input[type=password]:focus
+{
+    border-bottom: 1px solid deepskyblue;
+}
+
+#datetoday {
+    float : right;
+    font-style: italic;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#signLabel {
+    font-size: small;
+    font-style: italic;
+    margin-top: 10px;
+}
+#unsignLabel {
+    font-size: small;
+    font-style: italic;
+    margin-top: 85px;
+}
+
+#signblock {
+    height: 85px;
+}
+
+#signblock input {
+    margin-top: 15px;
+}
 
 p.text{
     text-align: justify;
     font-size: 15px;
     line-height: 1.5;
     margin-top: 2em;
+    margin-bottom: 2em;
+}
+p.text2{
+    text-align: justify;
+    font-size: 15px;
+    line-height: 1.5;
     margin-bottom: 2em;
 }
 
@@ -145,6 +220,7 @@ td>input[type="text"], textarea {
     border:0px solid #ccc !important;
     margin: 0px;
     padding: 0px;
+    width: 100%;
 }
 td{
     margin: 0px;
@@ -157,6 +233,7 @@ td>input[type="number"], textarea {
     border:0px solid #ccc !important;
     margin: 0px;
     padding: 0px;
+    width: 100%;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -165,8 +242,10 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-#itemNo{
-    font-size: 15px;
+#item_no{
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .btn-table-made:hover{background-color: #3e3939 ; color: white !important;}
@@ -177,10 +256,32 @@ input[type=number]::-webkit-outer-spin-button {
     outline: 0;
 }
 
+
+.table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #acaeaf;
+    color: black;
+}
+
+
 .table{
     margin: 0px;
     padding: 0px;
 }
+
 .form-control {
     height: 28px;
     width: 100%;
@@ -195,20 +296,9 @@ input:focus::-webkit-input-placeholder {
     opacity: 0;
 }
 
-
-
-#chahidajumbo{
-    margin: 0px;
-    padding: 40px;
-    box-shadow: 1px 5px 14px 2px skyblue;
-
-}
-
-
 #submit-all{
     width: 100%;
 }
-
 
 .tableinput{
     width: 100%;
@@ -216,10 +306,18 @@ input:focus::-webkit-input-placeholder {
 
 .jumbotron{
     background:#ffffff;
+    margin:0px;
     padding: 10px;
     box-shadow: 1px 5px 14px 2px skyblue;
-
 }
+
+#chahidatitle{
+    margin-bottom: 25px;
+}
+#title {
+    width: 90%;
+}
+
 
 #sidekickjumbo{
     padding: 15px;
@@ -227,10 +325,18 @@ input:focus::-webkit-input-placeholder {
 
 }
 
+
+
+
 #SideJumbobody{
-
     box-shadow: 1px 5px 14px 2px darkgreen;
+    margin-bottom: 30px;
+}
 
+
+#sidejumbotron{
+    margin: 0px;
+    padding: 0px;
 }
 
 
@@ -239,18 +345,10 @@ input:focus::-webkit-input-placeholder {
 }
 
 
-#sidejumbotron{
-    margin: 0px;
-    padding: 0px;
-
-}
 
 
-h4{
-    text-align: left;
-    font-size: 18px;
-    margin-top: -15px;
-
+#StandardJumbo{
+    margin-bottom: 20px;
 
 }
 
@@ -274,7 +372,21 @@ h4{
 
 }
 
+#chahidajumbo{
+    border: 1px solid;
+    margin: 0px;
+    margin-bottom: 20px;
+    padding: 25px;
+    box-shadow: 1px 5px 14px 2px skyblue;
+}
 
+.title-top{
+    padding:15px;
+}
+
+hr {
+    border: 1px solid #000;
+}
 
 #TITLERFQ{
     font-size:10px;
@@ -288,6 +400,10 @@ h4{
     margin-top: 10px;
     line-height: 2;
     font-family: "Times New Roman", Times, serif;
+}
+
+.main-layout {
+    background: #EAEBEF;
 }
 
 

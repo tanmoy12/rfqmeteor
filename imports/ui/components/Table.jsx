@@ -108,25 +108,25 @@ class ProductTable extends React.Component {
         if (this.props.products.length > 0) {
             totalamount =
                 <tr>
-                    <th className="col-md-1 text-center"></th>
-                    <th className="col-md-5 text-center"></th>
-                    <th className="col-md-1 text-center"></th>
-                    <th className="col-md-1 text-center"></th>
-                    <th className="col-md-2 text-center"></th>
-                    <th className="col-md-2 text-right">{this.props.totalestimate}</th>
+                    <td className="col-md-1 text-center"></td>
+                    <td className="col-md-4 text-center"></td>
+                    <td className="col-md-2 text-center"></td>
+                    <td className="col-md-1 text-center"></td>
+                    <td className="col-md-2 text-center"></td>
+                    <td className="col-md-2 text-right"><p id="item_no"><strong>{this.props.totalestimate}</strong></p></td>
                     <th></th>
                 </tr>
         }
 
         return (
             <div id="tabledesc" className="table">
-                <table id="tabledesc" className="table table-responsive table-bordered table-condensed">
+                <table id="customers" className="table table-responsive table-bordered table-condensed">
 
                     <thead>
                     <tr>
                         <th className="col-md-1 text-center">Item</th>
-                        <th className="col-md-5 text-center">Description Of Item</th>
-                        <th className="col-md-1 text-center">Unit</th>
+                        <th className="col-md-4 text-center">Description Of Item</th>
+                        <th className="col-md-2 text-center">Unit</th>
                         <th className="col-md-1 text-center">Quantity</th>
                         <th className="col-md-2 text-center">Rate/unit</th>
                         <th className="col-md-2 text-center">Total Amount</th>
@@ -160,24 +160,24 @@ class ProductRow extends React.Component {
                 <td className="col-md-1">
                     <p id="item_no">{this.props.product.item_no}</p>
                 </td>
-                <td className="col-md-5">
-                    <input className="col-md-12 text-center" type='text' name="desc" id={this.props.product.id}
+                <td className="col-md-4">
+                    <input className="text-center" type='text' name="desc" id={this.props.product.id}
                            placeholder="Description" onChange={this.props.onProductTableUpdate}/>
                 </td>
-                <td className="col-md-1">
-                    <input className="col-md-12 text-center" type='text' name="unit" id={this.props.product.id}
+                <td className="col-md-2">
+                    <input className="text-center" type='text' name="unit" id={this.props.product.id}
                            placeholder="Unit" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td className="col-md-1">
-                    <input className="col-md-12 text-right" type='number' name="qty" id={this.props.product.id}
+                    <input className="text-right" type='number' name="qty" id={this.props.product.id}
                            placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td className="col-md-2">
-                    <input className="col-md-12 text-right" type='number' name="rate" id={this.props.product.id}
+                    <input className="text-right" type='number' name="rate" id={this.props.product.id}
                            placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td className="col-md-2">
-                    <input className="col-md-12 text-right" type='number' name="total" id={this.props.product.id}
+                    <input className="text-right" type='number' name="total" id={this.props.product.id}
                            placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td>

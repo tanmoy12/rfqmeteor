@@ -1,100 +1,20 @@
-import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import React, {Component, PropTypes} from 'react';
+import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 
 import Table from "./Table";
 
-class ChahidaPotro extends Component {
+export default class ChahidaPotroLoad extends Component {
     constructor(props) {
         super(props);
         //  this.state.products = [];
+        var ChahidaPotro = Chahida_Potro.find({RFQ_id: this.props.id}).fetch();
+        console.log(ChahidaPotro);
         this.state = {
-            products: [],
-            estimate: 0,
-            signed: false
+            signed: false,
+            ChahidaPotro: ChahidaPotro
         };
-
     }
-    renderScOf(){
-        return this.props.ScOf.map(function (ScOfficers) {
-            return <option value={ScOfficers._id} key={ScOfficers._id}>{ScOfficers.username}</option>
-        });
-    }
-
-    getdatafromtable(products, estimate) {
-        this.setState({
-            products: products,
-            estimate: estimate
-        });
-
-    }
-
-    dateToday() {
-        var d = new Date();
-        var date = d.getDate();
-        var month = d.getMonth() + 1;
-        var year = d.getFullYear();
-        var dateshow;
-        if (month < 10) {
-            dateshow = date + '/0' + month + '/' + year;
-        } else {
-            dateshow = date + '/' + month + '/' + year;
-        }
-        return <p id="datetoday"><strong>Date : {dateshow}</strong></p>;
-    }
-
-    handleCreate(e) {
-        e.preventDefault();
-        var ScOff = ReactDOM.findDOMNode(this.refs.ScOf).value.trim();
-        var sutrono = ReactDOM.findDOMNode(this.refs.sutrono).value.trim();
-        var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
-        var productbool = true;
-        var that = this;
-
-        if (this.state.signed && title && sutrono && this.state.products.length) {
-            this.state.products.map(function (product) {
-                if (product.desc && product.qty && product.total) {
-
-                } else {
-                    productbool = false;
-                }
-            });
-            if (productbool) {
-                RFQDetailsForm = {
-                    title: title,
-                    estimate: this.state.estimate
-                }
-                RFQDetails.insert(RFQDetailsForm, function (err, res) {
-                    if (err) Bert.alert('Unknown Error!!', 'danger', 'growl-top-right');
-                    else {
-                        var Rfqid = res;
-                        Chahidaform = {
-                            RFQ_id: res,
-                            title: title,
-                            sutro_no: sutrono,
-                            estimate: that.state.estimate,
-                            details: that.state.products,
-                            verifier: {
-                                user_id: ScOff
-                            }
-
-                        }
-                        Chahida_Potro.insert(Chahidaform, function (err, res) {
-                            if (err) Bert.alert('Unknown Error!!', 'danger', 'growl-top-right');
-                            else {
-                                FlowRouter.go('/Note/' + Rfqid);
-                            }
-                        });
-                    }
-                })
-            } else {
-                Bert.alert('Please Fill up Table details!!', 'danger', 'growl-top-right');
-            }
-        } else {
-            Bert.alert('Please Fill up all Details!!', 'danger', 'growl-top-right');
-        }
-    }
-
     passwordcheck(e) {
         if (e.key === 'Enter') {
             var that = this;
@@ -114,6 +34,8 @@ class ChahidaPotro extends Component {
     }
 
     render() {
+        console.log(this.props.id);
+        console.log(this.state.ChahidaPotro);
         var signBlock;
         if (this.state.signed) {
             signBlock =
@@ -162,7 +84,9 @@ class ChahidaPotro extends Component {
                                     </div>
                                 </div>
                                 <div className="col-md-6">
-                                    {this.dateToday()}
+
+
+
                                 </div>
                             </div>
                             <div className="row">
@@ -231,17 +155,19 @@ class ChahidaPotro extends Component {
                     </div>
                     <div className="col-md-10">
                         <div className="col-md-2"></div>
-                        <div  id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
+                        <div id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
                             <div className="form-group text-center">
                                 <p>FORWARD TO <strong>যাচাইকারী :</strong></p>
                                 <div className="form-group">
                                     <select ref="ScOf" className="form-control">
-                                        {this.renderScOf()}
+
+
+
                                     </select>
                                 </div>
 
                                 <div>
-                                    <input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"
+                                    <input type="submit" name="login-submit"
                                            id="submit-all"
                                            className="btn btn-primary" value="FORWARD"/>
                                 </div>
@@ -253,15 +179,3 @@ class ChahidaPotro extends Component {
         );
     }
 }
-
-
-ChahidaPotro.propTypes = {
-    ScOf: PropTypes.array.isRequired
-};
-
-export default createContainer(() => {
-
-    return {
-        ScOf: Meteor.users.find({'profile.designation' : "Scientific Officer"}).fetch()
-    };
-}, ChahidaPotro);

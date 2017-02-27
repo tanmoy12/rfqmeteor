@@ -21,7 +21,6 @@ export default class App extends Component {
                     message: err.reason
                 });
             }else{
-                console.log(Meteor.user());
                 FlowRouter.go('/dashboard');
             }
         });

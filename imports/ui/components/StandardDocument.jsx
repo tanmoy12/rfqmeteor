@@ -8,7 +8,7 @@ export default class StandardDocument extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-9 jumbotron text-center">
+                    <div id="StandardJumbo" className="col-md-9 jumbotron text-center">
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="page-header">
@@ -194,7 +194,7 @@ export default class StandardDocument extends Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-md-9 jumbotron text-center">
+                    <div id="StandardJumbo" className="col-md-9 jumbotron text-center">
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="page-header">
@@ -297,10 +297,205 @@ export default class StandardDocument extends Component {
                     <SideNote/>
                 </div>
 
+
+                <div className="row">
+                    <div id="StandardJumbo" className="col-md-9 jumbotron text-center">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="page-header">
+                                    <img src="img/logo.png" className="center-block"/>
+                                    <h2> Designated Reference Institute for Chemical Measurements (DRiCM)</h2>
+                                    <h3> Bangladesh Council of Scientific & Industrial Research (BCSIR) </h3>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-12 text-center">
+                                        <p id="text-stnd">
+                                            <strong>Use Price Schedule for ................................</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="text-left">
+                                            <strong>RFQ NO : </strong> ...........................
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 text-right">
+                                        DATE : ........................
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="table table-bordered table-responsive">
+                            <table className="table">
+
+                                <thead>
+                                <tr>
+                                    <th rowspan="2">Item No</th>
+                                    <th rowspan="2">Description of Items</th>
+                                    <th rowspan="2">Unit of Measurement</th>
+                                    <th rowspan="2">Qty</th>
+                                    <th colspan="2" scope="colgroup">Unit rate or price</th>
+                                    <th rowspan="1" colspan="1" scope="colgroup">Total amount</th>
+                                    <th rowspan="2">Destination <br/> for <br/>Delivery of <br/> Goods</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">In figures</th>
+                                    <th scope="col"> In words</th>
+                                    <th scope="col"> In figures/inwords</th>
+
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td> DRiCM,BCSIR</td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="1">2</td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="1">3</td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="1">4</td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="1">5</td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="1">6</td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="1">7</td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td rowspan="1"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td scope="col"></td>
+                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td colspan="5" rowspan="2" scope="colgroup" className="text-center"><strong>Total
+                                        Amount for Supply of Goods and related services <br/>
+                                        (inclusive of VAT and all applicable taxes; see Note 2 below) </strong></td>
+
+                                    <td scope="colgroup">Inwords</td>
+                                    <td ></td>
+
+                                    <td rowspan="1"></td>
+                                </tr>
+
+                                <tr>
+                                    <td scope="colgroup">Inwords</td>
+                                    <td ></td>
+
+                                    <td rowspan="1"></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3" scope="colgroup" className="text-left"> Goods to be supplied to</td>
+
+                                    <td colspan="9" scope="colgroup" className="text-center"> [insert destination of
+                                        Goods]
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3" scope="colgroup" className="text-left"> Total Amount in taka
+                                        (inwords)
+                                    </td>
+
+                                    <td colspan="9" scope="colgroup" className="text-center"> [enter the Total Amount as
+                                        in Col.8 above for the delivery of Goods and related services].
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3" scope="colgroup" className="text-left"> Delivery Offered</td>
+
+                                    <td colspan="9" scope="colgroup" className="text-center"> [insert weeks/days] from
+                                        date of issuing the Purchase Order]
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3" scope="colgroup" className="text-left"> Warranty Provided</td>
+
+                                    <td colspan="9" scope="colgroup" className="text-center"> [insert weeks/months from
+                                        date of completion of the delivery; state none if not applicable]
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+
+
+                        </div>
+
+                        <p className="text"> [insert number] number corrections made by me/us have been duly initialed
+                            in this Price Schedule. My/Our Offer is valid
+                            until dd/mm/yy [insert Quotation Validity date].</p>
+
+
+                    </div>
+                </div>
             </div>
-
-
-
 
         )
             ;
