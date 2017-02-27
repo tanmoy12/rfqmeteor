@@ -193,6 +193,7 @@ ChahidaPotroLoad.propTypes = {
 };
 
 export default createContainer(props => {
+    Meteor.subscribe('chahidapotroone', props.id);
     return {
         chahidapotro: Chahida_Potro.findOne(props.id)
     };

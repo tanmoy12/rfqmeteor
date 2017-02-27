@@ -62,7 +62,7 @@ FlowRouter.route('/StandardDocument', {
 
 
 
-FlowRouter.route('/Chahidapotro/:id', {
+FlowRouter.route('/Chahidapotroload/:id', {
     action(params){
         mount(LayoutDash, {
             content: (<ChahidaPotroLoad id={params.id} />)

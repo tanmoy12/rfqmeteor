@@ -18,6 +18,6 @@ Meteor.publish("chahidapotro", function () {
 Meteor.publish("chahidapotroone", function (id) {
     check(id, String);
 
-    return Chahida_Potro.find({RFQ_id: id});
+    return Chahida_Potro.find({_id :id});
 
 });

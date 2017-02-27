@@ -95,6 +95,7 @@ Note.propTypes = {
 };
 
 export default createContainer( props => {
+    Meteor.subscribe('rfqdetails');
     return {
         RFQ: RFQDetails.findOne(props.id)
     };
