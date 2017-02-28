@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import Table from "./Table";
 
-class ChahidaPotroLoad extends Component {
+export default class ChahidaPotroLoad extends Component {
     constructor(props) {
         super(props);
         //  this.state.products = [];
@@ -188,14 +188,3 @@ class ChahidaPotroLoad extends Component {
     }
 }
 
-
-ChahidaPotroLoad.propTypes = {
-    chahidapotro: PropTypes.object
-};
-
-export default createContainer(props => {
-    Meteor.subscribe('chahidapotroone', props.id);
-    return {
-        chahidapotro: Chahida_Potro.findOne(props.id)
-    };
-}, ChahidaPotroLoad);
