@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import Table from "./Table";
 
-class ChahidaPotroLoad extends Component {
+export default class ChahidaPotroLoad extends Component {
     constructor(props) {
         super(props);
         //  this.state.products = [];
@@ -111,12 +111,12 @@ class ChahidaPotroLoad extends Component {
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <td className="col-md-1 text-left">Item</td>
-                                                <td className="col-md-4 text-left">Description Of Item</td>
-                                                <td className="col-md-2 text-left">Unit</td>
-                                                <td className="col-md-1 text-left">Quantity</td>
-                                                <td className="col-md-2 text-left">Rate/unit</td>
-                                                <td className="col-md-2 text-left">Total Amount</td>
+                                            <td className="col-md-1 text-left">Item</td>
+                                            <td className="col-md-4 text-left">Description Of Item</td>
+                                            <td className="col-md-2 text-left">Unit</td>
+                                            <td className="col-md-1 text-left">Quantity</td>
+                                            <td className="col-md-2 text-left">Rate/unit</td>
+                                            <td className="col-md-2 text-left">Total Amount</td>
                                             </tbody>
                                         </table>
                                         <br/><br/>
@@ -188,14 +188,3 @@ class ChahidaPotroLoad extends Component {
     }
 }
 
-
-ChahidaPotroLoad.propTypes = {
-    chahidapotro: PropTypes.object
-};
-
-export default createContainer(props => {
-    Meteor.subscribe('chahidapotroone', props.id);
-    return {
-        chahidapotro: Chahida_Potro.findOne(props.id)
-    };
-}, ChahidaPotroLoad);

@@ -166,7 +166,7 @@ class ChahidaPotro extends Component {
                                         <div className="col-md-12 form-style-4">
                                             <label htmlFor="sutrono">
                                                 <span>সুত্র নং :</span>
-                                                <input ref="sutrono" id="inputtext" name="sutrono" type="text"/>
+                                                <input ref="sutrono" placeholder="সুত্র নং :" name="sutrono" type="text"/>
                                             </label>
                                         </div>
                                     </div>
@@ -177,22 +177,18 @@ class ChahidaPotro extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <h2 id="chahidatitle"> চাহিদা পত্র</h2>
-                                </div>
-                                <div className="col-md-12 form-style-4">
-                                    <label htmlFor="title">
-                                        <span>RFQ Title :</span>
-                                        <input ref="title" id="title" name="title" type="text"/>
-                                    </label>
+                                    <h2> চাহিদা পত্র</h2>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <p className="text"> ১। বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ (বিসিএসআইআর)- এ
+                                    <br/>
+                                    <p className="text displayinblock"> ১। বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ (বিসিএসআইআর)- এ
                                         অন্তকালীন
                                         ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস (ডিআরআইসিএম) - এ
                                         নিম্নক্ত
-                                        ....................................... ক্রয় করা প্রয়োজন। </p>
+                                        <input ref="title" placeholder="RFQ Title" name="title" type="text"/>
+                                        ক্রয় করা প্রয়োজন। </p><br/>
 
                                     <Table
                                         sendData={(products, estimate) => this.getdatafromtable(products, estimate) }/>
@@ -202,8 +198,9 @@ class ChahidaPotro extends Component {
                                         (কথায়)
                                         ................................. টাকা ব্যয়।
                                         <br/>
-                                        ৩। অতএব ড়ুক্ত
+                                        ৩। অতএব, উপরোক্ত বর্ণনামাতে ............................. ক্রয়ের অনুমোদনের জন্য বিনীতভাবে অনুরোধ জানানো যাচ্ছে।
                                     </p>
+                                    <br/>
 
 
                                 </div>

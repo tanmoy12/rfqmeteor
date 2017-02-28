@@ -10,7 +10,7 @@
 }
 
 .top-nav {
-    padding: 0px;
+    padding: 0;
 }
 
 
@@ -29,7 +29,6 @@
     color: darkgray;
 
 }
-
 
 .fa-bell{
     margin-top: 10px;
@@ -56,8 +55,7 @@
 
 .img-alert{
     width: 25px;
-    margin: 1px;
-    margin-left: -5px;
+    margin: 1px 1px 1px -5px;
 }
 
 
@@ -69,7 +67,7 @@
 
 .date-alert{
     text-align: right;
-    padding-top: 0px;
+    padding-top: 0;
 }
 
 .notiheader{
@@ -85,7 +83,6 @@
 
 #UserId{
     margin: 5px;
-
 }
 
 /* Fixed navbar */
@@ -100,7 +97,7 @@ ul.dropdown-lr {
 
 
 #login{
-    font-family: Arial;
+    font-family: Arial, serif;
 }
 
 
@@ -122,164 +119,8 @@ h3{
 
 .main-layout{
     background: #EAEBEF;
-    margin: 0px;
-    padding-top: 30px;
-}
-
-.form-style-4 label {
-    display:block;
-}
-.form-style-4 label > span{
-    display: inline-block;
-    float: left;
-    width: auto;
-}
-.form-style-4 input[type=text]
-{
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid darkred;
-    width: 85%;
-    outline: none;
-    padding: 0px 0px 0px 0px;
-    font-size: medium;
-    float: left;
-    margin-left: 10px;
-
-}
-
-.form-style-4 input[type=password]
-{
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid darkred;
-    width: 85%;
-    outline: none;
-    padding: 0px 0px 0px 0px;
-    font-size: medium;
-    float: left;
-    margin-left: 10px;
-}
-
-.form-style-4 input[type=text]:focus
-{
-    border-bottom: 1px solid deepskyblue;
-}
-
-.form-style-4 input[type=password]:focus
-{
-    border-bottom: 1px solid deepskyblue;
-}
-
-#datetoday {
-    float : right;
-    font-style: italic;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-#signLabel {
-    font-size: small;
-    font-style: italic;
-    margin-top: 10px;
-}
-#unsignLabel {
-    font-size: small;
-    font-style: italic;
-    margin-top: 85px;
-}
-
-#signblock {
-    height: 85px;
-}
-
-#signblock input {
-    margin-top: 15px;
-}
-
-p.text{
-    text-align: justify;
-    font-size: 15px;
-    line-height: 1.5;
-    margin-top: 2em;
-    margin-bottom: 2em;
-}
-p.text2{
-    text-align: justify;
-    font-size: 15px;
-    line-height: 1.5;
-    margin-bottom: 2em;
-}
-
-th{
-    font-size: 13px;
-}
-td>input[type="text"], textarea {
-    outline: none;
-    font-size: medium;
-    box-shadow:none !important;
-    border:0px solid #ccc !important;
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
-}
-td{
-    margin: 0px;
-    padding: 0px;
-}
-td>input[type="number"], textarea {
-    outline: none;
-    font-size: medium;
-    box-shadow:none !important;
-    border:0px solid #ccc !important;
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
     margin: 0;
-}
-
-#item_no{
-    font-size: 16px;
-    margin: 0px;
-    padding: 0px;
-}
-
-.btn-table-made:hover{background-color: #3e3939 ; color: white !important;}
-.btn-table-made:focus{ background-color: black; color: white !important;}
-.btn-table-made:active,
-.btn-table-made{
-    background-color: #564f4f; color: white !important;
-    outline: 0;
-}
-
-
-.table {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.table td, #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-.table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #acaeaf;
-    color: black;
-}
-
-
-.table{
-    margin: 0px;
-    padding: 0px;
+    padding-top: 30px;
 }
 
 .form-control {
@@ -287,7 +128,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     background-color: transparent;
     border-style: solid;
-    border-width: 0px 0px 1px 0px;
+    border-width: 0 0 1px 0;
     border-color: darkred;
     outline:0;
 }
@@ -306,19 +147,10 @@ input:focus::-webkit-input-placeholder {
 
 .jumbotron{
     background:#ffffff;
-    margin:0px;
+    margin:0;
     padding: 10px;
     box-shadow: 1px 5px 14px 2px skyblue;
 }
-
-#chahidatitle{
-    margin-bottom: 25px;
-}
-#title {
-    width: 90%;
-}
-
-
 #sidekickjumbo{
     padding: 15px;
     box-shadow: 1px 5px 14px 2px violet;
@@ -335,8 +167,8 @@ input:focus::-webkit-input-placeholder {
 
 
 #sidejumbotron{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -374,14 +206,15 @@ input:focus::-webkit-input-placeholder {
 
 #chahidajumbo{
     border: 1px solid;
-    margin: 0px;
-    margin-bottom: 20px;
-    padding: 25px;
+    margin: 0 0 20px;
+    padding: 80px;
+    padding-top: 30px;
     box-shadow: 1px 5px 14px 2px skyblue;
 }
 
 .title-top{
     padding:15px;
+    padding-top: 0;
 }
 
 hr {
@@ -406,4 +239,199 @@ hr {
     background: #EAEBEF;
 }
 
+/* tanmoy's css parts */
 
+
+span b {
+    font-size: medium;
+}
+
+.form-style-4 label {
+    display:block;
+}
+.form-style-4 label > span{
+    display: inline-block;
+    float: left;
+    width: auto;
+}
+.form-style-4 input[type=text]
+{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid darkred;
+    width: 85%;
+    outline: none;
+    padding: 0 0 0 0;
+    font-size: medium;
+    float: left;
+    margin-left: 10px;
+
+}
+
+.form-style-4 input[type=password]
+{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid darkred;
+    width: 85%;
+    outline: none;
+    padding: 0 0 0 0;
+    font-size: medium;
+    float: left;
+    margin-left: 10px;
+}
+
+.form-style-4 input[type=text]:focus
+{
+    border-bottom: 1px solid deepskyblue;
+}
+
+.form-style-4 input[type=password]:focus
+{
+    border-bottom: 1px solid deepskyblue;
+}
+.displayinblock input[type=text]::-webkit-input-placeholder,
+.form-style-4 input[type=text]::-webkit-input-placeholder {
+    font-weight: normal;
+}
+
+.displayinblock input[type=text]
+{
+    font-weight: bold;
+    width: 300px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px dotted darkred;
+    outline: none;
+    padding: 0 0 0 3px;
+    font-size: medium;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.displayinblock input[type=text]:focus
+{
+    border-bottom: 2px dotted deepskyblue;
+}
+
+#datetoday {
+    float : right;
+    font-style: italic;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#datetoday {
+    float : right;
+    font-style: italic;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#dateload {
+    float : right;
+    font-style: italic;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: medium;
+}
+
+#signLabel {
+    font-size: small;
+    font-style: italic;
+    margin-top: 10px;
+}
+#unsignLabel {
+    font-size: small;
+    font-style: italic;
+    margin-top: 85px;
+}
+
+#signblock {
+    height: 85px;
+}
+
+#signblock input {
+    margin-top: 15px;
+}
+
+p.text{
+    text-align: justify;
+    font-size: 15px;
+    line-height: 1.5;
+}
+p.text2{
+    text-align: justify;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 2em;
+}
+
+th{
+    font-size: 13px;
+}
+td>input[type="text"], textarea {
+    outline: none;
+    font-size: medium;
+    box-shadow:none !important;
+    border:0 solid #ccc !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+td{
+    margin: 0;
+    padding: 0;
+}
+td>input[type="number"], textarea {
+    outline: none;
+    font-size: medium;
+    box-shadow:none !important;
+    border:0 solid #ccc !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#item_no{
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.btn-table-made:hover{background-color: #3e3939 ; color: white !important;}
+.btn-table-made:focus{ background-color: black; color: white !important;}
+.btn-table-made:active,
+.btn-table-made{
+    background-color: #564f4f; color: white !important;
+    outline: 0;
+}
+
+
+.table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #acaeaf;
+    color: black;
+}
+
+
+.table{
+    margin: 0;
+    padding: 0;
+}
+/* tanmoy's css parts */

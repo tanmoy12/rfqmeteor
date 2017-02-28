@@ -488,9 +488,9 @@ export default class StandardDocument extends Component {
 
                         </div>
 
-                        <p className="text"> [insert number] number corrections made by me/us have been duly initialed
+                        <p className="text"> <strong>[insert number] number corrections made by me/us have been duly initialed
                             in this Price Schedule. My/Our Offer is valid
-                            until dd/mm/yy [insert Quotation Validity date].</p>
+                            until dd/mm/yy [insert Quotation Validity date]. </strong></p>
 
 
                     </div>
