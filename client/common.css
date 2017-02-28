@@ -151,15 +151,6 @@ input:focus::-webkit-input-placeholder {
     padding: 10px;
     box-shadow: 1px 5px 14px 2px skyblue;
 }
-
-#chahidatitle{
-    margin-bottom: 25px;
-}
-#title {
-    width: 90%;
-}
-
-
 #sidekickjumbo{
     padding: 15px;
     box-shadow: 1px 5px 14px 2px violet;
@@ -248,6 +239,11 @@ hr {
 
 /* tanmoy's css parts */
 
+
+span b {
+    font-size: medium;
+}
+
 .form-style-4 label {
     display:block;
 }
@@ -292,6 +288,28 @@ hr {
 {
     border-bottom: 1px solid deepskyblue;
 }
+.displayinblock input[type=text]::-webkit-input-placeholder,
+.form-style-4 input[type=text]::-webkit-input-placeholder {
+    font-weight: normal;
+}
+
+.displayinblock input[type=text]
+{
+    font-weight: bold;
+    width: 300px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px dotted darkred;
+    outline: none;
+    padding: 0 0 0 3px;
+    font-size: medium;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.displayinblock input[type=text]:focus
+{
+    border-bottom: 2px dotted deepskyblue;
+}
 
 #datetoday {
     float : right;
@@ -322,8 +340,6 @@ p.text{
     text-align: justify;
     font-size: 15px;
     line-height: 1.5;
-    margin-top: 2em;
-    margin-bottom: 2em;
 }
 p.text2{
     text-align: justify;

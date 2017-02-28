@@ -73,7 +73,7 @@ class ChahidaPotroLoad extends Component {
                                 <div className="col-md-6">
                                     <div className="row">
                                         <div className="col-md-12 pull-left">
-                                            <p>sutro no ekhane boshbe</p>
+                                            <span className="pull-left"><strong>সুত্র নং : <b>123456</b></strong></span>
                                         </div>
                                     </div>
                                 </div>
@@ -86,11 +86,8 @@ class ChahidaPotroLoad extends Component {
                                 <div className="col-md-12">
                                     <h2 id="chahidatitle"> চাহিদা পত্র</h2>
                                 </div>
-                                <div className="col-md-12 form-style-4">
-                                    <label htmlFor="title">
-                                        <span>RFQ Title :</span>
-                                        <input ref="title" id="title" name="title" type="text"/>
-                                    </label>
+                                <div className="col-md-12">
+                                        <span className="pull-left"><strong>RFQ Title : RFQ title 1 </strong></span>
                                 </div>
                             </div>
                             <div className="row">

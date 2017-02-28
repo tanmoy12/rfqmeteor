@@ -141,6 +141,7 @@ class ProductTable extends React.Component {
                 <button type="button" onClick={this.props.onRowAdd} className="btn btn-default btn-sm pull-right">
                     <span className="glyphicon glyphicon-plus"></span>
                 </button>
+                <br/><br/>
 
             </div>
         );
