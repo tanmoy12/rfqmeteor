@@ -9,7 +9,7 @@ import ChahidaPotro from '../imports/ui/components/ChahidaPotro';
 import ChahidaPotroLoad from '../imports/ui/components/ChahidaPotroLoad';
 import Note from '../imports/ui/components/Note';
 import StandardDocument from '../imports/ui/components/StandardDocument';
-
+import LoginCaraousal from '../imports/ui/components/LoginCaraousal';
 
 FlowRouter.route('/', {
     action(){
@@ -70,3 +70,11 @@ FlowRouter.route('/Chahidapotroload/:id', {
     }
 });
 
+
+FlowRouter.route('/LoginCaraousal', {
+    action(){
+        mount(LayoutDash, {
+            content: (<LoginCaraousal />)
+        })
+    }
+});
