@@ -207,12 +207,14 @@ input:focus::-webkit-input-placeholder {
 #chahidajumbo{
     border: 1px solid;
     margin: 0 0 20px;
-    padding: 25px;
+    padding: 80px;
+    padding-top: 30px;
     box-shadow: 1px 5px 14px 2px skyblue;
 }
 
 .title-top{
     padding:15px;
+    padding-top: 0;
 }
 
 hr {
@@ -315,6 +317,17 @@ span b {
     float : right;
     font-style: italic;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#datetoday {
+    float : right;
+    font-style: italic;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#dateload {
+    float : right;
+    font-style: italic;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: medium;
 }
 
 #signLabel {

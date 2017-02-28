@@ -111,12 +111,12 @@ class ChahidaPotroLoad extends Component {
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <td className="col-md-1 text-left">Item</td>
-                                                <td className="col-md-4 text-left">Description Of Item</td>
-                                                <td className="col-md-2 text-left">Unit</td>
-                                                <td className="col-md-1 text-left">Quantity</td>
-                                                <td className="col-md-2 text-left">Rate/unit</td>
-                                                <td className="col-md-2 text-left">Total Amount</td>
+                                            <td className="col-md-1 text-left">Item</td>
+                                            <td className="col-md-4 text-left">Description Of Item</td>
+                                            <td className="col-md-2 text-left">Unit</td>
+                                            <td className="col-md-1 text-left">Quantity</td>
+                                            <td className="col-md-2 text-left">Rate/unit</td>
+                                            <td className="col-md-2 text-left">Total Amount</td>
                                             </tbody>
                                         </table>
                                         <br/><br/>
