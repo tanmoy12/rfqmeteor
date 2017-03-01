@@ -334,13 +334,13 @@ export default class StandardDocument extends Component {
 
                                 <thead>
                                 <tr>
-                                    <th rowspan="2">Item No</th>
-                                    <th rowspan="2">Description of Items</th>
-                                    <th rowspan="2">Unit of Measurement</th>
-                                    <th rowspan="2">Qty</th>
-                                    <th colspan="2" scope="colgroup">Unit rate or price</th>
-                                    <th rowspan="1" colspan="1" scope="colgroup">Total amount</th>
-                                    <th rowspan="2">Destination <br/> for <br/>Delivery of <br/> Goods</th>
+                                    <th rowSpan="2">Item No</th>
+                                    <th rowSpan="2">Description of Items</th>
+                                    <th rowSpan="2">Unit of Measurement</th>
+                                    <th rowSpan="2">Qty</th>
+                                    <th colSpan="2" scope="colgroup">Unit rate or price</th>
+                                    <th rowSpan="1" colSpan="1" scope="colgroup">Total amount</th>
+                                    <th rowSpan="2">Destination <br/> for <br/>Delivery of <br/> Goods</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">In figures</th>
@@ -360,122 +360,122 @@ export default class StandardDocument extends Component {
                                 </tr>
 
                                 <tr>
-                                    <td rowspan="1">2</td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
+                                    <td rowSpan="1">2</td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
-                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                    <td rowSpan="1"> DRiCM,BCSIR</td>
                                 </tr>
 
                                 <tr>
-                                    <td rowspan="1">3</td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
+                                    <td rowSpan="1">3</td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
-                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                    <td rowSpan="1"> DRiCM,BCSIR</td>
                                 </tr>
 
                                 <tr>
-                                    <td rowspan="1">4</td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
+                                    <td rowSpan="1">4</td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
-                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                    <td rowSpan="1"> DRiCM,BCSIR</td>
                                 </tr>
 
                                 <tr>
-                                    <td rowspan="1">5</td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
+                                    <td rowSpan="1">5</td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
-                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                    <td rowSpan="1"> DRiCM,BCSIR</td>
                                 </tr>
                                 <tr>
-                                    <td rowspan="1">6</td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
+                                    <td rowSpan="1">6</td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
-                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                    <td rowSpan="1"> DRiCM,BCSIR</td>
                                 </tr>
 
                                 <tr>
-                                    <td rowspan="1">7</td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
-                                    <td rowspan="1"></td>
+                                    <td rowSpan="1">7</td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
+                                    <td rowSpan="1"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
                                     <td scope="col"></td>
-                                    <td rowspan="1"> DRiCM,BCSIR</td>
+                                    <td rowSpan="1"> DRiCM,BCSIR</td>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td colspan="5" rowspan="2" scope="colgroup" className="text-center"><strong>Total
+                                    <td colSpan="5" rowSpan="2" scope="colgroup" className="text-center"><strong>Total
                                         Amount for Supply of Goods and related services <br/>
                                         (inclusive of VAT and all applicable taxes; see Note 2 below) </strong></td>
 
                                     <td scope="colgroup">Inwords</td>
                                     <td ></td>
 
-                                    <td rowspan="1"></td>
+                                    <td rowSpan="1"></td>
                                 </tr>
 
                                 <tr>
                                     <td scope="colgroup">Inwords</td>
                                     <td ></td>
 
-                                    <td rowspan="1"></td>
+                                    <td rowSpan="1"></td>
                                 </tr>
 
                                 <tr>
-                                    <td colspan="3" scope="colgroup" className="text-left"> Goods to be supplied to</td>
+                                    <td colSpan="3" scope="colgroup" className="text-left"> Goods to be supplied to</td>
 
-                                    <td colspan="9" scope="colgroup" className="text-center"> [insert destination of
+                                    <td colSpan="9" scope="colgroup" className="text-center"> [insert destination of
                                         Goods]
                                     </td>
 
                                 </tr>
 
                                 <tr>
-                                    <td colspan="3" scope="colgroup" className="text-left"> Total Amount in taka
+                                    <td colSpan="3" scope="colgroup" className="text-left"> Total Amount in taka
                                         (inwords)
                                     </td>
 
-                                    <td colspan="9" scope="colgroup" className="text-center"> [enter the Total Amount as
+                                    <td colSpan="9" scope="colgroup" className="text-center"> [enter the Total Amount as
                                         in Col.8 above for the delivery of Goods and related services].
                                     </td>
 
                                 </tr>
 
                                 <tr>
-                                    <td colspan="3" scope="colgroup" className="text-left"> Delivery Offered</td>
+                                    <td colSpan="3" scope="colgroup" className="text-left"> Delivery Offered</td>
 
-                                    <td colspan="9" scope="colgroup" className="text-center"> [insert weeks/days] from
+                                    <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/days] from
                                         date of issuing the Purchase Order]
                                     </td>
 
                                 </tr>
 
                                 <tr>
-                                    <td colspan="3" scope="colgroup" className="text-left"> Warranty Provided</td>
+                                    <td colSpan="3" scope="colgroup" className="text-left"> Warranty Provided</td>
 
-                                    <td colspan="9" scope="colgroup" className="text-center"> [insert weeks/months from
+                                    <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/months from
                                         date of completion of the delivery; state none if not applicable]
                                     </td>
 
