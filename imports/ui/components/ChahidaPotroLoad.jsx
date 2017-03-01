@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
-const Loading = require('react-loading-animation');
 
 import Table from "./Table";
 
@@ -225,7 +224,7 @@ class ChahidaPotroLoad extends Component {
         else {
             return (
                 <div className="loading-div">
-                    <Loading />
+                    Loading
                 </div>
             );
         }
