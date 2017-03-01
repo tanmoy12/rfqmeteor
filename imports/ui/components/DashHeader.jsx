@@ -55,7 +55,7 @@ class DashHeader extends Component {
 
                                         <a href="#" id="notilink" className="col-md-12 ">
                                             <div className="col-md-2 pull-left img-alert">
-                                                <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
+                                                <img src="/profile.jpg" className="img-circle img-alert" alt="User Image"/>
                                             </div>
                                             <div className="col-md-10 alert-text">
                                                 <p>Scientific Officer wants to verify Chahida Potro </p>
@@ -67,7 +67,7 @@ class DashHeader extends Component {
 
                                         <a href="#" id="notilink" className="col-md-12 ">
                                             <div className="col-md-2 pull-left img-alert">
-                                                <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
+                                                <img src="/profile.jpg" className="img-circle img-alert" alt="User Image"/>
                                             </div>
                                             <div className="col-md-10 alert-text">
                                                 <p>Scientific Officer wants to verify Note </p>
@@ -79,7 +79,7 @@ class DashHeader extends Component {
 
                                         <a href="#" id="notilink" className="col-md-12 ">
                                             <div className="col-md-2 pull-left img-alert">
-                                                <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
+                                                <img src="/profile.jpg" className="img-circle img-alert" alt="User Image"/>
                                             </div>
                                             <div className="col-md-10 alert-text">
                                                 <p>Scientific Officer wants to verify JANINA </p>
@@ -95,12 +95,12 @@ class DashHeader extends Component {
 
                             <li className="dropdown">
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                                    <img id="profile" src="img.jpg" className="profile-image img-circle"/>
+                                    <img id="profile" src="/profile.jpg" className="profile-image img-circle"/>
 
                                     <span id="UserId">{user}</span></a>
                                 <ul className="dropdown-menu dropdownbody">
                                     <li className="user-header">
-                                        <img id="profile" src="img.jpg" className="img-circle center-block"
+                                        <img id="profile" src="/profile.jpg" className="img-circle center-block"
                                              alt="User Image"/>
 
                                         <h3>{user}</h3>

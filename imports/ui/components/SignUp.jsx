@@ -61,7 +61,7 @@ export default class SignUp extends Component {
                         <div className="form-group col-md-10 col-sm-6">
                             <select ref="designation" className="form-control">
                                 <option>Scientific Officer</option>
-                                <option>Accountant</option>
+                                <option>Accounting Officer</option>
                                 <option>Director</option>
                             </select>
                         </div>

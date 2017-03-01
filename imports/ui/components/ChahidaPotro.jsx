@@ -78,7 +78,8 @@ class ChahidaPotro extends Component {
                     details: that.state.products,
                     verifier: {
                         user_id: ScOff
-                    }
+                    },
+                    createdAt
                 }
                 Chahida_Potro.insert(Chahidaform, function (err, res) {
                     if (err) Bert.alert('Unknown Error!!', 'danger', 'growl-top-right');
@@ -154,7 +155,7 @@ class ChahidaPotro extends Component {
                         <div id="chahidajumbo" className="jumbotron text-center">
                             <div className="row">
                                 <div className="title-top col-md-12">
-                                    <img src="dricmlogo.jpg" className="center-block"/>
+                                    <img src="../dricmlogo.jpg" className="center-block"/>
                                     <h3> ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস </h3>
                                     <h3> বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ </h3>
                                     <hr/>
