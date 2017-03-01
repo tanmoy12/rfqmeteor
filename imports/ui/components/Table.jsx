@@ -166,7 +166,7 @@ class ProductRow extends React.Component {
                            placeholder="Description" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td className="col-md-2">
-                    <input className="text-center" type='text' name="unit" id={this.props.product.id}
+                    <input className="text-right" type='text' name="unit" id={this.props.product.id}
                            placeholder="Unit" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td className="col-md-1">

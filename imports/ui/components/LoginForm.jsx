@@ -30,7 +30,7 @@ export default class App extends Component {
     render() {
 
         return (
-            <form onSubmit={this.handleLogin.bind(this)}>
+            <form autoComplete="off" onSubmit={this.handleLogin.bind(this)}>
                 <div className="form-group">
                     <div className="form-group">
 

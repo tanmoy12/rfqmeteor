@@ -1,5 +1,6 @@
-import React, {Component} from "react";
-
+import React, {Component, PropTypes} from 'react';
+import {createContainer} from 'meteor/react-meteor-data';
+import ReactDOM from 'react-dom';
 
 export default class LoginCaraousal extends Component {
 

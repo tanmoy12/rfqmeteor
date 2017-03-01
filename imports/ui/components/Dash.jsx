@@ -33,12 +33,9 @@ class Dash extends Component {
                             Create
                             RFQ
                         </button>
-
-
                     </div>
-                    <div>
-                        {this.renderRFQs()}
-                    </div>
+                    {this.renderRFQs()}
+
                 </div>
             </div>
         );

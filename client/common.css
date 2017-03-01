@@ -53,12 +53,6 @@
 
 }
 
-.img-alert{
-    width: 25px;
-    margin: 1px 1px 1px -5px;
-}
-
-
 
 .alert-text{
     margin: 2px;
@@ -151,14 +145,6 @@ input:focus::-webkit-input-placeholder {
     padding: 10px;
     box-shadow: 1px 5px 14px 2px skyblue;
 }
-#sidekickjumbo{
-    padding: 15px;
-    box-shadow: 1px 5px 14px 2px violet;
-
-}
-
-
-
 
 #SideJumbobody{
     box-shadow: 1px 5px 14px 2px darkgreen;
@@ -207,7 +193,7 @@ input:focus::-webkit-input-placeholder {
 #chahidajumbo{
     border: 1px solid;
     margin: 0 0 20px;
-    padding: 80px;
+    padding: 50px;
     padding-top: 30px;
     box-shadow: 1px 5px 14px 2px skyblue;
 }
@@ -259,7 +245,7 @@ span b {
     background: transparent;
     border: none;
     border-bottom: 1px solid darkred;
-    width: 85%;
+    width: 80%;
     outline: none;
     padding: 0 0 0 0;
     font-size: medium;
