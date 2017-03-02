@@ -71,7 +71,7 @@ class ChahidaPotro extends Component {
                 }
             });
             if (productbool) {
-                Chahidaform = {
+                var Chahidaform = {
                     title: title,
                     sutro_no: sutrono,
                     estimate: that.state.estimate,
@@ -81,18 +81,32 @@ class ChahidaPotro extends Component {
                     }
                 }
                 Chahida_Potro.insert(Chahidaform, function (err, res) {
-                    if (err) Bert.alert('Unknown Error!!', 'danger', 'growl-top-right');
+                    if (err) Bert.alert('Unknown Error1!!', 'danger', 'growl-top-right');
                     else {
-                        var Rfqid = res;
-                        RFQDetailsForm = {
+                        var RFQDetailsForm = {
                             chahida_id: res,
                             title: title,
                             estimate: that.state.estimate
                         }
                         RFQDetails.insert(RFQDetailsForm, function (err, res) {
-                            if (err) Bert.alert('Unknown Error!!', 'danger', 'growl-top-right');
+                            if (err) Bert.alert('Unknown Error2!!', 'danger', 'growl-top-right');
                             else {
-                                FlowRouter.go('/Note/' + Rfqid);
+                                var Rfqid = res;
+                                var NotificationForm = {
+                                    from_id : Meteor.userId(),
+                                    to_id: ScOff,
+                                    type: 1,
+                                    title: title,
+                                    RFQ_id: Rfqid
+                                }
+                                console.log(NotificationForm);
+                                NotificationsSchema.validate(NotificationForm);
+                                Notifications.insert(NotificationForm, function (err, res) {
+                                    if (err) Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');
+                                    else {
+                                        FlowRouter.go('/Note/' + Rfqid);
+                                    }
+                                })
                             }
                         });
                     }
@@ -154,7 +168,7 @@ class ChahidaPotro extends Component {
                         <div id="chahidajumbo" className="jumbotron text-center">
                             <div className="row">
                                 <div className="title-top col-md-12">
-                                    <img src="dricmlogo.jpg" className="center-block"/>
+                                    <img src="../dricmlogo.jpg" className="center-block"/>
                                     <h3> ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস </h3>
                                     <h3> বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ </h3>
                                     <hr/>

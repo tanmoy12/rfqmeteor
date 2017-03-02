@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import Not from './notification';
+
 class DashHeader extends Component {
     logout(e) {
         e.preventDefault();
@@ -14,8 +16,15 @@ class DashHeader extends Component {
             return Meteor.user().username
         }
     }
-
-
+    gotoHome(e){
+        e.preventDefault();
+        FlowRouter.go('/dashboard');
+    }
+    loadNotifications(){
+        return this.props.nots.map(function (not) {
+            return <Not key={not._id} notification={not}/>
+        });
+    }
     render() {
         let user = "";
         if (Meteor.user()) user = Meteor.user().username;
@@ -32,7 +41,7 @@ class DashHeader extends Component {
                             <span className="icon-bar"></span>
                         </button>
 
-                        <a className="navbar-brand" href="#">DRICM</a>
+                        <button onClick={this.gotoHome.bind(this)} className="btn btn-link navbar-brand">DRICM</button>
                     </div>
 
 
@@ -42,52 +51,14 @@ class DashHeader extends Component {
 
 
                             <li className="dropdown">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                                <a className="dropdown-toggle" data-toggle="dropdown">
                                     <i className="fa fa-bell"></i>
-                                    <span className="label label-warning">6</span>
+                                    <span className="label label-warning">{this.props.nots.length}</span>
                                     <b className="caret"></b></a>
 
                                 <ul className="dropdown-menu alert-dropdown">
-
-                                    <li className="header notiheader"><strong> Notification </strong></li>
-
-                                    <li className="dropdownmenu col-md-12">
-
-                                        <a href="#" id="notilink" className="col-md-12 ">
-                                            <div className="col-md-2 pull-left img-alert">
-                                                <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
-                                            </div>
-                                            <div className="col-md-10 alert-text">
-                                                <p>Scientific Officer wants to verify Chahida Potro </p>
-                                            </div>
-                                            <div className="col-md-12 date-alert">
-                                                <i className="fa fa-calendar" aria-hidden="true">18-2-2017</i>
-                                            </div>
-                                        </a>
-
-                                        <a href="#" id="notilink" className="col-md-12 ">
-                                            <div className="col-md-2 pull-left img-alert">
-                                                <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
-                                            </div>
-                                            <div className="col-md-10 alert-text">
-                                                <p>Scientific Officer wants to verify Note </p>
-                                            </div>
-                                            <div className="col-md-12 date-alert">
-                                                <i className="fa fa-calendar" aria-hidden="true">18-2-2017</i>
-                                            </div>
-                                        </a>
-
-                                        <a href="#" id="notilink" className="col-md-12 ">
-                                            <div className="col-md-2 pull-left img-alert">
-                                                <img src="img.jpg" className="img-circle img-alert" alt="User Image"/>
-                                            </div>
-                                            <div className="col-md-10 alert-text">
-                                                <p>Scientific Officer wants to verify JANINA </p>
-                                            </div>
-                                            <div className="col-md-12 date-alert">
-                                                <i className="fa fa-calendar" aria-hidden="true">18-2-2017</i>
-                                            </div>
-                                        </a>
+                                    <li className="col-md-12">
+                                        {this.loadNotifications()}
                                     </li>
 
                                 </ul>
@@ -95,12 +66,12 @@ class DashHeader extends Component {
 
                             <li className="dropdown">
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                                    <img id="profile" src="img.jpg" className="profile-image img-circle"/>
+                                    <img id="profile" src="/profile.jpg" className="profile-image img-circle"/>
 
                                     <span id="UserId">{user}</span></a>
                                 <ul className="dropdown-menu dropdownbody">
                                     <li className="user-header">
-                                        <img id="profile" src="img.jpg" className="img-circle center-block"
+                                        <img id="profile" src="/profile.jpg" className="img-circle center-block"
                                              alt="User Image"/>
 
                                         <h3>{user}</h3>
@@ -135,12 +106,14 @@ class DashHeader extends Component {
 }
 
 DashHeader.propTypes = {
-    currentUser: PropTypes.object
+    currentUser: PropTypes.object,
+    nots: PropTypes.array.isRequired
 };
 
 export default createContainer(() => {
     Meteor.subscribe('allUserData');
     return {
+        nots: Notifications.find().fetch(),
         currentUser: Meteor.user()
     };
 }, DashHeader);

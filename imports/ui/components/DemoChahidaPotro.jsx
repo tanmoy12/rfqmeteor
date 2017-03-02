@@ -64,7 +64,7 @@ export default class ChahidaPotroLoad extends Component {
                         <div id="chahidajumbo" className="jumbotron text-center">
                             <div className="row">
                                 <div className="title-top col-md-12">
-                                    <img src="dricmlogo.jpg" className="center-block"/>
+                                    <img src="/dricmlogo.jpg" className="center-block"/>
                                     <h3> ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস </h3>
                                     <h3> বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ </h3>
                                     <hr/>
@@ -112,12 +112,14 @@ export default class ChahidaPotroLoad extends Component {
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <td className="col-md-1 text-left">Item</td>
-                                            <td className="col-md-4 text-left">Description Of Item</td>
-                                            <td className="col-md-2 text-left">Unit</td>
-                                            <td className="col-md-1 text-left">Quantity</td>
-                                            <td className="col-md-2 text-left">Rate/unit</td>
-                                            <td className="col-md-2 text-left">Total Amount</td>
+                                            <tr>
+                                                <td className="col-md-1 text-left">Item</td>
+                                                <td className="col-md-4 text-left">Description Of Item</td>
+                                                <td className="col-md-2 text-left">Unit</td>
+                                                <td className="col-md-1 text-left">Quantity</td>
+                                                <td className="col-md-2 text-left">Rate/unit</td>
+                                                <td className="col-md-2 text-left">Total Amount</td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                         <br/><br/>
@@ -128,7 +130,8 @@ export default class ChahidaPotroLoad extends Component {
                                         (কথায়)
                                         ................................. টাকা ব্যয়।
                                         <br/>
-                                        ৩। অতএব, উপরোক্ত বর্ণনামাতে ............................. ক্রয়ের অনুমোদনের জন্য বিনীতভাবে অনুরোধ জানানো যাচ্ছে।
+                                        ৩। অতএব, উপরোক্ত বর্ণনামাতে ............................. ক্রয়ের অনুমোদনের জন্য
+                                        বিনীতভাবে অনুরোধ জানানো যাচ্ছে।
                                     </p>
                                     <br/>
                                 </div>

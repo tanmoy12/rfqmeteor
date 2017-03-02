@@ -19,3 +19,6 @@ Meteor.publish("chahidapotroone", function (id) {
     check(id, String);
     return Chahida_Potro.find(id);
 });
+Meteor.publish("notifications", function () {
+    return Notifications.find();
+});

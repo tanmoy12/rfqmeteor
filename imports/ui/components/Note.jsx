@@ -17,7 +17,7 @@ class Note extends Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="page-header">
-                                    <img src="img/logo.png" className="center-block"/>
+                                    <img src="/dricmlogo.jpg" className="center-block"/>
                                     <h2> ডেসিগ্নাতেদ রেফ্রেঞ্চে ইন্সিটিউট অফ কেমিক্যাল মেযারমেন্তস</h2>
                                     <h3> বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ </h3>
                                 </div>

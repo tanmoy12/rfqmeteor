@@ -10,10 +10,27 @@ export default class RFQBox extends Component {
     }
     render() {
         return (
-            <div className="container">
-                <button onClick={this.gotoNote.bind(this)} className="btn btn-link">{this.props.RFQItem.title}</button>
-
-            </div>
+                <div id="sidejumbotron" className="col-md-12 jumbotron">
+                    <nav className=" navbar-custom navbar navbar-default text-center">
+                        <div className="container">
+                            <div className="navbar-header">
+                                <button onClick={this.gotoNote.bind(this)} className="btn btn-link navbar-brand">{this.props.RFQItem.title}</button>
+                            </div>
+                        </div>
+                    </nav>
+                    <p id="TITLERFQ">RFQ TITLE</p>
+                    <div>
+                        <h4>Smoking Kills donot smoke please</h4>
+                    </div>
+                    <p id="TITLERFQ">Estimate</p>
+                    <div>
+                        <h4>$100,000</h4>
+                    </div>
+                    <p id="TITLERFQ">Intial</p>
+                    <div>
+                        <h4>Scientific officer</h4>
+                    </div>
+                </div>
         );
     }
 }
