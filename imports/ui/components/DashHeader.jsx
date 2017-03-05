@@ -48,21 +48,7 @@ class DashHeader extends Component {
                     <div id="navbar" className="collapse navbar-collapse">
 
                         <ul className="nav navbar-right top-nav">
-
-
-                            <li className="dropdown">
-                                <a className="dropdown-toggle" data-toggle="dropdown">
-                                    <i className="fa fa-bell"></i>
-                                    <span className="label label-warning">{this.props.nots.length}</span>
-                                    <b className="caret"></b></a>
-
-                                <ul className="dropdown-menu alert-dropdown">
-                                    <li className="col-md-12">
-                                        {this.loadNotifications()}
-                                    </li>
-
-                                </ul>
-                            </li>
+                            <Not/>
 
                             <li className="dropdown">
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
