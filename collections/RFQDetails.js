@@ -42,7 +42,7 @@ RFQDetailsSchema = new SimpleSchema({
     chahida_id:{
         type: String,
         label: 'chahida_id'
-    },
+    }
 });
 
 RFQDetails.attachSchema(RFQDetailsSchema);

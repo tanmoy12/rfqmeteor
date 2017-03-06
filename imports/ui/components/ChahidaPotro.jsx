@@ -11,7 +11,8 @@ class ChahidaPotro extends Component {
         this.state = {
             products: [],
             estimate: 0,
-            signed: false
+            signed: false,
+
         };
 
     }
@@ -79,7 +80,7 @@ class ChahidaPotro extends Component {
                     verifier: {
                         user_id: ScOff
                     }
-                }
+                };
                 Chahida_Potro.insert(Chahidaform, function (err, res) {
                     if (err) Bert.alert('Unknown Error1!!', 'danger', 'growl-top-right');
                     else {
@@ -87,7 +88,7 @@ class ChahidaPotro extends Component {
                             chahida_id: res,
                             title: title,
                             estimate: that.state.estimate
-                        }
+                        };
                         RFQDetails.insert(RFQDetailsForm, function (err, res) {
                             if (err) Bert.alert('Unknown Error2!!', 'danger', 'growl-top-right');
                             else {
@@ -98,8 +99,7 @@ class ChahidaPotro extends Component {
                                     type: 1,
                                     title: title,
                                     RFQ_id: Rfqid
-                                }
-                                console.log(NotificationForm);
+                                };
                                 NotificationsSchema.validate(NotificationForm);
                                 Notifications.insert(NotificationForm, function (err, res) {
                                     if (err) Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');

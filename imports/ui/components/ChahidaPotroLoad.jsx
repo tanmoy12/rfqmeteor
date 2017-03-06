@@ -1,15 +1,14 @@
-import React, {Component, PropTypes} from 'react';
-import {createContainer} from 'meteor/react-meteor-data';
-import ReactDOM from 'react-dom';
-
-import Table from "./Table";
+import React, {Component, PropTypes} from "react";
+import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
 
 class ChahidaPotroLoad extends Component {
     constructor(props) {
         super(props);
         //  this.state.products = [];
         this.state = {
-            signed: false
+            signed: false,
+            showBlock: false
         };
     }
 
@@ -30,11 +29,19 @@ class ChahidaPotroLoad extends Component {
             });
         }
     }
+
     renderAcOf() {
         let acc = this.props.AcOf;
-        return acc.map(function (AcOfficers) {
-            return <option value={AcOfficers._id} key={AcOfficers._id}>{AcOfficers.username}</option>
-        });
+        let dcc = this.props.DrOf;
+        if (this.props.chahidapotro.substep_no == 1) {
+            return acc.map(function (AcOfficers) {
+                return <option value={AcOfficers._id} key={AcOfficers._id}>{AcOfficers.username}</option>
+            });
+        } else if (this.props.chahidapotro.substep_no == 2) {
+            return dcc.map(function (AcOfficers) {
+                return <option value={AcOfficers._id} key={AcOfficers._id}>{AcOfficers.username}</option>
+            });
+        }
     }
 
     datefromcreate(createdAt) {
@@ -49,31 +56,157 @@ class ChahidaPotroLoad extends Component {
         }
         return dateshow;
     }
+
+    genSignBlock(signfor, userId, signed) {
+        if (signed) {
+            return (
+                <div className="col-md-6 center-block">
+                    <img src="/sign1.png" className="img-circle" alt="User Image"/>
+                    <p id="signLabel"><strong>{signfor}</strong></p>
+                </div>
+            )
+        }
+        else if (userId && !signed) {
+            if (Meteor.userId() == userId) {
+                if (this.state.signed) {
+                    return (
+                        <div className="col-md-6 center-block">
+                            <img src="/sign1.png" className="img-circle" alt="User Image"/>
+                            <p id="signLabel"><strong>{signfor}</strong></p>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div className="col-md-6 center-block form-group">
+                            <div className="col-md-1">
+                            </div>
+                            <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
+                                <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
+                                       ref="password"
+                                       placeholder="Password"/><br/>
+                            </div>
+                            <div>
+                                <p id="signLabel"><strong>{signfor}</strong></p>
+                            </div>
+
+                        </div>
+                    )
+                }
+            }
+            else {
+                return (
+                    <div className="col-md-6 center-block">
+                        <p id="unsignLabel"><strong>{signfor}</strong></p>
+                    </div>
+                )
+            }
+        }
+        else {
+            return (
+                <div className="col-md-6 center-block">
+                    <p id="unsignLabel"><strong>{signfor}</strong></p>
+                </div>
+            )
+        }
+    }
+
+    showBlock(forward_to) {
+        if (Meteor.userId()== this.props.chahidapotro.verifier.user_id ||
+            Meteor.userId()== this.props.chahidapotro.accountant.user_id ||
+            Meteor.userId()== this.props.chahidapotro.director.user_id ) {
+            return (
+                <div className="col-md-10">
+                    <div className="col-md-2"></div>
+                    <div id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
+                        <div className="form-group text-center">
+                            <p>FORWARD TO <strong>
+                                {forward_to} </strong></p>
+                            <div className="form-group">
+                                <select ref="AcOf" className="form-control">
+                                    {this.renderAcOf()}
+                                </select>
+                            </div>
+
+                            <div>
+                                <input onClick={this.handleForward.bind(this)}
+                                       type="submit" name="login-submit"
+                                       id="submit-all"
+                                       className="btn btn-primary" value="FORWARD"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    handleForward(e) {
+        e.preventDefault();
+        if(this.state.signed==true) {
+            var AcOff = ReactDOM.findDOMNode(this.refs.AcOf).value.trim();
+            var updateForm;
+            if(this.props.chahidapotro.substep_no==1){
+                updateForm= {
+                    substep_no: 2,
+                    verifier: {
+                        signed: true,
+                        sign_date: new Date()
+                    },
+                    accountant: {
+                        user_id: AcOff
+                    }
+                }
+            }
+            else if(this.props.chahidapotro.substep_no==2){
+                updateForm= {
+                    substep_no: 3,
+                    accountant: {
+                        signed: true,
+                        sign_date: new Date()
+                    },
+                    director: {
+                        user_id: AcOff
+                    }
+                }
+            }
+            else if(this.props.chahidapotro.substep_no==3){
+                updateForm= {
+                    substep_no: 4,
+                    director: {
+                        signed: true,
+                        sign_date: new Date()
+                    }
+                }
+            }
+            var that=this;
+            Chahida_Potro.update(
+                this.props.chahidapotro._id,
+                {
+                    $set: updateForm
+                }, function (err, res) {
+                    if(err) Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
+                    else{
+                        FlowRouter.go('/Note/' + that.props.RFQ_details._id);
+                    }
+                });
+        }else {
+            Bert.alert('Please Sign the Document!!', 'danger', 'growl-top-right');
+        }
+
+    }
+
     render() {
         if (this.props.chahidapotro) {
             var chahida_potro = this.props.chahidapotro;
-            if (this.state.signed) {
-                signBlock =
-                    <div className="col-md-6 center-block">
-                        <img src="/sign1.png" className="img-circle" alt="User Image"/>
-                        <p id="signLabel"><strong>যাচাইকারী </strong></p>
-                    </div>
-            } else {
-                signBlock =
-                    <div className="col-md-6 center-block form-group">
-                        <div className="col-md-1">
-                        </div>
-                        <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
-                            <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
-                                   ref="password"
-                                   placeholder="Password"/><br/>
-                        </div>
-                        <div>
-                            <p id="signLabel"><strong>যাচাইকারী </strong></p>
-                        </div>
-
-                    </div>
+            var forward_to;
+            if (chahida_potro.substep_no == 1) {
+                forward_to = "হিসাবরক্ষক";
+            } else if (chahida_potro.substep_no == 2) {
+                forward_to = "অনুমোদনকারী";
+            } else if (chahida_potro.substep_no == 3) {
+                forward_to = null;
             }
+
             return (
                 <div className="container">
                     <div className="row">
@@ -97,7 +230,8 @@ class ChahidaPotroLoad extends Component {
                                         </div>
                                     </div>
                                     <div className="col-md-6">
-                                        <p id="dateload"><strong>DATE : {this.datefromcreate(chahida_potro.createdAt)}</strong></p>
+                                        <p id="dateload"><strong>DATE
+                                            : {this.datefromcreate(chahida_potro.createdAt)}</strong></p>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -150,7 +284,8 @@ class ChahidaPotroLoad extends Component {
                                                     <td className="col-md-2 text-center"></td>
                                                     <td className="col-md-1 text-center"></td>
                                                     <td className="col-md-2 text-center"></td>
-                                                    <td className="col-md-2 text-right"><p id="item_no"><strong>{chahida_potro.estimate}</strong></p></td>
+                                                    <td className="col-md-2 text-right"><p id="item_no">
+                                                        <strong>{chahida_potro.estimate}</strong></p></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -169,11 +304,8 @@ class ChahidaPotroLoad extends Component {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-md-6 center-block">
-                                        <img src="/sign1.png" className="img-circle" alt="User Image"/>
-                                        <p id="signLabel"><strong>নিবেদক</strong></p>
-                                    </div>
-                                    {signBlock}
+                                    {this.genSignBlock("নিবেদক", chahida_potro.initiator, true)}
+                                    {this.genSignBlock("যাচাইকারী", chahida_potro.verifier.user_id, chahida_potro.verifier.signed)}
                                 </div>
                                 <div className="row">
                                     <div className="col-md-12">
@@ -186,39 +318,16 @@ class ChahidaPotroLoad extends Component {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-md-6 center-block">
-
-                                        <p id="unsignLabel"><strong>হিসাবরক্ষক </strong></p>
-                                    </div>
-                                    <div className="col-md-6 center-block">
-
-                                        <p id="unsignLabel"><strong>অনুমোদনকারী </strong></p>
-                                    </div>
+                                    {this.genSignBlock("হিসাবরক্ষক", chahida_potro.accountant.user_id, chahida_potro.accountant.signed)}
+                                    {this.genSignBlock("অনুমোদনকারী", chahida_potro.director.user_id, chahida_potro.director.signed)}
                                 </div>
                             </div>
 
                         </div>
-                        <div className="col-md-10">
-                            <div className="col-md-2"></div>
-                            <div id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
-                                <div className="form-group text-center">
-                                    <p>FORWARD TO <strong>যাচাইকারী :</strong></p>
-                                    <div className="form-group">
-                                        <select ref="ScOf" className="form-control">
-                                            {this.renderAcOf()}
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <input type="submit" name="login-submit"
-                                               id="submit-all"
-                                               className="btn btn-primary" value="FORWARD"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {this.showBlock(forward_to)}
                     </div>
                 </div>
+
             );
         }
         else {
@@ -234,13 +343,16 @@ class ChahidaPotroLoad extends Component {
 
 ChahidaPotroLoad.propTypes = {
     chahidapotro: PropTypes.object,
-    AcOf: PropTypes.array.isRequired
+    AcOf: PropTypes.array.isRequired,
+    DrOf: PropTypes.array.isRequired,
+    RFQ_details: PropTypes.object
 };
 
 export default createContainer(props => {
-    Meteor.subscribe('chahidapotroone', props.id);
     return {
         chahidapotro: Chahida_Potro.findOne(props.id),
-        AcOf: Meteor.users.find({'profile.designation': "Accounting Officer"}).fetch()
+        AcOf: Meteor.users.find({'profile.designation': "Accounting Officer"}).fetch(),
+        DrOf: Meteor.users.find({'profile.designation': "Director"}).fetch(),
+        RFQ_details: RFQDetails.findOne({chahida_id: props.id})
     };
 }, ChahidaPotroLoad);
