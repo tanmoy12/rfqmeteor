@@ -11,7 +11,11 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="meteor-packages-auto-import-browser" level="project" />
+<<<<<<< HEAD
     <orderEntry type="library" name="meteor-packages-auto-import-npm" level="project" />
     <orderEntry type="library" name="rfqmeteor node_modules" level="project" />
+=======
+    <orderEntry type="library" name="meteor-packages-auto-import-browser" level="project" />
+>>>>>>> d556665ae607712b3ce748872b284293724270da
   </component>
 </module>

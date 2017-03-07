@@ -3,6 +3,9 @@ Chahida_Potro = new Mongo.Collection('chahidapotro');
 Chahida_Potro.allow({
     insert: function (userId, doc) {
         return !!userId;
+    },
+    update: function (userId, doc) {
+        return !!userId;
     }
 });
 
@@ -16,6 +19,7 @@ UserSignFalse= new SimpleSchema({
         type: Boolean,
         label: "signed",
         defaultValue: false,
+        optional:true
     },
     sign_date: {
         type: Date,
@@ -54,7 +58,7 @@ Details = new SimpleSchema({
     total: {
         type: String,
         label: 'total'
-    },
+    }
 });
 
 ChahidaPotroSchema = new SimpleSchema({
@@ -66,15 +70,15 @@ ChahidaPotroSchema = new SimpleSchema({
         type: Number,
         label: 'substep_no',
         optional: true,
-        autoValue: function () {
-            return 1;
-        },
+        defaultValue: 1
     },
     createdAt: {
         type: Date,
         label: 'date',
-        autoValue: function () {
-            return new Date();
+        autoValue: function() {
+            if ( this.isInsert ) {
+                return new Date;
+            }
         },
         optional: true
     },
@@ -94,7 +98,9 @@ ChahidaPotroSchema = new SimpleSchema({
         type: String,
         label: 'initiator',
         autoValue: function () {
-            return this.userId;
+            if ( this.isInsert ) {
+                return this.userId;
+            }
         },
         optional: true
     },
