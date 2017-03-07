@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import React, {Component, PropTypes} from 'react';
+import {createContainer} from 'meteor/react-meteor-data';
 
 import Not from './notification';
 
@@ -9,22 +9,26 @@ class DashHeader extends Component {
         Meteor.logout();
         FlowRouter.go('/');
     }
-    waitForUser(){
-        if(Meteor.loggingIn()){
+
+    waitForUser() {
+        if (Meteor.loggingIn()) {
             return "Loading"
-        }else{
+        } else {
             return Meteor.user().username
         }
     }
-    gotoHome(e){
+
+    gotoHome(e) {
         e.preventDefault();
         FlowRouter.go('/dashboard');
     }
-    loadNotifications(){
+
+    loadNotifications() {
         return this.props.nots.map(function (not) {
             return <Not key={not._id} notification={not}/>
         });
     }
+
     render() {
         let user = "";
         if (Meteor.user()) user = Meteor.user().username;
@@ -46,7 +50,6 @@ class DashHeader extends Component {
 
 
                     <div id="navbar" className="collapse navbar-collapse">
-
                         <ul className="nav navbar-right top-nav">
                             <Not/>
 

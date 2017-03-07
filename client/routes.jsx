@@ -12,6 +12,7 @@ import Note from '../imports/ui/components/Note';
 import StandardDocument from '../imports/ui/components/StandardDocument';
 import LoginCaraousal from '../imports/ui/components/LoginCaraousal';
 
+
 FlowRouter.route('/', {
     action(){
         mount(LayoutLogin, {

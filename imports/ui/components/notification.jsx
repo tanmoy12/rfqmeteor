@@ -12,28 +12,49 @@ export default class Not extends Component {
 
     render() {
         return (
-            <li className="dropdown">
-                <a className="dropdown-toggle" data-toggle="dropdown">
-                    <i className="fa fa-bell"></i>
+            <li className="dropdown dropdown-notification">
+                <a href="#notifications-panel" className="dropdown-toggle" data-toggle="dropdown">
+                    <i className="fa fa-bell notification-icon"></i>
                     <span className="label label-warning">5</span>
                     <b className="caret"></b></a>
+                <div className="dropdown-container">
+                    <div className="dropdown-toolbar">
+                        <h3 className="dropdown-toolbar-title">Notifications</h3>
+                    </div>
 
-                <ul className="dropdown-menu alert-dropdown">
-                    <li className="col-md-12">
-                        <a href="#" className="col-md-12 ">
-                            <div className="col-md-2 center-block">
-                                <img id="profile" src="/profile.jpg" alt="User Image"/>
-                            </div>
-                            <div className="col-md-10 alert-text">
-                                <p> wants you to verify RFQ Chahida Potro</p>
-                            </div>
-                            <div className="col-md-12 date-alert">
-                                <i className="fa fa-calendar" aria-hidden="true">18-2-2017</i>
-                            </div>
-                        </a>
-                    </li>
+                    <ul className="dropdown-menu pull-right alert-dropdown col-md=12">
+                        <li className="notification">
+                            <div className="media">
+                                <a href="#" className="notification col-md-12 ">
+                                    <div className="media-left">
+                                        <div className="media-object">
+                                            <img id="profile" src="/profile.jpg" alt="User Image"/>
+                                        </div>
+                                    </div>
+                                    <div className="media-body">
+                                        <p><strong>Anjan Basak Tanmoy</strong> Asked for verification ChahidaPotro</p>
+                                        <p id="noti">7 March, 2017 at 8:30 am </p>
+                                    </div>
 
-                </ul>
+                                </a>
+                                <a href="#" className="notification col-md-12 ">
+                                    <div className="media-left">
+                                        <div className="media-object">
+                                            <img id="profile" src="/profile.jpg" alt="User Image"/>
+                                        </div>
+                                    </div>
+                                    <div className="media-body">
+                                        <p><strong>Anjan Basak Tanmoy</strong> Asked to verify RFQ Chahida Potro</p>
+                                        <p id="noti">7 March, 2017 at 8:30 am </p>
+                                    </div>
+
+                                </a>
+
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
             </li>
 
         );
