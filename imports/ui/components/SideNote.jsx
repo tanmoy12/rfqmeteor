@@ -20,129 +20,20 @@ export default class SideNote extends  Component {
                         </nav>
                     </div>
                     <div id="SideJumbobody" className="col-md-12 jumbotron">
-                        <p id="TITLERFQ">RFQ TITLE</p>
+                        <p id="TITLERFQ">RFQ Title</p>
                         <div>
-                            <h4>Smoking Kills donot smoke please</h4>
+                            <h4>{this.props.RFQ.title}</h4>
                         </div>
                         <p id="TITLERFQ">Estimate</p>
                         <div>
-                            <h4>$100,000</h4>
+                            <h4>{this.props.RFQ.estimate}</h4>
                         </div>
-                        <p id="TITLERFQ">Intial</p>
+                        <p id="TITLERFQ">Intiated by</p>
                         <div>
-                            <h4>Scientific officer</h4>
+                            <h4>{this.props.ini.username}</h4>
                         </div>
 
 
-                    </div>
-                    <div id="Note">
-                        <div id="sidejumbotron" className="col-md-12 jumbotron">
-                            <nav className=" navbar-custom navbar navbar-default text-center">
-                                <div className="container">
-                                    <div className="navbar-header">
-                                        <a className="navbar-brand" href="#">NOTE</a>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                        <div id="SideJumbobody" className="col-md-12 jumbotron">
-                            <p id="TITLERFQ">NOTE</p>
-                            <div>
-                                <h4>Smoking Kills donot smoke please</h4>
-                            </div>
-                            <p id="TITLERFQ">Estimate</p>
-                            <div>
-                                <h4>$100,000</h4>
-                            </div>
-                            <p id="TITLERFQ">Intial</p>
-                            <div>
-                                <h4>Scientific officer</h4>
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <div id="Untitled">
-                        <div id="sidejumbotron" className="col-md-12 jumbotron">
-                            <nav className=" navbar-custom navbar navbar-default text-center">
-                                <div className="container">
-                                    <div className="navbar-header">
-                                        <a className="navbar-brand" href="#">UNTITLED</a>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                        <div id="SideJumbobody" className="col-md-12 jumbotron">
-                            <p id="TITLERFQ">UNtitled </p>
-                            <div>
-                                <h4>Smoking Kills donot smoke please</h4>
-                            </div>
-                            <p id="TITLERFQ">Estimate</p>
-                            <div>
-                                <h4>$100,000</h4>
-                            </div>
-                            <p id="TITLERFQ">Intial</p>
-                            <div>
-                                <h4>Scientific officer</h4>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <div id="Untitled2">
-                        <div id="sidejumbotron" className="col-md-12 jumbotron">
-                            <nav className=" navbar-custom navbar navbar-default text-center">
-                                <div className="container">
-                                    <div className="navbar-header">
-                                        <a className="navbar-brand" href="#">UNTITLED 2</a>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                        <div id="SideJumbobody" className="col-md-12 jumbotron">
-                            <p id="TITLERFQ">Untitled 2</p>
-                            <div>
-                                <h4>Smoking Kills donot smoke please</h4>
-                            </div>
-                            <p id="TITLERFQ">Estimate</p>
-                            <div>
-                                <h4>$100,000</h4>
-                            </div>
-                            <p id="TITLERFQ">Intial</p>
-                            <div>
-                                <h4>Scientific officer</h4>
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <div id="Untitled3">
-                        <div id="sidejumbotron" className="col-md-12 jumbotron">
-                            <nav className=" navbar-custom navbar navbar-default text-center">
-                                <div className="container">
-                                    <div className="navbar-header">
-                                        <a className="navbar-brand" href="#">UNTITLED 3</a>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                        <div id="SideJumbobody" className="col-md-12 jumbotron">
-                            <p id="TITLERFQ">Untitled 3</p>
-                            <div>
-                                <h4>Smoking Kills donot smoke please</h4>
-                            </div>
-                            <p id="TITLERFQ">Estimate</p>
-                            <div>
-                                <h4>$100,000</h4>
-                            </div>
-                            <p id="TITLERFQ">Intial</p>
-                            <div>
-                                <h4>Scientific officer</h4>
-                            </div>
-
-
-                        </div>
                     </div>
 
                 </div>
