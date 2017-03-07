@@ -8,6 +8,18 @@ import SideNote from "./SideNote";
 class Note extends Component {
     constructor(props) {
         super(props);
+        this.setState({
+            user1: "",
+        });
+    }
+    componentDidMount(){
+        if(this.props.RFQ){
+            var usr = Meteor.users.findOne(this.props.RFQ.initiator);
+            this.setState({
+                user1: usr,
+            });
+        }
+        console.log(this.props);
     }
     render() {
         return (
@@ -97,6 +109,7 @@ Note.propTypes = {
 export default createContainer( props => {
     Meteor.subscribe('rfqdetailsone', props.id);
     return {
-        RFQ: RFQDetails.findOne(props.id)
+        RFQ: RFQDetails.findOne(props.id),
+        user: Meteor.users.findOne('HvtGg5PRe8rykSqQE'),
     };
 }, Note);
