@@ -199,8 +199,8 @@ input:focus::-webkit-input-placeholder {
 }
 
 .title-top{
-    padding:15px;
-    padding-top: 0;
+    padding:0px;
+    padding-top: 15px;
 }
 
 hr {
@@ -216,8 +216,6 @@ hr {
 
 #text-stnd{
     font-size: medium;
-    margin-top: 10px;
-    line-height: 2;
     font-family: "Times New Roman", Times, serif;
 }
 
@@ -304,7 +302,8 @@ span b {
     font-style: italic;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-#datetoday {
+#datetodaystand {
+    font-size: medium;
     float : right;
     font-style: italic;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

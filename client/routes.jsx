@@ -51,10 +51,10 @@ FlowRouter.route('/Note', {
     }
 });
 
-FlowRouter.route('/StandardDocument', {
-    action(){
+FlowRouter.route('/StandardDocument/:id', {
+    action(params){
         mount(LayoutDash, {
-            content: (<StandardDocument />)
+            content: (<StandardDocument id={params.id}/>)
         })
     }
 });

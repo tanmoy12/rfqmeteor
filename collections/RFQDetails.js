@@ -42,6 +42,11 @@ RFQDetailsSchema = new SimpleSchema({
     chahida_id:{
         type: String,
         label: 'chahida_id'
+    },
+    standard_id:{
+        type: String,
+        label: 'standard_id',
+        optional: true
     }
 });
 

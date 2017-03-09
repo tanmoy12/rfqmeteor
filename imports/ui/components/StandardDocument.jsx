@@ -1,503 +1,579 @@
-import React, {Component} from "react";
-import SideNote from "./SideNote";
+import React, {Component, PropTypes} from 'react';
+import {createContainer} from 'meteor/react-meteor-data';
+import ReactDOM from 'react-dom';
 
-
-export default class StandardDocument extends Component {
+class StandardDocument extends Component {
+    dateToday() {
+        var d = new Date();
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return <p id="datetodaystand"><strong>Date : {dateshow}</strong></p>;
+    }
 
     render() {
-        return (
-            <div className="container">
-                <div className="row">
-                    <div id="StandardJumbo" className="col-md-9 jumbotron text-center">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="page-header">
-                                    <img src="img/logo.png" className="center-block"/>
-                                    <h2> Designated Reference Institute for Chemical Measurements (DRiCM)</h2>
-                                    <h3> Bangladesh Council of Scientific & Industrial Research (BCSIR) </h3>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-12 text-center">
-                                        <p id="text-stnd"> REQUEST FOR QUOTATION <br/> for <br/>
-                                            Supply of ........................ </p>
+        if (this.props.RFQ) {
+            return (
+                <div className="container">
+                    <div className="row">
+                        <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="title-top col-md-12">
+                                        <img src="../dricmlogo.jpg" className="center-block"/>
+                                        <h3>Designated Reference Institute for Chemical Measurements (DRiCM) </h3>
+                                        <h3>Bangladesh Council of Scientific & Industrial Research (BCSIR)</h3>
+                                        <hr/>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="text-left">
-                                            <strong>RFQ NO : </strong> ...........................
-                                        </div>
-
-
-                                    </div>
-                                    <div className="col-md-6 text-right">
-                                        DATE : ........................
-                                    </div>
-                                </div>
-
-                                <div id="text-stnd" className="text-left">
-                                    TO <br/>
-                                    ...................................... <br/>
-                                    ...................................... <br/>
-                                    ...................................... <br/>
-
-                                </div>
-
-                                <div classID="standardbody">
-                                    <p className="text"> 1. The <strong>In- Charge </strong> of “Designated Reference
-                                        Institute for
-                                        Chemical Measurements (DRiCM)” has been allocated public funds and intends to
-                                        apply a portion of the funds to eligible payments under the Contract for which
-                                        this Quotation Document is issued. </p>
-
-                                    <p className="text"> 2. Detailed Specifications for the intended Goods and related
-                                        services shall be available in the office of the Procuring Entity for inspection
-                                        by the potential Quotationers during office hours on all working days. </p>
-
-                                    <p className="text"> 3. Quotation shall be prepared and submitted using the
-                                        ‘Quotation Document’. </p>
-
-
-                                    <p className="text"> 4. Quotation shall be completed properly, duly signed-dated
-                                        each page by the authorized signatory and submitted by the date to the office as
-                                        specified in <strong>Para 6 </strong> below. </p>
-
-                                    <p className="text"> 5. No Securities such as Quotation Security (i.e. the
-                                        traditionally termed Earnest Money, Tender Security) and Performance Security
-                                        shall be required for submission of the Quotation and delivery of the Goods (if
-                                        awarded) respectively. </p>
-
-
-                                    <p className="text">
-                                        6. Quotation in a sealed envelope or by fax or through electronic mail shall be
-                                        submitted to the office of the undersigned
-                                        ............................................................... . The
-                                        envelope containing the Quotation must be clearly marked <strong>“Quotation for
-                                        Supply
-                                        of </strong> ..........................” and <strong>DO NOT OPEN </strong>
-                                        before
-                                        ................................... Quotations received later than the time
-                                        specified herein shall not be accepted.
-                                    </p>
-
-                                    <p className="text">
-                                        7. Quotations received by fax or through electronic mail shall be
-                                        sealed-enveloped by the Procuring Entity duly marked as stated in <strong>
-                                        Para 7 </strong> above
-                                        and, all Quotations thus received shall be sent to the Evaluation Committee for
-                                        evaluation, without opening, by the same date of closing the Quotation.
-                                    </p>
-
-                                    <p className="text">
-                                        8. The Procuring Entity may extend the deadline for submission of Quotations on
-                                        justifiably acceptable grounds duly recorded subject to threshold of ten (10)
-                                        days pursuant to Rule 71 (4) of the Public Procurement Rules, 2008.
-                                    </p>
-
-                                    <p className="text">
-                                        9. All Quotations must be valid for a period of at least <strong> 20
-                                        days </strong> from the
-                                        closing date of the Quotation.
-                                    </p>
-
-                                    <p className="text">
-                                        10. No public opening of Quotations received by the closing date shall be held.
-                                    </p>
-
-                                    <p className="text">
-                                        11. Quotationer’s rates or prices shall be inclusive of profit and overhead and,
-                                        all kinds of taxes, duties, fees, levies, and other charges to be paid under the
-                                        Applicable Law, if the Contract is awarded.
-                                    </p>
-
-                                    <p className="text">
-                                        12. Rates shall be quoted and, subsequent payments under this Contract shall be
-                                        made in Taka currency. The price offered by the Quotationer, if accepted shall
-                                        remain fixed for the duration of the Contract.
-                                    </p>
-
-                                    <p className="text">
-                                        13. Quotationer shall have legal capacity to enter into Contract. Quotationer,
-                                        in support of its qualification shall be required to submit certified
-                                        photocopies of latest documents related to valid <strong>Trade License, Tax
-                                        Identification Number (TIN), VAT Registration Number and Financial Solvency
-                                        Certificate </strong> from any scheduled Bank; without which the Quotation may
-                                        be
-                                        considered non-responsive.
-                                    </p>
-
-                                    <p className="text">
-                                        14. Quotations shall be evaluated based on information and documents submitted
-                                        with the Quotations, by the Evaluation Committee and at least three (3)
-                                        responsive Quotations will be required to determine the lowest evaluated
-                                        responsive Quotations for award of the Contract.
-                                    </p>
-
-                                    <p className="text">
-                                        15. In case of anomalies between unit rates or prices and the total amount
-                                        quoted, the unit rates or prices shall prevail. In case of discrepancy between
-                                        words and figures the former will govern. Quotationer shall remain bound to
-                                        accept the arithmetic corrections made by the Evaluation Committee.
-                                    </p>
-
-                                    <p className="text">
-                                        16. The supply of Goods and related services shall be completed within 20 days
-                                        from the date of issuing the Purchase Order.
-                                    </p>
-
-                                    <p className="text">
-                                        17. The Purchase Order that constitutes the Contract binding upon the Supplier
-                                        and the Procuring Entity shall be issued within 15 days of receipt of approval
-                                        from the Approving Authority.
-                                    </p>
-
-                                    <p className="text">
-                                        18. The Procuring Entity reserves the right to reject all the Quotations or
-                                        annul the procurement proceedings.
-                                    </p>
-
-                                </div>
-                                <p className="text text-left">
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    (Dr. Mala Khan) <br/>
-                                    In- Charge <br/>
-                                    Designated Reference Institute for Chemical Measurements (DRiCM) <br/>
-                                    BCSIR, Dr. Qudrat-I-Khuda Road, Dhanmondi, Dhaka-1205 <br/>
-                                    Phone No: 02 9671830, 01715032057, Fax No: 02 58613819 <br/>
-                                    e-mail: malakhan_07@yahoo.com <br/>
-
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-
-                                    Distribution: <br/>
-
-                                    1. In- Charge Office, DRiCM, BCSIR, Dhaka-1205 <br/>
-                                    2. Notice Board. <br/>
-                                    3. Office File. <br/>
-
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <SideNote/>
-                </div>
-
-                <div className="row">
-                    <div id="StandardJumbo" className="col-md-9 jumbotron text-center">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="page-header">
-                                    <img src="img/logo.png" className="center-block"/>
-                                    <h2> Designated Reference Institute for Chemical Measurements (DRiCM)</h2>
-                                    <h3> Bangladesh Council of Scientific & Industrial Research (BCSIR) </h3>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-12 text-center">
-                                        <p id="text-stnd">
-                                            Quotation Submission Letter <br/>
-                                            <strong>Use Letter-head Pad</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="text-left">
-                                            <strong>RFQ NO : </strong> ...........................
-                                        </div>
-
-
-                                    </div>
-                                    <div className="col-md-6 text-right">
-                                        DATE : ........................
-                                    </div>
-                                </div>
-
-                                <div id="text-stnd" className="text-left">
-                                    TO <br/>
-                                    [Name and address of Procuring Entity]
-
-                                </div>
-
-                                <div classID="standardbody">
-                                    <p className="text">
-                                        I/We, the undersigned, offer to supply in conformity with the Terms and
-                                        Conditions for delivery of the Goods and related services named <strong>Supply
-                                        of
-                                        .................................. </strong>
-                                    </p>
-
-                                    <p className="text">
-                                        The total Price of my/our Quotation is BDT <strong>[insert amount both in figure
-                                        and words] </strong>
-                                    </p>
-
-                                    <p className="text">
-                                        My/Our Quotation shall remain valid for the period stated in the RFQ Document
-                                        and it shalll remain binding upon us and, may be accepted at any time prior to
-                                        the expiration of its validity period.
-                                    </p>
-
-
-                                    <p className="text">
-                                        I/We declare that I/we have the legal capacity to enter into a contract with
-                                        you, and have not been declared ineligible by the Government of Bangladesh on
-                                        charges of engaging in corrupt, fraudulent, collusive or coercive practices.
-                                        Furthermore, I/we am/are aware of Para 21(b) of the Terms and Conditions and
-                                        pledge not to indulge in such practices in competing for or completion of
-                                        delivery of Goods.
-                                    </p>
-
-                                    <p className="text">
-                                        I/We am/are not submitting more than one Quotation in this RFQ process in my/our
-                                        own name or other name or in different names. I/We understand that the Purchase
-                                        Order issued by you shall constitute the Contract and will be binding upon
-                                        me/us.
-                                    </p>
-
-                                    <p className="text">
-                                        I/We have examined and have no reservations to the RFQ Document issued by you on
-                                        <strong> [insert date] </strong>
-                                    </p>
-
-                                    <p className="text">
-                                        I/We understand that you reserve the right to reject all the Quotations or annul
-                                        the procurement proceedings without incurring any liability to me/us.
-                                    </p>
-
-                                </div>
-                                <p className="text text-right">
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    Signature of Quotationer with Seal <br/>
-                                    Date:
-
-
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <SideNote/>
-                </div>
-
-
-                <div className="row">
-                    <div id="StandardJumbo" className="col-md-9 jumbotron text-center">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="page-header">
-                                    <img src="img/logo.png" className="center-block"/>
-                                    <h2> Designated Reference Institute for Chemical Measurements (DRiCM)</h2>
-                                    <h3> Bangladesh Council of Scientific & Industrial Research (BCSIR) </h3>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-12 text-center">
-                                        <p id="text-stnd">
-                                            <strong>Use Price Schedule for ................................</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="text-left">
-                                            <strong>RFQ NO : </strong> ...........................
+                                    <div className="row">
+                                        <div className="col-md-12 text-center">
+                                            <p id="text-stnd"> <strong>REQUEST FOR QUOTATION </strong><br/> for <br/>
+                                                <strong> Supply of {this.props.RFQ.title}</strong> </p>
                                         </div>
                                     </div>
-                                    <div className="col-md-6 text-right">
-                                        DATE : ........................
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <div className="row">
+                                                <div className="col-md-12 form-style-4">
+                                                    <label htmlFor="sutrono">
+                                                        <span>RFQ NO : </span>
+                                                        <input ref="sutrono" placeholder="RFQ NO" name="sutrono" type="text"/>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6">
+                                            {this.dateToday()}
+                                        </div>
                                     </div>
+
+                                    <div id="text-stnd" className="text-left">
+                                        TO <br/>
+                                        ...................................................... <br/>
+                                        ...................................................... <br/>
+                                        ...................................................... <br/>
+
+                                    </div>
+
+                                    <div classID="standardbody">
+                                        <p className="text"> 1. The <strong>In- Charge </strong> of “Designated
+                                            Reference
+                                            Institute for
+                                            Chemical Measurements (DRiCM)” has been allocated public funds and intends
+                                            to
+                                            apply a portion of the funds to eligible payments under the Contract for
+                                            which
+                                            this Quotation Document is issued. </p>
+
+                                        <p className="text"> 2. Detailed Specifications for the intended Goods and
+                                            related
+                                            services shall be available in the office of the Procuring Entity for
+                                            inspection
+                                            by the potential Quotationers during office hours on all working days. </p>
+
+                                        <p className="text"> 3. Quotation shall be prepared and submitted using the
+                                            ‘Quotation Document’. </p>
+
+
+                                        <p className="text"> 4. Quotation shall be completed properly, duly signed-dated
+                                            each page by the authorized signatory and submitted by the date to the
+                                            office as
+                                            specified in <strong>Para 6 </strong> below. </p>
+
+                                        <p className="text"> 5. No Securities such as Quotation Security (i.e. the
+                                            traditionally termed Earnest Money, Tender Security) and Performance
+                                            Security
+                                            shall be required for submission of the Quotation and delivery of the Goods
+                                            (if
+                                            awarded) respectively. </p>
+
+
+                                        <p className="text">
+                                            6. Quotation in a sealed envelope or by fax or through electronic mail shall
+                                            be
+                                            submitted to the office of the undersigned
+                                            ............................................................... . The
+                                            envelope containing the Quotation must be clearly marked <strong>“Quotation
+                                            for
+                                            Supply
+                                            of </strong> ..........................” and <strong>DO NOT OPEN </strong>
+                                            before
+                                            ................................... Quotations received later than the time
+                                            specified herein shall not be accepted.
+                                        </p>
+
+                                        <p className="text">
+                                            7. Quotations received by fax or through electronic mail shall be
+                                            sealed-enveloped by the Procuring Entity duly marked as stated in <strong>
+                                            Para 7 </strong> above
+                                            and, all Quotations thus received shall be sent to the Evaluation Committee
+                                            for
+                                            evaluation, without opening, by the same date of closing the Quotation.
+                                        </p>
+
+                                        <p className="text">
+                                            8. The Procuring Entity may extend the deadline for submission of Quotations
+                                            on
+                                            justifiably acceptable grounds duly recorded subject to threshold of ten
+                                            (10)
+                                            days pursuant to Rule 71 (4) of the Public Procurement Rules, 2008.
+                                        </p>
+
+                                        <p className="text">
+                                            9. All Quotations must be valid for a period of at least <strong> 20
+                                            days </strong> from the
+                                            closing date of the Quotation.
+                                        </p>
+
+                                        <p className="text">
+                                            10. No public opening of Quotations received by the closing date shall be
+                                            held.
+                                        </p>
+
+                                        <p className="text">
+                                            11. Quotationer’s rates or prices shall be inclusive of profit and overhead
+                                            and,
+                                            all kinds of taxes, duties, fees, levies, and other charges to be paid under
+                                            the
+                                            Applicable Law, if the Contract is awarded.
+                                        </p>
+
+                                        <p className="text">
+                                            12. Rates shall be quoted and, subsequent payments under this Contract shall
+                                            be
+                                            made in Taka currency. The price offered by the Quotationer, if accepted
+                                            shall
+                                            remain fixed for the duration of the Contract.
+                                        </p>
+
+                                        <p className="text">
+                                            13. Quotationer shall have legal capacity to enter into Contract.
+                                            Quotationer,
+                                            in support of its qualification shall be required to submit certified
+                                            photocopies of latest documents related to valid <strong>Trade License, Tax
+                                            Identification Number (TIN), VAT Registration Number and Financial Solvency
+                                            Certificate </strong> from any scheduled Bank; without which the Quotation
+                                            may
+                                            be
+                                            considered non-responsive.
+                                        </p>
+
+                                        <p className="text">
+                                            14. Quotations shall be evaluated based on information and documents
+                                            submitted
+                                            with the Quotations, by the Evaluation Committee and at least three (3)
+                                            responsive Quotations will be required to determine the lowest evaluated
+                                            responsive Quotations for award of the Contract.
+                                        </p>
+
+                                        <p className="text">
+                                            15. In case of anomalies between unit rates or prices and the total amount
+                                            quoted, the unit rates or prices shall prevail. In case of discrepancy
+                                            between
+                                            words and figures the former will govern. Quotationer shall remain bound to
+                                            accept the arithmetic corrections made by the Evaluation Committee.
+                                        </p>
+
+                                        <p className="text">
+                                            16. The supply of Goods and related services shall be completed within 20
+                                            days
+                                            from the date of issuing the Purchase Order.
+                                        </p>
+
+                                        <p className="text">
+                                            17. The Purchase Order that constitutes the Contract binding upon the
+                                            Supplier
+                                            and the Procuring Entity shall be issued within 15 days of receipt of
+                                            approval
+                                            from the Approving Authority.
+                                        </p>
+
+                                        <p className="text">
+                                            18. The Procuring Entity reserves the right to reject all the Quotations or
+                                            annul the procurement proceedings.
+                                        </p>
+
+                                    </div>
+                                    <p className="text text-left">
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        (Dr. Mala Khan) <br/>
+                                        In- Charge <br/>
+                                        Designated Reference Institute for Chemical Measurements (DRiCM) <br/>
+                                        BCSIR, Dr. Qudrat-I-Khuda Road, Dhanmondi, Dhaka-1205 <br/>
+                                        Phone No: 02 9671830, 01715032057, Fax No: 02 58613819 <br/>
+                                        e-mail: malakhan_07@yahoo.com <br/>
+
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+
+                                        Distribution: <br/>
+
+                                        1. In- Charge Office, DRiCM, BCSIR, Dhaka-1205 <br/>
+                                        2. Notice Board. <br/>
+                                        3. Office File. <br/>
+
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div className="table table-bordered table-responsive">
-                            <table className="table">
 
-                                <thead>
-                                <tr>
-                                    <th rowSpan="2">Item No</th>
-                                    <th rowSpan="2">Description of Items</th>
-                                    <th rowSpan="2">Unit of Measurement</th>
-                                    <th rowSpan="2">Qty</th>
-                                    <th colSpan="2" scope="colgroup">Unit rate or price</th>
-                                    <th rowSpan="1" colSpan="1" scope="colgroup">Total amount</th>
-                                    <th rowSpan="2">Destination <br/> for <br/>Delivery of <br/> Goods</th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">In figures</th>
-                                    <th scope="col"> In words</th>
-                                    <th scope="col"> In figures/inwords</th>
+                    </div>
 
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td> DRiCM,BCSIR</td>
-                                </tr>
+                    <div className="row">
+                        <div id="StandardJumbo" className="col-md-9 jumbotron text-center">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="page-header">
+                                        <img src="img/logo.png" className="center-block"/>
+                                        <h2> Designated Reference Institute for Chemical Measurements (DRiCM)</h2>
+                                        <h3> Bangladesh Council of Scientific & Industrial Research (BCSIR) </h3>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-md-12 text-center">
+                                            <p id="text-stnd">
+                                                Quotation Submission Letter <br/>
+                                                <strong>Use Letter-head Pad</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <div className="text-left">
+                                                <strong>RFQ NO : </strong> ...........................
+                                            </div>
 
-                                <tr>
-                                    <td rowSpan="1">2</td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td rowSpan="1"> DRiCM,BCSIR</td>
-                                </tr>
 
-                                <tr>
-                                    <td rowSpan="1">3</td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td rowSpan="1"> DRiCM,BCSIR</td>
-                                </tr>
+                                        </div>
+                                        <div className="col-md-6 text-right">
+                                            DATE : ........................
+                                        </div>
+                                    </div>
 
-                                <tr>
-                                    <td rowSpan="1">4</td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td rowSpan="1"> DRiCM,BCSIR</td>
-                                </tr>
+                                    <div id="text-stnd" className="text-left">
+                                        TO <br/>
+                                        [Name and address of Procuring Entity]
 
-                                <tr>
-                                    <td rowSpan="1">5</td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td rowSpan="1"> DRiCM,BCSIR</td>
-                                </tr>
-                                <tr>
-                                    <td rowSpan="1">6</td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td rowSpan="1"> DRiCM,BCSIR</td>
-                                </tr>
+                                    </div>
 
-                                <tr>
-                                    <td rowSpan="1">7</td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td rowSpan="1"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td scope="col"></td>
-                                    <td rowSpan="1"> DRiCM,BCSIR</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td colSpan="5" rowSpan="2" scope="colgroup" className="text-center"><strong>Total
-                                        Amount for Supply of Goods and related services <br/>
-                                        (inclusive of VAT and all applicable taxes; see Note 2 below) </strong></td>
+                                    <div classID="standardbody">
+                                        <p className="text">
+                                            I/We, the undersigned, offer to supply in conformity with the Terms and
+                                            Conditions for delivery of the Goods and related services named <strong>Supply
+                                            of
+                                            .................................. </strong>
+                                        </p>
 
-                                    <td scope="colgroup">Inwords</td>
-                                    <td ></td>
+                                        <p className="text">
+                                            The total Price of my/our Quotation is BDT <strong>[insert amount both in
+                                            figure
+                                            and words] </strong>
+                                        </p>
 
-                                    <td rowSpan="1"></td>
-                                </tr>
+                                        <p className="text">
+                                            My/Our Quotation shall remain valid for the period stated in the RFQ
+                                            Document
+                                            and it shalll remain binding upon us and, may be accepted at any time prior
+                                            to
+                                            the expiration of its validity period.
+                                        </p>
 
-                                <tr>
-                                    <td scope="colgroup">Inwords</td>
-                                    <td ></td>
 
-                                    <td rowSpan="1"></td>
-                                </tr>
+                                        <p className="text">
+                                            I/We declare that I/we have the legal capacity to enter into a contract with
+                                            you, and have not been declared ineligible by the Government of Bangladesh
+                                            on
+                                            charges of engaging in corrupt, fraudulent, collusive or coercive practices.
+                                            Furthermore, I/we am/are aware of Para 21(b) of the Terms and Conditions and
+                                            pledge not to indulge in such practices in competing for or completion of
+                                            delivery of Goods.
+                                        </p>
 
-                                <tr>
-                                    <td colSpan="3" scope="colgroup" className="text-left"> Goods to be supplied to</td>
+                                        <p className="text">
+                                            I/We am/are not submitting more than one Quotation in this RFQ process in
+                                            my/our
+                                            own name or other name or in different names. I/We understand that the
+                                            Purchase
+                                            Order issued by you shall constitute the Contract and will be binding upon
+                                            me/us.
+                                        </p>
 
-                                    <td colSpan="9" scope="colgroup" className="text-center"> [insert destination of
-                                        Goods]
-                                    </td>
+                                        <p className="text">
+                                            I/We have examined and have no reservations to the RFQ Document issued by
+                                            you on
+                                            <strong> [insert date] </strong>
+                                        </p>
 
-                                </tr>
+                                        <p className="text">
+                                            I/We understand that you reserve the right to reject all the Quotations or
+                                            annul
+                                            the procurement proceedings without incurring any liability to me/us.
+                                        </p>
 
-                                <tr>
-                                    <td colSpan="3" scope="colgroup" className="text-left"> Total Amount in taka
-                                        (inwords)
-                                    </td>
+                                    </div>
+                                    <p className="text text-right">
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        Signature of Quotationer with Seal <br/>
+                                        Date:
 
-                                    <td colSpan="9" scope="colgroup" className="text-center"> [enter the Total Amount as
-                                        in Col.8 above for the delivery of Goods and related services].
-                                    </td>
 
-                                </tr>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-                                <tr>
-                                    <td colSpan="3" scope="colgroup" className="text-left"> Delivery Offered</td>
+                    </div>
 
-                                    <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/days] from
-                                        date of issuing the Purchase Order]
-                                    </td>
 
-                                </tr>
+                    <div className="row">
+                        <div id="StandardJumbo" className="col-md-9 jumbotron text-center">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="page-header">
+                                        <img src="img/logo.png" className="center-block"/>
+                                        <h2> Designated Reference Institute for Chemical Measurements (DRiCM)</h2>
+                                        <h3> Bangladesh Council of Scientific & Industrial Research (BCSIR) </h3>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-md-12 text-center">
+                                            <p id="text-stnd">
+                                                <strong>Use Price Schedule for ................................</strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <div className="text-left">
+                                                <strong>RFQ NO : </strong> ...........................
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6 text-right">
+                                            DATE : ........................
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="table table-bordered table-responsive">
+                                <table className="table">
 
-                                <tr>
-                                    <td colSpan="3" scope="colgroup" className="text-left"> Warranty Provided</td>
+                                    <thead>
+                                    <tr>
+                                        <th rowSpan="2">Item No</th>
+                                        <th rowSpan="2">Description of Items</th>
+                                        <th rowSpan="2">Unit of Measurement</th>
+                                        <th rowSpan="2">Qty</th>
+                                        <th colSpan="2" scope="colgroup">Unit rate or price</th>
+                                        <th rowSpan="1" colSpan="1" scope="colgroup">Total amount</th>
+                                        <th rowSpan="2">Destination <br/> for <br/>Delivery of <br/> Goods</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">In figures</th>
+                                        <th scope="col"> In words</th>
+                                        <th scope="col"> In figures/inwords</th>
 
-                                    <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/months from
-                                        date of completion of the delivery; state none if not applicable]
-                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td> DRiCM,BCSIR</td>
+                                    </tr>
 
-                                </tr>
+                                    <tr>
+                                        <td rowSpan="1">2</td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td rowSpan="1"> DRiCM,BCSIR</td>
+                                    </tr>
 
-                                </tbody>
+                                    <tr>
+                                        <td rowSpan="1">3</td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td rowSpan="1"> DRiCM,BCSIR</td>
+                                    </tr>
 
-                            </table>
+                                    <tr>
+                                        <td rowSpan="1">4</td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td rowSpan="1"> DRiCM,BCSIR</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td rowSpan="1">5</td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td rowSpan="1"> DRiCM,BCSIR</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowSpan="1">6</td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td rowSpan="1"> DRiCM,BCSIR</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td rowSpan="1">7</td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td rowSpan="1"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td scope="col"></td>
+                                        <td rowSpan="1"> DRiCM,BCSIR</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td colSpan="5" rowSpan="2" scope="colgroup" className="text-center"><strong>Total
+                                            Amount for Supply of Goods and related services <br/>
+                                            (inclusive of VAT and all applicable taxes; see Note 2 below) </strong></td>
+
+                                        <td scope="colgroup">Inwords</td>
+                                        <td ></td>
+
+                                        <td rowSpan="1"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td scope="colgroup">Inwords</td>
+                                        <td ></td>
+
+                                        <td rowSpan="1"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colSpan="3" scope="colgroup" className="text-left"> Goods to be supplied
+                                            to
+                                        </td>
+
+                                        <td colSpan="9" scope="colgroup" className="text-center"> [insert destination of
+                                            Goods]
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td colSpan="3" scope="colgroup" className="text-left"> Total Amount in taka
+                                            (inwords)
+                                        </td>
+
+                                        <td colSpan="9" scope="colgroup" className="text-center"> [enter the Total
+                                            Amount as
+                                            in Col.8 above for the delivery of Goods and related services].
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td colSpan="3" scope="colgroup" className="text-left"> Delivery Offered</td>
+
+                                        <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/days]
+                                            from
+                                            date of issuing the Purchase Order]
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td colSpan="3" scope="colgroup" className="text-left"> Warranty Provided</td>
+
+                                        <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/months
+                                            from
+                                            date of completion of the delivery; state none if not applicable]
+                                        </td>
+
+                                    </tr>
+
+                                    </tbody>
+
+                                </table>
+
+
+                            </div>
+
+                            <p className="text"><strong>[insert number] number corrections made by me/us have been duly
+                                initialed
+                                in this Price Schedule. My/Our Offer is valid
+                                until dd/mm/yy [insert Quotation Validity date]. </strong></p>
 
 
                         </div>
-
-                        <p className="text"> <strong>[insert number] number corrections made by me/us have been duly initialed
-                            in this Price Schedule. My/Our Offer is valid
-                            until dd/mm/yy [insert Quotation Validity date]. </strong></p>
-
-
                     </div>
                 </div>
-            </div>
 
-        )
-            ;
+
+            );
+        }
+        else{
+            return (
+                <div>
+                    Loading
+                </div>
+            )
+        }
     }
 }
+
+
+StandardDocument.propTypes = {
+    RFQ: PropTypes.object
+};
+
+export default createContainer(props => {
+    return {
+        RFQ: RFQDetails.findOne(props.id)
+    };
+}, StandardDocument);
+
