@@ -49,6 +49,18 @@ export default class Not extends Component {
                                     </div>
 
                                 </a>
+                                <a href="#" className="notification col-md-12 ">
+                                    <div className="media-left">
+                                        <div className="media-object">
+                                            <img id="profile" src="/profile.jpg" alt="User Image"/>
+                                        </div>
+                                    </div>
+                                    <div className="media-body">
+                                        <p><strong>Laurine Hadima</strong> Asked for verification</p>
+                                        <p id="noti">7 March, 2017 at 8:30 am </p>
+                                    </div>
+
+                                </a>
 
                             </div>
                         </li>

@@ -154,7 +154,7 @@ input:focus::-webkit-input-placeholder {
     right: 0;
     z-index: 1000;
     display: none;
-    min-width: 250px;
+    min-width: 285px;
     margin: 2px 0 0;
     list-style: none;
     font-size: 12px;
@@ -319,22 +319,11 @@ input:focus::-webkit-input-placeholder {
     list-style: none;
     width: 100%;
     padding: 0;
-    text-decoration: none;
 }
 
 .notification {
     border-bottom: 1px solid #eeeeee;
     color: #333333;
-    text-decoration: none;
-}
-.notification:hover,
-.notification.active:hover {
-    background-color: #f9f9f9;
-    text-decoration: none;
-}
-.notification.active {
-    background-color: #f4f4f4;
-    text-decoration: none;
 }
 
 .notification-title {
@@ -343,22 +332,15 @@ input:focus::-webkit-input-placeholder {
 }
 .notification-meta {
     color: #777777;
-    text-decoration: none;
 }
 
-a.notification:hover,
 a.notification:active,
 a.notification{
+    color: black;
     text-decoration: none;
-    color: #2b2b2b;
 }
-.dropdown-notifications > .dropdown-container,
-.dropdown-notifications > .dropdown-menu {
-    width: 450px;
-    max-width: 450px;
-}
-.dropdown-notifications .dropdown-menu {
-    padding: 0;
+a.notification:hover{
+    color: darkkhaki;
 }
 
 .notification .media-body {
@@ -370,6 +352,10 @@ a.notification{
     text-decoration: none;
 }
 
+.media-object{
+    padding-top: 7px;
+}
+
 #noti{
     font-size: xx-small;
     font-style: italic;
@@ -377,6 +363,8 @@ a.notification{
     margin-top: -10px;
 
 }
+
+
 
 .navbar-custom{
     background: darkgreen;
