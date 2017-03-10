@@ -135,6 +135,12 @@ input:focus::-webkit-input-placeholder {
 #sidejumbotron{
     margin: 0;
     padding: 0;
+    margin-top: 40px;
+}
+
+#rfqimg{
+    width: 120px;
+    height: 120px;
 }
 
 
@@ -321,9 +327,11 @@ input:focus::-webkit-input-placeholder {
     padding: 0;
 }
 
+
 .notification {
     border-bottom: 1px solid #eeeeee;
     color: #333333;
+
 }
 
 .notification-title {
@@ -340,7 +348,7 @@ a.notification{
     text-decoration: none;
 }
 a.notification:hover{
-    color: darkkhaki;
+    color: darkgrey;
 }
 
 .notification .media-body {
@@ -352,6 +360,11 @@ a.notification:hover{
     text-decoration: none;
 }
 
+#dashrfq{
+    font-size:10px;
+    font-style: italic;
+    line-height: 0.8;
+}
 .media-object{
     padding-top: 7px;
 }
@@ -385,6 +398,8 @@ a.notification:hover{
     padding:15px;
 
 }
+
+
 
 #chahidajumbo{
     border: 1px solid;

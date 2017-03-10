@@ -26,7 +26,7 @@ class Dash extends Component {
         return (
             <div>
                 <div className="container">
-                    <div className="jumbotron text-center">
+                    <div classID="Dasboardjumbo" className="jumbotron text-center">
                         <h1 className="page-header"> Designated Reference for Institute of Chemical Measurements</h1>
                         <button onClick={this.createRFQ.bind(this)} type="button" className="btn btn-primary"
                                 data-toggle="modal" data-target="#popupwindow">
