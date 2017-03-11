@@ -1,9 +1,100 @@
-import React, {Component, PropTypes} from 'react';
-import {createContainer} from 'meteor/react-meteor-data';
-import ReactDOM from 'react-dom';
+import React, {Component, PropTypes} from "react";
+import {createContainer} from "meteor/react-meteor-data";
 
 class StandardDocument extends Component {
-    dateToday() {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            RFQno: ""
+        }
+    }
+
+    static convertNumberToWords(amount) {
+        var words = [];
+        words[0] = '';
+        words[1] = 'One';
+        words[2] = 'Two';
+        words[3] = 'Three';
+        words[4] = 'Four';
+        words[5] = 'Five';
+        words[6] = 'Six';
+        words[7] = 'Seven';
+        words[8] = 'Eight';
+        words[9] = 'Nine';
+        words[10] = 'Ten';
+        words[11] = 'Eleven';
+        words[12] = 'Twelve';
+        words[13] = 'Thirteen';
+        words[14] = 'Fourteen';
+        words[15] = 'Fifteen';
+        words[16] = 'Sixteen';
+        words[17] = 'Seventeen';
+        words[18] = 'Eighteen';
+        words[19] = 'Nineteen';
+        words[20] = 'Twenty';
+        words[30] = 'Thirty';
+        words[40] = 'Forty';
+        words[50] = 'Fifty';
+        words[60] = 'Sixty';
+        words[70] = 'Seventy';
+        words[80] = 'Eighty';
+        words[90] = 'Ninety';
+        amount = amount.toString();
+        var atemp = amount.split(".");
+        var number = atemp[0].split(",").join("");
+        var n_length = number.length;
+        var words_string = "";
+        var value;
+        if (n_length <= 9) {
+            var n_array = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+            var received_n_array = new Array();
+            for (var i = 0; i < n_length; i++) {
+                received_n_array[i] = number.substr(i, 1);
+            }
+            for (var i = 9 - n_length, j = 0; i < 9; i++, j++) {
+                n_array[i] = received_n_array[j];
+            }
+            for (var i = 0, j = 1; i < 9; i++, j++) {
+                if (i == 0 || i == 2 || i == 4 || i == 7) {
+                    if (n_array[i] == 1) {
+                        n_array[j] = 10 + parseInt(n_array[j]);
+                        n_array[i] = 0;
+                    }
+                }
+            }
+            value = "";
+            for (var i = 0; i < 9; i++) {
+                if (i == 0 || i == 2 || i == 4 || i == 7) {
+                    value = n_array[i] * 10;
+                } else {
+                    value = n_array[i];
+                }
+                if (value != 0) {
+                    words_string += words[value] + " ";
+                }
+                if ((i == 1 && value != 0) || (i == 0 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Crores ";
+                }
+                if ((i == 3 && value != 0) || (i == 2 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Lakhs ";
+                }
+                if ((i == 5 && value != 0) || (i == 4 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Thousand ";
+                }
+                if (i == 6 && value != 0 && (n_array[i + 1] != 0 && n_array[i + 2] != 0)) {
+                    words_string += "Hundred and ";
+                } else if (i == 6 && value != 0) {
+                    words_string += "Hundred ";
+                }
+            }
+            words_string = words_string.split("  ").join(" ");
+        }
+        return words_string;
+    }
+
+
+    static dateToday() {
         var d = new Date();
         var date = d.getDate();
         var month = d.getMonth() + 1;
@@ -17,8 +108,40 @@ class StandardDocument extends Component {
         return <p id="datetodaystand"><strong>Date : {dateshow}</strong></p>;
     }
 
+    RFQnoChange(evt) {
+        var item = {
+            id: evt.target.id,
+            name: evt.target.name,
+            value: evt.target.value
+        };
+        this.setState({
+            RFQno: item.value
+        })
+    }
+
+    genTable() {
+        var that = this;
+        return (
+            this.props.chahida.details.map(function (detailsrow) {
+                return (
+                    <tr key={detailsrow.id}>
+                        <td className="col-md-1 text-center">{detailsrow.item_no}</td>
+                        <td className="col-md-4 text-left">{detailsrow.desc}</td>
+                        <td className="col-md-2 text-right">{detailsrow.unit}</td>
+                        <td className="col-md-1 text-right">{detailsrow.qty}</td>
+                        <td className="col-md-2 text-right"></td>
+                        <td className="col-md-2 text-right"></td>
+                        <td className="col-md-2 text-right"></td>
+                        <td> DRiCM,BCSIR</td>
+                    </tr>
+
+                );
+            })
+        )
+    }
+
     render() {
-        if (this.props.RFQ) {
+        if (this.props.RFQ && this.props.chahida) {
             return (
                 <div className="container">
                     <div className="row">
@@ -33,8 +156,8 @@ class StandardDocument extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-md-12 text-center">
-                                            <p id="text-stnd"> <strong>REQUEST FOR QUOTATION </strong><br/> for <br/>
-                                                <strong> Supply of {this.props.RFQ.title}</strong> </p>
+                                            <p id="text-stnd"><strong>REQUEST FOR QUOTATION </strong><br/> for <br/>
+                                                <strong> Supply of {this.props.RFQ.title}</strong></p>
                                         </div>
                                     </div>
                                 </div>
@@ -47,13 +170,15 @@ class StandardDocument extends Component {
                                                 <div className="col-md-12 form-style-4">
                                                     <label htmlFor="sutrono">
                                                         <span>RFQ NO : </span>
-                                                        <input ref="sutrono" placeholder="RFQ NO" name="sutrono" type="text"/>
+                                                        <input onChange={this.RFQnoChange.bind(this)}
+                                                               ref="sutrono" placeholder="RFQ NO" name="sutrono"
+                                                               type="text"/>
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
-                                            {this.dateToday()}
+                                            {StandardDocument.dateToday()}
                                         </div>
                                     </div>
 
@@ -258,13 +383,13 @@ class StandardDocument extends Component {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="text-left">
-                                                <strong>RFQ NO : </strong> ...........................
+                                                <strong>RFQ NO : </strong> {this.state.RFQno}
                                             </div>
 
 
                                         </div>
                                         <div className="col-md-6 text-right">
-                                            DATE : ........................
+                                            {StandardDocument.dateToday()}
                                         </div>
                                     </div>
 
@@ -279,7 +404,7 @@ class StandardDocument extends Component {
                                             I/We, the undersigned, offer to supply in conformity with the Terms and
                                             Conditions for delivery of the Goods and related services named <strong>Supply
                                             of
-                                            .................................. </strong>
+                                            {this.props.RFQ.title} </strong>
                                         </p>
 
                                         <p className="text">
@@ -359,7 +484,7 @@ class StandardDocument extends Component {
                                     <div className="row">
                                         <div className="col-md-12 text-center">
                                             <p id="text-stnd">
-                                                <strong>Use Price Schedule for ................................</strong>
+                                                <strong>Use Price Schedule for {this.props.RFQ.title}</strong>
                                             </p>
                                         </div>
                                     </div>
@@ -370,17 +495,17 @@ class StandardDocument extends Component {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="text-left">
-                                                <strong>RFQ NO : </strong> ...........................
+                                                <strong>RFQ NO : </strong> {this.state.RFQno}
                                             </div>
                                         </div>
                                         <div className="col-md-6 text-right">
-                                            DATE : ........................
+                                            {StandardDocument.dateToday()}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="table table-bordered table-responsive">
-                                <table className="table">
+                                <table id="customers" className="table">
 
                                     <thead>
                                     <tr>
@@ -398,81 +523,8 @@ class StandardDocument extends Component {
                                         <th scope="col"> In figures/inwords</th>
 
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td> DRiCM,BCSIR</td>
-                                    </tr>
+                                    {this.genTable()}
 
-                                    <tr>
-                                        <td rowSpan="1">2</td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td rowSpan="1"> DRiCM,BCSIR</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td rowSpan="1">3</td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td rowSpan="1"> DRiCM,BCSIR</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td rowSpan="1">4</td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td rowSpan="1"> DRiCM,BCSIR</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td rowSpan="1">5</td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td rowSpan="1"> DRiCM,BCSIR</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowSpan="1">6</td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td rowSpan="1"> DRiCM,BCSIR</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td rowSpan="1">7</td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td rowSpan="1"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td scope="col"></td>
-                                        <td rowSpan="1"> DRiCM,BCSIR</td>
-                                    </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
@@ -480,14 +532,14 @@ class StandardDocument extends Component {
                                             Amount for Supply of Goods and related services <br/>
                                             (inclusive of VAT and all applicable taxes; see Note 2 below) </strong></td>
 
-                                        <td scope="colgroup">Inwords</td>
+                                        <td scope="colgroup">In figures</td>
                                         <td ></td>
 
                                         <td rowSpan="1"></td>
                                     </tr>
 
                                     <tr>
-                                        <td scope="colgroup">Inwords</td>
+                                        <td scope="colgroup">In Words</td>
                                         <td ></td>
 
                                         <td rowSpan="1"></td>
@@ -556,7 +608,7 @@ class StandardDocument extends Component {
 
             );
         }
-        else{
+        else {
             return (
                 <div>
                     Loading
@@ -572,8 +624,14 @@ StandardDocument.propTypes = {
 };
 
 export default createContainer(props => {
+    var RFQ = RFQDetails.findOne(props.id);
+    var chahida;
+    if (RFQ) {
+        chahida = Chahida_Potro.findOne(RFQ.chahida_id);
+    }
     return {
-        RFQ: RFQDetails.findOne(props.id)
+        RFQ: RFQDetails.findOne(props.id),
+        chahida: chahida
     };
 }, StandardDocument);
 

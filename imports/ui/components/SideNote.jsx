@@ -54,7 +54,7 @@ export default class SideNote extends Component {
                     <nav className=" navbar-custom navbar navbar-default text-center">
                         <div className="container">
                             <div className="navbar-header">
-                                <a onClick={this.createStandard.bind(this)} className="navbar-brand" href="#">
+                                <a className="navbar-brand" href={"/StandardDocument/"+ this.props.RFQ._id}>
                                     Standard Document</a>
                             </div>
                         </div>

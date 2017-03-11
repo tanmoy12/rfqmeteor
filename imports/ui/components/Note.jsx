@@ -34,10 +34,11 @@ class Note extends Component {
                         <div className="col-md-9 jumbotron text-center">
                             <div className="row">
                                 <div className="col-md-12">
-                                    <div className="page-header">
-                                        <img src="/dricmlogo.jpg" className="center-block"/>
-                                        <h2> ডেসিগ্নাতেদ রেফ্রেঞ্চে ইন্সিটিউট অফ কেমিক্যাল মেযারমেন্তস</h2>
+                                    <div className="title-top col-md-12">
+                                        <img src="../dricmlogo.jpg" className="center-block"/>
+                                        <h3> ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস </h3>
                                         <h3> বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ </h3>
+                                        <hr/>
                                     </div>
                                 </div>
                             </div>

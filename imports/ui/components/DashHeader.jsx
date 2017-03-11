@@ -45,7 +45,7 @@ class DashHeader extends Component {
                             <span className="icon-bar"></span>
                         </button>
 
-                        <button onClick={this.gotoHome.bind(this)} className="btn btn-link navbar-brand">DRICM</button>
+                        <a onClick={this.gotoHome.bind(this)} className="btn btn-link navbar-brand">DRICM</a>
                     </div>
 
 
