@@ -16,8 +16,8 @@ export default class RFQBox extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div id="sidejumbotron" className="col-md-6 jumbotron">
-                            <nav className=" navbar-custom navbar navbar-default text-center">
-                                <div className="container">
+                            <nav className=" navbar-custom navbar navbar-default">
+                                <div className="container ">
                                     <div className="navbar-header">
                                         <button className="btn btn-link navbar-brand">title of RFQ</button>
                                     </div>
@@ -47,7 +47,7 @@ export default class RFQBox extends Component {
                         </div>
 
                         <div id="sidejumbotron" className="col-md-6 jumbotron">
-                            <nav className=" navbar-custom navbar navbar-default text-center">
+                            <nav className=" navbar-custom navbar navbar-default">
                                 <div className="container">
                                     <div className="navbar-header">
                                         <button className="btn btn-link navbar-brand "> RFQ</button>
