@@ -41,28 +41,19 @@ export default class SignUp extends Component {
         return (
             <div className="container">
                 <form onSubmit={this.handleRegister.bind(this)}>
-                    <div className="col-sm-9">
-                        <div className="form-group">
+                    <div className="login">
+                        <h2 className="signUpHeader">Sign Up</h2>
+                        <input className="signUpInput" ref='firstname' placeholder='First Name' type='text'/>
+                        <input className="signUpInput" ref='lastname' placeholder='Last Name' type='text'/>
+                        <input className="signUpInput" ref='email' placeholder='Email' type='email'/>
+                        <input className="signUpInput" ref='mobno' placeholder='Mobile No' type='text'/>
+                        <input className="signUpInput" ref='username' placeholder='Username' type='text'/>
 
-                                <input ref="username" type="text" placeholder="Username"
-                                       className="form-control"/>
-
-                        </div>
-
-
-                        <div className="form-group">
-                            <input type="text" placeholder="Email or mobile number" ref="email"
-                                   className="form-control"/>
-                        </div>
-                        <div className="form-group">
-                            <input type="password" placeholder="New password" ref="password"
-                                   className="form-control"/>
-                        </div>
-                        <div className="form-group col-md-10 col-sm-6">
+                        <div className="signUpInput">
                             <select ref="designation" className="form-control">
-                                <option>Scientific Officer</option>
-                                <option>Accounting Officer</option>
-                                <option>Director</option>
+                                <option className="form-control">Scientific Officer</option>
+                                <option className="form-control">Accounting Officer</option>
+                                <option className="form-control">Director</option>
                             </select>
                         </div>
                         <button type="submit" className="btn btn-md btn-success">Sign Up</button>

@@ -115,6 +115,12 @@ ChahidaPotroSchema = new SimpleSchema({
     director: {
         type: UserSignFalse,
         optional: true
+    },
+    year : {
+        type: String
+    },
+    upokhat : {
+        type: String
     }
 });
 

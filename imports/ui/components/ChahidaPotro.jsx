@@ -12,6 +12,7 @@ class ChahidaPotro extends Component {
             products: [],
             estimate: 0,
             signed: false,
+            title: ""
 
         };
     }
@@ -135,6 +136,17 @@ class ChahidaPotro extends Component {
             dateshow = date + '/' + month + '/' + year;
         }
         return <p id="datetoday"><strong>Date : {dateshow}</strong></p>;
+    }
+
+    RFQtitleChange(evt) {
+        var item = {
+            id: evt.target.id,
+            name: evt.target.name,
+            value: evt.target.value
+        };
+        this.setState({
+            title: item.value
+        })
     }
 
     handleCreate(e) {
@@ -283,18 +295,17 @@ class ChahidaPotro extends Component {
                                         অন্তকালীন
                                         ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস (ডিআরআইসিএম) - এ
                                         নিম্নক্ত
-                                        <input ref="title" placeholder="RFQ Title" name="title" type="text"/>
+                                        <input ref="title" onChange={this.RFQtitleChange.bind(this)} placeholder="RFQ Title" name="title" type="text"/>
                                         ক্রয় করা প্রয়োজন। </p><br/>
 
                                     <Table
                                         sendData={(products, estimate) => this.getdatafromtable(products, estimate) }/>
 
                                     <p className="text">
-                                        ২। এ জন্য আনুমানিক {this.state.estimate}
-                                        (কথায়)
-                                        {this.convertNumberToWords(this.state.estimate)} টাকা ব্যয়।
+                                        ২। এ জন্য আনুমানিক {this.state.estimate}/-
+                                         (কথায়) {ChahidaPotro.convertNumberToWords(this.state.estimate)}  টাকা ব্যয়।
                                         <br/>
-                                        ৩। অতএব, উপরোক্ত বর্ণনামাতে ............................. ক্রয়ের অনুমোদনের জন্য বিনীতভাবে অনুরোধ জানানো যাচ্ছে।
+                                        ৩। অতএব, উপরোক্ত বর্ণনামাতে <strong>{this.state.title}</strong> ক্রয়ের অনুমোদনের জন্য বিনীতভাবে অনুরোধ জানানো যাচ্ছে।
                                     </p>
                                     <br/>
 
@@ -310,7 +321,9 @@ class ChahidaPotro extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <p className="text2"> ৪। উক্ত ব্যয় .............. অর্থ বছরের রাজস্ব
+                                    <p className="text2"> ৪। উক্ত ব্যয়
+                                        <input ref="title" onChange={this.RFQtitleChange.bind(this)} placeholder="RFQ Title" name="title" type="text"/>
+                                        অর্থ বছরের রাজস্ব
                                         বাজেটের
                                         সরবরাহ
                                         ও সেবা খাতের (ঊপখাতঃ রসায়ন দ্রব্যাদি ক্রয় নং-৪৮৫২) হতে ক্রয় প্রক্রিয়া

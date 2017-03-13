@@ -66,8 +66,12 @@ export default class Table extends Component {
 
         var newProducts = products.map(function (product) {
             for (var key in product) {
+                //console.log(key);
                 if (key == item.name && product.id == item.id) {
                     product[key] = item.value;
+                }
+                if(item.name == 'rate' || item.name == 'qty'){
+                    product['total'] = (Number(product.qty) * Number(product.rate));
                 }
             }
             return product;
@@ -77,7 +81,8 @@ export default class Table extends Component {
             total += Number(product.total);
         });
         this.setState({
-            estimate: total
+            estimate: total,
+            products: newProducts
         }, function () {
             this.props.sendData(this.state.products, this.state.estimate);
         });
@@ -179,7 +184,7 @@ class ProductRow extends React.Component {
                 </td>
                 <td className="col-md-2">
                     <input className="text-right" type='number' name="total" id={this.props.product.id}
-                           placeholder="0" onChange={this.props.onProductTableUpdate}/>
+                           value={this.props.product.total} placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>
                 <td>
                     <button type="button" onClick={this.onDelEvent.bind(this)} className="btn btn-default btn-xs">
