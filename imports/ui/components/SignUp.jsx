@@ -71,6 +71,10 @@ export default class SignUp extends Component {
             marginLeft: "42%"
         };
 
+        var inputFileWidth = {
+            width: "33%"
+        }
+
 
         if (this.state.type == 'comp') {
             //console.log("HIIII");
@@ -95,7 +99,30 @@ export default class SignUp extends Component {
 
                         <div >
 
-                            <input className="signUpInput" ref='companyname' placeholder='Company Name' type='text'/>
+
+
+                            <div className="row">
+                                <div className="col-md-7">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='companyname' placeholder='Company Name' type='text'/>
+
+
+                                    </div>
+                                </div>
+                                <div className="col-md-5">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="fileInput signUpInput"  id="f02" type="file" name="companylogo"
+                                               accept="application/pdf"/>
+                                        <label className="fileInputLabel signUpInput" for="f02">Add Company Logo</label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
                             <div className="row">
                                 <div className="col-md-7">
                                     <div className="input-group input-group-lg" style={fullWidth}>
@@ -103,16 +130,17 @@ export default class SignUp extends Component {
                                                placeholder='Trade License No.'
                                                type='text'/>
 
+
                                     </div>
                                 </div>
                                 <div className="col-md-5">
                                     <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="signUpInput" type="file" name="tradelicensepdf"
+                                        <input className="fileInput signUpInput"  id="f01" type="file" name="tradelicensepdf"
                                                accept="application/pdf"/>
+                                        <label className="fileInputLabel signUpInput" for="f01">Add Trade License</label>
                                     </div>
                                 </div>
                             </div>
-                            <input className="signUpInput" type="file" name="companylogo" accept="image/*"/>
                             <input className="signUpInput" ref='ownername' placeholder='Owner Name' type='text'/>
                             <input className="signUpInput" type="file" name="solvencypaperpdf"
                                    accept="application/pdf"/>

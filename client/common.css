@@ -826,6 +826,58 @@ input[type=number]::-webkit-outer-spin-button {
     color: #736e6b;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);
 }
+
+
+
+.fileInputLabel, .fileInput {
+    color: #333;
+    font: 14px/20px Arial;
+}
+.fileInputLabel {
+    display: inline-block;
+    /*width: 20%;*/
+    /*padding: 0 1em;*/
+    text-align: right;
+    z-index: 10;
+
+}
+
+/* Hide the file input using
+opacity */
+.fileInput {
+    position: absolute;
+    z-index: 12;
+    left: 4px;
+    top: 1.4em;
+    filter: alpha(opacity=0);
+    opacity: 0;
+
+}
+.fileInput,
+[type=file] + .fileInputLabel {
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    text-align: left;
+    padding: 10px;
+    width: 80%;
+    margin: 0;
+    left: 0;
+    position: relative;
+}
+[type=file] + .fileInputLabel {
+    text-align: center;
+    left: 0.35em;
+    top: -1.5em;
+    /* Decorative */
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+[type=file] + .fileInputLabel:hover {
+    background: #3399ff;
+    cursor: hand;
+}
 /*SIGN UP CSS ends*/
 
 
