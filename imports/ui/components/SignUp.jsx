@@ -141,9 +141,27 @@ export default class SignUp extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <input className="signUpInput" ref='ownername' placeholder='Owner Name' type='text'/>
-                            <input className="signUpInput" type="file" name="solvencypaperpdf"
-                                   accept="application/pdf"/>
+
+
+
+                            <div className="row">
+                                <div className="col-md-7">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='ownername'
+                                               placeholder='Owner Name' type='text'/>
+
+
+                                    </div>
+                                </div>
+                                <div className="col-md-5">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="fileInput signUpInput"  id="f03" type="file" name="solvencypaperpdf"
+                                               accept="application/pdf"/>
+                                        <label className="fileInputLabel signUpInput" for="f03">Add Solvency Paper</label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <textarea className="signUpInput" id="description" rows="5" cols="70"
                                       placeholder="Description"></textarea>
 
@@ -178,18 +196,40 @@ export default class SignUp extends Component {
                             </div>
 
 
+                            {/*<div className="row">*/}
+                                {/*<div className="col-md-6">*/}
+                                    {/*<div className="input-group input-group-lg" style={fullWidth}>*/}
+                                        {/*<input className="signUpInput" type="file" name="signature" accept="image/*"/>*/}
+
+                                    {/*</div>*/}
+                                {/*</div>*/}
+                                {/*<div className="col-md-6">*/}
+                                    {/*<div className="input-group input-group-lg" style={fullWidth}>*/}
+                                        {/*<input className="signUpInput" type="file" name="seal" accept="image/*"/></div>*/}
+                                {/*</div>*/}
+                            {/*</div>*/}
+
+
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="signUpInput" type="file" name="signature" accept="image/*"/>
+                                        <input className="fileInput signUpInput" id="f04" type="file" name="signature" accept="image/*"/>
+                                        <label className="fileInputLabel signUpInput" for="f04">Add Signature</label>
+
 
                                     </div>
                                 </div>
                                 <div className="col-md-6">
                                     <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="signUpInput" type="file" name="seal" accept="image/*"/></div>
+                                        <input className="fileInput signUpInput" type="file" id="f05" name="seal" accept="image/*"/>
+
+                                        <label className="fileInputLabel signUpInput" for="f05">Add Seal</label>
+                                    </div>
                                 </div>
                             </div>
+
+
+
 
                             <button type="submit" className="btn btn-md btn-success signUpSubmit" style={topMarign}>
                                 Sign Up
