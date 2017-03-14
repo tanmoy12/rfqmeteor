@@ -1,5 +1,9 @@
 import {check} from 'meteor/check';
 
+Meteor.publish('files.images.all', function () {
+    return ImagesCol.find().cursor;
+});
+
 Meteor.publish('rfqdetails', function () {
     return RFQDetails.find();
 });

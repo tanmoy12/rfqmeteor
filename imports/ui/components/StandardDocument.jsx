@@ -1,13 +1,23 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 
+import TableStandard from "./TableStandard";
+
 class StandardDocument extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            RFQno: ""
+            RFQno: "",
+            products: []
         }
+    }
+    getdatafromtable(products) {
+        this.setState({
+            products: products
+        });
+
+
     }
 
     static convertNumberToWords(amount) {
@@ -139,12 +149,70 @@ class StandardDocument extends Component {
             })
         )
     }
+    handleCreate(e){
+        e.preventDefault();
+        var productbool= true;
+        if (this.state.RFQno) {
+            this.state.products.map(function (product) {
+                if (product.spec && product.making) {
+
+                } else {
+                    productbool = false;
+                }
+            });
+            if (productbool) {
+                var StandardForm = {
+                    RFQ_no: this.state.RFQno,
+                    standard_details: this.state.products,
+
+                };
+                console.log(StandardForm);
+                StandardDocuments.insert(StandardForm, function (err, res) {
+                    if (err) Bert.alert('Unknown Error1!!', 'danger', 'growl-top-right');
+                    else {
+                        /*
+                        var RFQDetailsForm = {
+                            chahida_id: res,
+                            title: title,
+                            estimate: that.state.estimate
+                        };
+                        RFQDetails.insert(RFQDetailsForm, function (err, res) {
+                            if (err) Bert.alert('Unknown Error2!!', 'danger', 'growl-top-right');
+                            else {
+                                var Rfqid = res;
+                                var NotificationForm = {
+                                    from_id : Meteor.userId(),
+                                    to_id: ScOff,
+                                    type: 1,
+                                    title: title,
+                                    RFQ_id: Rfqid
+                                };
+                                NotificationsSchema.validate(NotificationForm);
+                                Notifications.insert(NotificationForm, function (err, res) {
+                                    if (err) Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');
+                                    else {
+                                        FlowRouter.go('/Note/' + Rfqid);
+                                    }
+                                })
+                            }
+                        });
+                        */
+                    }
+                })
+            } else {
+                Bert.alert('Please Fill up Table details!!', 'danger', 'growl-top-right');
+            }
+        } else {
+            Bert.alert('Please Fill up all Details!!', 'danger', 'growl-top-right');
+        }
+    }
 
     render() {
         if (this.props.RFQ && this.props.chahida) {
             return (
                 <div className="container">
                     <div className="row">
+
                         <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
                             <div className="row">
                                 <div className="col-md-12">
@@ -694,128 +762,9 @@ class StandardDocument extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="table table-bordered table-responsive">
-                                <table id="customers" className="table">
-
-                                    <thead>
-                                    <tr >
-                                        <th >SL No</th>
-                                        <th >Description of Items</th>
-                                        <th >Full Technical Specification
-                                            and Standards
-                                        </th>
-                                        <th>Make and Origin</th>
-                                        <th>Qty</th>
-                                    </tr>
-
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-
-                                        <td>2</td>
-                                        <td>3</td>
-
-                                        <td>4</td>
-                                        <td>5</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1</td>
-
-                                        <td>BSTFA</td>
-                                        <td>N, O- bis (trimethylsilyl) trifluoroacetamide
-                                            Grade: Derivatization Grade for GC derivatization
-                                            Pack Size: 25 mL
-                                        </td>
-
-                                        <td>To be Mentioned</td>
-                                        <td>01</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>2</td>
-
-                                        <td>Tert- butyldimethylsilyl trifluoromethanesulfonate</td>
-
-                                        <td>Tert- butyldimethylsilyl trifluoromethanesulfonate
-                                            Grade: GC derivatization
-                                            Pack Size: 10 mL
-                                        </td>
-
-                                        <td>To be Mentioned</td>
-                                        <td>01</td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td>3</td>
-
-                                        <td>N- tert- Butyldimethylsilyl- N- methyltrifluoroacetamide</td>
-
-                                        <td>N- tert- Butyldimethylsilyl- N methyltrifluoroacetamide
-                                            N- tert- Butyldimethylsilyl- N methyltrifluoroacetamide
-                                            with 1% tert- Butyldimethylchlorosilane
-                                            Pack Size: 10 mL
-
-                                        </td>
-
-                                        <td>To be Mentioned</td>
-                                        <td>01</td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td>4</td>
-
-                                        <td>1- (Trimethylsilyl)imidazole- Pyridine mixture</td>
-
-                                        <td>1- (Trimethylsilyl)imidazole- Pyridine mixture
-                                            Grade: GC derivatization
-                                            Assay: 98%
-                                            Pack Size: 10 mL
-
-
-                                        </td>
-
-                                        <td>To be Mentioned</td>
-                                        <td>01</td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td>5</td>
-
-                                        <td>Toluene</td>
-
-                                        <td>Toluene
-                                            Grade: Analytical standard
-                                            Pack Size: 5 mL
-                                        </td>
-
-                                        <td>To be Mentioned</td>
-                                        <td>01</td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td>6</td>
-
-                                        <td>Suprapure Nitric Acid</td>
-
-                                        <td>Nitric Acid
-                                            Grade: Suprapure
-                                            Pack Size: 250 mL
-                                        </td>
-
-                                        <td>To be Mentioned</td>
-                                        <td>01</td>
-                                    </tr>
-                                    </tbody>
-
-                                </table>
-
-
+                            <div>
+                                <TableStandard data={this.props.chahida.details}
+                                               sendData= {(products) => this.getdatafromtable(products) }/>
                             </div>
 
                             <p className="text">
@@ -874,7 +823,9 @@ class StandardDocument extends Component {
                                     literature/brochures for the listed items.
                                 </strong>
                             </p>
-
+                            <input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"
+                                   id="submit-all"
+                                   className="btn btn-primary" value="FORWARD"/>
                         </div>
                     </div>
 
@@ -899,7 +850,8 @@ class StandardDocument extends Component {
 
 
 StandardDocument.propTypes = {
-    RFQ: PropTypes.object
+    RFQ: PropTypes.object,
+    chahida: PropTypes.object
 };
 
 export default createContainer(props => {

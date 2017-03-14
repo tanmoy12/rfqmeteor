@@ -19,7 +19,7 @@ export default class RFQBox extends Component {
                             <nav className=" navbar-custom navbar navbar-default">
                                 <div className="container ">
                                     <div className="navbar-header">
-                                        <button className="btn btn-link navbar-brand">title of RFQ</button>
+                                        <button onClick={this.gotoNote.bind(this)} className="btn btn-link navbar-brand">{this.props.RFQItem.title}</button>
                                     </div>
                                 </div>
                             </nav>

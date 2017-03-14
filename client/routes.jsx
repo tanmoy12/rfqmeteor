@@ -11,6 +11,7 @@ import ChahidaPotroLoad from '../imports/ui/components/ChahidaPotroLoad';
 import Note from '../imports/ui/components/Note';
 import StandardDocument from '../imports/ui/components/StandardDocument';
 import LoginCaraousal from '../imports/ui/components/LoginCaraousal';
+import FileUpload from '../imports/ui/components/FileUpload';
 
 
 FlowRouter.route('/', {
@@ -36,6 +37,16 @@ FlowRouter.route('/Chahidapotro', {
         })
     }
 });
+
+FlowRouter.route('/File', {
+    action(){
+        mount(LayoutDash, {
+            content: (<FileUpload />)
+        })
+    }
+});
+
+
 FlowRouter.route('/demochahidapotro', {
     action(){
         mount(LayoutDash, {
