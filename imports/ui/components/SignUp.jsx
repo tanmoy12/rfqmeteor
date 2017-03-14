@@ -1,17 +1,23 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 export default class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: ''
+            message: '',
+            type: 'init',
+            bgColorComp: '#337ab7',
+            bgColorEmpl: '#337ab7'
+
         };
     }
-    handleRegister(e){
+
+
+    handleRegister(e) {
         e.preventDefault();
 
-        that=this;
+        that = this;
         var username = ReactDOM.findDOMNode(this.refs.username).value.trim();
         var email = ReactDOM.findDOMNode(this.refs.email).value.trim();
         var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
@@ -19,7 +25,7 @@ export default class SignUp extends Component {
 
         console.log(designation);
 
-        var User ={
+        var User = {
             username: username,
             email: email,
             password: password,
@@ -28,21 +34,56 @@ export default class SignUp extends Component {
             }
         };
         Accounts.createUser(User, function (err) {
-            if(err){
+            if (err) {
                 that.setState({
                     message: err.reason
                 });
             }
         });
 
+    }
+
+
+    compClicked() {
+        this.setState({
+            type: 'comp',
+            bgColorComp: 'darkred',
+            bgColorEmpl: '#337ab7'
+        });
     };
 
+    emplClicked() {
+        this.setState({
+            type: 'empl',
+            bgColorEmpl: 'darkred',
+            bgColorComp: '#337ab7'
+        });
+    };
+
+
     render() {
-        return (
-            <div className="container">
-                <form onSubmit={this.handleRegister.bind(this)}>
+
+        if (this.state.type == 'comp') {
+            //console.log("HIIII");
+            return (
+                <div className="container">
                     <div className="login">
                         <h2 className="signUpHeader">Sign Up</h2>
+                        <div className="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div className="btn-group" role="group">
+                                <button type="button" className="btn btn-primary"
+                                        onClick={this.compClicked.bind(this)}
+                                        style={{backgroundColor:this.state.bgColorComp}}>Company
+                                </button>
+                            </div>
+                            <div className="btn-group" role="group">
+                                <button type="button" className="btn btn-primary"
+                                        onClick={this.emplClicked.bind(this)}
+                                        style={{backgroundColor:this.state.bgColorEmpl}}>Employee</button>
+                            </div>
+                        </div>
+
+
                         <input className="signUpInput" ref='firstname' placeholder='First Name' type='text'/>
                         <input className="signUpInput" ref='lastname' placeholder='Last Name' type='text'/>
                         <input className="signUpInput" ref='email' placeholder='Email' type='email'/>
@@ -60,9 +101,67 @@ export default class SignUp extends Component {
                         <br/>
                         <p>{this.state.message}</p>
                     </div>
-                </form>
+                </div>
+            );
+        }
+        if (this.state.type == 'init') {
+            return (
+                <div className="container">
+                    <form onSubmit={this.handleRegister.bind(this)}>
+                        <div className="login">
 
-            </div>
-        );
+                            <h2 className="signUpHeader">Sign Up</h2>
+
+                            <div className="btn-group btn-group-justified" role="group" aria-label="...">
+                                <div className="btn-group" role="group">
+                                    <button type="button" className="btn btn-primary"
+                                            onClick={this.compClicked.bind(this)}
+                                            style={{backgroundColor:this.state.bgColorComp}}>Company
+                                    </button>
+                                </div>
+                                <div className="btn-group" role="group">
+                                    <button type="button" className="btn btn-primary"
+                                            onClick={this.emplClicked.bind(this)}
+                                            style={{backgroundColor:this.state.bgColorEmpl}}>Employee</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+
+                </div>
+            );
+        }
+
+        if (this.state.type == 'empl') {
+            return (
+                <div className="container">
+                    <form onSubmit={this.handleRegister.bind(this)}>
+                        <div className="login">
+
+                            <h2 className="signUpHeader">Sign Up</h2>
+
+                            <div className="btn-group btn-group-justified" role="group" aria-label="...">
+                                <div className="btn-group" role="group">
+                                    <button type="button" className="btn btn-primary"
+                                            onClick={this.compClicked.bind(this)}
+                                            style={{backgroundColor:this.state.bgColorComp}}>Company
+                                    </button>
+                                </div>
+                                <div className="btn-group" role="group">
+                                    <button type="button" className="btn btn-primary"
+                                            onClick={this.emplClicked.bind(this)}
+                                            style={{backgroundColor:this.state.bgColorEmpl}}>Employee</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form>
+
+                </div>
+            );
+        }
     }
 }

@@ -674,6 +674,7 @@ input[type=number]::-webkit-outer-spin-button {
     /*background: rgba(0,0,0,0.2);*/
     background: #EAEBEF;
     padding-left: 4%;
+    padding-right: 4%;
     padding-top: 2%;
     padding-bottom: 2%;
     border-radius: 5px;
@@ -691,6 +692,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 1%;
     margin-left: -6%;
     font-size: larger;
+    margin-bottom: 3%;
 }
 
 .signUpInput {
@@ -739,6 +741,32 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .signUpSubmit:hover {
     background: #16aa56;
+}
+
+.signUpTypeSelector {
+    /*background: #5cb85c;*/
+    /*border: 0;*/
+    /*width: 15%;*/
+    /*height: 100%;*/
+    /*!*margin-top: 7%;*!*/
+    /*margin-left: 39%;*/
+    /*!*padding-top: 1%;*!*/
+    /*!*padding-bottom: 1%;*!*/
+    /*border-radius: 3px;*/
+    /*color: white;*/
+    /*cursor: pointer;*/
+    /*transition: background 0.3s ease-in-out;*/
+    /*text-align: center;*/
+    /*transform: scale(1.2);*/
+    /*font-size: 80%;*/
+    /*box-shadow: 1px 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);*/
+    /*display: inline;*/
+
+
+}
+.signUpTypeSelector:hover {
+    background: #16aa56;
+    cursor: hand;
 }
 
 .forgot {
