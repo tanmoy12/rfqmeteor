@@ -574,8 +574,8 @@ th{
 td>input[type="text"], textarea {
     outline: none;
     font-size: medium;
-    box-shadow:none !important;
-    border:0 solid #ccc !important;
+    box-shadow:none ;
+    border:0 solid #ccc ;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -587,8 +587,8 @@ td{
 td>input[type="number"], textarea {
     outline: none;
     font-size: medium;
-    box-shadow:none !important;
-    border:0 solid #ccc !important;
+    box-shadow:none ;
+    border:0 solid #ccc ;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -677,8 +677,11 @@ input[type=number]::-webkit-outer-spin-button {
     padding-right: 4%;
     padding-top: 2%;
     padding-bottom: 2%;
+    margin-bottom: 2%;
     border-radius: 5px;
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);
+    -webkit-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
     font-size: large;
 }
 
@@ -696,7 +699,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .signUpInput {
-    width: 90%;
+    width: 100%;
     padding: 25px 0px;
     background: transparent;
     border: 0;
@@ -706,6 +709,10 @@ input[type=number]::-webkit-outer-spin-button {
     outline: none;
     color: #46485c;
     /*box-shadow: 0px 1px 0px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);*/
+}
+
+.signUpInputInline {
+
 }
 
 .signUpOption {
@@ -737,7 +744,10 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
     transform: scale(1.2);
     font-size: 80%;
-    box-shadow: 1px 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);
+    /*box-shadow: 1px 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);*/
+    -webkit-box-shadow: 0px 4px 21px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 21px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 21px -4px rgba(0,0,0,0.75);
 }
 .signUpSubmit:hover {
     background: #16aa56;

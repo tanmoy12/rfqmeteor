@@ -62,6 +62,15 @@ export default class SignUp extends Component {
 
 
     render() {
+        var fullWidth = {
+            width: "100%"
+        };
+
+        var topMarign = {
+            marginTop: "8%",
+            marginLeft: "42%"
+        };
+
 
         if (this.state.type == 'comp') {
             //console.log("HIIII");
@@ -73,33 +82,93 @@ export default class SignUp extends Component {
                             <div className="btn-group" role="group">
                                 <button type="button" className="btn btn-primary"
                                         onClick={this.compClicked.bind(this)}
-                                        style={{backgroundColor:this.state.bgColorComp}}>Company
+                                        style={{backgroundColor: this.state.bgColorComp}}>Company
                                 </button>
                             </div>
                             <div className="btn-group" role="group">
                                 <button type="button" className="btn btn-primary"
                                         onClick={this.emplClicked.bind(this)}
-                                        style={{backgroundColor:this.state.bgColorEmpl}}>Employee</button>
+                                        style={{backgroundColor: this.state.bgColorEmpl}}>Employee
+                                </button>
                             </div>
                         </div>
 
+                        <div >
 
-                        <input className="signUpInput" ref='firstname' placeholder='First Name' type='text'/>
-                        <input className="signUpInput" ref='lastname' placeholder='Last Name' type='text'/>
-                        <input className="signUpInput" ref='email' placeholder='Email' type='email'/>
-                        <input className="signUpInput" ref='mobno' placeholder='Mobile No' type='text'/>
-                        <input className="signUpInput" ref='username' placeholder='Username' type='text'/>
+                            <input className="signUpInput" ref='companyname' placeholder='Company Name' type='text'/>
+                            <div className="row">
+                                <div className="col-md-7">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='tradelicenseno'
+                                               placeholder='Trade License No.'
+                                               type='text'/>
 
-                        <div className="signUpOption">
-                            <select ref="designation" className="optionStyle">
-                                <option className="optionStyle">Scientific Officer</option>
-                                <option className="optionStyle">Accounting Officer</option>
-                                <option className="optionStyle">Director</option>
-                            </select>
+                                    </div>
+                                </div>
+                                <div className="col-md-5">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" type="file" name="tradelicensepdf"
+                                               accept="application/pdf"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <input className="signUpInput" type="file" name="companylogo" accept="image/*"/>
+                            <input className="signUpInput" ref='ownername' placeholder='Owner Name' type='text'/>
+                            <input className="signUpInput" type="file" name="solvencypaperpdf"
+                                   accept="application/pdf"/>
+                            <textarea className="signUpInput" id="description" rows="5" cols="70"
+                                      placeholder="Description"></textarea>
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='email' placeholder='Email' type='email'/>
+
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='mobno' placeholder='Mobile No' type='text'/>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='username' placeholder='Username'
+                                               type='text'/>
+
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='password' placeholder='Password'
+                                               type='password'/></div>
+                                </div>
+                            </div>
+
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" type="file" name="signature" accept="image/*"/>
+
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" type="file" name="seal" accept="image/*"/></div>
+                                </div>
+                            </div>
+
+                            <button type="submit" className="btn btn-md btn-success signUpSubmit" style={topMarign}>
+                                Sign Up
+                            </button>
+                            <br/>
+                            <p>{this.state.message}</p>
                         </div>
-                        <button type="submit" className="btn btn-md btn-success signUpSubmit">Sign Up</button>
-                        <br/>
-                        <p>{this.state.message}</p>
                     </div>
                 </div>
             );
@@ -116,13 +185,14 @@ export default class SignUp extends Component {
                                 <div className="btn-group" role="group">
                                     <button type="button" className="btn btn-primary"
                                             onClick={this.compClicked.bind(this)}
-                                            style={{backgroundColor:this.state.bgColorComp}}>Company
+                                            style={{backgroundColor: this.state.bgColorComp}}>Company
                                     </button>
                                 </div>
                                 <div className="btn-group" role="group">
                                     <button type="button" className="btn btn-primary"
                                             onClick={this.emplClicked.bind(this)}
-                                            style={{backgroundColor:this.state.bgColorEmpl}}>Employee</button>
+                                            style={{backgroundColor: this.state.bgColorEmpl}}>Employee
+                                    </button>
                                 </div>
                             </div>
 
@@ -146,16 +216,24 @@ export default class SignUp extends Component {
                                 <div className="btn-group" role="group">
                                     <button type="button" className="btn btn-primary"
                                             onClick={this.compClicked.bind(this)}
-                                            style={{backgroundColor:this.state.bgColorComp}}>Company
+                                            style={{backgroundColor: this.state.bgColorComp}}>Company
                                     </button>
                                 </div>
                                 <div className="btn-group" role="group">
                                     <button type="button" className="btn btn-primary"
                                             onClick={this.emplClicked.bind(this)}
-                                            style={{backgroundColor:this.state.bgColorEmpl}}>Employee</button>
+                                            style={{backgroundColor: this.state.bgColorEmpl}}>Employee
+                                    </button>
                                 </div>
                             </div>
 
+                            <div className="signUpOption">
+                                <select ref="designation" className="optionStyle">
+                                    <option className="optionStyle">Scientific Officer</option>
+                                    <option className="optionStyle">Accounting Officer</option>
+                                    <option className="optionStyle">Director</option>
+                                </select>
+                            </div>
 
                         </div>
                     </form>
