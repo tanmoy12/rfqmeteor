@@ -8,8 +8,7 @@ StandardDocuments.allow({
         return !!userId;
     }
 });
-
-UserSignFalse= new SimpleSchema({
+UsersSignFalse= new SimpleSchema({
     user_id: {
         type: String,
         label: "user",
@@ -87,7 +86,7 @@ StandardDocumentSchema = new SimpleSchema({
         optional: true
     },
     director: {
-        type: UserSignFalse,
+        type: UsersSignFalse,
         optional: true
     }
 });

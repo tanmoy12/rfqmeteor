@@ -4,18 +4,7 @@ export default class TableStandard extends Component {
 
     constructor(props) {
         super(props);
-        var pro= [];
-        this.props.data.map(function (product) {
-            var Item = {
-                id: product.id,
-                item_no: product.item_no,
-                desc: product.desc,
-                spec: "Pack size: " + product.unit,
-                making: "To Be Mentioned",
-                qty: product.qty
-            }
-            pro.push(Item);
-        });
+
         this.state = {
             products: pro
         };
@@ -28,7 +17,6 @@ export default class TableStandard extends Component {
             name: evt.target.name,
             value: evt.target.value
         };
-        console.log("hghgh");
         var products = this.state.products;
 
         var newProducts = products.map(function (product) {

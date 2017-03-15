@@ -7,6 +7,10 @@ Meteor.publish('files.images.all', function () {
 Meteor.publish('rfqdetails', function () {
     return RFQDetails.find();
 });
+Meteor.publish('standards', function () {
+    return StandardDocuments.find();
+});
+
 Meteor.publish('rfqdetailsone', function (id) {
     return RFQDetails.find(id);
 });

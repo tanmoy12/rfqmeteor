@@ -7,9 +7,22 @@ class StandardDocument extends Component {
     constructor(props) {
         super(props);
 
+        var pro= [];
+        this.props.chahida.details.map(function (product) {
+            var Item = {
+                id: product.id,
+                item_no: product.item_no,
+                desc: product.desc,
+                spec: "Pack size: " + product.unit,
+                making: "To Be Mentioned",
+                qty: product.qty
+            }
+            pro.push(Item);
+        });
+
         this.state = {
             RFQno: "",
-            products: []
+            products: pro
         }
     }
     getdatafromtable(products) {
@@ -170,6 +183,7 @@ class StandardDocument extends Component {
                 StandardDocuments.insert(StandardForm, function (err, res) {
                     if (err) Bert.alert('Unknown Error1!!', 'danger', 'growl-top-right');
                     else {
+                        console.log(res);
                         /*
                         var RFQDetailsForm = {
                             chahida_id: res,
@@ -763,7 +777,7 @@ class StandardDocument extends Component {
                                 </div>
                             </div>
                             <div>
-                                <TableStandard data={this.props.chahida.details}
+                                <TableStandard data={this.state.products}
                                                sendData= {(products) => this.getdatafromtable(products) }/>
                             </div>
 
@@ -855,6 +869,7 @@ StandardDocument.propTypes = {
 };
 
 export default createContainer(props => {
+    Meteor.subscribe('standards');
     var RFQ = RFQDetails.findOne(props.id);
     var chahida;
     if (RFQ) {
