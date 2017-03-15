@@ -8,7 +8,7 @@ export default class SignUp extends Component {
             message: '',
             type: 'init',
             bgColorComp: '#337ab7',
-            bgColorEmpl: '#337ab7'
+            bgColorEmpl: '#337ab7',
 
         };
     }
@@ -43,6 +43,17 @@ export default class SignUp extends Component {
 
     }
 
+    changeLabel(){
+        // Name of file and placeholder
+        console.log("DHUKSIiIIIIIII");
+        // var file = this.files[0].name;
+        // var dflt = $(this).attr("placeholder");
+        // if($(this).val()!=""){
+        //     $(this).next().text(file);
+        // } else {
+        //     $(this).next().text(dflt);
+        // }
+    };
 
     compClicked() {
         this.setState({
@@ -113,7 +124,7 @@ export default class SignUp extends Component {
                                     <div className="input-group input-group-lg" style={fullWidth}>
                                         <input className="fileInput signUpInput"  id="f02" type="file" name="companylogo"
                                                accept="application/pdf"/>
-                                        <label className="fileInputLabel signUpInput" for="f02">Add Company Logo</label>
+                                        <label className="fileInputLabel signUpInput">Add Company Logo</label>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +148,7 @@ export default class SignUp extends Component {
                                     <div className="input-group input-group-lg" style={fullWidth}>
                                         <input className="fileInput signUpInput"  id="f01" type="file" name="tradelicensepdf"
                                                accept="application/pdf"/>
-                                        <label className="fileInputLabel signUpInput" for="f01">Add Trade License</label>
+                                        <label className="fileInputLabel signUpInput">Add Trade License</label>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +168,7 @@ export default class SignUp extends Component {
                                     <div className="input-group input-group-lg" style={fullWidth}>
                                         <input className="fileInput signUpInput"  id="f03" type="file" name="solvencypaperpdf"
                                                accept="application/pdf"/>
-                                        <label className="fileInputLabel signUpInput" for="f03">Add Solvency Paper</label>
+                                        <label className="fileInputLabel signUpInput" >Add Solvency Paper</label>
                                     </div>
                                 </div>
                             </div>
@@ -191,39 +202,27 @@ export default class SignUp extends Component {
                                 <div className="col-md-6">
                                     <div className="input-group input-group-lg" style={fullWidth}>
                                         <input className="signUpInput" ref='password' placeholder='Password'
-                                               type='password'/></div>
+                                               type='password'/>
+                                    </div>
                                 </div>
                             </div>
-
-
-                            {/*<div className="row">*/}
-                                {/*<div className="col-md-6">*/}
-                                    {/*<div className="input-group input-group-lg" style={fullWidth}>*/}
-                                        {/*<input className="signUpInput" type="file" name="signature" accept="image/*"/>*/}
-
-                                    {/*</div>*/}
-                                {/*</div>*/}
-                                {/*<div className="col-md-6">*/}
-                                    {/*<div className="input-group input-group-lg" style={fullWidth}>*/}
-                                        {/*<input className="signUpInput" type="file" name="seal" accept="image/*"/></div>*/}
-                                {/*</div>*/}
-                            {/*</div>*/}
 
 
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="input-group input-group-lg" style={fullWidth}>
                                         <input className="fileInput signUpInput" id="f04" type="file" name="signature" accept="image/*"/>
-                                        <label className="fileInputLabel signUpInput" for="f04">Add Signature</label>
+                                        <label className="fileInputLabel signUpInput" >Add Signature</label>
 
 
                                     </div>
                                 </div>
                                 <div className="col-md-6">
                                     <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="fileInput signUpInput" type="file" id="f05" name="seal" accept="image/*"/>
+                                        <input className="fileInput signUpInput" type="file"
+                                               id="f05" name="seal" accept="image/*"/>
 
-                                        <label className="fileInputLabel signUpInput" for="f05">Add Seal</label>
+                                        <label className="fileInputLabel signUpInput" onClick={this.changeLabel.bind(this)}>Add Seal</label>
                                     </div>
                                 </div>
                             </div>
@@ -295,6 +294,38 @@ export default class SignUp extends Component {
                                 </div>
                             </div>
 
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='username' placeholder='Username'
+                                               type='text'/>
+
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="fileInput signUpInput" type="file" id="f05" name="seal" accept="image/*"/>
+
+                                        <label className="fileInputLabel signUpInput">Add Profile Picture</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input className="signUpInput" ref='password' placeholder='Password'
+                                   type='password'/>
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='email' placeholder='Email' type='email'/>
+
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='mobno' placeholder='Mobile No' type='text'/>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="signUpOption">
                                 <select ref="designation" className="optionStyle">
                                     <option className="optionStyle">Scientific Officer</option>
@@ -302,6 +333,28 @@ export default class SignUp extends Component {
                                     <option className="optionStyle">Director</option>
                                 </select>
                             </div>
+
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="fileInput signUpInput" id="f04" type="file" name="signature" accept="image/*"/>
+                                        <label className="fileInputLabel signUpInput" >Add Signature</label>
+
+
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="fileInput signUpInput" type="file" id="f05" name="seal" accept="image/*"/>
+
+                                        <label className="fileInputLabel signUpInput" >Add Seal</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" className="btn btn-md btn-success signUpSubmit" style={topMarign}>
+                                Sign Up
+                            </button>
 
                         </div>
                     </form>
