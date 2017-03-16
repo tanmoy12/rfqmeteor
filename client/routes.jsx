@@ -1,16 +1,15 @@
-import React from 'react';
-import {mount} from 'react-mounter';
-
-import {LayoutLogin} from '../imports/ui/layouts/LayoutLogin';
-import {LayoutDash} from '../imports/ui/layouts/LayoutDash';
-import App from '../imports/ui/components/App';
-import Dash from '../imports/ui/components/Dash';
-import ChahidaPotro from '../imports/ui/components/ChahidaPotro';
-import DemoChahidaPotro from '../imports/ui/components/DemoChahidaPotro';
-import ChahidaPotroLoad from '../imports/ui/components/ChahidaPotroLoad';
-import Note from '../imports/ui/components/Note';
-import StandardDocument from '../imports/ui/components/StandardDocument';
-import LoginCaraousal from '../imports/ui/components/LoginCaraousal';
+import React from "react";
+import {mount} from "react-mounter";
+import {LayoutLogin} from "../imports/ui/layouts/LayoutLogin";
+import {LayoutDash} from "../imports/ui/layouts/LayoutDash";
+import App from "../imports/ui/components/App";
+import Dash from "../imports/ui/components/Dash";
+import ChahidaPotro from "../imports/ui/components/ChahidaPotro";
+import DemoChahidaPotro from "../imports/ui/components/DemoChahidaPotro";
+import ChahidaPotroLoad from "../imports/ui/components/ChahidaPotroLoad";
+import Note from "../imports/ui/components/Note";
+import StandardDocument from "../imports/ui/components/StandardDocument";
+import LoginCaraousal from "../imports/ui/components/LoginCaraousal";
 
 
 FlowRouter.route('/', {
@@ -61,20 +60,19 @@ FlowRouter.route('/StandardDocument/:id', {
 });
 
 
-    FlowRouter.route('/Note/:id', {
+FlowRouter.route('/Note/:id', {
     action(params){
         mount(LayoutDash, {
-            content: (<Note id={params.id} />)
+            content: (<Note id={params.id}/>)
         })
     }
 });
 
 
-
 FlowRouter.route('/Chahidapotroload/:id', {
     action(params){
         mount(LayoutDash, {
-            content: (<ChahidaPotroLoad id={params.id} />)
+            content: (<ChahidaPotroLoad id={params.id}/>)
         })
     }
 });
