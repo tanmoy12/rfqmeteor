@@ -59,7 +59,6 @@ export default class ChahidaPotroLoad extends Component {
 
             <div className="container">
                 <div className="row">
-                <button onClick={this.doIt()}>do it</button>
                     <div className="col-md-10">
                         <div id="chahidajumbo" className="jumbotron text-center">
                             <div className="row">
