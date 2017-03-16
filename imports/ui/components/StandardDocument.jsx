@@ -7,22 +7,9 @@ class StandardDocument extends Component {
     constructor(props) {
         super(props);
 
-        var pro= [];
-        this.props.chahida.details.map(function (product) {
-            var Item = {
-                id: product.id,
-                item_no: product.item_no,
-                desc: product.desc,
-                spec: "Pack size: " + product.unit,
-                making: "To Be Mentioned",
-                qty: product.qty
-            }
-            pro.push(Item);
-        });
-
         this.state = {
             RFQno: "",
-            products: pro
+            products: []
         }
     }
     getdatafromtable(products) {
@@ -874,6 +861,23 @@ export default createContainer(props => {
     var chahida;
     if (RFQ) {
         chahida = Chahida_Potro.findOne(RFQ.chahida_id);
+        if(chahida){
+            var pro= [];
+            chahida.details.map(function (product) {
+                var Item = {
+                    id: product.id,
+                    item_no: product.item_no,
+                    desc: product.desc,
+                    spec: "Pack size: " + product.unit,
+                    making: "To Be Mentioned",
+                    qty: product.qty
+                }
+                pro.push(Item);
+            });
+            this.setState({
+               products: pro
+            });
+        }
     }
     return {
         RFQ: RFQDetails.findOne(props.id),

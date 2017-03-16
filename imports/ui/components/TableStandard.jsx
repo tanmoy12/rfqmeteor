@@ -6,7 +6,7 @@ export default class TableStandard extends Component {
         super(props);
 
         this.state = {
-            products: pro
+            products: this.props.data
         };
 
     }
