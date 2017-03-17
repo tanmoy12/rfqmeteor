@@ -10,7 +10,7 @@ export default class ChahidaPotroLoad extends Component {
         //  this.state.products = [];
         this.state = {
             signed: false,
-            addClass1: "current sidebar_li",
+            addClass1: "sidebar_li",
             addClass2: "sidebar_li",
             addClass3: "sidebar_li",
             addClass4: "sidebar_li",
@@ -123,17 +123,40 @@ export default class ChahidaPotroLoad extends Component {
                 </div>
         }
         var forward_to_style = {
-            backgroundColor: "white",
+            // backgroundColor: "#7a9c9c",
+            // backgroundColor: "#7a9c9c",
+            backgroundColor: "#98adc2",
             padding: "3.5%",
             marginTop: "3%",
             marginBottom: "3%",
 
         }
         var forward_to;
+        var chahidapotro_block;
+        if(this.state.addClass1=="current sidebar_li"){
+            chahidapotro_block =
+                <div style={forward_to_style}>
+                    <p>FORWARD TO:&emsp;&emsp;&emsp;&emsp;<strong style={{color: "darkred", textDecoration: "underline", fontSize:"large"}}>যাচাইকারী</strong></p>
+
+                    <div className="form-group">
+                        <select ref="AcOf" className="form-control">
+                            {/*{this.renderAcOf()}*/}
+                            Shadman
+                        </select>
+                    </div>
+
+                    <div>
+                        <input
+                               type="submit" name="login-submit"
+                               id="submit-all"
+                               className="btn btn-primary" value="FORWARD"/>
+                    </div>
+                </div>
+        }
         if(this.state.addClass2=="current sidebar_li"){
             forward_to =
                 <div style={forward_to_style}>
-                    <p>FORWARD TO <strong>যাচাইকারী :</strong></p>
+                    <p>FORWARD TO:&emsp;&emsp;&emsp;&emsp;<strong style={{color: "darkred", textDecoration: "underline", fontSize:"large"}}>যাচাইকারী</strong></p>
                     <div className="form-group">
                         <select ref="ScOf" className="form-control">
 
@@ -161,7 +184,7 @@ export default class ChahidaPotroLoad extends Component {
                             <ul className="sidebar_ul">
                                 <li className = {this.state.addClass1}>
                                     <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "1")} href="#">Chahidapotro</a>
-
+                                    {chahidapotro_block}
                                 </li>
                                 <li className={this.state.addClass2}>
                                     <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "2")} href="#">Forward to</a>
