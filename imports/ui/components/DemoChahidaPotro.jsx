@@ -287,28 +287,7 @@ export default class ChahidaPotroLoad extends Component {
                         </div>
 
                     </div>
-                    <div className="col-md-3">
-                    </div>
-                    <div className="col-md-9">
-                        <div className="col-md-2"></div>
-                        <div id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
-                            <div className="form-group text-center">
-                                <p>FORWARD TO <strong>যাচাইকারী :</strong></p>
-                                <div className="form-group">
-                                    <select ref="ScOf" className="form-control">
 
-
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <input type="submit" name="login-submit"
-                                           id="submit-all"
-                                           className="btn btn-primary" value="FORWARD"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         );
