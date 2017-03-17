@@ -407,8 +407,9 @@ a.notification:hover{
 
 #chahidajumbo{
     border: 1px solid;
-    margin: 0 0 20px;
+    margin: 0 0 15px;
     padding: 50px;
+    padding-bottom: 15px;
     padding-top: 30px;
     box-shadow: 1px 5px 14px 2px skyblue;
 }
@@ -439,7 +440,9 @@ hr {
 }
 
 
-
+#year {
+    width: 180px;
+}
 
 
 
@@ -557,7 +560,7 @@ span b {
 
 p.text{
     text-align: justify;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.5;
 
 }

@@ -100,15 +100,6 @@ class ChahidaPotro extends Component {
     }
 
 
-    renderRFQs() {
-        console.log(this.props.RFQList);
-        return this.props.RFQList.map(function (RFQ) {
-            console.log(RFQ);
-            return
-            <p key={RFQ._id}>{RFQ.title}</p>
-        });
-    }
-
     renderScOf() {
         let scc = this.props.ScOf;
         return scc.map(function (ScOfficers) {
@@ -154,6 +145,8 @@ class ChahidaPotro extends Component {
         var ScOff = ReactDOM.findDOMNode(this.refs.ScOf).value.trim();
         var sutrono = ReactDOM.findDOMNode(this.refs.sutrono).value.trim();
         var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
+        var year = ReactDOM.findDOMNode(this.refs.year).value.trim();
+        var upokhat = ReactDOM.findDOMNode(this.refs.upokhat).value.trim();
         var productbool = true;
         var that = this;
 
@@ -171,6 +164,8 @@ class ChahidaPotro extends Component {
                     sutro_no: sutrono,
                     estimate: that.state.estimate,
                     details: that.state.products,
+                    upokhat: upokhat,
+                    year: year,
                     verifier: {
                         user_id: ScOff
                     }
@@ -321,12 +316,11 @@ class ChahidaPotro extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <p className="text2"> ৪। উক্ত ব্যয়
-                                        <input ref="title" onChange={this.RFQtitleChange.bind(this)} placeholder="RFQ Title" name="title" type="text"/>
-                                        অর্থ বছরের রাজস্ব
-                                        বাজেটের
-                                        সরবরাহ
-                                        ও সেবা খাতের (ঊপখাতঃ রসায়ন দ্রব্যাদি ক্রয় নং-৪৮৫২) হতে ক্রয় প্রক্রিয়া
+                                    <p className="text displayinblock"> ৪। উক্ত ব্যয়
+                                        <input id="year" ref="year" placeholder="Session" name="title" type="text"/>
+                                        অর্থ বছরের রাজস্ব বাজেটের সরবরাহ ও সেবা খাতের<br/> (ঊপখাতঃ
+                                        <input ref="upokhat" placeholder="ঊপখাত" name="title" type="text"/>
+                                        ) হতে ক্রয় প্রক্রিয়া
                                         মাধ্যমে
                                         নির্বাহ করা যেতে পারে। </p>
 

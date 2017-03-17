@@ -117,10 +117,12 @@ ChahidaPotroSchema = new SimpleSchema({
         optional: true
     },
     year : {
-        type: String
+        type: String,
+        optional: true
     },
     upokhat : {
-        type: String
+        type: String,
+        optional: true
     }
 });
 
