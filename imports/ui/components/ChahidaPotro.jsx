@@ -16,6 +16,7 @@ class ChahidaPotro extends Component {
 
         };
     }
+
     static convertNumberToWords(amount) {
         var words = [];
         words[0] = '';
@@ -183,7 +184,7 @@ class ChahidaPotro extends Component {
                             else {
                                 var Rfqid = res;
                                 var NotificationForm = {
-                                    from_id : Meteor.userId(),
+                                    from_id: Meteor.userId(),
                                     to_id: ScOff,
                                     type: 1,
                                     title: title,
@@ -269,7 +270,8 @@ class ChahidaPotro extends Component {
                                         <div className="col-md-12 form-style-4">
                                             <label htmlFor="sutrono">
                                                 <span>সুত্র নং :</span>
-                                                <input ref="sutrono" placeholder="সুত্র নং :" name="sutrono" type="text"/>
+                                                <input ref="sutrono" placeholder="সুত্র নং :" name="sutrono"
+                                                       type="text"/>
                                             </label>
                                         </div>
                                     </div>
@@ -286,11 +288,13 @@ class ChahidaPotro extends Component {
                             <div className="row">
                                 <div className="col-md-12">
                                     <br/>
-                                    <p className="text displayinblock"> ১। বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ (বিসিএসআইআর)- এ
+                                    <p className="text displayinblock"> ১। বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ
+                                        (বিসিএসআইআর)- এ
                                         অন্তকালীন
                                         ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস (ডিআরআইসিএম) - এ
                                         নিম্নক্ত
-                                        <input ref="title" onChange={this.RFQtitleChange.bind(this)} placeholder="RFQ Title" name="title" type="text"/>
+                                        <input ref="title" onChange={this.RFQtitleChange.bind(this)}
+                                               placeholder="RFQ Title" name="title" type="text"/>
                                         ক্রয় করা প্রয়োজন। </p><br/>
 
                                     <Table
@@ -298,9 +302,10 @@ class ChahidaPotro extends Component {
 
                                     <p className="text">
                                         ২। এ জন্য আনুমানিক {this.state.estimate}/-
-                                         (কথায়) {ChahidaPotro.convertNumberToWords(this.state.estimate)}  টাকা ব্যয়।
+                                        (কথায়) {ChahidaPotro.convertNumberToWords(this.state.estimate)} টাকা ব্যয়।
                                         <br/>
-                                        ৩। অতএব, উপরোক্ত বর্ণনামাতে <strong>{this.state.title}</strong> ক্রয়ের অনুমোদনের জন্য বিনীতভাবে অনুরোধ জানানো যাচ্ছে।
+                                        ৩। অতএব, উপরোক্ত বর্ণনামাতে <strong>{this.state.title}</strong> ক্রয়ের অনুমোদনের
+                                        জন্য বিনীতভাবে অনুরোধ জানানো যাচ্ছে।
                                     </p>
                                     <br/>
 
@@ -343,17 +348,18 @@ class ChahidaPotro extends Component {
                         <div className="col-md-2"></div>
                         <div id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
                             <div className="form-group text-center">
-                                {/*<p>FORWARD TO <strong>যাচাইকারী :</strong></p>*/}
-                                {/*<div className="form-group">*/}
-                                    {/*<select ref="ScOf" className="form-control">*/}
-                                        {/*{this.renderScOf()}*/}
-                                    {/*</select>*/}
-                                {/*</div>*/}
+                                <p>FORWARD TO <strong>যাচাইকারী :</strong></p>
+                                <div className="form-group">
+                                    <select ref="ScOf" className="form-control">
+                                        {this.renderScOf()}
+                                    </select>
+                                </div>
 
-                                {/*<div>*/}
-                                    {/*<input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"*/}
-                                           {/*id="submit-all"*/}
-                                           {/*className="btn btn-primary" value="FORWARD"/>*/}
+                                <div>
+                                    <input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"
+                                           id="submit-all"
+                                           className="btn btn-primary" value="FORWARD"/>
+                                </div>
                             </div>
                         </div>
                     </div>

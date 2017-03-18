@@ -1,11 +1,23 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 
-export default class StandardDocumentPage1 extends Component {
+export default class StandardDocumentLoad1 extends Component {
     constructor(props) {
         super(props);
 
         this.state = {}
+    }
+    datefromcreate(createdAt) {
+        var date = createdAt.getDate();
+        var month = createdAt.getMonth() + 1;
+        var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
     }
 
     render() {
@@ -32,22 +44,15 @@ export default class StandardDocumentPage1 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="row">
-                                    <div className="col-md-12 form-style-4">
-                                        <label htmlFor="sutrono">
-                                            <span>RFQ NO : </span>
-                                            <input onChange={this.props.RFQnoChange.bind(this)} value={this.props.RFQno}
-                                                   ref="sutrono" placeholder="RFQ NO" name="sutrono"
-                                                   type="text"/>
-                                        </label>
+                                    <div className="col-md-12 pull-left">
+                                        <span
+                                            className="pull-left"><strong>RFQ No :  <b>{this.props.standard.RFQ_no}</b></strong></span>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-6">
-                                {this.props.dateToday()}
-                            </div>
-                            <div id="input" className="pull-right">
-                                <input/>
-
+                                <p id="dateload"><strong>DATE
+                                    : {this.datefromcreate(this.props.standard.createdAt)}</strong></p>
                             </div>
                         </div>
 

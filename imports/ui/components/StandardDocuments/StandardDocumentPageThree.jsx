@@ -41,10 +41,6 @@ export default class StandardDocumentPageThree extends Component {
                             <div className="col-md-6 text-right">
                                 {this.props.dateToday()}
                             </div>
-                            <div className="input pull-right">
-                                <input/>
-
-                            </div>
                         </div>
 
                         <div id="text-stnd" className="text-left">

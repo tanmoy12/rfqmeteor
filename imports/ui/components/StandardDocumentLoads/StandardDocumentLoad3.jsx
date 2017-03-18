@@ -1,11 +1,24 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 
-export default class StandardDocumentPageThree extends Component {
+export default class StandardDocumentLoad3 extends Component {
     constructor(props) {
         super(props);
 
         this.state = {}
+    }
+
+    datefromcreate(createdAt) {
+        var date = createdAt.getDate();
+        var month = createdAt.getMonth() + 1;
+        var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
     }
 
     render() {
@@ -33,17 +46,14 @@ export default class StandardDocumentPageThree extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQno}
+                                    <strong>RFQ NO : </strong> {this.props.standard.RFQ_no}
                                 </div>
 
 
                             </div>
-                            <div className="col-md-6 text-right">
-                                {this.props.dateToday()}
-                            </div>
-                            <div className="input pull-right">
-                                <input/>
-
+                            <div className="col-md-6">
+                                <p id="dateload"><strong>DATE
+                                    : {this.datefromcreate(this.props.standard.createdAt)}</strong></p>
                             </div>
                         </div>
 

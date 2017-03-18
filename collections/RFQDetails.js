@@ -3,7 +3,10 @@ RFQDetails = new Mongo.Collection('rfqdetails');
 RFQDetails.allow({
    insert: function (userId, doc) {
        return !!userId;
-   }
+   },
+    update: function (userId, doc) {
+        return !!userId;
+    }
 });
 
 RFQDetailsSchema = new SimpleSchema({

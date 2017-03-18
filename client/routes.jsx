@@ -10,6 +10,7 @@ import DemoChahidaPotro from '../imports/ui/components/DemoChahidaPotro';
 import ChahidaPotroLoad from '../imports/ui/components/ChahidaPotroLoad';
 import Note from '../imports/ui/components/Note';
 import StandardDocument from '../imports/ui/components/StandardDocument';
+import StandardDocumentLoad from '../imports/ui/components/StandardDocumentLoad';
 import LoginCaraousal from '../imports/ui/components/LoginCaraousal';
 import FileUpload from '../imports/ui/components/FileUpload';
 
@@ -67,6 +68,14 @@ FlowRouter.route('/StandardDocument/:id', {
     action(params){
         mount(LayoutDash, {
             content: (<StandardDocument id={params.id}/>)
+        })
+    }
+});
+
+FlowRouter.route('/StandardDocumentLoad/:id', {
+    action(params){
+        mount(LayoutDash, {
+            content: (<StandardDocumentLoad id={params.id}/>)
         })
     }
 });

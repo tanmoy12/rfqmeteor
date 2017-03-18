@@ -61,10 +61,6 @@ export default class StandardDocumentPage4 extends Component {
                             <div className="col-md-6 text-right">
                                 {this.props.dateToday()}
                             </div>
-                            <div id="input" className="pull-right">
-                                <input/>
-
-                            </div>
                         </div>
                     </div>
                 </div>

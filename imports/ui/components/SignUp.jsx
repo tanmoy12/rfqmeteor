@@ -454,7 +454,6 @@ export default class SignUp extends Component {
                             <div className="row">
                                 <div className="col-md-6">
                                     <select ref="empDesignation" className="optionStyle" style={{marginTop: "42px", color: "#46485c"}}>
-                                        <option className="optionStyle" selected disabled>Select Designation</option>
                                         <option className="optionStyle">Scientific Officer</option>
                                         <option className="optionStyle">Accounting Officer</option>
                                         <option className="optionStyle">Director</option>

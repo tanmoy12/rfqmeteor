@@ -37,15 +37,19 @@ export default class SideNote extends Component {
         )
     }
 
-    createStandard(e){
-        e.preventDefault();
-        if(this.props.RFQ.standard_id)
-        FlowRouter.go('/StandardDocument/'+ this.props.RFQ._id);
-    }
     makeStandardDoc(){
         if(this.props.RFQ.standard_id){
             return (
-                <p>standard doc here</p>
+                <div id="sidejumbotron" className="col-md-12 jumbotron">
+                    <nav className=" navbar-custom navbar navbar-default text-center">
+                        <div className="container">
+                            <div className="navbar-header">
+                                <a className="navbar-brand" href={"/StandardDocumentLoad/"+ this.props.RFQ._id}>
+                                    Standard Document</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
             )
         }else{
             return (
@@ -58,6 +62,20 @@ export default class SideNote extends Component {
                             </div>
                         </div>
                     </nav>
+                    <div id="SideJumbobody" className="col-md-12 jumbotron">
+                        <p id="TITLERFQ">RFQ Title</p>
+                        <div>
+                            <h4>{this.props.RFQ.title}</h4>
+                        </div>
+                        <p id="TITLERFQ">Estimate</p>
+                        <div>
+                            <h4>{this.props.RFQ.estimate}</h4>
+                        </div>
+                        <p id="TITLERFQ">Intiated by</p>
+                        <div>
+                            <h4>{this.props.ini.username}</h4>
+                        </div>
+                    </div>
                 </div>
             )
         }

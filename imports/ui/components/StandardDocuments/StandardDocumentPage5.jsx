@@ -29,6 +29,7 @@ export default class StandardDocumentPage5 extends Component {
     handleCreate(e) {
         e.preventDefault();
         var productbool = true;
+        var that= this;
         if (this.props.RFQno) {
             this.state.products.map(function (product) {
                 if (product.spec && product.making) {
@@ -43,11 +44,25 @@ export default class StandardDocumentPage5 extends Component {
                     standard_details: this.state.products,
 
                 };
-                console.log(StandardForm);
                 StandardDocuments.insert(StandardForm, function (err, res) {
                     if (err) Bert.alert('Unknown Error1!!', 'danger', 'growl-top-right');
                     else {
-                        console.log(res);
+                        RFQDetails.update(
+                            that.props.RFQ._id,
+                            {
+                                $set: {
+                                    standard_id: res
+                                }
+                            }, function (err, res) {
+                                if(err) {
+                                    console.log(err);
+                                    Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
+                                }
+                                else{
+                                    FlowRouter.go('/Note/' + that.props.RFQ._id);
+                                }
+                            });
+
                         /*
                          var RFQDetailsForm = {
                          chahida_id: res,
@@ -117,10 +132,7 @@ export default class StandardDocumentPage5 extends Component {
                             <div className="col-md-6 text-right">
                                 {this.props.dateToday()}
                             </div>
-                            <div id="input" className="pull-right">
-                                <input/>
 
-                            </div>
                         </div>
                     </div>
                 </div>

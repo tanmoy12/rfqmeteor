@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 import TableStandard from "../TableStandard";
 
-export default class StandardDocumentPage5 extends Component {
+export default class StandardDocumentLoad5 extends Component {
     constructor(props) {
         super(props);
         var pro=[];

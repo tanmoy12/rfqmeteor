@@ -1,10 +1,9 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 
-export default class StandardDocumentPage2 extends Component {
+export default class StandardDocumentLoad2 extends Component {
     constructor(props) {
         super(props);
-
         this.state = {}
     }
 
