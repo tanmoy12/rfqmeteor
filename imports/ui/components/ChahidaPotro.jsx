@@ -343,18 +343,17 @@ class ChahidaPotro extends Component {
                         <div className="col-md-2"></div>
                         <div id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
                             <div className="form-group text-center">
-                                <p>FORWARD TO <strong>যাচাইকারী :</strong></p>
-                                <div className="form-group">
-                                    <select ref="ScOf" className="form-control">
-                                        {this.renderScOf()}
-                                    </select>
-                                </div>
+                                {/*<p>FORWARD TO <strong>যাচাইকারী :</strong></p>*/}
+                                {/*<div className="form-group">*/}
+                                    {/*<select ref="ScOf" className="form-control">*/}
+                                        {/*{this.renderScOf()}*/}
+                                    {/*</select>*/}
+                                {/*</div>*/}
 
-                                <div>
-                                    <input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"
-                                           id="submit-all"
-                                           className="btn btn-primary" value="FORWARD"/>
-                                </div>
+                                {/*<div>*/}
+                                    {/*<input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"*/}
+                                           {/*id="submit-all"*/}
+                                           {/*className="btn btn-primary" value="FORWARD"/>*/}
                             </div>
                         </div>
                     </div>

@@ -98,7 +98,7 @@ h3{
 }
 
 .form-control {
-    height: 28px;
+    height: 10%;
     width: 100%;
     background-color: transparent;
     border-style: solid;
@@ -577,8 +577,8 @@ th{
 td>input[type="text"], textarea {
     outline: none;
     font-size: medium;
-    box-shadow:none !important;
-    border:0 solid #ccc !important;
+    box-shadow:none ;
+    border:0 solid #ccc ;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -590,8 +590,8 @@ td{
 td>input[type="number"], textarea {
     outline: none;
     font-size: medium;
-    box-shadow:none !important;
-    border:0 solid #ccc !important;
+    box-shadow:none ;
+    border:0 solid #ccc ;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -661,41 +661,50 @@ input[type=number]::-webkit-outer-spin-button {
 
 /*SIGN UP CSS starts*/
 
-.signUpHeader {
-    font-family: sans-serif;
-    color: #46485c;
-    font-size: 15px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 1%;
-    margin-left: -6%;
-    font-size: large;
-}
 
-a {
-    color: #46485c;
-    text-decoration: none;
-}
+
+/*a {*/
+    /*color: #46485c;*/
+    /*text-decoration: none;*/
+/*}*/
 
 .login {
     font-family: sans-serif;
     width: 50%;
     position: absolute;
     top: 15%;
-    left: 23%;
+    left: 25%;
     /*background: rgba(0,0,0,0.2);*/
     background: #EAEBEF;
     padding-left: 4%;
+    padding-right: 4%;
     padding-top: 2%;
     padding-bottom: 2%;
+    margin-bottom: 2%;
     border-radius: 5px;
-    box-shadow: 0px 1px 0px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);
+    -webkit-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
     font-size: large;
 }
 
+.signUpHeader {
+    /*font-family: sans-serif;*/
+    font-family: HelveticaNeue-Light;
+    color: #46485c;
+    /*font-size: 30px;*/
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1%;
+    margin-left: -6%;
+    font-size: larger;
+    margin-bottom: 3%;
+}
+
 .signUpInput {
-    width: 90%;
-    padding: 25px 0px;
+    width: 100%;
+    padding-top: 45px;
+    padding-bottom: 5px;
     background: transparent;
     border: 0;
     /*border-bottom: 1px solid rgba(255,255,255,0.04);*/
@@ -706,26 +715,55 @@ a {
     /*box-shadow: 0px 1px 0px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);*/
 }
 
+.signUpInputInline {
+
+}
+
+.signUpOption {
+    width: 90%;
+    padding: 7.8% 0px;
+    background: transparent;
+    border: 0;
+    /*border-bottom: 1px solid rgba(255,255,255,0.04);*/
+    /*border-bottom: 1px solid darkred;*/
+    /*border-radius: 4px;*/
+    outline: none;
+    color: #46485c;
+    /*box-shadow: 0px 1px 0px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);*/
+}
+
 .signUpSubmit {
-    background: #5cb85c;
+    /*background: #5cb85c;*/
+    /*background: #455A64;*/
+    background: #00796B;
     border: 0;
     width: 15%;
     height: 100%;
-    margin-top: 7%;
-    margin-left: 40%;
+    /*margin-top: 7%;*/
+    margin-left: 39%;
     padding-top: 1%;
     padding-bottom: 1%;
     border-radius: 3px;
     color: white;
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.1s ease-in-out;
     text-align: center;
     transform: scale(1.2);
     font-size: 80%;
-    box-shadow: 1px 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);
+    /*box-shadow: 1px 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);*/
+    -webkit-box-shadow: 0px 4px 21px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 21px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 21px -4px rgba(0,0,0,0.75);
 }
 .signUpSubmit:hover {
+    /*background: #16aa56;*/
+    /*background: #78909C;*/
+    background: #43A047;
+}
+
+.signUpTypeSelector:hover {
     background: #16aa56;
+    cursor: hand;
 }
 
 .forgot {
@@ -756,12 +794,215 @@ a {
     color: #736e6b;
 }
 
+
 .signUpInput[placeholder]:focus::-webkit-input-placeholder {
     transition: all 0.2s linear;
     transform: translate(10px, 0);
     opacity: 0;
 }
+
+.optionStyle {
+    height: 35px;
+    width: 100%;
+    /*margin-bottom: 10%;*/
+    /*background-color: transparent;*/
+    background-color: #efecea;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    border-color: darkred;
+    outline:0;
+    color: #736e6b;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);
+}
+
+
+
+.fileInputLabel, .fileInput {
+    color: #333;
+    font: 14px/20px Arial;
+}
+.fileInputLabel {
+    display: inline-block;
+    /*width: 20%;*/
+    /*padding: 0 1em;*/
+    text-align: right;
+    z-index: 10;
+
+}
+
+/* Hide the file input using
+opacity */
+.fileInput {
+    position: absolute;
+    z-index: 12;
+    left: 4px;
+    top: 1.4em;
+    filter: alpha(opacity=0);
+    opacity: 0;
+
+}
+.fileInput,
+[type=file] + .fileInputLabel {
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    text-align: left;
+    padding: 10px;
+    width: 80%;
+    margin: 0;
+    left: 0;
+    position: relative;
+}
+[type=file] + .fileInputLabel {
+    text-align: center;
+    left: 0.35em;
+    top: -1.5em;
+    /* Decorative */
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 4px 21px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 21px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 21px -4px rgba(0,0,0,0.75);
+    cursor: hand;
+}
+[type=file] + .fileInputLabel:hover {
+    background: #3399ff;
+
+}
 /*SIGN UP CSS ends*/
 
+
+
+
+
+/*DEMO CHAHIDA POTRO STARTS*/
+.container{
+    margin-left: 0;
+    margin-right: 0;
+    width: 95%;
+}
+
+
+/*FIXED VERTICAL NAVBAR*/
+.navbar-fixed-left {
+    width: 17%;
+    position: fixed;
+    border-radius: 0;
+    height: 100%;
+
+}
+
+.navbar-fixed-left .navbar-nav > li {
+    float: none;  /* Cancel default li float: left */
+    width: 17%;
+}
+
+.navbar-fixed-left + .container {
+    /*padding-left: 160px;*/
+}
+
+/* On using dropdown menu (To right shift popuped) */
+.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+    /*margin-top: -50px;*/
+    /*margin-left: 140px;*/
+}
+
+.sidebarLink{
+    width: 100%;
+    border: 2px solid;
+}
+
+.sidebarLink:hover{
+    cursor: hand;
+    background-color: #3399ff;
+}
+
+
+
+
+
+/*ANOTHER NAVBAR*/
+.sidebar {
+    font: 100% sans-serif;
+    background: #111;
+    border-right: 1px solid #000;
+    box-shadow: 1px 0 0 #222;
+    height: 100%;
+    /*width: 100%;*/
+}
+
+.sidebar_ul {
+    /*background: #111;*/
+    background: transparent;
+    border-bottom: 1px solid #222;
+    padding-left: 0;
+}
+
+.sidebar_li {
+    display: block;
+}
+
+.sidebar_a {
+    background: #111;
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #222;
+    /*box-shadow: inset -5px 0 0 hsla(0, 0%, 0%, .2), inset 0 20px 0 #161616;*/
+    color: #bbb;
+    display: block;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 45px;
+    text-align: right;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px hsla(0, 0%, 0%, .5);
+    transition: all 300ms;
+}
+
+.sidebar_a:hover,
+.sidebar_a:focus,.current .sidebar_a {
+    background: #222;
+    /*border-top-color: #3a3a3a;*/
+    /*box-shadow:*/
+            /*inset -5px 0 0 #3a3a3a,*/
+            /*inset 0 20px 0 #282828*/
+/*;*/
+    color: #ddd;
+    outline: 0  ;
+    padding: 0 30px;
+    transition: all 300ms;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3f4c6b+0,3f4c6b+100;Blue+Grey+Flat */
+    background: #2f4f4f; /* Old browsers */
+    background: -moz-linear-gradient(top, #2f4f4f 0%, #3f4c6b 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #2f4f4f 0%,#3f4c6b 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #2f4f4f 0%,#3f4c6b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */
+}
+
+.current .sidebar_a {
+    box-shadow:
+            inset -5px 0 0 #e00
+            /*inset 0 20px 0 #282828*/
+;
+    padding: 0 45px;
+}
+
+.sidebar_a:active {
+    background: #333;
+    border-top-color: #666;
+    box-shadow:
+            inset -5px 0 0 #666,
+            inset 0 20px 0 #444
+;
+    color: #fff;
+    transition: all 50ms;
+}
+
+.sidebar_li:first-child a {
+    border-top: none;
+}
+
+/*DEMO CHAHIDA POTRO ENDS*/
 
 /*SHADMAN'S CSS ENDS*/
