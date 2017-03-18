@@ -9,7 +9,13 @@ export default class ChahidaPotroLoad extends Component {
         super(props);
         //  this.state.products = [];
         this.state = {
-            signed: false
+            signed: false,
+            addClass1: "sidebar_li",
+            addClass2: "sidebar_li",
+            addClass3: "sidebar_li",
+            addClass4: "sidebar_li",
+            addClass5: "sidebar_li",
+
         };
     }
 
@@ -30,6 +36,67 @@ export default class ChahidaPotroLoad extends Component {
                 }
             });
         }
+    }
+
+    sidebar_link_click(e){
+        //console.log(e);
+        if(e=="1"){
+            this.setState({
+                addClass1: "current sidebar_li",
+                addClass2: "sidebar_li",
+                addClass3: "sidebar_li",
+                addClass4: "sidebar_li",
+                addClass5: "sidebar_li",
+
+
+            });
+        }
+        else if(e=="2"){
+            this.setState({
+                addClass1: "sidebar_li",
+                addClass2: "current sidebar_li",
+                addClass3: "sidebar_li",
+                addClass4: "sidebar_li",
+                addClass5: "sidebar_li",
+
+
+            });
+        }
+        else if(e=="3"){
+            this.setState({
+                addClass1: "sidebar_li",
+                addClass2: "sidebar_li",
+                addClass3: "current sidebar_li",
+                addClass4: "sidebar_li",
+                addClass5: "sidebar_li",
+
+
+            });
+        }
+        else if(e=="4"){
+            this.setState({
+                addClass1: "sidebar_li",
+                addClass2: "sidebar_li",
+                addClass3: "sidebar_li",
+                addClass4: "current sidebar_li",
+                addClass5: "sidebar_li",
+
+
+            });
+        }
+        else if(e=="5"){
+            this.setState({
+                addClass1: "sidebar_li",
+                addClass2: "sidebar_li",
+                addClass3: "sidebar_li",
+                addClass4: "sidebar_li",
+                addClass5: "current sidebar_li",
+
+
+            });
+        }
+
+
     }
 
     render() {
@@ -55,12 +122,89 @@ export default class ChahidaPotroLoad extends Component {
 
                 </div>
         }
+        var forward_to_style = {
+            // backgroundColor: "#7a9c9c",
+            // backgroundColor: "#7a9c9c",
+            backgroundColor: "#98adc2",
+            padding: "3.5%",
+            marginTop: "3%",
+            marginBottom: "3%",
+
+        }
+        var forward_to;
+        var chahidapotro_block;
+        if(this.state.addClass1=="current sidebar_li"){
+            chahidapotro_block =
+                <div style={forward_to_style}>
+                    <p>FORWARD TO:&emsp;&emsp;&emsp;&emsp;<strong style={{color: "darkred", textDecoration: "underline", fontSize:"large"}}>যাচাইকারী</strong></p>
+
+                    <div className="form-group">
+                        <select ref="AcOf" className="form-control">
+                            {/*{this.renderAcOf()}*/}
+                            Shadman
+                        </select>
+                    </div>
+
+                    <div>
+                        <input
+                               type="submit" name="login-submit"
+                               id="submit-all"
+                               className="btn btn-primary" value="FORWARD"/>
+                    </div>
+                </div>
+        }
+        if(this.state.addClass2=="current sidebar_li"){
+            forward_to =
+                <div style={forward_to_style}>
+                    <p>FORWARD TO:&emsp;&emsp;&emsp;&emsp;<strong style={{color: "darkred", textDecoration: "underline", fontSize:"large"}}>যাচাইকারী</strong></p>
+                    <div className="form-group">
+                        <select ref="ScOf" className="form-control">
+
+
+                        </select>
+                    </div>
+
+                    <div>
+                        <input type="submit" name="login-submit"
+                               id="submit-all"
+                               className="btn btn-primary" value="FORWARD"/>
+                    </div>
+                </div>
+        }
+
         return (
 
+
             <div className="container">
-                <div className="row">
-                <button onClick={this.doIt()}>do it</button>
-                    <div className="col-md-10">
+
+                <div className="row " style={{marginTop: "-2.4%", marginLeft: "-2.3%"}}>
+                    <div className="col-md-3">
+                        <div className="navbar navbar-inverse navbar-fixed-left sidebar">
+
+                            <ul className="sidebar_ul">
+                                <li className = {this.state.addClass1}>
+                                    <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "1")} href="#">Chahidapotro</a>
+                                    {chahidapotro_block}
+                                </li>
+                                <li className={this.state.addClass2}>
+                                    <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "2")} href="#">Forward to</a>
+                                    {forward_to}
+                                </li>
+                                <li className={this.state.addClass3}>
+                                    <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "3")} href="#">Blog</a>
+                                </li>
+                                <li className={this.state.addClass4}>
+                                    <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "4")} href="#">About</a>
+                                </li>
+                                <li className={this.state.addClass5}>
+                                    <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "5")} href="#">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <div className="col-md-9 pageContainer" style={{marginTop: "2.4%"}}>
                         <div id="chahidajumbo" className="jumbotron text-center">
                             <div className="row">
                                 <div className="title-top col-md-12">
@@ -166,26 +310,7 @@ export default class ChahidaPotroLoad extends Component {
                         </div>
 
                     </div>
-                    <div className="col-md-10">
-                        <div className="col-md-2"></div>
-                        <div id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
-                            <div className="form-group text-center">
-                                <p>FORWARD TO <strong>যাচাইকারী :</strong></p>
-                                <div className="form-group">
-                                    <select ref="ScOf" className="form-control">
 
-
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <input type="submit" name="login-submit"
-                                           id="submit-all"
-                                           className="btn btn-primary" value="FORWARD"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         );
