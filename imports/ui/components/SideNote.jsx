@@ -32,15 +32,14 @@ export default class SideNote extends Component {
                     <div>
                         <h4>{this.props.ini.username}</h4>
                     </div>
-
-
                 </div>
-
             </div>
         )
     }
+
     createStandard(e){
         e.preventDefault();
+        if(this.props.RFQ.standard_id)
         FlowRouter.go('/StandardDocument/'+ this.props.RFQ._id);
     }
     makeStandardDoc(){
