@@ -57,31 +57,49 @@ class DashHeader extends Component {
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                     <img id="profile" src="/profile.jpg" className="profile-image img-circle"/>
 
-                                    <span id="UserId">{user}</span></a>
+                                    <span id="UserId">{user}</span>
+                                </a>
+
                                 <ul className="dropdown-menu dropdownbody">
-                                    <li className="user-header">
-                                        <img id="profile" src="/profile.jpg" className="img-circle center-block"
-                                             alt="User Image"/>
-
-                                        <h3>{user}</h3>
-                                    </li>
-
-                                    <li><a><i className="fa fa-cog"></i> Designation</a></li>
-                                    <li className="divider"></li>
                                     <li>
-                                        <button type="submit" className="btn btn-default btn-custom pull-left">
-                                            Profile
+                                        <div className="navbar-login">
+                                            <div className="row">
+                                                <div className="col-md-4">
+                                                    <p className="text-center">
+                                                        <img id="profiledrop" src="/profile.jpg"
+                                                             className="center-block"
+                                                             alt="User Image"/>
+                                                    </p>
+                                                </div>
+                                                <div className="col-md-8">
+                                                    <p id="userfont" className="text-center">{user}</p>
+                                                    <p id="designation" className="text-center">Scientific Officer</p>
+                                                    <p className="text-left">
+                                                        <a href="#"
+                                                           className="btn btn-primary btn-block btn-xs">Profile</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className="divider"></li>
+
+                                    <li>
+                                        <button type="submit" className="btn btn-default btn-custom btn-sm pull-left">
+                                            <i className="fa fa-cog"> Settings</i>
                                         </button>
 
                                     </li>
                                     <li>
                                         <button onClick={this.logout.bind(this)} type="submit"
-                                                className="btn btn-default btn-custom pull-right">
+                                                className="btn btn-default btn-custom btn-sm pull-right">
                                             Logout
                                         </button>
                                     </li>
+
                                 </ul>
                             </li>
+
 
                         </ul>
 

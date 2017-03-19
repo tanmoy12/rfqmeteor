@@ -35,11 +35,46 @@
 }
 
 
+.navbar-login
+{
+    width: 280px;
+    padding: 10px;
+    padding-bottom: 0px;
+    background: snow;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+#profiledrop
+{
+   width: 80px;
+    height: 80px;
+}
+
+
 
 
 .btn-custom:hover{
     color: black;
     background:darkgrey;
+
+}
+
+#userfont{
+    font-size: 20px;
+    font-family: "Comic Sans MS";
+    line-height: .8;
+}
+
+#designation{
+    font-size: 15px;
+    font-family: "monospace";
+
 }
 
 .dropdownbody{
