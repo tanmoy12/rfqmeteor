@@ -23,15 +23,7 @@ class FileUpload extends Component {
         if (e.currentTarget.files && e.currentTarget.files[0]) {
             // We upload only one file, in case
             // there was multiple files selected
-            var img = new Image();
-            img.onload = function() {
-                alert(this.width + " " + this.height);
-            };
-            img.onerror = function() {
-                alert( "not a valid file: " + file.type);
-            };
             var file = e.currentTarget.files[0];
-            console.log(file.path);
             //console.log(file.width);
             if (file) {
                 let uploadInstance = ImagesCol.insert({
@@ -45,27 +37,8 @@ class FileUpload extends Component {
                     allowWebWorkers: true // If you see issues with uploads, change this to false
                 }, false);
 
-                that.setState({
-                    uploading: uploadInstance, // Keep track of this instance to use below
-                    inProgress: true // Show the progress bar now
-                });
-
-                // These are the event functions, don't need most of them, it shows where we are in the process
-                uploadInstance.on('start', function () {
-                    console.log('Starting');
-                });
-
-                uploadInstance.on('end', function (error, fileObj) {
-                    console.log('On end File Object: ', fileObj);
-                });
-
                 uploadInstance.on('uploaded', function (error, fileObj) {
                     console.log('uploaded: ', fileObj);
-
-                    // Remove the filename from the upload box
-                    that.refs['fileinput'].value = '';
-
-                    // Reset our state for the next file
                     that.setState({
                         uploading: [],
                         progress: 0,
@@ -77,14 +50,6 @@ class FileUpload extends Component {
                     console.log('Error during upload: ' + error);
                 });
 
-                uploadInstance.on('progress', function (progress, fileObj) {
-                    console.log('Upload Percentage: ' + progress);
-                    // Update our progress bar
-                    that.setState({
-                        progress: progress
-                    })
-                });
-
                 uploadInstance.start(); // Must manually start the upload
             }
         }
@@ -93,7 +58,6 @@ class FileUpload extends Component {
     // This is our progress bar, bootstrap styled
     // Remove this function if not needed
     showUploads() {
-        console.log('**********************************', this.state.uploading);
 
         if (!_.isEmpty(this.state.uploading)) {
             return <div>

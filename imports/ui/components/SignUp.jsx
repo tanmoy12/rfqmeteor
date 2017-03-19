@@ -29,45 +29,90 @@ export default class SignUp extends Component {
             sigSealState2: "Add Signature & Seal",
             profilepicState: "Add Profile Picture",
 
+            empProPic: null,
+            empSeal: null
 
         };
     }
 
 
-    handleRegister(e) {
+    handleRegisterEmp(e) {
         e.preventDefault();
 
         that = this;
-        var username = ReactDOM.findDOMNode(this.refs.username).value.trim();
-        var email = ReactDOM.findDOMNode(this.refs.email).value.trim();
-        var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
-        var designation = ReactDOM.findDOMNode(this.refs.designation).value.trim();
+        var username = ReactDOM.findDOMNode(this.refs.empUsername).value.trim();
+        var email = ReactDOM.findDOMNode(this.refs.empEmail).value.trim();
+        var password = ReactDOM.findDOMNode(this.refs.empPassword).value.trim();
+        var repassword = ReactDOM.findDOMNode(this.refs.empRetypePassword).value.trim();
+        var designation = ReactDOM.findDOMNode(this.refs.empDesignation).value.trim();
+        var mobno = ReactDOM.findDOMNode(this.refs.empMobno).value.trim();
+        var that = this;
 
-        console.log(designation);
+        if(this.state.empProPic && this.state.empSeal){
+            let uploadInstance = ImagesCol.insert({
+                file: that.state.empProPic,
+                streams: 'dynamic',
+                chunkSize: 'dynamic',
+                allowWebWorkers: true // If you see issues with uploads, change this to false
+            }, false);
 
-        var User = {
-            username: username,
-            email: email,
-            password: password,
-            profile: {
-                designation: designation
-            }
-        };
-        Accounts.createUser(User, function (err) {
-            if (err) {
-                that.setState({
-                    message: err.reason
+            uploadInstance.on('uploaded', function (error, fileObjPro) {
+                console.log('uploaded: ', fileObjPro);
+                let uploadInstance2 = ImagesCol.insert({
+                    file: that.state.empSeal,
+                    streams: 'dynamic',
+                    chunkSize: 'dynamic',
+                    allowWebWorkers: true // If you see issues with uploads, change this to false
+                }, false);
+
+                uploadInstance2.on('uploaded', function (error, fileObjSeal) {
+                    console.log('uploaded: ', fileObjSeal);
+                    if(password==repassword){
+                        var User = {
+                            username: username,
+                            email: email,
+                            password: password,
+                            profile: {
+                                designation: designation,
+                                mobno: mobno,
+                                ProPic: fileObjPro._id,
+                                seal: fileObjSeal._id
+                            }
+                        };
+                        Accounts.createUser(User, function (err) {
+                            if (err) {
+                                var message= err.reason;
+                                Bert.alert(message, 'danger', 'growl-top-right');
+                            }else {
+                                Bert.alert('User Signed up', 'success', 'growl-top-right');
+                            }
+                        });
+                    }
+                    else{
+                        Bert.alert('Passwords do not match!!', 'danger', 'growl-top-right');
+                    }
                 });
-            }
-        });
 
+                uploadInstance2.on('error', function (error, fileObjSeal) {
+                    console.log('Error during upload: ' + error);
+                });
+
+                uploadInstance2.start();
+
+            });
+
+            uploadInstance.on('error', function (error, fileObj) {
+                console.log('Error during upload: ' + error);
+            });
+
+            uploadInstance.start(); // Must manually start the upload
+        }
+        else{
+            Bert.alert('Upload necessary files!!', 'danger', 'growl-top-right');
+        }
     }
 
     addCompLogoFunc() {
-
-
-        //var file = this.refs.compLogo.value.split("\\");
-        //console.log("DHUKSIiIIIIIII "+file[0]);
         if(this.state.companyLogoHover==false){
             this.setState({
                 companyLogoColor: "#3399ff",
@@ -158,7 +203,7 @@ export default class SignUp extends Component {
         }
     };
 
-    addSigSealLabel(){
+    addSigSealLabel(e){
 
         //COMPANY
         if(this.state.type=="comp"){
@@ -171,15 +216,26 @@ export default class SignUp extends Component {
 
         //EMPLOYEE
         else{
-            var file2 = this.refs.empSigSeal.value.split("\\");
-            if(file2[file2.length-1].length>0)
+            if (e.currentTarget.files && e.currentTarget.files[0]) {
+                var file2 = this.refs.empSigSeal.value.split("\\");
+                if(file2[file2.length-1].length>0)
+                    this.setState({
+                        sigSealState2:    file2[file2.length-1],
+                        empSeal: e.currentTarget.files[0]
+                    });
+            }
+
+        }
+    }
+    addProfilePicLabel(e){
+        if (e.currentTarget.files && e.currentTarget.files[0]) {
+            var file = this.refs.empProfilePic.value.split("\\");
+            if (file[file.length - 1].length > 0)
                 this.setState({
-                    sigSealState2:    file2[file2.length-1]
+                    profilepicState: file[file.length - 1],
+                    empProPic: e.currentTarget.files[0]
                 });
         }
-
-
-
     }
 
     addProfilePicFunc(){
@@ -197,13 +253,7 @@ export default class SignUp extends Component {
         }
     };
 
-    addProfilePicLabel(){
-        var file = this.refs.empProfilePic .value.split("\\");
-        if(file[file.length-1].length>0)
-            this.setState({
-                profilepicState:    file[file.length-1]
-            });
-    }
+
 
     compClicked() {
         this.setState({
@@ -409,7 +459,7 @@ export default class SignUp extends Component {
         if (this.state.type == 'init') {
             return (
                 <div className="container">
-                    <form onSubmit={this.handleRegister.bind(this)}>
+                    <form onSubmit={this.handleRegisterEmp.bind(this)}>
                         <div className="login">
                             {upperPart}
                         </div>
@@ -422,9 +472,7 @@ export default class SignUp extends Component {
         if (this.state.type == 'empl') {
             return (
                 <div className="container">
-                    <form onSubmit={this.handleRegister.bind(this)}>
                         <div className="login">
-
                             {upperPart}
                             <div className="row">
                                 <div className="col-md-6">
@@ -449,7 +497,6 @@ export default class SignUp extends Component {
                                     </div>
                                 </div>
                             </div>
-
 
                             <div className="row">
                                 <div className="col-md-6">
@@ -508,13 +555,11 @@ export default class SignUp extends Component {
                                 </div>
                             </div>
 
-                            <button type="submit" ref="empSignUpButt" className="btn btn-md btn-success signUpSubmit" style={topMarign}>
+                            <button onClick={this.handleRegisterEmp.bind(this)} type="submit" ref="empSignUpButt" className="btn btn-md btn-success signUpSubmit" style={topMarign}>
                                 Sign Up
                             </button>
 
                         </div>
-                    </form>
-
                 </div>
             );
         }
