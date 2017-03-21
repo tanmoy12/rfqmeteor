@@ -3,7 +3,7 @@ import React, {Component} from "react";
 
 export default class SideNote extends Component {
     loadChahida(e) {
-        FlowRouter.go('/ChahidaPotroload/' + this.props.RFQ.chahida_id);
+        FlowRouter.go('/ChahidaPotroload/' + this.props.RFQ._id);
     }
 
     makeChahidaSide() {
@@ -26,11 +26,11 @@ export default class SideNote extends Component {
                     </div>
                     <p id="TITLERFQ">Estimate</p>
                     <div>
-                        <h4>{this.props.RFQ.estimate}</h4>
+                        <h4>{this.props.RFQ.chahida.estimate}</h4>
                     </div>
                     <p id="TITLERFQ">Intiated by</p>
                     <div>
-                        <h4>{this.props.ini.username}</h4>
+                        <h4>{this.props.RFQ.chahida.initiator.username}</h4>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@ export default class SideNote extends Component {
     }
 
     makeStandardDoc(){
-        if(this.props.RFQ.standard_id){
+        if(this.props.RFQ.standard){
             return (
                 <div id="sidejumbotron" className="col-md-12 jumbotron">
                     <nav className=" navbar-custom navbar navbar-default text-center">
@@ -62,20 +62,6 @@ export default class SideNote extends Component {
                             </div>
                         </div>
                     </nav>
-                    <div id="SideJumbobody" className="col-md-12 jumbotron">
-                        <p id="TITLERFQ">RFQ Title</p>
-                        <div>
-                            <h4>{this.props.RFQ.title}</h4>
-                        </div>
-                        <p id="TITLERFQ">Estimate</p>
-                        <div>
-                            <h4>{this.props.RFQ.estimate}</h4>
-                        </div>
-                        <p id="TITLERFQ">Intiated by</p>
-                        <div>
-                            <h4>{this.props.ini.username}</h4>
-                        </div>
-                    </div>
                 </div>
             )
         }

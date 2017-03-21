@@ -27,7 +27,7 @@ class Note extends Component {
         }
     }
     render() {
-        if(this.props.RFQ && this.props.ini) {
+        if(this.props.RFQ) {
             return (
                 <div className="container">
                     <div className="row">
@@ -45,8 +45,8 @@ class Note extends Component {
 
                             <p className="text">
                                 ১। বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ (বিসিএসআইআর)-এর আওতাধীন ডেজিগনেটেড
-                                রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস- এর বৈজ্ঞানিক কর্মকর্তা <strong>{this.props.ini.username}</strong>- এর কাছ
-                                থেকে প্রাপ্ত চাহিদার (কপি সংযুক্ত) আলোকে গবেষণার জন্য <strong>{this.props.chahida.title}</strong> ক্রয় করা প্রয়োজন। কাজটি
+                                রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস- এর বৈজ্ঞানিক কর্মকর্তা <strong>{this.props.RFQ.chahida.initiator.username}</strong>- এর কাছ
+                                থেকে প্রাপ্ত চাহিদার (কপি সংযুক্ত) আলোকে গবেষণার জন্য <strong>{this.props.RFQ.title}</strong> ক্রয় করা প্রয়োজন। কাজটি
                                 জরুরী বিধায় স্থানীয় সরবরাহকারী প্রতিষ্ঠানের সাথে যোগাযোগ করে তুলনামূলক প্রতিযোগী
                                 দরদাতা দ্বারা PPR-২০০৮ এর তফসীল-২-এর বিধি ৯(২)(ক) অনুসরণে RFQ পদ্ধতিতে সংগ্রহ করা
                                 যেতে পারে।
@@ -54,8 +54,8 @@ class Note extends Component {
 
                             <p className="text"> ২। সদয় অনুমোদনের জন্য নথি উপস্থাপন করা হলো </p>
 
-                            {this.genSignBlock("হিসাবরক্ষক", this.props.chahida.accountant.user_id, this.props.chahida.accountant.signed)}
-                            {this.genSignBlock("অনুমোদনকারী", this.props.chahida.director.user_id, this.props.chahida.director.signed)}
+                            {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant.user_id, this.props.RFQ.chahida.accountant.signed)}
+                            {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director.user_id, this.props.RFQ.chahida.director.signed)}
 
                             <p className="text"> ৩। নোটানুচ্ছেদ ০১ এর অনুমোদনের আলোকে গবেষণাগারের প্রয়োজনের নিরীখে
                                 ……………….. এর Specification প্রস্তুত করার দায়িত্ব বাজারমূল্য নির্ধারন ও স্পেসিফিকেশন
@@ -92,7 +92,7 @@ class Note extends Component {
                             </div>
 
                         </div>
-                        <SideNote RFQ={this.props.RFQ} ini={this.props.ini}/>
+                        <SideNote RFQ={this.props.RFQ}/>
                     </div>
                 </div>
 
@@ -111,21 +111,11 @@ class Note extends Component {
 
 
 Note.propTypes = {
-    RFQ: PropTypes.object,
-    ini: PropTypes.object,
-    chahida: PropTypes.object
+    RFQ: PropTypes.object
 };
 
 export default createContainer( props => {
-    var RFQ= RFQDetails.findOne(props.id);
-    var ini,chahida;
-    if(RFQ){
-        ini = Meteor.users.findOne(RFQ.initiator);
-        chahida= Chahida_Potro.findOne(RFQ.chahida_id);
-    }
     return {
-        RFQ: RFQDetails.findOne(props.id),
-        ini: ini,
-        chahida: chahida
+        RFQ: RFQDetails.findOne(props.id)
     };
 }, Note);

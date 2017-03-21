@@ -1,7 +1,6 @@
-import React, {Component, PropTypes} from 'react';
-import {createContainer} from 'meteor/react-meteor-data';
-import ReactDOM from 'react-dom';
-
+import React, {Component, PropTypes} from "react";
+import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
 import Table from "./Table";
 
 class ChahidaPotro extends Component {
@@ -12,8 +11,8 @@ class ChahidaPotro extends Component {
             products: [],
             estimate: 0,
             signed: false,
-            title: ""
-
+            title: "",
+            selectValue: 0
         };
     }
 
@@ -103,8 +102,10 @@ class ChahidaPotro extends Component {
 
     renderScOf() {
         let scc = this.props.ScOf;
+        var i=0;
         return scc.map(function (ScOfficers) {
-            return <option value={ScOfficers._id} key={ScOfficers._id}>{ScOfficers.username}</option>
+
+            return <option value={i++} key={ScOfficers._id}>{ScOfficers.username}</option>
         });
     }
 
@@ -143,14 +144,13 @@ class ChahidaPotro extends Component {
 
     handleCreate(e) {
         e.preventDefault();
-        var ScOff = ReactDOM.findDOMNode(this.refs.ScOf).value.trim();
+        var ScOff = this.props.ScOf[this.state.selectValue];
         var sutrono = ReactDOM.findDOMNode(this.refs.sutrono).value.trim();
         var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
         var year = ReactDOM.findDOMNode(this.refs.year).value.trim();
         var upokhat = ReactDOM.findDOMNode(this.refs.upokhat).value.trim();
         var productbool = true;
         var that = this;
-
         if (this.state.signed && title && sutrono && this.state.products.length) {
             this.state.products.map(function (product) {
                 if (product.desc && product.qty && product.total) {
@@ -159,7 +159,7 @@ class ChahidaPotro extends Component {
                     productbool = false;
                 }
             });
-            if (productbool) {
+            if (productbool && this.state.selectValue>-1) {
                 var Chahidaform = {
                     title: title,
                     sutro_no: sutrono,
@@ -168,39 +168,42 @@ class ChahidaPotro extends Component {
                     upokhat: upokhat,
                     year: year,
                     verifier: {
-                        user_id: ScOff
+                        user_id: ScOff._id,
+                        username: ScOff.username,
+                        pic: ScOff.profile.ProPic
+                    },
+                    initiator: {
+                        user_id: Meteor.userId(),
+                        username: Meteor.user().username,
+                        pic: Meteor.user().profile.ProPic
                     }
                 };
-                Chahida_Potro.insert(Chahidaform, function (err, res) {
-                    if (err) Bert.alert('Unknown Error1!!', 'danger', 'growl-top-right');
+                var RFQDetailsForm = {
+                    chahida: Chahidaform,
+                    title: title
+                };
+                RFQDetails.insert(RFQDetailsForm, function (err, res) {
+                    if (err) Bert.alert('Unknown Error2!!', 'danger', 'growl-top-right');
                     else {
-                        var RFQDetailsForm = {
-                            chahida_id: res,
+                        var Rfqid = res;
+                        var NotificationForm = {
+                            from_id: Meteor.userId(),
+                            to_id: ScOff._id,
+                            type: 1,
                             title: title,
-                            estimate: that.state.estimate
+                            RFQ_id: Rfqid
                         };
-                        RFQDetails.insert(RFQDetailsForm, function (err, res) {
-                            if (err) Bert.alert('Unknown Error2!!', 'danger', 'growl-top-right');
+                        //NotificationsSchema.validate(NotificationForm);
+                        Notifications.insert(NotificationForm, function (err, res) {
+                            if (err) Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');
                             else {
-                                var Rfqid = res;
-                                var NotificationForm = {
-                                    from_id: Meteor.userId(),
-                                    to_id: ScOff,
-                                    type: 1,
-                                    title: title,
-                                    RFQ_id: Rfqid
-                                };
-                                NotificationsSchema.validate(NotificationForm);
-                                Notifications.insert(NotificationForm, function (err, res) {
-                                    if (err) Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');
-                                    else {
-                                        FlowRouter.go('/Note/' + Rfqid);
-                                    }
-                                })
+                                FlowRouter.go('/Note/' + Rfqid);
                             }
-                        });
+                        })
                     }
-                })
+                });
+
+
             } else {
                 Bert.alert('Please Fill up Table details!!', 'danger', 'growl-top-right');
             }
@@ -225,6 +228,10 @@ class ChahidaPotro extends Component {
                 }
             });
         }
+    }
+    handleSelect(e){
+        e.preventDefault();
+        this.setState({selectValue:e.target.value});
     }
 
     render() {
@@ -350,7 +357,7 @@ class ChahidaPotro extends Component {
                             <div className="form-group text-center">
                                 <p>FORWARD TO <strong>যাচাইকারী :</strong></p>
                                 <div className="form-group">
-                                    <select ref="ScOf" className="form-control">
+                                    <select onChange={this.handleSelect.bind(this)} ref="ScOf" className="form-control">
                                         {this.renderScOf()}
                                     </select>
                                 </div>
@@ -377,6 +384,11 @@ ChahidaPotro.propTypes = {
 export default createContainer(() => {
 
     return {
-        ScOf: Meteor.users.find({'profile.designation': "Scientific Officer"}).fetch()
+        ScOf: Meteor.users.find(
+            {
+                'profile.designation': "Scientific Officer",
+                _id: { $ne: Meteor.userId() }
+            }
+        ).fetch()
     };
 }, ChahidaPotro);
