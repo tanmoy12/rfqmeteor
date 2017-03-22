@@ -178,8 +178,12 @@ input:focus::-webkit-input-placeholder {
 #rfqimg{
     width: 120px;
     height: 120px;
+    margin-top: 15px;
 }
 
+#rfqboxmedia{
+    margin-top: 25px;
+}
 
 #RFQ{
     margin-left: -4%;
@@ -193,26 +197,25 @@ input:focus::-webkit-input-placeholder {
 
 #btndash{
     margin-bottom: 20px;
-    margin-top: 10px;
+    margin-top: 25px;
 }
 
 
 #flag {
     width: auto;
     height: 200px;
-    padding-top: 40px;
-    margin-top: 20px;
+    padding-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
     background: grey;
     color:antiquewhite;
-
     font-size: 11px;
     letter-spacing: 0.2em;
     text-align: center;
     text-transform: uppercase;
-    box-shadow: 4px 5px 50px 6px cadetblue;
+    box-shadow: 4px 5px 30px 6px cadetblue;
 
 }
 
@@ -440,6 +443,7 @@ a.notification:hover{
     font-size:10px;
     font-style: italic;
     line-height: 0.8;
+    margin-top: 25px;
 }
 .media-object{
     padding-top: 7px;

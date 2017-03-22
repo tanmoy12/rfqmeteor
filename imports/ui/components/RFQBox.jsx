@@ -20,7 +20,7 @@ export default class RFQBox extends Component {
                             <a href="#"> <img id="rfqimg" src="/RFQ.png" alt="User Image"/> </a>
                         </div>
 
-                        <div className="media-body">
+                        <div id="rfqboxmedia" className="media-body">
                             <p id="dashrfq">RFQ TITLE</p>
                             <div>
                                 <h4>Smoking Kills donot smoke please</h4>
