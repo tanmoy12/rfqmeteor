@@ -195,9 +195,9 @@ class ChahidaPotroLoad extends Component {
     }
 
     showBlock(forward_to) {
-        if (Meteor.userId()== this.props.chahidapotro.verifier.user_id ||
-            Meteor.userId()== this.props.chahidapotro.accountant.user_id ||
-            Meteor.userId()== this.props.chahidapotro.director.user_id ) {
+        if (Meteor.userId()== this.props.RFQ_details.chahida.verifier.user_id ||
+            Meteor.userId()== this.props.RFQ_details.chahida.accountant.user_id ||
+            Meteor.userId()== this.props.RFQ_details.chahida.director.user_id ) {
             return (
                 <div className="col-md-10">
                     <div className="col-md-2"></div>
@@ -229,7 +229,7 @@ class ChahidaPotroLoad extends Component {
         if(this.state.signed==true) {
             var AcOff = ReactDOM.findDOMNode(this.refs.AcOf).value.trim();
             var updateForm;
-            if(this.props.chahidapotro.substep_no==1){
+            if(this.props.RFQ_details.chahida.substep_no==1){
                 updateForm= {
                     substep_no: 2,
                     verifier: {
@@ -241,7 +241,7 @@ class ChahidaPotroLoad extends Component {
                     }
                 }
             }
-            else if(this.props.chahidapotro.substep_no==2){
+            else if(this.props.RFQ_details.chahida.substep_no==2){
                 updateForm= {
                     substep_no: 3,
                     accountant: {
@@ -253,7 +253,7 @@ class ChahidaPotroLoad extends Component {
                     }
                 }
             }
-            else if(this.props.chahidapotro.substep_no==3){
+            else if(this.props.RFQ_details.chahida.substep_no==3){
                 updateForm= {
                     substep_no: 4,
                     director: {
@@ -264,7 +264,7 @@ class ChahidaPotroLoad extends Component {
             }
             var that=this;
             Chahida_Potro.update(
-                this.props.chahidapotro._id,
+                this.props.RFQ_details.chahida._id,
                 {
                     $set: updateForm
                 }, function (err, res) {
@@ -280,8 +280,8 @@ class ChahidaPotroLoad extends Component {
     }
 
     render() {
-        if (this.props.chahidapotro) {
-            var chahida_potro = this.props.chahidapotro;
+        if (this.props.RFQ_details) {
+            var chahida_potro = this.props.RFQ_details.chahida;
             var forward_to;
             if (chahida_potro.substep_no == 1) {
                 forward_to = "হিসাবরক্ষক";
@@ -388,7 +388,7 @@ class ChahidaPotroLoad extends Component {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    {this.genSignBlock("নিবেদক", chahida_potro.initiator, true)}
+                                    {this.genSignBlock("নিবেদক", chahida_potro.initiator.user_id, true)}
                                     {this.genSignBlock("যাচাইকারী", chahida_potro.verifier.user_id, chahida_potro.verifier.signed)}
                                 </div>
                                 <div className="row">
@@ -426,7 +426,6 @@ class ChahidaPotroLoad extends Component {
 
 
 ChahidaPotroLoad.propTypes = {
-    chahidapotro: PropTypes.object,
     AcOf: PropTypes.array.isRequired,
     DrOf: PropTypes.array.isRequired,
     RFQ_details: PropTypes.object
@@ -434,9 +433,16 @@ ChahidaPotroLoad.propTypes = {
 
 export default createContainer(props => {
     return {
-        chahidapotro: Chahida_Potro.findOne(props.id),
-        AcOf: Meteor.users.find({'profile.designation': "Accounting Officer"}).fetch(),
-        DrOf: Meteor.users.find({'profile.designation': "Director"}).fetch(),
-        RFQ_details: RFQDetails.findOne({chahida_id: props.id})
+        AcOf: Meteor.users.find(
+            {
+                'profile.designation': "Accounting Officer",
+                _id: { $ne: Meteor.userId()}
+            }).fetch(),
+        DrOf: Meteor.users.find(
+            {
+                'profile.designation': "Director",
+                _id: { $ne: Meteor.userId()}
+            }).fetch(),
+        RFQ_details: RFQDetails.findOne({_id: props.id})
     };
 }, ChahidaPotroLoad);
