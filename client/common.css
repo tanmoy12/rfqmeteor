@@ -65,6 +65,7 @@
 
 }
 
+
 #userfont{
     font-size: 20px;
     font-family: "Comic Sans MS";
@@ -187,6 +188,45 @@ input:focus::-webkit-input-placeholder {
 
 #StandardJumbo{
     margin-bottom: 20px;
+
+}
+
+#btndash{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+
+#flag {
+    width: auto;
+    height: 200px;
+    padding-top: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    background: grey;
+    color:antiquewhite;
+
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-align: center;
+    text-transform: uppercase;
+    box-shadow: 4px 5px 50px 6px cadetblue;
+
+}
+
+
+#flag:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 26px solid cadetblue;
+    border-left: 612px solid transparent;
+    border-right: 612px solid transparent;
 
 }
 
