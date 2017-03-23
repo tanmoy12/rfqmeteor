@@ -23,7 +23,7 @@ export default class RFQBox extends Component {
                         <div id="rfqboxmedia" className="media-body">
                             <p id="dashrfq">RFQ TITLE</p>
                             <div>
-                                <h4>Smoking Kills donot smoke please</h4>
+                                <h4 id="rfqboxh4">Smoking Kills donot smoke please</h4>
                             </div>
                             <p id="dashrfq">Date</p>
                             <div>
@@ -32,13 +32,13 @@ export default class RFQBox extends Component {
                         </div>
                         <div className="media-right">
                             <div id="btndash">
-                                <button type="button" className="btn btn-danger btn-xs">More Info</button>
+                                <button type="button" className="btn btndash btn-sm">More Info</button>
                             </div>
                             <div id="btndash">
                                 <p>Days Left</p>
                             </div>
                             <div id="btndash">
-                                <button type="button" className="btn btn-danger btn-xs">Apply for RFQ</button>
+                                <button type="button" className="btn btndash btn-sm">Apply for RFQ</button>
                             </div>
                         </div>
 

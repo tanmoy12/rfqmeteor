@@ -179,6 +179,7 @@ input:focus::-webkit-input-placeholder {
     width: 120px;
     height: 120px;
     margin-top: 15px;
+    margin-left: 25px;
 }
 
 #rfqboxmedia{
@@ -200,6 +201,15 @@ input:focus::-webkit-input-placeholder {
     margin-top: 25px;
 }
 
+.btndash:hover{
+    color: white;
+    background: seagreen;
+}
+
+.btndash{
+    color: white;
+    background: crimson;
+}
 
 #flag {
     width: auto;
@@ -209,13 +219,13 @@ input:focus::-webkit-input-placeholder {
     margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
-    background: grey;
-    color:antiquewhite;
-    font-size: 11px;
+    background: snow;
+    color:black;
+    font-size: 12px;
     letter-spacing: 0.2em;
     text-align: center;
     text-transform: uppercase;
-    box-shadow: 4px 5px 30px 6px cadetblue;
+    box-shadow: 4px 5px 10px 6px palegreen;
 
 }
 
@@ -227,7 +237,7 @@ input:focus::-webkit-input-placeholder {
     bottom: 0;
     width: 0;
     height: 0;
-    border-bottom: 26px solid cadetblue;
+    border-bottom: 10px solid palegreen;
     border-left: 612px solid transparent;
     border-right: 612px solid transparent;
 
@@ -441,10 +451,18 @@ a.notification:hover{
 
 #dashrfq{
     font-size:10px;
-    font-style: italic;
+    font-family: "Lucida Console";
     line-height: 0.8;
     margin-top: 25px;
 }
+
+#rfqboxh4{
+    font-family: "Comic Sans MS";
+    font-style: italic;
+
+}
+
+
 .media-object{
     padding-top: 7px;
 }
