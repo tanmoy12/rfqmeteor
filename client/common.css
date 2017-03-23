@@ -196,21 +196,6 @@ input:focus::-webkit-input-placeholder {
 
 }
 
-#btndash{
-    margin-bottom: 20px;
-    margin-top: 25px;
-}
-
-.btndash:hover{
-    color: white;
-    background: seagreen;
-}
-
-.btndash{
-    color: white;
-    background: crimson;
-}
-
 #flag {
     width: auto;
     height: 200px;
@@ -240,6 +225,60 @@ input:focus::-webkit-input-placeholder {
     border-bottom: 10px solid palegreen;
     border-left: 612px solid transparent;
     border-right: 612px solid transparent;
+
+}
+
+
+#mysidemenu a {
+    position: absolute; /* Position them relative to the browser window */
+    right: -5px; /* Position them outside of the screen */
+    transition: 0.3s; /* Add transition on hover */
+    padding: 15px; /* 15px padding */
+    width: 80px; /* Set a specific width */
+    text-decoration: none; /* Remove underline */
+    font-size: 5px; /* Increase font size */
+    color: white; /* White text color */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+
+
+}
+
+#mysidemenu a:hover {
+    right: 10px;
+    width: 100px;
+    font-size: 10px;
+}
+
+
+
+#moreinfo {
+    top: 20px;
+    background-color: #4CAF50;
+}
+
+
+#moreinfo:hover {
+    background-color:mediumslateblue ;
+}
+
+
+#DaysLeft {
+    top: 80px;
+    background-color: #2196F3; /* Blue */
+}
+
+#DaysLeft:hover{
+    background-color: darkorchid ;
+
+}
+
+#applyRFQ{
+    top: 140px;
+    background-color:  #f44336;
+}
+
+#applyRFQ:hover{
+    background-color: midnightblue ;
 
 }
 
