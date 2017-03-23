@@ -13,7 +13,7 @@ export default class RFQBox extends Component {
     render() {
         return (
 
-            <div id="flag" className="">
+            <div id="flag">
                 <div className="container">
                     <div className="media">
                         <div className="media-left">

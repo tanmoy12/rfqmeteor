@@ -182,6 +182,13 @@ input:focus::-webkit-input-placeholder {
     margin-left: 25px;
 }
 
+#rfqimg:hover{
+    width: 160px;
+    height:160px;
+
+}
+
+
 #rfqboxmedia{
     margin-top: 25px;
 }
@@ -230,14 +237,14 @@ input:focus::-webkit-input-placeholder {
 
 
 #mysidemenu a {
-    position: absolute; /* Position them relative to the browser window */
-    right: -5px; /* Position them outside of the screen */
-    transition: 0.3s; /* Add transition on hover */
-    padding: 15px; /* 15px padding */
-    width: 80px; /* Set a specific width */
-    text-decoration: none; /* Remove underline */
-    font-size: 5px; /* Increase font size */
-    color: white; /* White text color */
+    position: absolute;
+    right: -5px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 80px;
+    text-decoration: none;
+    font-size: 6px;
+    color: white;
     border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
 
 
@@ -264,7 +271,7 @@ input:focus::-webkit-input-placeholder {
 
 #DaysLeft {
     top: 80px;
-    background-color: #2196F3; /* Blue */
+    background-color: #2196F3;
 }
 
 #DaysLeft:hover{
