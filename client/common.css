@@ -179,7 +179,15 @@ input:focus::-webkit-input-placeholder {
     width: 120px;
     height: 120px;
     margin-top: 15px;
+    margin-left: 25px;
 }
+
+#rfqimg:hover{
+    width: 160px;
+    height:160px;
+
+}
+
 
 #rfqboxmedia{
     margin-top: 25px;
@@ -195,12 +203,6 @@ input:focus::-webkit-input-placeholder {
 
 }
 
-#btndash{
-    margin-bottom: 20px;
-    margin-top: 25px;
-}
-
-
 #flag {
     width: auto;
     height: 200px;
@@ -209,13 +211,13 @@ input:focus::-webkit-input-placeholder {
     margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
-    background: grey;
-    color:antiquewhite;
-    font-size: 11px;
+    background: snow;
+    color:black;
+    font-size: 12px;
     letter-spacing: 0.2em;
     text-align: center;
     text-transform: uppercase;
-    box-shadow: 4px 5px 30px 6px cadetblue;
+    box-shadow: 4px 5px 10px 6px palegreen;
 
 }
 
@@ -227,9 +229,63 @@ input:focus::-webkit-input-placeholder {
     bottom: 0;
     width: 0;
     height: 0;
-    border-bottom: 26px solid cadetblue;
+    border-bottom: 10px solid palegreen;
     border-left: 612px solid transparent;
     border-right: 612px solid transparent;
+
+}
+
+
+#mysidemenu a {
+    position: absolute;
+    right: -5px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 140px;
+    text-decoration: none;
+    font-size: 8px;
+    color: white;
+    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+    font-family: "Comic Sans MS";
+
+}
+
+#mysidemenu a:hover {
+    right: 15px;
+    width: 160px;
+    font-size: 10px;
+}
+
+
+
+#moreinfo {
+    top: 20px;
+    background-color: #4CAF50;
+}
+
+
+#moreinfo:hover {
+    background-color:mediumslateblue ;
+}
+
+
+#DaysLeft {
+    top: 80px;
+    background-color: #2196F3;
+}
+
+#DaysLeft:hover{
+    background-color: darkorchid ;
+
+}
+
+#applyRFQ{
+    top: 140px;
+    background-color:  #f44336;
+}
+
+#applyRFQ:hover{
+    background-color: midnightblue ;
 
 }
 
@@ -410,6 +466,7 @@ input:focus::-webkit-input-placeholder {
 .notification {
     border-bottom: 1px solid #eeeeee;
     color: #333333;
+    padding-bottom: 2px;
 
 }
 
@@ -427,8 +484,10 @@ a.notification{
     text-decoration: none;
 }
 a.notification:hover{
-    color: darkgrey;
+    background: gainsboro;
+
 }
+
 
 .notification .media-body {
     padding-top: 2px;
@@ -441,10 +500,18 @@ a.notification:hover{
 
 #dashrfq{
     font-size:10px;
-    font-style: italic;
+    font-family: "Lucida Console";
     line-height: 0.8;
     margin-top: 25px;
 }
+
+#rfqboxh4{
+    font-family: "Comic Sans MS";
+    font-style: italic;
+
+}
+
+
 .media-object{
     padding-top: 7px;
 }

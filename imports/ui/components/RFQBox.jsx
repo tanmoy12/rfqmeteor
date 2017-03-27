@@ -13,7 +13,7 @@ export default class RFQBox extends Component {
     render() {
         return (
 
-            <div id="flag" className="">
+            <div id="flag">
                 <div className="container">
                     <div className="media">
                         <div className="media-left">
@@ -23,7 +23,7 @@ export default class RFQBox extends Component {
                         <div id="rfqboxmedia" className="media-body">
                             <p id="dashrfq">RFQ TITLE</p>
                             <div>
-                                <h4>Smoking Kills donot smoke please</h4>
+                                <h4 id="rfqboxh4">Smoking Kills donot smoke please</h4>
                             </div>
                             <p id="dashrfq">Date</p>
                             <div>
@@ -31,15 +31,12 @@ export default class RFQBox extends Component {
                             </div>
                         </div>
                         <div className="media-right">
-                            <div id="btndash">
-                                <button type="button" className="btn btn-danger btn-xs">More Info</button>
+                            <div id="mysidemenu" className="sidenav">
+                                <a href="#" id="moreinfo">More Info</a>
+                                <a href="#" id="DaysLeft">Days Remaning</a>
+                                <a href="#" id="applyRFQ">Apply for RFQ</a>
                             </div>
-                            <div id="btndash">
-                                <p>Days Left</p>
-                            </div>
-                            <div id="btndash">
-                                <button type="button" className="btn btn-danger btn-xs">Apply for RFQ</button>
-                            </div>
+
                         </div>
 
                     </div>
