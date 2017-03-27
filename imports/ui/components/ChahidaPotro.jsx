@@ -175,7 +175,9 @@ class ChahidaPotro extends Component {
                     initiator: {
                         user_id: Meteor.userId(),
                         username: Meteor.user().username,
-                        pic: Meteor.user().profile.ProPic
+                        pic: Meteor.user().profile.ProPic,
+                        signed: true,
+                        sign_date: new Date()
                     }
                 };
                 var RFQDetailsForm = {

@@ -74,7 +74,8 @@ Details = new SimpleSchema({
 ChahidaPotroSchema = new SimpleSchema({
     title: {
         type: String,
-        label: 'title'
+        label: 'title',
+        optional: true
     },
     substep_no: {
         type: Number,
@@ -84,7 +85,8 @@ ChahidaPotroSchema = new SimpleSchema({
     },
     estimate: {
         type: Number,
-        label: 'estimate'
+        label: 'estimate',
+        optional: true
     },
     createdAt: {
         type: Date,

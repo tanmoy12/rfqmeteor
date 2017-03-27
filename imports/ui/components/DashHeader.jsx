@@ -31,7 +31,13 @@ class DashHeader extends Component {
 
     render() {
         let user = "";
-        if (Meteor.user()) user = Meteor.user().username;
+        if (Meteor.user()) {
+            user = Meteor.user().username;
+            console.log(Meteor.user().profile.ProPic);
+
+            var link = ImagesCol.findOne({_id: Meteor.user().profile.ProPic}).link();
+            //console.log(link);
+        }
         else user = "Loading";
         return (
             <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">

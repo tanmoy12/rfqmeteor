@@ -17,7 +17,7 @@ export default class RFQBox extends Component {
                 <div className="container">
                     <div className="media">
                         <div className="media-left">
-                            <a href="#"> <img id="rfqimg" src="/RFQ.png" alt="User Image"/> </a>
+                            <a onClick={this.gotoNote.bind(this)} href="#"> <img id="rfqimg" src="/RFQ.png" alt="User Image"/> </a>
                         </div>
 
                         <div id="rfqboxmedia" className="media-body">
