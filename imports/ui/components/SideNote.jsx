@@ -38,7 +38,7 @@ export default class SideNote extends Component {
     }
 
     makeStandardDoc(){
-        if(this.props.RFQ.standard){
+        if(this.props.RFQ.standard.RFQ_no){
             return (
                 <div id="sidejumbotron" className="col-md-12 jumbotron">
                     <nav className=" navbar-custom navbar navbar-default text-center">

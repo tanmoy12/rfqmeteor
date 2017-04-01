@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
-import TableStandard from "../TableStandard";
 
 export default class StandardDocumentLoad4 extends Component {
     constructor(props) {
@@ -25,7 +24,7 @@ export default class StandardDocumentLoad4 extends Component {
 
     genTable() {
         return (
-            this.props.chahida.details.map(function (detailsrow) {
+            this.props.RFQ.chahida.details.map(function (detailsrow) {
                 return (
                     <tr key={detailsrow.id}>
                         <td className="col-md-1 text-center">{detailsrow.item_no}</td>
@@ -69,12 +68,12 @@ export default class StandardDocumentLoad4 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.standard.RFQ_no}
+                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <p id="dateload"><strong>DATE
-                                    : {this.datefromcreate(this.props.standard.createdAt)}</strong></p>
+                                    : {this.datefromcreate(this.props.RFQ.standard.createdAt)}</strong></p>
                             </div>
                         </div>
                     </div>

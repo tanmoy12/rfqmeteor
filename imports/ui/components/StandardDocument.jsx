@@ -148,12 +148,12 @@ class StandardDocument extends Component {
 
     render() {
 
-        if (this.props.RFQ && this.props.chahida) {
+        if (this.props.RFQ) {
             if(this.state.pageno==1){
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentPage1 RFQ={this.props.RFQ} chahida={this.props.chahida} RFQno={this.state.RFQno}
+                            <StandardDocumentPage1 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
                                                    RFQnoChange={(RFQno) => this.RFQnoChange(RFQno)} dateToday={this.dateToday}/>
 
                             <div className="col-md-10">
@@ -168,7 +168,7 @@ class StandardDocument extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentPage2 RFQ={this.props.RFQ} chahida={this.props.chahida}/>
+                            <StandardDocumentPage2 RFQ={this.props.RFQ} />
 
                             <div className="col-md-10">
                                 <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
@@ -181,7 +181,7 @@ class StandardDocument extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentPage3 RFQ={this.props.RFQ} chahida={this.props.chahida} RFQno={this.state.RFQno}
+                            <StandardDocumentPage3 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
                                                    dateToday={this.dateToday}/>
 
                             <div className="col-md-10">
@@ -195,8 +195,8 @@ class StandardDocument extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentPage4 RFQ={this.props.RFQ} chahida={this.props.chahida} RFQno={this.state.RFQno}
-                                                   dateToday={this.dateToday} genTable={this.genTable}/>
+                            <StandardDocumentPage4 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
+                                                   dateToday={this.dateToday}/>
 
                             <div className="col-md-10">
                                 <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
@@ -209,7 +209,7 @@ class StandardDocument extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentPage5 RFQ={this.props.RFQ} chahida={this.props.chahida} RFQno={this.state.RFQno}
+                            <StandardDocumentPage5 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
                                                    dateToday={this.dateToday}/>
 
                             <div className="col-md-10">
@@ -234,20 +234,12 @@ class StandardDocument extends Component {
 
 
 StandardDocument.propTypes = {
-    RFQ: PropTypes.object,
-    chahida: PropTypes.object
+    RFQ: PropTypes.object
 };
 
 export default createContainer(props => {
-    Meteor.subscribe('standards');
-    var RFQ = RFQDetails.findOne(props.id);
-    var chahida;
-    if (RFQ) {
-        chahida = Chahida_Potro.findOne(RFQ.chahida_id);
-    }
     return {
-        RFQ: RFQDetails.findOne(props.id),
-        chahida: chahida
+        RFQ: RFQDetails.findOne(props.id)
     };
 }, StandardDocument);
 

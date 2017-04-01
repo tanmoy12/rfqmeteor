@@ -5,13 +5,13 @@ import TableStandard from "../TableStandard";
 export default class StandardDocumentPage5 extends Component {
     constructor(props) {
         super(props);
-        var pro=[];
-        this.props.chahida.details.map(function (detail) {
+        var pro = [];
+        this.props.RFQ.chahida.details.map(function (detail) {
             pro.push({
                 id: detail.id,
                 item_no: detail.item_no,
                 desc: detail.desc,
-                spec: 'Pack size: '+ detail.unit,
+                spec: 'Pack size: ' + detail.unit,
                 making: 'To be mentioned',
                 qty: detail.qty
             });
@@ -26,10 +26,11 @@ export default class StandardDocumentPage5 extends Component {
             products: products
         });
     }
+
     handleCreate(e) {
         e.preventDefault();
         var productbool = true;
-        var that= this;
+        var that = this;
         if (this.props.RFQno) {
             this.state.products.map(function (product) {
                 if (product.spec && product.making) {
@@ -40,58 +41,23 @@ export default class StandardDocumentPage5 extends Component {
             });
             if (productbool) {
                 var StandardForm = {
-                    RFQ_no: this.props.RFQno,
-                    standard_details: this.state.products,
-
+                    'standard.RFQ_no': this.props.RFQno,
+                    'standard.standard_details': this.state.products
                 };
-                StandardDocuments.insert(StandardForm, function (err, res) {
-                    if (err) Bert.alert('Unknown Error1!!', 'danger', 'growl-top-right');
-                    else {
-                        RFQDetails.update(
-                            that.props.RFQ._id,
-                            {
-                                $set: {
-                                    standard_id: res
-                                }
-                            }, function (err, res) {
-                                if(err) {
-                                    console.log(err);
-                                    Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
-                                }
-                                else{
-                                    FlowRouter.go('/Note/' + that.props.RFQ._id);
-                                }
-                            });
+                RFQDetails.update(
+                    that.props.RFQ._id,
+                    {
+                        $set: StandardForm
+                    }, function (err, res) {
+                        if (err) {
+                            console.log(err);
+                            Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
+                        }
+                        else {
+                            FlowRouter.go('/Note/' + that.props.RFQ._id);
+                        }
+                    });
 
-                        /*
-                         var RFQDetailsForm = {
-                         chahida_id: res,
-                         title: title,
-                         estimate: that.state.estimate
-                         };
-                         RFQDetails.insert(RFQDetailsForm, function (err, res) {
-                         if (err) Bert.alert('Unknown Error2!!', 'danger', 'growl-top-right');
-                         else {
-                         var Rfqid = res;
-                         var NotificationForm = {
-                         from_id : Meteor.userId(),
-                         to_id: ScOff,
-                         type: 1,
-                         title: title,
-                         RFQ_id: Rfqid
-                         };
-                         NotificationsSchema.validate(NotificationForm);
-                         Notifications.insert(NotificationForm, function (err, res) {
-                         if (err) Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');
-                         else {
-                         FlowRouter.go('/Note/' + Rfqid);
-                         }
-                         })
-                         }
-                         });
-                         */
-                    }
-                })
             } else {
                 Bert.alert('Please Fill up Table details!!', 'danger', 'growl-top-right');
             }
@@ -100,8 +66,8 @@ export default class StandardDocumentPage5 extends Component {
         }
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
                 <div className="row">
                     <div className="col-md-12">
