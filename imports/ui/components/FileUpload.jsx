@@ -3,7 +3,7 @@ import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 import {Meteor} from 'meteor/meteor';
 import IndividualFile from './FileIndividualFile.jsx';
-import {_} from 'meteor/underscore';
+//import {_} from 'meteor/underscore';
 
 class FileUpload extends Component {
     constructor(props) {
@@ -84,9 +84,11 @@ class FileUpload extends Component {
 
             // Run through each file that the user has stored
             // (make sure the subscription only sends files owned by this user)
+            //let link = ImagesCol.findOne({_id: "FDwovczYLsjt3EfhM"}).link();  //The "view/download" link
+
 
             let showit = fileCursors.map((aFile, key) => {
-                // console.log('A file: ', aFile.link(), aFile.get('name'));
+                console.log(aFile._id);
 
                 let link = ImagesCol.findOne({_id: aFile._id}).link();  //The "view/download" link
 

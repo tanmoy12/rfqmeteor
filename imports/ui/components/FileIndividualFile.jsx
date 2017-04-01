@@ -37,6 +37,7 @@ export default class IndividualFile extends Component {
     render() {
 
         return <div className="m-t-sm">
+            <img src={this.props.fileUrl}/>
             <div className="row">
                 <div className="col-md-12">
                     <strong>{this.props.fileName}</strong>

@@ -151,7 +151,7 @@ class ChahidaPotro extends Component {
         var upokhat = ReactDOM.findDOMNode(this.refs.upokhat).value.trim();
         var productbool = true;
         var that = this;
-        if (this.state.signed && title && sutrono && this.state.products.length) {
+        if (this.state.signed && title && sutrono && this.state.products.length && ScOff) {
             this.state.products.map(function (product) {
                 if (product.desc && product.qty && product.total) {
 
@@ -175,7 +175,9 @@ class ChahidaPotro extends Component {
                     initiator: {
                         user_id: Meteor.userId(),
                         username: Meteor.user().username,
-                        pic: Meteor.user().profile.ProPic
+                        pic: Meteor.user().profile.ProPic,
+                        signed: true,
+                        sign_date: new Date()
                     }
                 };
                 var RFQDetailsForm = {
@@ -183,7 +185,10 @@ class ChahidaPotro extends Component {
                     title: title
                 };
                 RFQDetails.insert(RFQDetailsForm, function (err, res) {
-                    if (err) Bert.alert('Unknown Error2!!', 'danger', 'growl-top-right');
+                    if (err) {
+                        console.log(err);
+                        Bert.alert('Unknown Error2!!', 'danger', 'growl-top-right');
+                    }
                     else {
                         var Rfqid = res;
                         var NotificationForm = {
@@ -236,10 +241,17 @@ class ChahidaPotro extends Component {
 
     render() {
         var signBlock;
+        let link='';
+        if(Meteor.user()) {
+            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.seal});
+            if (cursor) {
+                link = cursor.link();
+            }
+        }
         if (this.state.signed) {
             signBlock =
                 <div className="col-md-6 center-block">
-                    <img src="sign1.png" className="img-circle" alt="User Image"/>
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
                     <p id="signLabel"><strong>নিবেদক</strong></p>
                 </div>
         } else {

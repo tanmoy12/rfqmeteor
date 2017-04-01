@@ -11,7 +11,7 @@ export default class StandardDocumentPage4 extends Component {
     }
     genTable() {
         return (
-            this.props.chahida.details.map(function (detailsrow) {
+            this.props.RFQ.chahida.details.map(function (detailsrow) {
                 return (
                     <tr key={detailsrow.id}>
                         <td className="col-md-1 text-center">{detailsrow.item_no}</td>

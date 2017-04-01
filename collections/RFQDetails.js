@@ -74,7 +74,8 @@ Details = new SimpleSchema({
 ChahidaPotroSchema = new SimpleSchema({
     title: {
         type: String,
-        label: 'title'
+        label: 'title',
+        optional: true
     },
     substep_no: {
         type: Number,
@@ -84,7 +85,8 @@ ChahidaPotroSchema = new SimpleSchema({
     },
     estimate: {
         type: Number,
-        label: 'estimate'
+        label: 'estimate',
+        optional: true
     },
     createdAt: {
         type: Date,
@@ -133,6 +135,72 @@ ChahidaPotroSchema = new SimpleSchema({
     }
 });
 
+StandardDetails = new SimpleSchema({
+    id: {
+        type: String,
+        label: 'id'
+    },
+    item_no: {
+        type: Number,
+        label: 'item_no'
+    },
+    desc: {
+        type: String,
+        label: 'desc',
+    },
+    spec: {
+        type: String,
+        label: 'spec'
+    },
+    qty: {
+        type: String,
+        label: 'Qty'
+    },
+    making: {
+        type: String,
+        label: 'rate',
+        optional: true
+    }
+});
+
+StandardDocumentSchema = new SimpleSchema({
+
+    RFQ_no: {
+        type: String,
+        label: 'RFQ_No',
+        optional: true
+    },
+    createdAt: {
+        type: Date,
+        label: 'date',
+        autoValue: function() {
+            if ( this.isInsert ) {
+                return new Date;
+            }
+        },
+        optional: true
+    },
+    standard_details: {
+        type: [StandardDetails],
+        minCount: 1,
+        optional: true
+    },
+    initiator: {
+        type: String,
+        label: 'initiator',
+        autoValue: function () {
+            if ( this.isInsert ) {
+                return this.userId;
+            }
+        },
+        optional: true
+    },
+    director: {
+        type: UserSignFalse,
+        optional: true
+    }
+});
+
 
 RFQDetailsSchema = new SimpleSchema({
     title: {
@@ -164,9 +232,9 @@ RFQDetailsSchema = new SimpleSchema({
         type: ChahidaPotroSchema,
         label: 'chahida'
     },
-    standard_id:{
-        type: String,
-        label: 'standard_id',
+    standard:{
+        type: StandardDocumentSchema,
+        label: 'standard',
         optional: true
     }
 });

@@ -46,14 +46,14 @@ export default class StandardDocumentLoad3 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.standard.RFQ_no}
+                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
                                 </div>
 
 
                             </div>
                             <div className="col-md-6">
                                 <p id="dateload"><strong>DATE
-                                    : {this.datefromcreate(this.props.standard.createdAt)}</strong></p>
+                                    : {this.datefromcreate(this.props.RFQ.standard.createdAt)}</strong></p>
                             </div>
                         </div>
 

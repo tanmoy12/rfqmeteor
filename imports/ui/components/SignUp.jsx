@@ -57,7 +57,7 @@ export default class SignUp extends Component {
             }, false);
 
             uploadInstance.on('uploaded', function (error, fileObjPro) {
-                console.log('uploaded: ', fileObjPro);
+
                 let uploadInstance2 = ImagesCol.insert({
                     file: that.state.empSeal,
                     streams: 'dynamic',
@@ -66,7 +66,7 @@ export default class SignUp extends Component {
                 }, false);
 
                 uploadInstance2.on('uploaded', function (error, fileObjSeal) {
-                    console.log('uploaded: ', fileObjSeal);
+
                     if(password==repassword){
                         var User = {
                             username: username,

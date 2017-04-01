@@ -9,7 +9,8 @@ class ChahidaPotroLoad extends Component {
         //  this.state.products = [];
         this.state = {
             signed: false,
-            showBlock: false
+            showBlock: false,
+            selectValue: 0
         };
     }
 
@@ -117,14 +118,17 @@ class ChahidaPotroLoad extends Component {
     renderAcOf() {
         let acc = this.props.AcOf;
         let dcc = this.props.DrOf;
-        if (this.props.chahidapotro.substep_no == 1) {
+        var i = 0;
+        if (this.props.RFQ_details.chahida.substep_no == 1) {
             return acc.map(function (AcOfficers) {
-                return <option value={AcOfficers._id} key={AcOfficers._id}>{AcOfficers.username}</option>
+                return <option value={i++} key={AcOfficers._id}>{AcOfficers.username}</option>
             });
-        } else if (this.props.chahidapotro.substep_no == 2) {
+        } else if (this.props.RFQ_details.chahida.substep_no == 2) {
             return dcc.map(function (AcOfficers) {
-                return <option value={AcOfficers._id} key={AcOfficers._id}>{AcOfficers.username}</option>
+                return <option value={i++} key={AcOfficers._id}>{AcOfficers.username}</option>
             });
+        } else if (this.props.RFQ_details.chahida.substep_no == 3) {
+            return <option>Specification Committee</option>
         }
     }
 
@@ -195,9 +199,9 @@ class ChahidaPotroLoad extends Component {
     }
 
     showBlock(forward_to) {
-        if (Meteor.userId()== this.props.RFQ_details.chahida.verifier.user_id ||
-            Meteor.userId()== this.props.RFQ_details.chahida.accountant.user_id ||
-            Meteor.userId()== this.props.RFQ_details.chahida.director.user_id ) {
+        if ((Meteor.userId() == this.props.RFQ_details.chahida.verifier.user_id) && !this.props.RFQ_details.chahida.accountant.username ||
+            (Meteor.userId() == this.props.RFQ_details.chahida.accountant.user_id) && !this.props.RFQ_details.chahida.director.username ||
+            (Meteor.userId() == this.props.RFQ_details.chahida.director.user_id) && !this.props.RFQ_details.chahida.director.signed) {
             return (
                 <div className="col-md-10">
                     <div className="col-md-2"></div>
@@ -206,7 +210,7 @@ class ChahidaPotroLoad extends Component {
                             <p>FORWARD TO <strong>
                                 {forward_to} </strong></p>
                             <div className="form-group">
-                                <select ref="AcOf" className="form-control">
+                                <select onChange={this.handleSelect.bind(this)} ref="AcOf" className="form-control">
                                     {this.renderAcOf()}
                                 </select>
                             </div>
@@ -224,56 +228,70 @@ class ChahidaPotroLoad extends Component {
         }
     }
 
+    handleSelect(e) {
+        e.preventDefault();
+        this.setState({selectValue: e.target.value});
+    }
+
     handleForward(e) {
         e.preventDefault();
-        if(this.state.signed==true) {
-            var AcOff = ReactDOM.findDOMNode(this.refs.AcOf).value.trim();
-            var updateForm;
-            if(this.props.RFQ_details.chahida.substep_no==1){
-                updateForm= {
-                    substep_no: 2,
-                    verifier: {
-                        signed: true,
-                        sign_date: new Date()
-                    },
-                    accountant: {
-                        user_id: AcOff
+        if (this.state.signed == true) {
+            if (this.props.RFQ_details.chahida.substep_no == 1) {
+                var AcOff = this.props.AcOf[this.state.selectValue];
+            } else if (this.props.RFQ_details.chahida.substep_no == 2) {
+                var AcOff = this.props.DrOf[this.state.selectValue];
+            } else {
+                AcOff = 'Specification Committee';
+            }
+
+            if (AcOff) {
+                var updateForm;
+                if (this.props.RFQ_details.chahida.substep_no == 1) {
+                    updateForm = {
+                        'chahida.substep_no': 2,
+                        'chahida.verifier.signed': true,
+                        'chahida.verifier.sign_date': new Date(),
+                        'chahida.accountant.user_id': AcOff._id,
+                        'chahida.accountant.username': AcOff.username,
+                        'chahida.accountant.pic': AcOff.profile.ProPic
                     }
                 }
-            }
-            else if(this.props.RFQ_details.chahida.substep_no==2){
-                updateForm= {
-                    substep_no: 3,
-                    accountant: {
-                        signed: true,
-                        sign_date: new Date()
-                    },
-                    director: {
-                        user_id: AcOff
+                else if (this.props.RFQ_details.chahida.substep_no == 2) {
+                    updateForm = {
+                        'chahida.substep_no': 3,
+                        'chahida.accountant.signed': true,
+                        'chahida.accountant.sign_date': new Date(),
+                        'chahida.director.user_id': AcOff._id,
+                        'chahida.director.username': AcOff.username,
+                        'chahida.director.pic': AcOff.profile.ProPic
                     }
                 }
-            }
-            else if(this.props.RFQ_details.chahida.substep_no==3){
-                updateForm= {
-                    substep_no: 4,
-                    director: {
-                        signed: true,
-                        sign_date: new Date()
+                else if (this.props.RFQ_details.chahida.substep_no == 3) {
+                    updateForm = {
+                        'chahida.substep_no': 4,
+                        'chahida.director.signed': true,
+                        'chahida.director.sign_date': new Date(),
                     }
                 }
+                var that = this;
+                RFQDetails.update(
+                    this.props.RFQ_details._id,
+                    {
+                        $set: updateForm
+                    }, function (err, res) {
+                        if (err) {
+                            console.log(err);
+                            Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
+                        }
+                        else {
+                            FlowRouter.go('/Note/' + that.props.RFQ_details._id);
+                        }
+                    });
             }
-            var that=this;
-            Chahida_Potro.update(
-                this.props.RFQ_details.chahida._id,
-                {
-                    $set: updateForm
-                }, function (err, res) {
-                    if(err) Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
-                    else{
-                        FlowRouter.go('/Note/' + that.props.RFQ_details._id);
-                    }
-                });
-        }else {
+            else {
+                Bert.alert('Forwarded to NoOne!!', 'danger', 'growl-top-right');
+            }
+        } else {
             Bert.alert('Please Sign the Document!!', 'danger', 'growl-top-right');
         }
 
@@ -379,7 +397,7 @@ class ChahidaPotroLoad extends Component {
                                         <p className="text">
                                             ২। এ জন্য আনুমানিক {chahida_potro.estimate}/-
                                             (কথায়)
-                                             {ChahidaPotroLoad.convertNumberToWords(chahida_potro.estimate)} টাকা ব্যয়।
+                                            {ChahidaPotroLoad.convertNumberToWords(chahida_potro.estimate)} টাকা ব্যয়।
                                             <br/>
                                             ৩। অতএব, উপরোক্ত বর্ণনামাতে {chahida_potro.title} ক্রয়ের অনুমোদনের
                                             জন্য বিনীতভাবে অনুরোধ জানানো যাচ্ছে।
@@ -436,12 +454,12 @@ export default createContainer(props => {
         AcOf: Meteor.users.find(
             {
                 'profile.designation': "Accounting Officer",
-                _id: { $ne: Meteor.userId()}
+                _id: {$ne: Meteor.userId()}
             }).fetch(),
         DrOf: Meteor.users.find(
             {
                 'profile.designation': "Director",
-                _id: { $ne: Meteor.userId()}
+                _id: {$ne: Meteor.userId()}
             }).fetch(),
         RFQ_details: RFQDetails.findOne({_id: props.id})
     };

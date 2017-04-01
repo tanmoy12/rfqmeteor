@@ -148,12 +148,12 @@ class StandardDocumentLoad extends Component {
 
     render() {
 
-        if (this.props.RFQ && this.props.chahida && this.props.standard) {
+        if (this.props.RFQ) {
             if(this.state.pageno==1){
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentLoad1 standard= {this.props.standard} RFQ={this.props.RFQ}/>
+                            <StandardDocumentLoad1 RFQ={this.props.RFQ}/>
 
                             <div className="col-md-10">
                                 <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
@@ -180,8 +180,7 @@ class StandardDocumentLoad extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentLoad3 standard= {this.props.standard} RFQ={this.props.RFQ} chahida={this.props.chahida} RFQno={this.state.RFQno}
-                                                   dateToday={this.dateToday}/>
+                            <StandardDocumentLoad3 RFQ={this.props.RFQ}/>
 
                             <div className="col-md-10">
                                 <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
@@ -194,8 +193,7 @@ class StandardDocumentLoad extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentLoad4 standard= {this.props.standard} RFQ={this.props.RFQ} chahida={this.props.chahida} RFQno={this.state.RFQno}
-                                                   dateToday={this.dateToday} genTable={this.genTable}/>
+                            <StandardDocumentLoad4 RFQ={this.props.RFQ} />
 
                             <div className="col-md-10">
                                 <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
@@ -208,8 +206,7 @@ class StandardDocumentLoad extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentLoad5 standard= {this.props.standard} RFQ={this.props.RFQ} chahida={this.props.chahida} RFQno={this.state.RFQno}
-                                                   dateToday={this.dateToday}/>
+                            <StandardDocumentLoad5 RFQ={this.props.RFQ} />
 
                             <div className="col-md-10">
                                 <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
@@ -224,7 +221,7 @@ class StandardDocumentLoad extends Component {
         else {
             return (
                 <div>
-                    Loading
+                    Loading...
                 </div>
             )
         }
@@ -233,23 +230,12 @@ class StandardDocumentLoad extends Component {
 
 
 StandardDocumentLoad.propTypes = {
-    RFQ: PropTypes.object,
-    chahida: PropTypes.object,
-    standard: PropTypes.object
+    RFQ: PropTypes.object
 };
 
 export default createContainer(props => {
-    Meteor.subscribe('standards');
-    var RFQ = RFQDetails.findOne(props.id);
-    var chahida,standard;
-    if (RFQ) {
-        chahida = Chahida_Potro.findOne(RFQ.chahida_id);
-        standard = StandardDocuments.findOne(RFQ.standard_id);
-    }
     return {
         RFQ: RFQDetails.findOne(props.id),
-        standard: standard,
-        chahida: chahida
     };
 }, StandardDocumentLoad);
 
