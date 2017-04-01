@@ -160,6 +160,7 @@ input:focus::-webkit-input-placeholder {
     margin:0;
     padding: 10px;
     box-shadow: 1px 5px 14px 2px skyblue;
+
 }
 
 #SideJumbobody{
@@ -185,6 +186,7 @@ input:focus::-webkit-input-placeholder {
 #rfqimg:hover{
     width: 160px;
     height:160px;
+    transition: all 0.5s ease-in;
 
 }
 
@@ -239,7 +241,7 @@ input:focus::-webkit-input-placeholder {
 #mysidemenu a {
     position: absolute;
     right: -5px;
-    transition: 0.3s;
+    transition: all 0.5s ease-in;
     padding: 15px;
     width: 140px;
     text-decoration: none;
@@ -289,6 +291,12 @@ input:focus::-webkit-input-placeholder {
 
 }
 
+#notiheader{
+    font-family: "Century Schoolbook";
+    font-size: medium;
+
+}
+
 .dropdown-container {
     position: absolute;
     top: 100%;
@@ -318,7 +326,7 @@ input:focus::-webkit-input-placeholder {
     border-radius: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
-    max-height: 330px;
+    max-height: 100%;
 
 }
 

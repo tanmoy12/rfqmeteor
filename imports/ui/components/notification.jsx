@@ -19,7 +19,7 @@ export default class Not extends Component {
                     <b className="caret"></b></a>
                 <div className="dropdown-container">
                     <div className="dropdown-toolbar">
-                        <h3 className="dropdown-toolbar-title">Notifications</h3>
+                        <h3 id="notiheader" className="dropdown-toolbar-title">Notifications...</h3>
                     </div>
 
                     <ul className="dropdown-menu pull-right alert-dropdown col-md=12">
@@ -32,7 +32,7 @@ export default class Not extends Component {
                                         </div>
                                     </div>
                                     <div className="media-body">
-                                        <p><strong>Anjan Basak Tanmoy</strong> Asked for verification ChahidaPotro</p>
+                                        <p><strong>Anjan Basak Tanmoy</strong> Asked to verify ChahidaPotro</p>
                                         <p id="noti">7 March, 2017 at 8:30 am </p>
                                     </div>
 
@@ -57,6 +57,30 @@ export default class Not extends Component {
                                     </div>
                                     <div className="media-body">
                                         <p><strong>Laurine Hadima</strong> Asked for verification</p>
+                                        <p id="noti">7 March, 2017 at 8:30 am </p>
+                                    </div>
+
+                                </a>
+                                <a href="#" className="notification col-md-12 ">
+                                    <div className="media-left">
+                                        <div className="media-object">
+                                            <img id="profile" src="/profile.jpg" alt="User Image"/>
+                                        </div>
+                                    </div>
+                                    <div className="media-body">
+                                        <p><strong>Hudai Khechal</strong> Asked to verify RFQ Chahida Potro</p>
+                                        <p id="noti">7 March, 2017 at 8:30 am </p>
+                                    </div>
+
+                                </a>
+                                <a href="#" className="notification col-md-12 ">
+                                    <div className="media-left">
+                                        <div className="media-object">
+                                            <img id="profile" src="/profile.jpg" alt="User Image"/>
+                                        </div>
+                                    </div>
+                                    <div className="media-body">
+                                        <p><strong>I am the King</strong> Asked to verify RFQ Chahida Potro</p>
                                         <p id="noti">7 March, 2017 at 8:30 am </p>
                                     </div>
 
