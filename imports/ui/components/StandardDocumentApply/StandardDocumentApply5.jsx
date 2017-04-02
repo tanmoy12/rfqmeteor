@@ -1,75 +1,39 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
-import TableStandard from "../TableStandard";
 
-export default class StandardDocumentPage5 extends Component {
+export default class StandardDocumentApply5 extends Component {
     constructor(props) {
         super(props);
-        var pro = [];
-        this.props.RFQ.chahida.details.map(function (detail) {
-            pro.push({
-                id: detail.id,
-                item_no: detail.item_no,
-                desc: detail.desc,
-                spec: 'Pack size: ' + detail.unit,
-                making: 'To be mentioned',
-                qty: detail.qty
-            });
-        });
-        this.state = {
-            products: pro
-        }
     }
 
-    getdatafromtable(products) {
-        this.setState({
-            products: products
-        });
-    }
-
-    handleCreate(e) {
-        e.preventDefault();
-        var productbool = true;
-        var that = this;
-        if (this.props.RFQno) {
-            this.state.products.map(function (product) {
-                if (product.spec && product.making) {
-
-                } else {
-                    productbool = false;
-                }
-            });
-            if (productbool) {
-                var StandardForm = {
-                    'standard.RFQ_no': this.props.RFQno,
-                    'standard.standard_details': this.state.products,
-                    'standard.createdAt' : new Date(),
-                    'standard.initiator.signed': true,
-                    'standard.initiator.sign_date': new Date(),
-                    'standard.initiator.user_id': Meteor.userId(),
-                    'standard.initiator.username': Meteor.user().username,
-                    'standard.initiator.pic': Meteor.user().profile.ProPic
-                };
-                RFQDetails.update(
-                    that.props.RFQ._id,
-                    {
-                        $set: StandardForm
-                    }, function (err, res) {
-                        if (err) {
-                            console.log(err);
-                            Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
-                        }
-                        else {
-                            FlowRouter.go('/Note/' + that.props.RFQ._id);
-                        }
-                    });
-
-            } else {
-                Bert.alert('Please Fill up Table details!!', 'danger', 'growl-top-right');
-            }
+    datefromcreate(createdAt) {
+        var date = createdAt.getDate();
+        var month = createdAt.getMonth() + 1;
+        var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
         } else {
-            Bert.alert('Please Fill up all Details!!', 'danger', 'growl-top-right');
+            dateshow = date + '/' + month + '/' + year;
         }
+        return dateshow;
+    }
+
+    genTable() {
+        return (
+            this.props.RFQ.standard.standard_details.map(function (detail) {
+                    return (
+                        <tr key={detail.id}>
+                            <td className="col-md-1">{detail.item_no}</td>
+                            <td className="col-md-3">{detail.desc}</td>
+                            <td><textarea readOnly defaultValue={detail.spec} rows="4" cols="50"></textarea></td>
+                            <td><textarea readOnly defaultValue={detail.making} rows="4" cols="50"></textarea></td>
+                            <td className="col-md-2 text-center">{detail.qty}</td>
+                        </tr>
+                    )
+                }
+            )
+        )
     }
 
     render() {
@@ -98,19 +62,42 @@ export default class StandardDocumentPage5 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQno}
+                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
                                 </div>
                             </div>
                             <div className="col-md-6 text-right">
-                                {this.props.dateToday()}
+                                {this.datefromcreate(this.props.RFQ.standard.createdAt)}
                             </div>
+                            <div id="input" className="pull-right">
+                                <input/>
 
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <TableStandard data={this.state.products}
-                                   sendData={(products) => this.getdatafromtable(products) }/>
+                    <div id="tabledesc" className="table">
+                        <table id="customers" className="table table-responsive table-bordered table-condensed">
+
+                            <thead>
+                            <tr >
+                                <th className="col-md-1">SL No</th>
+                                <th className="col-md-3">Description of Items</th>
+                                <th className="col-md-4">Full Technical Specification
+                                    and Standards
+                                </th>
+                                <th className="col-md-2">Make and Origin</th>
+                                <th className="col-md-2 text-center">Quantity</th>
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                            {this.genTable()}
+                            </tbody>
+                        </table>
+                        <br/><br/>
+
+                    </div>
                 </div>
 
                 <p className="text">
@@ -169,9 +156,6 @@ export default class StandardDocumentPage5 extends Component {
                         literature/brochures for the listed items.
                     </strong>
                 </p>
-                <input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"
-                       id="submit-all"
-                       className="btn btn-primary" value="FORWARD"/>
             </div>
         );
     }

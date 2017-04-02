@@ -173,11 +173,6 @@ StandardDocumentSchema = new SimpleSchema({
     createdAt: {
         type: Date,
         label: 'date',
-        autoValue: function() {
-            if ( this.isInsert ) {
-                return new Date;
-            }
-        },
         optional: true
     },
     standard_details: {
@@ -186,13 +181,8 @@ StandardDocumentSchema = new SimpleSchema({
         optional: true
     },
     initiator: {
-        type: String,
+        type: UserSignFalse,
         label: 'initiator',
-        autoValue: function () {
-            if ( this.isInsert ) {
-                return this.userId;
-            }
-        },
         optional: true
     },
     director: {
@@ -221,11 +211,6 @@ RFQDetailsSchema = new SimpleSchema({
                 return new Date;
             }
         },
-        optional: true
-    },
-    initiator: {
-        type: UserSignFalse,
-        label: 'initiator',
         optional: true
     },
     chahida:{

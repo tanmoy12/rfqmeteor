@@ -23,12 +23,6 @@ class DashHeader extends Component {
         FlowRouter.go('/dashboard');
     }
 
-    loadNotifications() {
-        return this.props.nots.map(function (not) {
-            return <Not key={not._id} notification={not}/>
-        });
-    }
-
     render() {
         let user = "";
         let link= "";
@@ -135,7 +129,7 @@ class DashHeader extends Component {
 
                         <div id="navbar" className="collapse navbar-collapse">
                             <ul className="nav navbar-right top-nav">
-                                <Not/>
+
 
                                 <li className="dropdown">
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
@@ -199,7 +193,6 @@ class DashHeader extends Component {
 
 DashHeader.propTypes = {
     currentUser: PropTypes.object,
-    nots: PropTypes.array.isRequired,
     images: PropTypes.array.isRequired
 };
 
@@ -207,7 +200,6 @@ export default createContainer(() => {
     Meteor.subscribe('allUserData');
     return {
         images: ImagesCol.find().fetch(),
-        nots: Notifications.find().fetch(),
         currentUser: Meteor.user()
     };
 }, DashHeader);

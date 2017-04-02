@@ -15,11 +15,11 @@ export default class Not extends Component {
             <li className="dropdown dropdown-notification">
                 <a href="#notifications-panel" className="dropdown-toggle" data-toggle="dropdown">
                     <i className="fa fa-bell notification-icon"></i>
-                    <span className="label label-warning">5</span>
+                    <span className="label label-warning">8</span>
                     <b className="caret"></b></a>
                 <div className="dropdown-container">
                     <div className="dropdown-toolbar">
-                        <h3 className="dropdown-toolbar-title">Notifications</h3>
+                        <h3 className="dropdown-toolbar-title">Notificans</h3>
                     </div>
 
                     <ul className="dropdown-menu pull-right alert-dropdown col-md=12">
@@ -72,3 +72,14 @@ export default class Not extends Component {
         );
     }
 }
+
+
+Not.propTypes = {
+    nots: PropTypes.array.isRequired
+};
+
+export default createContainer(() => {
+    return {
+        nots: Notifications.find().fetch()
+    };
+}, Not);
