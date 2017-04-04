@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from "react";
 
-export default class Not extends Component {
+class Not extends Component {
     constructor(props) {
         super(props);
     }
