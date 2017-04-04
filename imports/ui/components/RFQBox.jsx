@@ -17,7 +17,8 @@ export default class RFQBox extends Component {
                 <div className="container">
                     <div className="media">
                         <div className="media-left">
-                            <a onClick={this.gotoNote.bind(this)} href="#"> <img id="rfqimg" src="/RFQ.png" alt="User Image"/> </a>
+                            <a onClick={this.gotoNote.bind(this)} href="#"> <img id="rfqimg" src="/RFQ.png"
+                                                                                 alt="User Image"/> </a>
                         </div>
 
                         <div id="rfqboxmedia" className="media-body">
@@ -32,9 +33,9 @@ export default class RFQBox extends Component {
                         </div>
                         <div className="media-right">
                             <div id="mysidemenu" className="sidenav">
-                                <a href="#" id="moreinfo">More Info</a>
-                                <a href="#" id="DaysLeft">Days Remaning</a>
-                                <a href="#" id="applyRFQ">Apply for RFQ</a>
+                                <button href="#" className="btn btn-primary">More Info</button>
+                                <button href="#" className="btn btn-primary">Days Remaning</button>
+                                <button href="#" className="btn btn-primary">Apply for RFQ</button>
                             </div>
 
                         </div>

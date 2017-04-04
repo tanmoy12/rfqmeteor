@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import React, {Component, PropTypes} from 'react';
+import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 
 import RFQBox from './RFQBox';
@@ -28,11 +28,13 @@ class Dash extends Component {
                 <div className="container">
                     <div classID="Dasboardjumbo" className="jumbotron text-center">
                         <h1 className="page-header"> Designated Reference for Institute of Chemical Measurements</h1>
-                        <button onClick={this.createRFQ.bind(this)} type="button" className="btn btn-primary"
-                                data-toggle="modal" data-target="#popupwindow">
-                            Create
-                            RFQ
-                        </button>
+                        <div id="mysidemenu">
+                            <button onClick={this.createRFQ.bind(this)} id="btnrfqdash" className="btn btn-primary"
+                                    data-toggle="modal" data-target="#popupwindow">
+                                Create
+                                RFQ
+                            </button>
+                        </div>
                     </div>
                     {this.renderRFQs()}
 
@@ -44,12 +46,12 @@ class Dash extends Component {
 
 
 Dash.propTypes = {
-    RFQList : PropTypes.array.isRequired
+    RFQList: PropTypes.array.isRequired
 };
 
 export default createContainer(() => {
     Meteor.subscribe('rfqdetails');
     return {
-        RFQList : RFQDetails.find({}).fetch()
+        RFQList: RFQDetails.find({}).fetch()
     };
 }, Dash);

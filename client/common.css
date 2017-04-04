@@ -68,13 +68,14 @@
 
 #userfont{
     font-size: 20px;
-    font-family: "Comic Sans MS";
+    font-family: "Tahoma";
     line-height: .8;
 }
 
 #designation{
     font-size: 15px;
-    font-family: "monospace";
+    font-family: "Tahoma";
+    font-weight: bold;
 
 }
 
@@ -182,8 +183,8 @@ input:focus::-webkit-input-placeholder {
 }
 
 #rfqimg{
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     margin-top: 15px;
     margin-left: 25px;
 }
@@ -212,7 +213,7 @@ input:focus::-webkit-input-placeholder {
 
 #flag {
     width: auto;
-    height: 200px;
+    height: 230px;
     padding-top: 20px;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -243,62 +244,30 @@ input:focus::-webkit-input-placeholder {
 }
 
 
-#mysidemenu a {
-    position: absolute;
-    right: -5px;
-    transition: all 0.5s ease-in;
+
+#mysidemenu .btn {
     padding: 15px;
     width: 140px;
     text-decoration: none;
-    font-size: 8px;
-    color: white;
-    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
-    font-family: "Comic Sans MS";
-
+    font-size: 12px;
+    color: blue;
+    box-shadow: 6px 5px 5px 0px darkgrey;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    font-weight: bolder;
+    background: snow;
 }
 
-#mysidemenu a:hover {
-    right: 15px;
-    width: 160px;
-    font-size: 10px;
+#mysidemenu .btn:hover{
+    background: slategrey;
+    color: snow;
+    font-weight: bolder;
 }
 
-
-
-#moreinfo {
-    top: 20px;
-    background-color: #4CAF50;
-}
-
-
-#moreinfo:hover {
-    background-color:mediumslateblue ;
-}
-
-
-#DaysLeft {
-    top: 80px;
-    background-color: #2196F3;
-}
-
-#DaysLeft:hover{
-    background-color: darkorchid ;
-
-}
-
-#applyRFQ{
-    top: 140px;
-    background-color:  #f44336;
-}
-
-#applyRFQ:hover{
-    background-color: midnightblue ;
-
-}
 
 #notiheader{
-    font-family: "Century Schoolbook";
-    font-size: medium;
+    font-size: small;
+    font-family: Arial;
 
 }
 
@@ -513,15 +482,15 @@ a.notification:hover{
 
 #dashrfq{
     font-size:10px;
-    font-family: "Lucida Console";
-    line-height: 0.8;
+    font-family: "Tahoma";
+    line-height: 1.0;
     margin-top: 25px;
 }
 
 #rfqboxh4{
     font-family: "Comic Sans MS";
     font-style: italic;
-
+    font-size: 25px;
 }
 
 
