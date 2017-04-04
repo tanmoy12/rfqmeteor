@@ -20,11 +20,9 @@ class Not extends Component {
                     <b className="caret"></b></a>
                 <div className="dropdown-container">
                     <div className="dropdown-toolbar">
-<<<<<<< HEAD
                         <h3 id="notiheader" className="dropdown-toolbar-title">Notification</h3>
-=======
+
                         <h3 className="dropdown-toolbar-title">Notificans</h3>
->>>>>>> 84b671247dbff0660ede3f207ac1848fb4b3ebac
                     </div>
 
                     <ul className="dropdown-menu pull-right alert-dropdown col-md=12">
@@ -66,7 +64,6 @@ class Not extends Component {
                                     </div>
 
                                 </a>
-<<<<<<< HEAD
                                 <a href="#" className="notification col-md-12 ">
                                     <div className="media-left">
                                         <div className="media-object">
@@ -91,8 +88,6 @@ class Not extends Component {
                                     </div>
 
                                 </a>
-=======
->>>>>>> 84b671247dbff0660ede3f207ac1848fb4b3ebac
 
                             </div>
                         </li>
