@@ -19,7 +19,7 @@ export default class Not extends Component {
                     <b className="caret"></b></a>
                 <div className="dropdown-container">
                     <div className="dropdown-toolbar">
-                        <h3 id="notiheader" className="dropdown-toolbar-title">Notifications...</h3>
+                        <h3 id="notiheader" className="dropdown-toolbar-title">Notification</h3>
                     </div>
 
                     <ul className="dropdown-menu pull-right alert-dropdown col-md=12">
@@ -80,7 +80,7 @@ export default class Not extends Component {
                                         </div>
                                     </div>
                                     <div className="media-body">
-                                        <p><strong>I am the King</strong> Asked to verify RFQ Chahida Potro</p>
+                                        <p><strong>Partha Pritam DAS</strong> Asked to verify RFQ Chahida Potro</p>
                                         <p id="noti">7 March, 2017 at 8:30 am </p>
                                     </div>
 
