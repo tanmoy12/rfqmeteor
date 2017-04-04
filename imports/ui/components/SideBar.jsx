@@ -92,14 +92,18 @@ export default class SideBar extends Component {
         if (this.state.addClass1 == "current sidebar_li") {
             chahidapotro_block =
                 <div style={forward_to_style}>
-                    <p>Forward To:&emsp;&emsp;&emsp;
-                        যাচাইকারী
-                    </p>
+                    <p style={{display: "inline-block", float: "left", marginLeft: "2%"}}>Forward To:</p>
+                    <p style={{display: "inline-block", float: "right", marginRight: "2%"}}>{this.props.forwardTo.toWhom}</p>
 
-                    <div className="form-group" style={{backgroundColor: "#2b2b2a", borderRadius: "3px"}}>
-                        <select ref="AcOf" className="form-control">
-                            {/*{this.renderAcOf()}*/}
-                            Shadman
+
+                    <div className="form-group" style={{borderRadius: "3px"}}>
+                        <select ref="AcOf" className="form-control" style={{color: "white"}}>
+                            <option value="" disabled selected hidden>Select to forward</option>
+                            {
+                                this.props.forwardTo.dropdownList.map(function (username) {
+                                return (<option value={username} key={username}  style={{color: "black"}}>{username}</option>)
+                                })
+                            }
                         </select>
                     </div>
 
@@ -114,9 +118,8 @@ export default class SideBar extends Component {
         if (this.state.addClass2 == "current sidebar_li") {
             forward_to =
                 <div style={forward_to_style}>
-                    <p>Forward To:&emsp;&emsp;&emsp;
-                        যাচাইকারী
-                    </p>
+                    <p style={{display: "inline-block", float: "left", marginLeft: "2%"}}>Forward To:</p>
+                    <p style={{display: "inline-block", float: "right", marginRight: "2%"}}>{this.props.forwardTo.toWhom}</p>
                     <div className="form-group" style={{backgroundColor: "#2b2b2a", borderRadius: "3px"}}>
                         <select ref="ScOf" className="form-control">
 

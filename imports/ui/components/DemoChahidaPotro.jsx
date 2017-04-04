@@ -70,7 +70,9 @@ export default class ChahidaPotroLoad extends Component {
 
                 <div className="row " style={{marginTop: "-2.4%", marginLeft: "-2.3%"}}>
                     <div className="col-md-3">
-                        <SideBar/>
+                        <SideBar forwardTo = {{toWhom: "যাচাইকারী",
+                                                dropdownList: ['shadman', 'tanmoy', 'hasib']
+                                                }}/>
 
 
                     </div>
