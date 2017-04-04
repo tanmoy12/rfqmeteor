@@ -268,6 +268,7 @@ class ChahidaPotroLoad extends Component {
                 }
                 else if (this.props.RFQ_details.chahida.substep_no == 3) {
                     updateForm = {
+                        step_no : 2,
                         'chahida.substep_no': 4,
                         'chahida.director.signed': true,
                         'chahida.director.sign_date': new Date(),
