@@ -33,9 +33,9 @@ export default class RFQBox extends Component {
                         </div>
                         <div className="media-right">
                             <div id="mysidemenu" className="sidenav">
-                                <button href="#" className="btn btn-primary">More Info</button>
-                                <button href="#" className="btn btn-primary">Days Remaning</button>
-                                <button href="#" className="btn btn-primary">Apply for RFQ</button>
+                                <button href="#" className="btn btn-primary"><span className="glyphicon glyphicon-tasks"></span>More Info</button>
+                                <button href="#" className="btn btn-primary"><span className="glyphicon glyphicon-time"></span>10 Days Remaning</button>
+                                <button href="#" className="btn btn-primary"><span className="glyphicon glyphicon-hand-right"></span>Apply for RFQ</button>
                             </div>
 
                         </div>
