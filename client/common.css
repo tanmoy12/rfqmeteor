@@ -1,6 +1,7 @@
 
 .navbar{
     background-color: black;
+    margin-bottom: 0px;
 }
 
 
@@ -103,7 +104,7 @@
 
 /* Fixed navbar */
 body {
-    padding-top: 52px;
+    padding-top: 1.5%;
 }
 /* General sizing */
 ul.dropdown-lr {
@@ -1057,6 +1058,10 @@ opacity */
     border-right: 1px solid #000;
     box-shadow: 1px 0 0 #222;
     height: 100%;
+    position: fixed;
+    left: 0px;
+    /*top:0px;*/
+    /*top: ;*/
     /*width: 100%;*/
 }
 
