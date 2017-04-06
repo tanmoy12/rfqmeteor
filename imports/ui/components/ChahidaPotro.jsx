@@ -170,12 +170,12 @@ class ChahidaPotro extends Component {
                     verifier: {
                         user_id: ScOff._id,
                         username: ScOff.username,
-                        pic: ScOff.profile.ProPic
+                        pic: ScOff.profile.seal
                     },
                     initiator: {
                         user_id: Meteor.userId(),
                         username: Meteor.user().username,
-                        pic: Meteor.user().profile.ProPic,
+                        pic: Meteor.user().profile.seal,
                         signed: true,
                         sign_date: new Date()
                     }

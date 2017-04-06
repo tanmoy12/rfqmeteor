@@ -71,10 +71,11 @@ export default class StandardDocumentApply3 extends Component {
                                 {this.props.RFQ.title} </strong>
                             </p>
 
-                            <p className="text">
-                                The total Price of my/our Quotation is BDT <strong>[insert amount both in
-                                figure
-                                and words] </strong>
+                            <p className="text displayinblock">
+                                The total Price of my/our Quotation is BDT
+                                <input className="text-right" type='text' name="amount"
+                                       placeholder="0"/>
+
                             </p>
 
                             <p className="text">
