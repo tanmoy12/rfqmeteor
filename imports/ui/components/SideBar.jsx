@@ -10,7 +10,7 @@ export default class SideBar extends Component {
             addClass3: "sidebar_li",
             addClass4: "sidebar_li",
             addClass5: "sidebar_li",
-            minimizeDiv: [false,false,false,false,false],
+            minimizeDiv: [false, false, false, false, false],
 
         };
     }
@@ -107,51 +107,66 @@ export default class SideBar extends Component {
 
     }
 
-
     render() {
         var forward_to_style = {
             // backgroundColor: "#7a9c9c",
             // backgroundColor: "#7a9c9c",
             backgroundColor: "#222",
             padding: "3.5%",
-            margin: "3%",
+            // margin: "3%",
             color: "white",
             borderRadius: "3px",
 
         }
+
+        butt_val_create(x){
+            var str = "Go To ";
+            str = str.con 
+        }
+
         var forward_to;
         var chahidapotro_block;
-        if (this.state.addClass1 == "current sidebar_li" && this.state.minimizeDiv[0]==true) {
+        if (this.state.addClass1 == "current sidebar_li" && this.state.minimizeDiv[0] == true) {
             chahidapotro_block =
                 <div style={forward_to_style}>
-                    <p style={{display: "inline-block", float: "left", marginLeft: "2%"}}>Forward To:</p>
-                    <p style={{display: "inline-block", float: "right", marginRight: "2%"}}>{this.props.forwardTo.toWhom}</p>
 
-
-                    <div className="form-group" style={{borderRadius: "3px"}}>
-                        <select ref="AcOf" className="form-control" style={{color: "white"}}>
-                            {/*<option value="" disabled selected hidden>Select to forward</option>*/}
-                            {
-                                this.props.forwardTo.dropdownList.map(function (username) {
-                                return (<option value={username} key={username}  style={{color: "black"}}>{username}</option>)
-                                })
-                            }
-                        </select>
+                    <div className="form-group">
+                        {
+                            this.props.chahidaStandardBlock.info.map(function (x) {
+                                return (<div key={x.title} style={{marginLeft: "22px"}}>
+                                    <p style={{
+                                        color: "white",
+                                        fontStyle: "italic",
+                                        fontSize: "x-small",
+                                        marginBottom: "5px"
+                                    }}>
+                                        {x.title}
+                                    </p>
+                                    <p style={{color: "white", marginBottom: "25px"}}>{x.details}</p>
+                                </div>)
+                            })
+                        }
                     </div>
 
                     <div>
-                        <input
-                            type="submit" name="login-submit"
-                            id="submit-all"
-                            className="btn btn-primary sidebarButt"  value="Forward"/>
+                        <form action={this.props.chahidaStandardBlock.link} method="get">
+                            <input
+                                type="submit" name="login-submit"
+                                id="submit-all"
+                                className="btn btn-primary sidebarButt" value="Go To"/>
+                        </form>
                     </div>
                 </div>
         }
-        if (this.state.addClass2 == "current sidebar_li" && this.state.minimizeDiv[1]==true) {
+        if (this.state.addClass2 == "current sidebar_li" && this.state.minimizeDiv[1] == true) {
             forward_to =
                 <div style={forward_to_style}>
                     <p style={{display: "inline-block", float: "left", marginLeft: "2%"}}>Forward To:</p>
-                    <p style={{display: "inline-block", float: "right", marginRight: "2%"}}>{this.props.forwardTo.toWhom}</p>
+                    <p style={{
+                        display: "inline-block",
+                        float: "right",
+                        marginRight: "2%"
+                    }}>{this.props.forwardTo.toWhom}</p>
 
 
                     <div className="form-group" style={{borderRadius: "3px"}}>
@@ -159,7 +174,8 @@ export default class SideBar extends Component {
                             {/*<option value="" disabled selected hidden>Select to forward</option>*/}
                             {
                                 this.props.forwardTo.dropdownList.map(function (username) {
-                                    return (<option value={username} key={username}  style={{color: "black"}}>{username}</option>)
+                                    return (<option value={username} key={username}
+                                                    style={{color: "black"}}>{username}</option>)
                                 })
                             }
                         </select>
@@ -169,7 +185,7 @@ export default class SideBar extends Component {
                         <input
                             type="submit" name="login-submit"
                             id="submit-all"
-                            className="btn btn-primary sidebarButt"  value="Forward"/>
+                            className="btn btn-primary sidebarButt" value="Forward"/>
                     </div>
                 </div>
         }

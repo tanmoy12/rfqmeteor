@@ -70,9 +70,29 @@ export default class ChahidaPotroLoad extends Component {
 
                 <div className="row ">
                     <div className="col-md-3" >
-                        <SideBar forwardTo = {{toWhom: "যাচাইকারী",
-                                                dropdownList: ['shadman', 'tanmoy', 'hasib']
-                                                }}/>
+                        <SideBar
+                            chahidaStandardBlock = {{
+                                name: "chahida",
+                                info: [
+                                    {
+                                        title: "RFQ Title",
+                                        details: "gaja"
+                                    },
+                                    {
+                                        title: "Estimate",
+                                        details: "100"
+                                    },
+                                    {
+                                        title: "Intiated by",
+                                        details: "shadman264"
+                                    }
+                                ],
+                                link: "http://www.youtube.com"
+                            }}
+                            forwardTo = {{toWhom: "যাচাইকারী",
+                                dropdownList: ['shadman', 'tanmoy', 'hasib']
+                            }}
+                        />
 
 
                     </div>
