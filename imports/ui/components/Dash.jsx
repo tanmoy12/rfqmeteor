@@ -28,13 +28,12 @@ class Dash extends Component {
                 <div className="container">
                     <div classID="Dasboardjumbo" className="jumbotron text-center">
                         <h1 className="page-header"> Designated Reference for Institute of Chemical Measurements</h1>
-                        <div id="mysidemenu">
-                            <button onClick={this.createRFQ.bind(this)} id="btnrfqdash" className="btn btn-primary"
-                                    data-toggle="modal" data-target="#popupwindow">
-                                Create
-                                RFQ
-                            </button>
-                        </div>
+                        <button onClick={this.createRFQ.bind(this)} className="btn btn-primary"
+                                data-toggle="modal" data-target="#popupwindow">
+                            <span className="glyphicon glyphicon-edit"></span> Create
+                            RFQ
+                        </button>
+
                     </div>
                     {this.renderRFQs()}
 
