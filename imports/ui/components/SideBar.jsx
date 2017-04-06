@@ -107,6 +107,18 @@ export default class SideBar extends Component {
 
     }
 
+    butt_val_create(x){
+        var str = "Go To ";
+        str = str.concat(x);
+        return str;
+    }
+
+    create_chahida_link(x){
+        if(x.name==="চাহিদা পত্র"){
+
+        }
+    }
+
     render() {
         var forward_to_style = {
             // backgroundColor: "#7a9c9c",
@@ -119,20 +131,17 @@ export default class SideBar extends Component {
 
         }
 
-        butt_val_create(x){
-            var str = "Go To ";
-            str = str.con 
-        }
-
         var forward_to;
         var chahidapotro_block;
-        if (this.state.addClass1 == "current sidebar_li" && this.state.minimizeDiv[0] == true) {
+        var standard_block;
+
+        //CHAHIDA POTRO CREATE
+        if ((this.state.addClass1 == "current sidebar_li" && this.state.minimizeDiv[0] == true)) {
             chahidapotro_block =
                 <div style={forward_to_style}>
-
                     <div className="form-group">
                         {
-                            this.props.chahidaStandardBlock.info.map(function (x) {
+                            this.props.chahidaBlock.info.map(function (x) {
                                 return (<div key={x.title} style={{marginLeft: "22px"}}>
                                     <p style={{
                                         color: "white",
@@ -149,15 +158,29 @@ export default class SideBar extends Component {
                     </div>
 
                     <div>
-                        <form action={this.props.chahidaStandardBlock.link} method="get">
+                        <form action={this.props.chahidaBlock.link} method="get">
                             <input
                                 type="submit" name="login-submit"
                                 id="submit-all"
-                                className="btn btn-primary sidebarButt" value="Go To"/>
+                                className="btn btn-primary sidebarButt" value={this.butt_val_create(this.props.chahidaBlock.name)}/>
                         </form>
                     </div>
                 </div>
         }
+        var create_chahida_block;
+        if(this.props.chahidaBlock) {
+            create_chahida_block =
+                <div>
+                    <li className={this.state.addClass1}>
+                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "1")}
+                           href="#">চাহিদা পত্র</a>
+                        {chahidapotro_block}
+                    </li>
+                </div>
+        }
+
+
+        //FORWARD CREATE
         if (this.state.addClass2 == "current sidebar_li" && this.state.minimizeDiv[1] == true) {
             forward_to =
                 <div style={forward_to_style}>
@@ -189,27 +212,84 @@ export default class SideBar extends Component {
                     </div>
                 </div>
         }
-
-        return (
-            <div className="navbar navbar-inverse navbar-fixed-left sidebar">
-
-                <ul className="sidebar_ul">
-                    <li className={this.state.addClass1}>
-                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "1")}
-                           href="#">চাহিদা পত্র</a>
-                        {chahidapotro_block}
-                    </li>
+        var create_forward_block;
+        if(this.props.forwardTo) {
+            create_forward_block =
+                <div>
                     <li className={this.state.addClass2}>
                         <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "2")} href="#">Forward
                             to</a>
                         {forward_to}
                     </li>
+                </div>
+        }
+
+
+        //SATNDARD DOC CREATE
+        if ((this.state.addClass3 == "current sidebar_li" && this.state.minimizeDiv[2] == true)) {
+            standard_block =
+                <div style={forward_to_style}>
+                    <div className="form-group">
+                        {
+                            this.props.standardBlock.info.map(function (x) {
+                                return (<div key={x.title} style={{marginLeft: "22px"}}>
+                                    <p style={{
+                                        color: "white",
+                                        fontStyle: "italic",
+                                        fontSize: "x-small",
+                                        marginBottom: "5px"
+                                    }}>
+                                        {x.title}
+                                    </p>
+                                    <p style={{color: "white", marginBottom: "25px"}}>{x.details}</p>
+                                </div>)
+                            })
+                        }
+                    </div>
+
+                    <div>
+                        <form action={this.props.standardBlock.link} method="get">
+                            <input
+                                type="submit" name="login-submit"
+                                id="submit-all"
+                                className="btn btn-primary sidebarButt" value={this.butt_val_create(this.props.standardBlock.name)}/>
+                        </form>
+                    </div>
+                </div>
+        }
+        var create_standard_block;
+        if(this.props.standardBlock) {
+            create_standard_block =
+                <div>
                     <li className={this.state.addClass3}>
-                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "3")} href="#">Blog</a>
+                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "3")} href="#">Standard Document</a>
+                        {standard_block}
                     </li>
+                </div>
+        }
+
+
+        //CREATE_STANDARD_DOC BUTT CREATE
+        var create_standard_doc_butt_create;
+        if(this.props.createStandardDoc) {
+            create_standard_doc_butt_create =
+                <div>
                     <li className={this.state.addClass4}>
-                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "4")} href="#">About</a>
+                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "4")} href={this.props.createStandardDoc.link}>
+                            Create Standard Doc
+                        </a>
                     </li>
+                </div>
+        }
+
+        return (
+            <div className="navbar navbar-inverse navbar-fixed-left sidebar">
+
+                <ul className="sidebar_ul">
+                    {create_chahida_block}
+                    {create_forward_block}
+                    {create_standard_block}
+                    {create_standard_doc_butt_create}
                     <li className={this.state.addClass5}>
                         <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "5")} href="#">Contact</a>
                     </li>

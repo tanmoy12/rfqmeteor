@@ -71,8 +71,8 @@ export default class ChahidaPotroLoad extends Component {
                 <div className="row ">
                     <div className="col-md-3" >
                         <SideBar
-                            chahidaStandardBlock = {{
-                                name: "chahida",
+                            chahidaBlock = {{
+                                name: "চাহিদা পত্র",
                                 info: [
                                     {
                                         title: "RFQ Title",
@@ -92,6 +92,29 @@ export default class ChahidaPotroLoad extends Component {
                             forwardTo = {{toWhom: "যাচাইকারী",
                                 dropdownList: ['shadman', 'tanmoy', 'hasib']
                             }}
+                            standardBlock = {{
+                                name: "Standard Document",
+                                info: [
+                                    {
+                                        title: "RFQ Title",
+                                        details: "gaja"
+                                    },
+                                    {
+                                        title: "Estimate",
+                                        details: "100"
+                                    },
+                                    {
+                                        title: "Intiated by",
+                                        details: "shadman264"
+                                    }
+                                ],
+                                link: "http://www.youtube.com"
+                            }}
+                            createStandardDoc = {{
+                                link: "http://www.youtube.com"
+                            }}
+
+
                         />
 
 
