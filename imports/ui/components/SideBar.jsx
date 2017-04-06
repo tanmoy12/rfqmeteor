@@ -18,7 +18,7 @@ export default class SideBar extends Component {
     sidebar_link_click(e) {
         //console.log(e);
         if (e == "1") {
-            var x = !this.state.minimizeDiv[0];
+            var x = true;
             var newMinimizeDiv = {};
             for (var i = 0; i < 5; i++) {
                 newMinimizeDiv[i] = this.state.minimizeDiv[i];
@@ -36,7 +36,7 @@ export default class SideBar extends Component {
             });
         }
         else if (e == "2") {
-            var x = !this.state.minimizeDiv[1];
+            var x = true;
             var newMinimizeDiv = {};
             for (var i = 0; i < 5; i++) {
                 newMinimizeDiv[i] = this.state.minimizeDiv[i];
@@ -53,7 +53,7 @@ export default class SideBar extends Component {
             });
         }
         else if (e == "3") {
-            var x = !this.state.minimizeDiv[2];
+            var x = true;
             var newMinimizeDiv = {};
             for (var i = 0; i < 5; i++) {
                 newMinimizeDiv[i] = this.state.minimizeDiv[i];
@@ -70,7 +70,7 @@ export default class SideBar extends Component {
             });
         }
         else if (e == "4") {
-            var x = !this.state.minimizeDiv[3];
+            var x = true;
             var newMinimizeDiv = {};
             for (var i = 0; i < 5; i++) {
                 newMinimizeDiv[i] = this.state.minimizeDiv[i];
@@ -87,7 +87,7 @@ export default class SideBar extends Component {
             });
         }
         else if (e == "5") {
-            var x = !this.state.minimizeDiv[4];
+            var x = true;
             var newMinimizeDiv = {};
             for (var i = 0; i < 5; i++) {
                 newMinimizeDiv[i] = this.state.minimizeDiv[i];
@@ -184,7 +184,7 @@ export default class SideBar extends Component {
         if (this.state.addClass2 == "current sidebar_li" && this.state.minimizeDiv[1] == true) {
             forward_to =
                 <div style={forward_to_style}>
-                    <p style={{display: "inline-block", float: "left", marginLeft: "2%"}}>Forward To:</p>
+                    <p style={{display: "inline-block", float: "left", marginLeft: "4%"}}>To:</p>
                     <p style={{
                         display: "inline-block",
                         float: "right",
