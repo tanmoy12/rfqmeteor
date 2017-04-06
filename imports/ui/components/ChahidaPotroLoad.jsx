@@ -145,21 +145,26 @@ class ChahidaPotroLoad extends Component {
         return dateshow;
     }
 
-    genSignBlock(signfor, userId, signed) {
-        if (signed) {
+    genSignBlock(signfor, user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link='';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
             return (
                 <div className="col-md-6 center-block">
-                    <img src="/sign1.png" className="img-circle" alt="User Image"/>
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
                     <p id="signLabel"><strong>{signfor}</strong></p>
                 </div>
             )
         }
-        else if (userId && !signed) {
-            if (Meteor.userId() == userId) {
+        else if (user.user_id && !user.signed) {
+            if (Meteor.userId() == user.user_id) {
                 if (this.state.signed) {
                     return (
                         <div className="col-md-6 center-block">
-                            <img src="/sign1.png" className="img-circle" alt="User Image"/>
+                            <img id="signPic" src={link} className="img-circle" alt="User Image"/>
                             <p id="signLabel"><strong>{signfor}</strong></p>
                         </div>
                     )
@@ -253,7 +258,7 @@ class ChahidaPotroLoad extends Component {
                         'chahida.verifier.sign_date': new Date(),
                         'chahida.accountant.user_id': AcOff._id,
                         'chahida.accountant.username': AcOff.username,
-                        'chahida.accountant.pic': AcOff.profile.ProPic
+                        'chahida.accountant.pic': AcOff.profile.seal
                     }
                 }
                 else if (this.props.RFQ_details.chahida.substep_no == 2) {
@@ -263,7 +268,7 @@ class ChahidaPotroLoad extends Component {
                         'chahida.accountant.sign_date': new Date(),
                         'chahida.director.user_id': AcOff._id,
                         'chahida.director.username': AcOff.username,
-                        'chahida.director.pic': AcOff.profile.ProPic
+                        'chahida.director.pic': AcOff.profile.seal
                     }
                 }
                 else if (this.props.RFQ_details.chahida.substep_no == 3) {
@@ -407,8 +412,8 @@ class ChahidaPotroLoad extends Component {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    {this.genSignBlock("নিবেদক", chahida_potro.initiator.user_id, true)}
-                                    {this.genSignBlock("যাচাইকারী", chahida_potro.verifier.user_id, chahida_potro.verifier.signed)}
+                                    {this.genSignBlock("নিবেদক", chahida_potro.initiator)}
+                                    {this.genSignBlock("যাচাইকারী", chahida_potro.verifier)}
                                 </div>
                                 <div className="row">
                                     <div className="col-md-12">
@@ -421,8 +426,8 @@ class ChahidaPotroLoad extends Component {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    {this.genSignBlock("হিসাবরক্ষক", chahida_potro.accountant.user_id, chahida_potro.accountant.signed)}
-                                    {this.genSignBlock("অনুমোদনকারী", chahida_potro.director.user_id, chahida_potro.director.signed)}
+                                    {this.genSignBlock("হিসাবরক্ষক", chahida_potro.accountant)}
+                                    {this.genSignBlock("অনুমোদনকারী", chahida_potro.director)}
                                 </div>
                             </div>
 

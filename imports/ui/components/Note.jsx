@@ -9,11 +9,16 @@ class Note extends Component {
     constructor(props) {
         super(props);
     }
-    genSignBlock(signfor, userId, signed) {
-        if (signed) {
+    genSignBlock(signfor, user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link='';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
             return (
                 <div className="col-md-6 center-block">
-                    <img src="/sign1.png" className="img-circle" alt="User Image"/>
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
                     <p id="signLabel"><strong>{signfor}</strong></p>
                 </div>
             )
@@ -54,8 +59,8 @@ class Note extends Component {
 
                             <p className="text"> ২। সদয় অনুমোদনের জন্য নথি উপস্থাপন করা হলো </p>
 
-                            {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant.user_id, this.props.RFQ.chahida.accountant.signed)}
-                            {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director.user_id, this.props.RFQ.chahida.director.signed)}
+                            {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
+                            {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
 
                             <p className="text"> ৩। নোটানুচ্ছেদ ০১ এর অনুমোদনের আলোকে গবেষণাগারের প্রয়োজনের নিরীখে
                                 ……………….. এর Specification প্রস্তুত করার দায়িত্ব বাজারমূল্য নির্ধারন ও স্পেসিফিকেশন
