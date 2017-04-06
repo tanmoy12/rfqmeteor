@@ -477,6 +477,21 @@ export default class SignUp extends Component {
                             <div className="row">
                                 <div className="col-md-6">
                                     <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='empFirstname' placeholder='First Name'
+                                               type='text'/>
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
+                                        <input className="signUpInput" ref='empLastname' placeholder='Last Name'
+                                               type='text'/>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <div className="input-group input-group-lg" style={fullWidth}>
                                         <input className="signUpInput" ref='empUsername' placeholder='Username'
                                                type='text'/>
 
