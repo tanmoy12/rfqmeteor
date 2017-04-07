@@ -2,6 +2,9 @@ import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 import SideBar from './SideBar';
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
+
 
 import Table from "./Table";
 
@@ -189,6 +192,8 @@ export default class ChahidaPotroLoad extends Component {
                                         (কথায়)
                                         ................................. টাকা ব্যয়।
                                         <br/>
+                                        <DayPicker onDayClick={ day => console.log(day) } />;
+
                                         ৩। অতএব, উপরোক্ত বর্ণনামাতে ............................. ক্রয়ের অনুমোদনের জন্য
                                         বিনীতভাবে অনুরোধ জানানো যাচ্ছে।
                                     </p>
