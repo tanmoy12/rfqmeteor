@@ -12,10 +12,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="meteor-packages-auto-import-browser" level="project" />
     <orderEntry type="library" name="meteor-packages-auto-import-npm" level="project" />
-<<<<<<< HEAD
     <orderEntry type="library" name="meteor-packages-auto-import-browser" level="project" />
     <orderEntry type="library" name="meteor-packages-auto-import-npm" level="project" />
-=======
->>>>>>> 8a1ae4524e762ad1b83f7ba0fd6140cd7b95bb6c
   </component>
 </module>
