@@ -61,9 +61,6 @@ export default class StandardDocumentApply3 extends Component {
                     </p>
                 </div>
 
-
-
-
         } else {
             signBlock =
                 <div className="col-md-3 pull-left form-group" style={{paddingLeft: "0"}}>
