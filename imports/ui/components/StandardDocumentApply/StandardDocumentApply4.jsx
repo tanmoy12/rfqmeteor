@@ -1,12 +1,34 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
+
+import TableApply from './TableApply';
 
 export default class StandardDocumentApply4 extends Component {
     constructor(props) {
         super(props);
 
+        var pro = [];
+        this.props.RFQ.chahida.details.map(function (detail) {
+            pro.push({
+                id: detail.id,
+                item_no: detail.item_no,
+                rate: 0,
+                desc: detail.desc,
+                unit: detail.unit,
+                qty: detail.qty,
+                total: 0
+            });
+        });
         this.state = {
+            products: pro
         }
+    }
+
+    getdatafromtable(products) {
+        this.setState({
+            products: products
+        });
     }
 
     datefromcreate(createdAt) {
@@ -20,26 +42,6 @@ export default class StandardDocumentApply4 extends Component {
             dateshow = date + '/' + month + '/' + year;
         }
         return dateshow;
-    }
-
-    genTable() {
-        return (
-            this.props.RFQ.chahida.details.map(function (detailsrow) {
-                return (
-                    <tr key={detailsrow.id}>
-                        <td className="col-md-1 text-center">{detailsrow.item_no}</td>
-                        <td className="col-md-4 text-left">{detailsrow.desc}</td>
-                        <td className="col-md-2 text-right">{detailsrow.unit}</td>
-                        <td className="col-md-1 text-right">{detailsrow.qty}</td>
-                        <td className="col-md-2 text-right"></td>
-                        <td className="col-md-2 text-right"></td>
-                        <td className="col-md-2 text-right"></td>
-                        <td> DRiCM,BCSIR</td>
-                    </tr>
-
-                );
-            })
-        )
     }
 
 
@@ -78,91 +80,8 @@ export default class StandardDocumentApply4 extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="table table-bordered table-responsive">
-                    <table id="customers" className="table">
-
-                        <thead>
-                        <tr>
-                            <th rowSpan="2">Item No</th>
-                            <th rowSpan="2">Description of Items</th>
-                            <th rowSpan="2">Unit of Measurement</th>
-                            <th rowSpan="2">Qty</th>
-                            <th colSpan="2" scope="colgroup">Unit rate or price</th>
-                            <th rowSpan="1" colSpan="1" scope="colgroup">Total amount</th>
-                            <th rowSpan="2">Destination <br/> for <br/>Delivery of <br/> Goods</th>
-                        </tr>
-                        <tr>
-                            <th scope="col">In figures</th>
-                            <th scope="col"> In words</th>
-                            <th scope="col"> In figures/inwords</th>
-
-                        </tr>
-                        {this.genTable()}
-
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td colSpan="5" rowSpan="2" scope="colgroup" className="text-center"><strong>Total
-                                Amount for Supply of Goods and related services <br/>
-                                (inclusive of VAT and all applicable taxes; see Note 2 below) </strong></td>
-
-                            <td scope="colgroup">In figures</td>
-                            <td ></td>
-
-                            <td rowSpan="1"></td>
-                        </tr>
-
-                        <tr>
-                            <td scope="colgroup">In Words</td>
-                            <td ></td>
-
-                            <td rowSpan="1"></td>
-                        </tr>
-
-                        <tr>
-                            <td colSpan="3" scope="colgroup" className="text-left"> Goods to be supplied
-                                to
-                            </td>
-
-                            <td colSpan="9" scope="colgroup" className="text-center"> [insert destination of
-                                Goods]
-                            </td>
-
-                        </tr>
-
-                        <tr>
-                            <td colSpan="3" scope="colgroup" className="text-left"> Total Amount in taka
-                                (inwords)
-                            </td>
-
-                            <td colSpan="9" scope="colgroup" className="text-center"> [enter the Total
-                                Amount as
-                                in Col.8 above for the delivery of Goods and related services].
-                            </td>
-
-                        </tr>
-
-                        <tr>
-                            <td colSpan="3" scope="colgroup" className="text-left"> Delivery Offered</td>
-
-                            <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/days]
-                                from
-                                date of issuing the Purchase Order]
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td colSpan="3" scope="colgroup" className="text-left"> Warranty Provided</td>
-
-                            <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/months
-                                from
-                                date of completion of the delivery; state none if not applicable]
-                            </td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <TableApply data={this.state.products}
+                            sendData={(products) => this.getdatafromtable(products) }/>
                 <p className="text"><strong>[insert number] number corrections made by me/us have been duly
                     initialed
                     in this Price Schedule. My/Our Offer is valid
