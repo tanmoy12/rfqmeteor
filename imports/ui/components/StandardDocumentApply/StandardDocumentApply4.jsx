@@ -1,13 +1,45 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
+
+import TableApply from './TableApply';
 
 export default class StandardDocumentApply4 extends Component {
     constructor(props) {
         super(props);
 
+        var pro = [];
+        this.props.RFQ.chahida.details.map(function (detail) {
+            pro.push({
+                id: detail.id,
+                item_no: detail.item_no,
+                rate: 0,
+                desc: detail.desc,
+                unit: detail.unit,
+                qty: detail.qty,
+                total: 0
+            });
+        });
         this.state = {
+            products: pro,
+            estimate: 0,
+            destination: '',
+            signed: false
         }
     }
+
+    getdatafromtable(products, estimate) {
+        this.setState({
+            products: products,
+            estimate: estimate
+        });
+    }
+    getdestinationfromtable(destination) {
+        this.setState({
+            destination: destination
+        });
+    }
+
 
     datefromcreate(createdAt) {
         var date = createdAt.getDate();
@@ -21,29 +53,58 @@ export default class StandardDocumentApply4 extends Component {
         }
         return dateshow;
     }
-
-    genTable() {
-        return (
-            this.props.RFQ.chahida.details.map(function (detailsrow) {
-                return (
-                    <tr key={detailsrow.id}>
-                        <td className="col-md-1 text-center">{detailsrow.item_no}</td>
-                        <td className="col-md-4 text-left">{detailsrow.desc}</td>
-                        <td className="col-md-2 text-right">{detailsrow.unit}</td>
-                        <td className="col-md-1 text-right">{detailsrow.qty}</td>
-                        <td className="col-md-2 text-right"></td>
-                        <td className="col-md-2 text-right"></td>
-                        <td className="col-md-2 text-right"></td>
-                        <td> DRiCM,BCSIR</td>
-                    </tr>
-
-                );
-            })
-        )
+    passwordcheck(e) {
+        if (e.key === 'Enter') {
+            var that = this;
+            var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+            var digest = Package.sha.SHA256(password);
+            Meteor.call('checkPassword', digest, function (err, result) {
+                if (result) {
+                    that.setState({
+                        signed: true
+                    })
+                }
+                else {
+                    Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
+                }
+            });
+        }
     }
 
 
     render(){
+        var signBlock;
+        let link='';
+        if(Meteor.user()) {
+            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.seal});
+            if (cursor) {
+                link = cursor.link();
+            }
+        }
+        if (this.state.signed) {
+            signBlock =
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                    <p id="signLabel"><strong>Signature
+                        of Quotationer with Seal</strong></p>
+                </div>
+        } else {
+            signBlock =
+                <div className="col-md-6 center-block form-group">
+                    <div className="col-md-1">
+                    </div>
+                    <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
+                        <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password" ref="password"
+                               placeholder="Password"/><br/>
+                    </div>
+                    <div>
+                        <p id="signLabel"><strong>Signature
+                            of Quotationer with Seal</strong></p>
+                    </div>
+
+                </div>
+        }
+
         return(
             <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
                 <div className="row">
@@ -78,91 +139,10 @@ export default class StandardDocumentApply4 extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="table table-bordered table-responsive">
-                    <table id="customers" className="table">
+                <TableApply data={this.state.products}
+                            sendData={(products, estimate) => this.getdatafromtable(products, estimate)}
+                            sendDestination={(destination) => this.getdestinationfromtable(destination)} />
 
-                        <thead>
-                        <tr>
-                            <th rowSpan="2">Item No</th>
-                            <th rowSpan="2">Description of Items</th>
-                            <th rowSpan="2">Unit of Measurement</th>
-                            <th rowSpan="2">Qty</th>
-                            <th colSpan="2" scope="colgroup">Unit rate or price</th>
-                            <th rowSpan="1" colSpan="1" scope="colgroup">Total amount</th>
-                            <th rowSpan="2">Destination <br/> for <br/>Delivery of <br/> Goods</th>
-                        </tr>
-                        <tr>
-                            <th scope="col">In figures</th>
-                            <th scope="col"> In words</th>
-                            <th scope="col"> In figures/inwords</th>
-
-                        </tr>
-                        {this.genTable()}
-
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td colSpan="5" rowSpan="2" scope="colgroup" className="text-center"><strong>Total
-                                Amount for Supply of Goods and related services <br/>
-                                (inclusive of VAT and all applicable taxes; see Note 2 below) </strong></td>
-
-                            <td scope="colgroup">In figures</td>
-                            <td ></td>
-
-                            <td rowSpan="1"></td>
-                        </tr>
-
-                        <tr>
-                            <td scope="colgroup">In Words</td>
-                            <td ></td>
-
-                            <td rowSpan="1"></td>
-                        </tr>
-
-                        <tr>
-                            <td colSpan="3" scope="colgroup" className="text-left"> Goods to be supplied
-                                to
-                            </td>
-
-                            <td colSpan="9" scope="colgroup" className="text-center"> [insert destination of
-                                Goods]
-                            </td>
-
-                        </tr>
-
-                        <tr>
-                            <td colSpan="3" scope="colgroup" className="text-left"> Total Amount in taka
-                                (inwords)
-                            </td>
-
-                            <td colSpan="9" scope="colgroup" className="text-center"> [enter the Total
-                                Amount as
-                                in Col.8 above for the delivery of Goods and related services].
-                            </td>
-
-                        </tr>
-
-                        <tr>
-                            <td colSpan="3" scope="colgroup" className="text-left"> Delivery Offered</td>
-
-                            <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/days]
-                                from
-                                date of issuing the Purchase Order]
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td colSpan="3" scope="colgroup" className="text-left"> Warranty Provided</td>
-
-                            <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/months
-                                from
-                                date of completion of the delivery; state none if not applicable]
-                            </td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
                 <p className="text"><strong>[insert number] number corrections made by me/us have been duly
                     initialed
                     in this Price Schedule. My/Our Offer is valid
@@ -172,11 +152,9 @@ export default class StandardDocumentApply4 extends Component {
                     <table id="customers" className="table">
                         <tbody>
                         <tr>
-                            <td colSpan="4" scope="colgroup" className="text-center"><strong>
-                                <br/>
-                                <br/>
-                                <br/>Signature
-                                of Quotationer with Seal </strong></td>
+                            <td colSpan="4" scope="colgroup" className="text-center">
+                                {signBlock}
+                            </td>
                             <td colSpan="8" rowSpan="2" scope="colgroup">
                                 <br/>
                                 <br/>
@@ -184,7 +162,10 @@ export default class StandardDocumentApply4 extends Component {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="4" scope="colgroup">Name of Quotationer</td>
+                            <td className="form-style-4" colSpan="4" scope="colgroup">
+                                <input className="text-center" type='text' name="quotationer"
+                                       placeholder="Name of Quotationer"/>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

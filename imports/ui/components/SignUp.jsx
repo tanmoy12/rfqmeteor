@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React, {Component} from "react";
+import ReactDOM from "react-dom";
 
 export default class SignUp extends Component {
     constructor(props) {
@@ -26,11 +26,17 @@ export default class SignUp extends Component {
             tradeLicenseState: "Add Trade License",
             solvencyPaperState: "Add Solvency Paper",
             sigSealState1: "Add Signature & Seal",
+
             sigSealState2: "Add Signature & Seal",
             profilepicState: "Add Profile Picture",
 
             empProPic: null,
-            empSeal: null
+            empSeal: null,
+
+            comTradePic: null,
+            comSolvencyPic: null,
+            comLogoPic: null,
+            comSeal: null
 
         };
     }
@@ -48,7 +54,7 @@ export default class SignUp extends Component {
         var mobno = ReactDOM.findDOMNode(this.refs.empMobno).value.trim();
         var that = this;
 
-        if(this.state.empProPic && this.state.empSeal){
+        if (this.state.empProPic && this.state.empSeal) {
             let uploadInstance = ImagesCol.insert({
                 file: that.state.empProPic,
                 streams: 'dynamic',
@@ -67,7 +73,7 @@ export default class SignUp extends Component {
 
                 uploadInstance2.on('uploaded', function (error, fileObjSeal) {
 
-                    if(password==repassword){
+                    if (password == repassword) {
                         var User = {
                             username: username,
                             email: email,
@@ -81,14 +87,14 @@ export default class SignUp extends Component {
                         };
                         Accounts.createUser(User, function (err) {
                             if (err) {
-                                var message= err.reason;
+                                var message = err.reason;
                                 Bert.alert(message, 'danger', 'growl-top-right');
-                            }else {
+                            } else {
                                 Bert.alert('User Signed up', 'success', 'growl-top-right');
                             }
                         });
                     }
-                    else{
+                    else {
                         Bert.alert('Passwords do not match!!', 'danger', 'growl-top-right');
                     }
                 });
@@ -107,47 +113,49 @@ export default class SignUp extends Component {
 
             uploadInstance.start(); // Must manually start the upload
         }
-        else{
+        else {
             Bert.alert('Upload necessary files!!', 'danger', 'growl-top-right');
         }
     }
 
     addCompLogoFunc() {
-        if(this.state.companyLogoHover==false){
+        if (this.state.companyLogoHover == false) {
             this.setState({
                 companyLogoColor: "#3399ff",
                 companyLogoHover: !this.state.companyLogoHover
             });
         }
-        else{
+        else {
             this.setState({
                 companyLogoColor: "#333",
                 companyLogoHover: !this.state.companyLogoHover
             });
         }
 
-            //this.refs.compLogoLabel.innerHTML = file[file.length-1];
+        //this.refs.compLogoLabel.innerHTML = file[file.length-1];
 
     };
 
-    addCompLogoLabel(){
-        var file = this.refs.compLogo.value.split("\\");
-        if(file[file.length-1].length>0)
-            this.setState({
-                companyLogoState:    file[file.length-1]
-            });
+    addCompLogoLabel(e) {
+        if (e.currentTarget.files && e.currentTarget.files[0]) {
+            var file2 = this.refs.compLogo.value.split("\\");
+            if (file2[file2.length - 1].length > 0)
+                this.setState({
+                    companyLogoState: file2[file2.length - 1],
+                    comLogoPic: e.currentTarget.files[0]
+                });
+        }
     }
 
 
-
-    addTradeLicenseFunc(){
-        if(this.state.tradeLicenseHover==false){
+    addTradeLicenseFunc() {
+        if (this.state.tradeLicenseHover == false) {
             this.setState({
-                tradeLicenseColor : "#3399ff",
+                tradeLicenseColor: "#3399ff",
                 tradeLicenseHover: !this.state.tradeLicenseHover
             });
         }
-        else{
+        else {
             this.setState({
                 tradeLicenseColor: "#333",
                 tradeLicenseHover: !this.state.tradeLicenseHover
@@ -155,24 +163,26 @@ export default class SignUp extends Component {
         }
     };
 
-    addTradeLicenseLabel(){
-        var file = this.refs.tradeLicensePDF.value.split("\\");
-        console.log("ENTYR: "+file[file.length-1]);
-        if(file[file.length-1].length>0)
-            this.setState({
-                tradeLicenseState:    file[file.length-1]
-            });
+    addTradeLicenseLabel(e) {
+        if (e.currentTarget.files && e.currentTarget.files[0]) {
+            var file2 = this.refs.tradeLicensePDF.value.split("\\");
+            if (file2[file2.length - 1].length > 0)
+                this.setState({
+                    tradeLicenseState: file2[file2.length - 1],
+                    comTradePic: e.currentTarget.files[0]
+                });
+        }
     }
 
 
-    addSolvencyPaperFunc(){
-        if(this.state.solvencyPaperHover==false){
+    addSolvencyPaperFunc() {
+        if (this.state.solvencyPaperHover == false) {
             this.setState({
-                solvencyPaperColor : "#3399ff",
+                solvencyPaperColor: "#3399ff",
                 solvencyPaperHover: !this.state.solvencyPaperHover
             });
         }
-        else{
+        else {
             this.setState({
                 solvencyPaperColor: "#333",
                 solvencyPaperHover: !this.state.solvencyPaperHover
@@ -180,22 +190,25 @@ export default class SignUp extends Component {
         }
     };
 
-    addSolvencyPaperLabel(){
-        var file = this.refs.solvencyPaper.value.split("\\");
-        if(file[file.length-1].length>0)
-            this.setState({
-                solvencyPaperState:    file[file.length-1]
-            });
+    addSolvencyPaperLabel(e) {
+        if (e.currentTarget.files && e.currentTarget.files[0]) {
+            var file2 = this.refs.solvencyPaper.value.split("\\");
+            if (file2[file2.length - 1].length > 0)
+                this.setState({
+                    solvencyPaperState: file2[file2.length - 1],
+                    comSolvencyPic: e.currentTarget.files[0]
+                });
+        }
     }
 
-    addSigSealFunc(){
-        if(this.state.sigSealHover==false){
+    addSigSealFunc() {
+        if (this.state.sigSealHover == false) {
             this.setState({
-                sigSealColor : "#3399ff",
+                sigSealColor: "#3399ff",
                 sigSealHover: !this.state.sigSealHover
             });
         }
-        else{
+        else {
             this.setState({
                 sigSealColor: "#333",
                 sigSealHover: !this.state.sigSealHover
@@ -203,31 +216,28 @@ export default class SignUp extends Component {
         }
     };
 
-    addSigSealLabel(e){
-
-        //COMPANY
-        if(this.state.type=="comp"){
-            var file = this.refs.sigSeal.value.split("\\");
-            if(file[file.length-1].length>0)
+    addSigSealLabelCom(e) {
+        if (e.currentTarget.files && e.currentTarget.files[0]) {
+            var file2 = this.refs.sigSeal.value.split("\\");
+            if (file2[file2.length - 1].length > 0)
                 this.setState({
-                    sigSealState1:    file[file.length-1]
+                    sigSealState1: file2[file2.length - 1],
+                    comSeal: e.currentTarget.files[0]
                 });
         }
-
-        //EMPLOYEE
-        else{
-            if (e.currentTarget.files && e.currentTarget.files[0]) {
-                var file2 = this.refs.empSigSeal.value.split("\\");
-                if(file2[file2.length-1].length>0)
-                    this.setState({
-                        sigSealState2:    file2[file2.length-1],
-                        empSeal: e.currentTarget.files[0]
-                    });
-            }
-
+    }
+    addSigSealLabel(e) {
+        if (e.currentTarget.files && e.currentTarget.files[0]) {
+            var file2 = this.refs.empSigSeal.value.split("\\");
+            if (file2[file2.length - 1].length > 0)
+                this.setState({
+                    sigSealState2: file2[file2.length - 1],
+                    empSeal: e.currentTarget.files[0]
+                });
         }
     }
-    addProfilePicLabel(e){
+
+    addProfilePicLabel(e) {
         if (e.currentTarget.files && e.currentTarget.files[0]) {
             var file = this.refs.empProfilePic.value.split("\\");
             if (file[file.length - 1].length > 0)
@@ -238,22 +248,20 @@ export default class SignUp extends Component {
         }
     }
 
-    addProfilePicFunc(){
-        if(this.state.profilepicHover==false){
+    addProfilePicFunc() {
+        if (this.state.profilepicHover == false) {
             this.setState({
-                profilepicColor : "#3399ff",
+                profilepicColor: "#3399ff",
                 profilepicHover: !this.state.profilepicHover
             });
         }
-        else{
+        else {
             this.setState({
                 profilepicColor: "#333",
                 profilepicHover: !this.state.profilepicHover
             });
         }
     };
-
-
 
     compClicked() {
         this.setState({
@@ -271,6 +279,128 @@ export default class SignUp extends Component {
         });
     };
 
+    handleRegisterCom(e) {
+        e.preventDefault();
+
+        var compname = ReactDOM.findDOMNode(this.refs.compName).value.trim();
+        var username = ReactDOM.findDOMNode(this.refs.username).value.trim();
+        var email = ReactDOM.findDOMNode(this.refs.email).value.trim();
+        var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+        var repassword = ReactDOM.findDOMNode(this.refs.retypePassword).value.trim();
+        var mobno = ReactDOM.findDOMNode(this.refs.mobNo).value.trim();
+        var description = ReactDOM.findDOMNode(this.refs.description).value.trim();
+        var ownername = ReactDOM.findDOMNode(this.refs.ownerName).value.trim();
+        var tradelicenseno = ReactDOM.findDOMNode(this.refs.tradeLicenseNo).value.trim();
+        var that = this;
+
+        console.log(this.state.comLogoPic);
+        console.log(this.state.comSolvencyPic);
+        console.log(this.state.comSeal);
+        console.log(this.state.comTradePic);
+
+        if (this.state.comLogoPic && this.state.comSolvencyPic && this.state.comSeal && this.state.comTradePic) {
+            let uploadInstance = ImagesCol.insert({
+                file: that.state.comLogoPic,
+                streams: 'dynamic',
+                chunkSize: 'dynamic',
+                allowWebWorkers: true // If you see issues with uploads, change this to false
+            }, false);
+
+            uploadInstance.on('uploaded', function (error, fileObjLogo) {
+
+                let uploadInstance2 = ImagesCol.insert({
+                    file: that.state.comSolvencyPic,
+                    streams: 'dynamic',
+                    chunkSize: 'dynamic',
+                    allowWebWorkers: true // If you see issues with uploads, change this to false
+                }, false);
+
+                uploadInstance2.on('uploaded', function (error, fileObjSolvency) {
+
+                    let uploadInstance3 = ImagesCol.insert({
+                        file: that.state.comTradePic,
+                        streams: 'dynamic',
+                        chunkSize: 'dynamic',
+                        allowWebWorkers: true // If you see issues with uploads, change this to false
+                    }, false);
+
+                    uploadInstance3.on('uploaded', function (error, fileObjTrade) {
+
+                        let uploadInstance4 = ImagesCol.insert({
+                            file: that.state.comSeal,
+                            streams: 'dynamic',
+                            chunkSize: 'dynamic',
+                            allowWebWorkers: true // If you see issues with uploads, change this to false
+                        }, false);
+
+                        uploadInstance4.on('uploaded', function (error, fileObjSeal) {
+                            if (password == repassword) {
+
+                                var User = {
+                                    username: username,
+                                    email: email,
+                                    password: password,
+                                    profile: {
+                                        tradelicenseno: tradelicenseno,
+                                        ownername: ownername,
+                                        description: description,
+                                        compname: compname,
+                                        mobno: mobno,
+                                        LogoPic: fileObjLogo._id,
+                                        SealPic: fileObjSeal._id,
+                                        TradePic: fileObjTrade._id,
+                                        SolvencyPic: fileObjSolvency._id
+                                    }
+                                };
+                                Accounts.createUser(User, function (err) {
+                                    if (err) {
+                                        var message = err.reason;
+                                        Bert.alert(message, 'danger', 'growl-top-right');
+                                    } else {
+                                        Bert.alert('User Signed up', 'success', 'growl-top-right');
+                                    }
+                                });
+                            }
+                            else {
+                                Bert.alert('Passwords do not match!!', 'danger', 'growl-top-right');
+                            }
+
+                        });
+
+                        uploadInstance4.on('error', function (error, fileObjSeal) {
+                            console.log('Error during upload: ' + error);
+                        });
+
+                        uploadInstance4.start();
+
+                    });
+
+                    uploadInstance3.on('error', function (error, fileObjTrade) {
+                        console.log('Error during upload: ' + error);
+                    });
+
+                    uploadInstance3.start();
+
+                });
+
+                uploadInstance2.on('error', function (error, fileObjSolvency) {
+                    console.log('Error during upload: ' + error);
+                });
+
+                uploadInstance2.start();
+
+            });
+
+            uploadInstance.on('error', function (error, fileObjLogo) {
+                console.log('Error during upload: ' + error);
+            });
+
+            uploadInstance.start(); // Must manually start the upload
+        }
+        else {
+            Bert.alert('Upload necessary files!!', 'danger', 'growl-top-right');
+        }
+    }
 
     render() {
         var fullWidth = {
@@ -326,13 +456,16 @@ export default class SignUp extends Component {
                                 </div>
                                 <div className="col-md-5">
                                     <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="fileInput signUpInput" onMouseEnter={this.addCompLogoFunc.bind(this)}
+                                        <input className="fileInput signUpInput"
+                                               onMouseEnter={this.addCompLogoFunc.bind(this)}
                                                onMouseLeave={this.addCompLogoFunc.bind(this)}
                                                onChange={this.addCompLogoLabel.bind(this)}
                                                ref='compLogo' type="file" name="compLogo" accept="image/*"/>
                                         <label ref='compLogoLabel' className="fileInputLabel signUpInput"
-                                               style={{backgroundColor: this.state.companyLogoColor,whiteSpace: "nowrap"
-                                                   ,overflow: "hidden" ,  textOverflow: "ellipsis"}}>
+                                               style={{
+                                                   backgroundColor: this.state.companyLogoColor, whiteSpace: "nowrap"
+                                                   , overflow: "hidden", textOverflow: "ellipsis"
+                                               }}>
                                             {this.state.companyLogoState}
                                         </label>
                                     </div>
@@ -346,19 +479,22 @@ export default class SignUp extends Component {
                                         <input className="signUpInput" ref='tradeLicenseNo'
                                                placeholder='Trade License No.'
                                                type='text'/>
-
-
                                     </div>
                                 </div>
+
                                 <div className="col-md-5">
                                     <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="fileInput signUpInput" onMouseEnter={this.addTradeLicenseFunc.bind(this)}
+                                        <input className="fileInput signUpInput"
+                                               onMouseEnter={this.addTradeLicenseFunc.bind(this)}
                                                onMouseLeave={this.addTradeLicenseFunc.bind(this)}
                                                onChange={this.addTradeLicenseLabel.bind(this)}
-                                               ref='tradeLicensePDF' type="file" name="tradeLicensePDF" accept="application/pdf"/>
+                                               ref='tradeLicensePDF' type="file" name="tradeLicensePDF"
+                                               accept="application/pdf"/>
                                         <label className="fileInputLabel signUpInput"
-                                               style={{backgroundColor: this.state.tradeLicenseColor,whiteSpace: "nowrap"
-                                                   ,overflow: "hidden" , textOverflow: "ellipsis"}}>
+                                               style={{
+                                                   backgroundColor: this.state.tradeLicenseColor, whiteSpace: "nowrap"
+                                                   , overflow: "hidden", textOverflow: "ellipsis"
+                                               }}>
                                             {this.state.tradeLicenseState}</label>
                                     </div>
                                 </div>
@@ -376,13 +512,17 @@ export default class SignUp extends Component {
                                 </div>
                                 <div className="col-md-5">
                                     <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="fileInput signUpInput" onMouseEnter={this.addSolvencyPaperFunc.bind(this)}
+                                        <input className="fileInput signUpInput"
+                                               onMouseEnter={this.addSolvencyPaperFunc.bind(this)}
                                                onMouseLeave={this.addSolvencyPaperFunc.bind(this)}
                                                onChange={this.addSolvencyPaperLabel.bind(this)}
-                                               ref="solvencyPaper" type="file" name="solvencyPaper" accept="application/pdf"/>
+                                               ref="solvencyPaper" type="file" name="solvencyPaper"
+                                               accept="application/pdf"/>
                                         <label className="fileInputLabel signUpInput"
-                                               style={{backgroundColor: this.state.solvencyPaperColor,whiteSpace: "nowrap"
-                                                   ,overflow: "hidden" ,  textOverflow: "ellipsis"}}>
+                                               style={{
+                                                   backgroundColor: this.state.solvencyPaperColor, whiteSpace: "nowrap"
+                                                   , overflow: "hidden", textOverflow: "ellipsis"
+                                               }}>
                                             {this.state.solvencyPaperState}
                                         </label>
                                     </div>
@@ -391,6 +531,7 @@ export default class SignUp extends Component {
 
                             <textarea className="signUpInput" ref="description" rows="5" cols="70"
                                       placeholder="Description"></textarea>
+
 
                             <div className="row">
                                 <div className="col-md-7">
@@ -402,13 +543,16 @@ export default class SignUp extends Component {
                                 </div>
                                 <div className="col-md-5">
                                     <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="fileInput signUpInput" onMouseEnter={this.addSigSealFunc.bind(this)}
+                                        <input className="fileInput signUpInput"
+                                               onMouseEnter={this.addSigSealFunc.bind(this)}
                                                onMouseLeave={this.addSigSealFunc.bind(this)}
-                                               onChange={this.addSigSealLabel.bind(this)}
+                                               onChange={this.addSigSealLabelCom.bind(this)}
                                                ref="sigSeal" type="file" name="sigSeal" accept="image/*"/>
                                         <label className="fileInputLabel signUpInput"
-                                               style={{backgroundColor: this.state.sigSealColor,whiteSpace: "nowrap"
-                                                   ,overflow: "hidden" ,  textOverflow: "ellipsis"}}>
+                                               style={{
+                                                   backgroundColor: this.state.sigSealColor, whiteSpace: "nowrap"
+                                                   , overflow: "hidden", textOverflow: "ellipsis"
+                                               }}>
                                             {this.state.sigSealState1}
                                         </label>
                                     </div>
@@ -424,7 +568,8 @@ export default class SignUp extends Component {
                                 </div>
                                 <div className="col-md-6">
                                     <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="signUpInput" ref='retypePassword' placeholder='Retype Password'
+                                        <input className="signUpInput" ref='retypePassword'
+                                               placeholder='Retype Password'
                                                type='password'/>
                                     </div>
 
@@ -446,7 +591,8 @@ export default class SignUp extends Component {
                             </div>
 
 
-                            <button type="submit" ref="compSIgnUpButt" className="btn btn-md btn-success signUpSubmit" style={topMarign}>
+                            <button onClick={this.handleRegisterCom.bind(this)} type="submit" ref="compSignUpButt"
+                                    className="btn btn-md btn-success signUpSubmit" style={topMarign}>
                                 Sign Up
                             </button>
                             <br/>
@@ -472,94 +618,117 @@ export default class SignUp extends Component {
         if (this.state.type == 'empl') {
             return (
                 <div className="container">
-                        <div className="login">
-                            {upperPart}
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="signUpInput" ref='empUsername' placeholder='Username'
-                                               type='text'/>
-
-                                    </div>
-                                </div>
-                                <div className="col-md-6">
-                                    <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="fileInput signUpInput" onMouseEnter={this.addProfilePicFunc.bind(this)}
-                                               onMouseLeave={this.addProfilePicFunc.bind(this)}
-                                               onChange={this.addProfilePicLabel.bind(this)}
-                                               ref="empProfilePic" type="file" name="empProfilePic" accept="image/*"/>
-                                        <label className="fileInputLabel signUpInput"
-                                               style={{backgroundColor: this.state.profilepicColor,whiteSpace: "nowrap"
-                                                   ,overflow: "hidden" ,  textOverflow: "ellipsis"}}>
-                                            {this.state.profilepicState}
-                                        </label>
-
-                                    </div>
+                    <div className="login">
+                        {upperPart}
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="input-group input-group-lg" style={fullWidth}>
+                                    <input className="signUpInput" ref='empFirstname' placeholder='First Name'
+                                           type='text'/>
                                 </div>
                             </div>
-
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <select ref="empDesignation" className="optionStyle" style={{marginTop: "42px", color: "#46485c"}}>
-                                        <option className="optionStyle">Scientific Officer</option>
-                                        <option className="optionStyle">Accounting Officer</option>
-                                        <option className="optionStyle">Director</option>
-                                    </select>
+                            <div className="col-md-6">
+                                <div className="input-group input-group-lg" style={fullWidth}>
+                                    <input className="signUpInput" ref='empLastname' placeholder='Last Name'
+                                           type='text'/>
                                 </div>
-                                <div className="col-md-6">
-                                    <div className="input-group input-group-lg">
-                                        <input className="fileInput signUpInput" onMouseEnter={this.addSigSealFunc.bind(this)}
-                                               onMouseLeave={this.addSigSealFunc.bind(this)}
-                                               onChange={this.addSigSealLabel.bind(this)}
-                                               ref="empSigSeal" type="file" name="empSigSeal" accept="image/*"/>
-                                        <label className="fileInputLabel signUpInput"
-                                               style={{backgroundColor: this.state.sigSealColor,whiteSpace: "nowrap"
-                                                   ,overflow: "hidden" ,  textOverflow: "ellipsis"}}>
-                                            {this.state.sigSealState2}
-                                        </label>
 
-
-                                    </div>
-                                </div>
                             </div>
-
-
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="signUpInput" ref='empPassword' placeholder='Password'
-                                               type='password'/>
-
-                                    </div>
-                                </div>
-                                <div className="col-md-6">
-                                    <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="signUpInput" ref='empRetypePassword' placeholder='Retype Password'
-                                               type='password'/>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="signUpInput" ref='empEmail' placeholder='Email' type='email'/>
-
-                                    </div>
-                                </div>
-                                <div className="col-md-6">
-                                    <div className="input-group input-group-lg" style={fullWidth}>
-                                        <input className="signUpInput" ref='empMobno' placeholder='Mobile No' type='text'/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button onClick={this.handleRegisterEmp.bind(this)} type="submit" ref="empSignUpButt" className="btn btn-md btn-success signUpSubmit" style={topMarign}>
-                                Sign Up
-                            </button>
-
                         </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="input-group input-group-lg" style={fullWidth}>
+                                    <input className="signUpInput" ref='empUsername' placeholder='Username'
+                                           type='text'/>
+
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="input-group input-group-lg" style={fullWidth}>
+                                    <input className="fileInput signUpInput"
+                                           onMouseEnter={this.addProfilePicFunc.bind(this)}
+                                           onMouseLeave={this.addProfilePicFunc.bind(this)}
+                                           onChange={this.addProfilePicLabel.bind(this)}
+                                           ref="empProfilePic" type="file" name="empProfilePic" accept="image/*"/>
+                                    <label className="fileInputLabel signUpInput"
+                                           style={{
+                                               backgroundColor: this.state.profilepicColor, whiteSpace: "nowrap"
+                                               , overflow: "hidden", textOverflow: "ellipsis"
+                                           }}>
+                                        {this.state.profilepicState}
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="col-md-6">
+                                <select ref="empDesignation" className="optionStyle"
+                                        style={{marginTop: "42px", color: "#46485c"}}>
+                                    <option className="optionStyle">Scientific Officer</option>
+                                    <option className="optionStyle">Accounting Officer</option>
+                                    <option className="optionStyle">Director</option>
+                                </select>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="input-group input-group-lg">
+                                    <input className="fileInput signUpInput"
+                                           onMouseEnter={this.addSigSealFunc.bind(this)}
+                                           onMouseLeave={this.addSigSealFunc.bind(this)}
+                                           onChange={this.addSigSealLabel.bind(this)}
+                                           ref="empSigSeal" type="file" name="empSigSeal" accept="image/*"/>
+                                    <label className="fileInputLabel signUpInput"
+                                           style={{
+                                               backgroundColor: this.state.sigSealColor, whiteSpace: "nowrap"
+                                               , overflow: "hidden", textOverflow: "ellipsis"
+                                           }}>
+                                        {this.state.sigSealState2}
+                                    </label>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="input-group input-group-lg" style={fullWidth}>
+                                    <input className="signUpInput" ref='empPassword' placeholder='Password'
+                                           type='password'/>
+
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="input-group input-group-lg" style={fullWidth}>
+                                    <input className="signUpInput" ref='empRetypePassword' placeholder='Retype Password'
+                                           type='password'/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="input-group input-group-lg" style={fullWidth}>
+                                    <input className="signUpInput" ref='empEmail' placeholder='Email' type='email'/>
+
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="input-group input-group-lg" style={fullWidth}>
+                                    <input className="signUpInput" ref='empMobno' placeholder='Mobile No' type='text'/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onClick={this.handleRegisterEmp.bind(this)} type="submit" ref="empSignUpButt"
+                                className="btn btn-md btn-success signUpSubmit" style={topMarign}>
+                            Sign Up
+                        </button>
+
+                    </div>
                 </div>
             );
         }

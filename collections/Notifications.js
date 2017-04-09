@@ -6,6 +6,25 @@ Notifications.allow({
     }
 });
 
+
+UserFrom= new SimpleSchema({
+    user_id: {
+        type: String,
+        label: "user",
+        optional: true
+    },
+    username : {
+        type: String,
+        label: 'username',
+        optional: true
+    },
+    pic : {
+        type: String,
+        label: 'pic',
+        optional: true
+    }
+});
+
 NotificationsSchema = new SimpleSchema({
     RFQ_id: {
         type: String,
@@ -15,9 +34,9 @@ NotificationsSchema = new SimpleSchema({
         type: String,
         label: 'title'
     },
-    from_id: {
-        type: String,
-        label: 'from_id'
+    from: {
+        type: UserFrom,
+        label: 'from'
     },
     to_id: {
         type: String,

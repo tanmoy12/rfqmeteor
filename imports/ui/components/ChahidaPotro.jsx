@@ -190,9 +190,14 @@ class ChahidaPotro extends Component {
                         Bert.alert('Unknown Error2!!', 'danger', 'growl-top-right');
                     }
                     else {
+                        var from= {
+                            user_id: Meteor.userId(),
+                            username: Meteor.user().username,
+                            pic: Meteor.user().profile.ProPic,
+                        };
                         var Rfqid = res;
                         var NotificationForm = {
-                            from_id: Meteor.userId(),
+                            from: from,
                             to_id: ScOff._id,
                             type: 1,
                             title: title,
@@ -200,7 +205,10 @@ class ChahidaPotro extends Component {
                         };
                         //NotificationsSchema.validate(NotificationForm);
                         Notifications.insert(NotificationForm, function (err, res) {
-                            if (err) Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');
+                            if (err) {
+                                console.log(err);
+                                Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');
+                            }
                             else {
                                 FlowRouter.go('/Note/' + Rfqid);
                             }

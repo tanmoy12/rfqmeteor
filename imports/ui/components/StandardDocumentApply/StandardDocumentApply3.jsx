@@ -1,11 +1,14 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
 
 export default class StandardDocumentApply3 extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+            signed: false
+        }
     }
 
     datefromcreate(createdAt) {
@@ -21,7 +24,62 @@ export default class StandardDocumentApply3 extends Component {
         return dateshow;
     }
 
+    passwordcheck(e) {
+        if (e.key === 'Enter') {
+            var that = this;
+            var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+            var digest = Package.sha.SHA256(password);
+            Meteor.call('checkPassword', digest, function (err, result) {
+                if (result) {
+                    that.setState({
+                        signed: true
+                    })
+                }
+                else {
+                    Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
+                }
+            });
+        }
+    }
+
     render() {
+        var signBlock;
+        let link = '';
+        if (Meteor.user()) {
+            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.seal});
+            if (cursor) {
+                link = cursor.link();
+            }
+        }
+        if (this.state.signed) {
+            signBlock =
+                <div className="col-md-3 pull-left" style={{paddingLeft: "0"}}>
+                    <img className="col-md-12 pull-left" id="signPic" src={link}  alt="User Image"/>
+                    <p className="text" style={{display: "block"}}>
+                        Signature of Quotationer with Seal <br/>
+                        Date:
+                    </p>
+                </div>
+
+        } else {
+            signBlock =
+                <div className="col-md-3 pull-left form-group" style={{paddingLeft: "0"}}>
+                    <div id="signblock" className="col-md-12 form-style-4"  style={{paddingLeft: "0"}}>
+                        <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
+                               ref="password"
+                               placeholder="Password" style={{marginLeft: "0px"}}/><br/>
+                    </div>
+                    <div>
+                        <p className="text">
+                            Signature of Quotationer with Seal <br/>
+                            Date:
+                        </p>
+                    </div>
+
+                </div>
+
+        }
+
         return (
             <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
                 <div className="row">
@@ -106,10 +164,11 @@ export default class StandardDocumentApply3 extends Component {
                                 me/us.
                             </p>
 
-                            <p className="text">
+                            <p className="text displayinblock">
                                 I/We have examined and have no reservations to the RFQ Document issued by
                                 you on
-                                <strong> [insert date] </strong>
+                                <input className="text-right" type='text' name="amount"
+                                       placeholder="0"/>
                             </p>
 
                             <p className="text">
@@ -117,17 +176,11 @@ export default class StandardDocumentApply3 extends Component {
                                 annul
                                 the procurement proceedings without incurring any liability to me/us.
                             </p>
+                            {signBlock}
 
                         </div>
-                        <p className="text text-right">
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            <br/>
-                            Signature of Quotationer with Seal <br/>
-                            Date:
-                        </p>
+
+
                     </div>
                 </div>
                 <br/>
