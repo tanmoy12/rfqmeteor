@@ -1,9 +1,14 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
 
 export default class StandardDocumentApply5 extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            signed: false
+        }
     }
 
     datefromcreate(createdAt) {
@@ -19,6 +24,23 @@ export default class StandardDocumentApply5 extends Component {
         return dateshow;
     }
 
+    passwordcheck(e) {
+        if (e.key === 'Enter') {
+            var that = this;
+            var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+            var digest = Package.sha.SHA256(password);
+            Meteor.call('checkPassword', digest, function (err, result) {
+                if (result) {
+                    that.setState({
+                        signed: true
+                    })
+                }
+                else {
+                    Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
+                }
+            });
+        }
+    }
     genTable() {
         return (
             this.props.RFQ.standard.standard_details.map(function (detail) {
@@ -37,6 +59,38 @@ export default class StandardDocumentApply5 extends Component {
     }
 
     render() {
+        var signBlock;
+        let link='';
+        if(Meteor.user()) {
+            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.seal});
+            if (cursor) {
+                link = cursor.link();
+            }
+        }
+        if (this.state.signed) {
+            signBlock =
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                    <p id="signLabel"><strong>Signature
+                        of Quotationer with Seal</strong></p>
+                </div>
+        } else {
+            signBlock =
+                <div className="col-md-6 center-block form-group">
+                    <div className="col-md-1">
+                    </div>
+                    <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
+                        <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password" ref="password"
+                               placeholder="Password"/><br/>
+                    </div>
+                    <div>
+                        <p id="signLabel"><strong>Signature
+                            of Quotationer with Seal</strong></p>
+                    </div>
+
+                </div>
+        }
+
         return (
             <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
                 <div className="row">
@@ -110,11 +164,9 @@ export default class StandardDocumentApply5 extends Component {
                     <table id="customers" className="table">
                         <tbody>
                         <tr>
-                            <td colSpan="4" scope="colgroup" className="text-center"><strong>
-                                <br/>
-                                <br/>
-                                <br/>Signature
-                                of Quotationer with Seal </strong></td>
+                            <td colSpan="4" scope="colgroup" className="text-center">
+                                {signBlock}
+                            </td>
 
                             <td colSpan="8" rowSpan="2" scope="colgroup">
                                 <br/>
@@ -124,7 +176,10 @@ export default class StandardDocumentApply5 extends Component {
 
                         </tr>
                         <tr>
-                            <td colSpan="4" scope="colgroup">Name of Quotationer</td>
+                            <td className="form-style-4" colSpan="4" scope="colgroup">
+                                <input className="text-center" type='text' name="quotationer"
+                                       placeholder="Name of Quotationer"/>
+                            </td>
                         </tr>
 
                         </tbody>

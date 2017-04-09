@@ -7,11 +7,24 @@ export default class TableStandard extends Component {
 
         this.state = {
             products: this.props.data,
-            estimate: 0
+            estimate: 0,
+            destination: ''
         };
 
     }
+    handleDestination(evt){
+        var item = {
+            id: evt.target.id,
+            name: evt.target.name,
+            value: evt.target.value
+        };
 
+        this.setState({
+            destination: item.value
+        }, function () {
+            this.props.sendDestination(this.state.destination);
+        });
+    }
 
     handleProductTable(evt) {
         var item = {
@@ -49,6 +62,7 @@ export default class TableStandard extends Component {
         return (
             <div>
                 <ProductTable onProductTableUpdate={this.handleProductTable.bind(this)}
+                              onDestinationUpdate={this.handleDestination.bind(this)}
                               products={this.state.products} totalestimate={this.state.estimate}/>
             </div>
         );
@@ -189,7 +203,7 @@ class ProductTable extends React.Component {
 
                         <td colSpan="9" scope="colgroup" className="text-center">
                             <input className="text-center" type='text' name="desc" id="destination"
-                                   placeholder="Description" onChange={this.props.onProductTableUpdate}/>
+                                   placeholder="Destination" onChange={this.props.onDestinationUpdate}/>
                         </td>
 
                     </tr>
@@ -199,9 +213,7 @@ class ProductTable extends React.Component {
                             (inwords)
                         </td>
 
-                        <td colSpan="9" scope="colgroup" className="text-center"> [enter the Total
-                            Amount as
-                            in Col.8 above for the delivery of Goods and related services].
+                        <td colSpan="9" scope="colgroup" className="text-center"> {ProductTable.convertNumberToWords(this.props.totalestimate)}.
                         </td>
 
                     </tr>

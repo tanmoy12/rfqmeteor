@@ -22,11 +22,16 @@ class DashHeader extends Component {
         e.preventDefault();
         FlowRouter.go('/dashboard');
     }
+    renderNots(){
+        return this.props.nots.map(function (not) {
+            return <Not key={not._id} notitem={not}/>
+        });
+    }
 
     render() {
         let user = "";
         let link= "";
-        if (Meteor.user() && this.props.images) {
+        if (Meteor.user() && this.props.images && this.props.nots) {
             user = Meteor.user().username;
             //console.log(Meteor.user().profile.ProPic);
             const cursor = ImagesCol.findOne({_id: Meteor.user().profile.ProPic});
@@ -51,7 +56,26 @@ class DashHeader extends Component {
 
                         <div id="navbar" className="collapse navbar-collapse">
                             <ul className="nav navbar-right top-nav">
-                                <Not/>
+                                <li className="dropdown dropdown-notification">
+                                    <a href="#notifications-panel" className="dropdown-toggle" data-toggle="dropdown">
+                                        <i className="fa fa-bell notification-icon"></i>
+                                        <span className="label label-warning">{this.props.nots.length}</span>
+                                        <b className="caret"></b></a>
+                                    <div className="dropdown-container">
+                                        <div className="dropdown-toolbar">
+                                            <h3 id="notiheader" className="dropdown-toolbar-title">Notifications</h3>
+                                        </div>
+
+                                        <ul className="dropdown-menu pull-right alert-dropdown col-md=12">
+                                            <li className="notification">
+                                                <div className="media">
+                                                    {this.renderNots()}
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </li>
 
                                 <li className="dropdown">
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
@@ -177,13 +201,9 @@ class DashHeader extends Component {
 
                                     </ul>
                                 </li>
-
-
                             </ul>
-
                         </div>
                     </div>
-
                 </nav >
             )
         }
@@ -193,12 +213,14 @@ class DashHeader extends Component {
 
 DashHeader.propTypes = {
     currentUser: PropTypes.object,
-    images: PropTypes.array.isRequired
+    images: PropTypes.array.isRequired,
+    nots: PropTypes.array.isRequired
 };
 
 export default createContainer(() => {
     Meteor.subscribe('allUserData');
     return {
+        nots: Notifications.find().fetch(),
         images: ImagesCol.find().fetch(),
         currentUser: Meteor.user()
     };
