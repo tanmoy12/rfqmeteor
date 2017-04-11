@@ -191,6 +191,95 @@ StandardDocumentSchema = new SimpleSchema({
     }
 });
 
+StandardApplyDetails = new SimpleSchema({
+    id: {
+        type: String,
+        label: 'id'
+    },
+    item_no: {
+        type: Number,
+        label: 'item_no'
+    },
+    desc: {
+        type: String,
+        label: 'desc',
+    },
+    unit: {
+        type: String,
+        label: 'unit',
+        optional: true
+    },
+    qty: {
+        type: String,
+        label: 'Qty'
+    },
+    rate: {
+        type: String,
+        label: 'rate',
+        optional: true
+    },
+    total: {
+        type: String,
+        label: 'total'
+    },
+    destination: {
+        type: String,
+        label: 'destination'
+    }
+});
+
+CompanySchema = new SimpleSchema({
+    user_id: {
+        type: String,
+        label: "user",
+        optional: true
+    },
+    username : {
+        type: String,
+        label: 'username',
+        optional: true
+    },
+    pic : {
+        type: String,
+        label: 'pic',
+        optional: true
+    } ,
+    signed: {
+        type: Boolean,
+        label: "signed",
+        defaultValue: false,
+        optional:true
+    },
+    sign_date: {
+        type: Date,
+        label: "datesign",
+        optional: true
+    }
+});
+
+StandardApplySchema = new SimpleSchema({
+    amount: {
+        type: Number,
+        label: 'amount',
+        optional: true
+    },
+    createdAt: {
+        type: Date,
+        label: 'date',
+        optional: true
+    },
+    StandardApply: {
+        type: [StandardApplyDetails],
+        minCount: 0
+    },
+    company: {
+        type: CompanySchema,
+        label: 'company',
+        optional: true
+    }
+});
+
+
 
 RFQDetailsSchema = new SimpleSchema({
     title: {
@@ -220,6 +309,11 @@ RFQDetailsSchema = new SimpleSchema({
     standard:{
         type: StandardDocumentSchema,
         label: 'standard',
+        optional: true
+    },
+    standard_apply: {
+        type: [StandardApplySchema],
+        label: 'standard_apply',
         optional: true
     }
 });

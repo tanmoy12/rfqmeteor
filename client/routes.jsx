@@ -14,7 +14,7 @@ import StandardDocumentLoad from '../imports/ui/components/StandardDocumentLoad'
 import StandardDocumentApply from '../imports/ui/components/StandardDocumentApply';
 import LoginCaraousal from '../imports/ui/components/LoginCaraousal';
 import FileUpload from '../imports/ui/components/FileUpload';
-
+import AllowanceNikosh from '../imports/ui/components/AllowanceNikosh';
 
 FlowRouter.route('/', {
     action(){
@@ -112,6 +112,16 @@ FlowRouter.route('/LoginCaraousal', {
     action(){
         mount(LayoutDash, {
             content: (<LoginCaraousal />)
+        })
+    }
+});
+
+
+
+FlowRouter.route('/AllowanceNikosh', {
+    action(){
+        mount(LayoutDash, {
+            content: (<AllowanceNikosh />)
         })
     }
 });
