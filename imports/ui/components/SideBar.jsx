@@ -18,7 +18,7 @@ export default class SideBar extends Component {
     sidebar_link_click(e) {
         //console.log(e);
         if (e == "1") {
-            var x = true;
+            var x = !this.state.minimizeDiv[0];
             var newMinimizeDiv = {};
             for (var i = 0; i < 5; i++) {
                 newMinimizeDiv[i] = this.state.minimizeDiv[i];
@@ -36,7 +36,7 @@ export default class SideBar extends Component {
             });
         }
         else if (e == "2") {
-            var x = true;
+            var x = !this.state.minimizeDiv[1];
             var newMinimizeDiv = {};
             for (var i = 0; i < 5; i++) {
                 newMinimizeDiv[i] = this.state.minimizeDiv[i];
@@ -53,7 +53,7 @@ export default class SideBar extends Component {
             });
         }
         else if (e == "3") {
-            var x = true;
+            var x = !this.state.minimizeDiv[2];
             var newMinimizeDiv = {};
             for (var i = 0; i < 5; i++) {
                 newMinimizeDiv[i] = this.state.minimizeDiv[i];
@@ -70,7 +70,7 @@ export default class SideBar extends Component {
             });
         }
         else if (e == "4") {
-            var x = true;
+            var x = !this.state.minimizeDiv[3];
             var newMinimizeDiv = {};
             for (var i = 0; i < 5; i++) {
                 newMinimizeDiv[i] = this.state.minimizeDiv[i];
@@ -87,7 +87,7 @@ export default class SideBar extends Component {
             });
         }
         else if (e == "5") {
-            var x = true;
+            var x = !this.state.minimizeDiv[4];
             var newMinimizeDiv = {};
             for (var i = 0; i < 5; i++) {
                 newMinimizeDiv[i] = this.state.minimizeDiv[i];
