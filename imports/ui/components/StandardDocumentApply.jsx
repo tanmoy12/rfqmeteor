@@ -1,11 +1,10 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
-
-import StandardDocumentApply1 from './StandardDocumentApply/StandardDocumentApply1';
-import StandardDocumentApply2 from './StandardDocumentApply/StandardDocumentApply2';
-import StandardDocumentApply3 from './StandardDocumentApply/StandardDocumentApply3';
-import StandardDocumentApply4 from './StandardDocumentApply/StandardDocumentApply4';
-import StandardDocumentApply5 from './StandardDocumentApply/StandardDocumentApply5';
+import StandardDocumentApply1 from "./StandardDocumentApply/StandardDocumentApply1";
+import StandardDocumentApply2 from "./StandardDocumentApply/StandardDocumentApply2";
+import StandardDocumentApply3 from "./StandardDocumentApply/StandardDocumentApply3";
+import StandardDocumentApply4 from "./StandardDocumentApply/StandardDocumentApply4";
+import StandardDocumentApply5 from "./StandardDocumentApply/StandardDocumentApply5";
 
 class StandardDocumentApply extends Component {
     constructor(props) {
@@ -127,19 +126,20 @@ class StandardDocumentApply extends Component {
         })
     }
 
-    nextClick(e){
+    nextClick(e) {
         e.preventDefault();
-        let pageno= this.state.pageno+1;
-        if(this.state.pageno<5) {
+        let pageno = this.state.pageno + 1;
+        if (this.state.pageno < 5) {
             this.setState({
                 pageno: pageno
             });
         }
     }
-    prevClick(e){
+
+    prevClick(e) {
         e.preventDefault();
-        let pageno= this.state.pageno-1;
-        if(this.state.pageno>1) {
+        let pageno = this.state.pageno - 1;
+        if (this.state.pageno > 1) {
             this.setState({
                 pageno: pageno
             });
@@ -149,68 +149,109 @@ class StandardDocumentApply extends Component {
     render() {
 
         if (this.props.RFQ) {
-            if(this.state.pageno==1){
+            let link = '';
+            if (Meteor.user()) {
+                const cursor = ImagesCol.findOne({_id: Meteor.user().profile.ProPic});
+                if (cursor) {
+                    link = cursor.link();
+                }
+            }
+
+            var header =
+                <div className="title-top col-md-12">
+                    <img id="companylogo" src={link} className="center-block"/>
+                    <h3>{Meteor.user().profile.compname}</h3>
+                    <hr/>
+                </div>
+            var footer=
+                <div>
+                    <hr/>
+                    <h4>{Meteor.user().profile.description}</h4>
+                    <h4>Tel : {Meteor.user().profile.mobno}, Email: {Meteor.user().emails[0].address} </h4>
+                </div>
+            if (this.state.pageno == 1) {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentApply1 RFQ={this.props.RFQ}/>
+                            <StandardDocumentApply1 RFQ={this.props.RFQ} head={header} foot={footer}/>
 
                             <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>previous </button>
+                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>
+                                    next
+                                </button>
+                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>
+                                    previous
+                                </button>
                             </div>
                         </div>
 
                     </div>
                 );
-            }else if(this.state.pageno==2){
+            } else if (this.state.pageno == 2) {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentApply2 />
+                            <StandardDocumentApply2 head={header} foot={footer}/>
 
                             <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>previous </button>
+                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>
+                                    next
+                                </button>
+                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>
+                                    previous
+                                </button>
                             </div>
                         </div>
                     </div>
                 );
-            }else if(this.state.pageno==3){
+            } else if (this.state.pageno == 3) {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentApply3 RFQ={this.props.RFQ}/>
+                            <StandardDocumentApply4 RFQ={this.props.RFQ} head={header} foot={footer}/>
 
                             <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>previous </button>
+                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>
+                                    next
+                                </button>
+                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>
+                                    previous
+                                </button>
                             </div>
                         </div>
                     </div>
                 );
-            }else if(this.state.pageno==4){
+            } else if (this.state.pageno == 4) {
                 return (
+
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentApply4 RFQ={this.props.RFQ} />
+                            <StandardDocumentApply3 RFQ={this.props.RFQ} head={header} foot={footer}/>
 
                             <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>previous </button>
+                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>
+                                    next
+                                </button>
+                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>
+                                    previous
+                                </button>
                             </div>
                         </div>
                     </div>
                 );
-            }else if(this.state.pageno==5){
+            } else if (this.state.pageno == 5) {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentApply5 RFQ={this.props.RFQ} />
+                            <StandardDocumentApply5 RFQ={this.props.RFQ} head={header} foot={footer}/>
 
                             <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>previous </button>
+                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>
+                                    next
+                                </button>
+                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>
+                                    previous
+                                </button>
                             </div>
                         </div>
                     </div>

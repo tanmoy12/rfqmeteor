@@ -38,36 +38,8 @@ export default class SideNote extends Component {
     }
 
     makeStandardDoc() {
-        if (this.props.RFQ.step_no == 2) {
-            if (this.props.RFQ.standard.RFQ_no) {
-                return (
-                    <div>
-                        <div id="sidejumbotron" className="col-md-12 jumbotron">
-                            <nav className=" navbar-custom navbar navbar-default text-center">
-                                <div className="container">
-                                    <div className="navbar-header">
-                                        <a className="navbar-brand"
-                                           href={"/StandardDocumentLoad/" + this.props.RFQ._id}>
-                                            Standard Document</a>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-
-                        <div id="sidejumbotron" className="col-md-12 jumbotron">
-                            <nav className=" navbar-custom navbar navbar-default text-center">
-                                <div className="container">
-                                    <div className="navbar-header">
-                                        <a className="navbar-brand"
-                                           href={"/StandardDocumentApply/" + this.props.RFQ._id}>
-                                            Standard Document apply</a>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                )
-            } else {
+        if (this.props.RFQ.step_no == 3) {
+            if (this.props.RFQ.standard.initiator.user_id == Meteor.userId()) {
                 return (
                     <div id="sidejumbotron" className="col-md-12 jumbotron">
                         <nav className=" navbar-custom navbar navbar-default text-center">
@@ -82,8 +54,25 @@ export default class SideNote extends Component {
                 )
             }
         }
-
+        else if (this.props.RFQ.step_no >= 4) {
+            return (
+                <div>
+                    <div id="sidejumbotron" className="col-md-12 jumbotron">
+                        <nav className=" navbar-custom navbar navbar-default text-center">
+                            <div className="container">
+                                <div className="navbar-header">
+                                    <a className="navbar-brand"
+                                       href={"/StandardDocumentLoad/" + this.props.RFQ._id}>
+                                        Standard Document</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            )
+        }
     }
+
 
     render() {
         return (
@@ -95,3 +84,4 @@ export default class SideNote extends Component {
         );
     }
 }
+

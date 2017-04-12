@@ -57,6 +57,10 @@
     height: 80px;
 }
 
+#companylogo {
+    width: 100px;
+    height: auto;
+}
 
 
 
@@ -545,7 +549,6 @@ a.notification:hover{
 
 .title-top{
     padding:0px;
-    padding-top: 15px;
 }
 
 hr {

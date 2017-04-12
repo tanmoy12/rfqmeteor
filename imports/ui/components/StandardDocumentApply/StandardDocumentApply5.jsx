@@ -95,12 +95,7 @@ export default class StandardDocumentApply5 extends Component {
             <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
                 <div className="row">
                     <div className="col-md-12">
-                        <div className="title-top col-md-12">
-                            <img src="../dricmlogo.jpg" className="center-block"/>
-                            <h3>Designated Reference Institute for Chemical Measurements (DRiCM) </h3>
-                            <h3>Bangladesh Council of Scientific & Industrial Research (BCSIR)</h3>
-                            <hr/>
-                        </div>
+                        {this.props.head}
                         <div className="row">
                             <div className="col-md-12 text-center">
                                 <p id="text-stnd">
@@ -211,6 +206,7 @@ export default class StandardDocumentApply5 extends Component {
                         literature/brochures for the listed items.
                     </strong>
                 </p>
+                {this.props.foot}
             </div>
         );
     }

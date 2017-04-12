@@ -1,35 +1,35 @@
 RFQDetails = new Mongo.Collection('rfqdetails');
 
 RFQDetails.allow({
-   insert: function (userId, doc) {
-       return !!userId;
-   },
+    insert: function (userId, doc) {
+        return !!userId;
+    },
     update: function (userId, doc) {
         return !!userId;
     }
 });
 
-UserSignFalse= new SimpleSchema({
+UserSignFalse = new SimpleSchema({
     user_id: {
         type: String,
         label: "user",
         optional: true
     },
-    username : {
+    username: {
         type: String,
         label: 'username',
         optional: true
     },
-    pic : {
+    pic: {
         type: String,
         label: 'pic',
         optional: true
-    } ,
+    },
     signed: {
         type: Boolean,
         label: "signed",
         defaultValue: false,
-        optional:true
+        optional: true
     },
     sign_date: {
         type: Date,
@@ -91,8 +91,8 @@ ChahidaPotroSchema = new SimpleSchema({
     createdAt: {
         type: Date,
         label: 'date',
-        autoValue: function() {
-            if ( this.isInsert ) {
+        autoValue: function () {
+            if (this.isInsert) {
                 return new Date;
             }
         },
@@ -123,12 +123,12 @@ ChahidaPotroSchema = new SimpleSchema({
         type: UserSignFalse,
         optional: true
     },
-    year : {
+    year: {
         type: String,
         defaultValue: '............................',
         optional: true
     },
-    upokhat : {
+    upokhat: {
         type: String,
         defaultValue: '..................................................',
         optional: true
@@ -188,6 +188,10 @@ StandardDocumentSchema = new SimpleSchema({
     director: {
         type: UserSignFalse,
         optional: true
+    },
+    accountant: {
+        type: UserSignFalse,
+        optional: true
     }
 });
 
@@ -234,21 +238,21 @@ CompanySchema = new SimpleSchema({
         label: "user",
         optional: true
     },
-    username : {
+    username: {
         type: String,
         label: 'username',
         optional: true
     },
-    pic : {
+    pic: {
         type: String,
         label: 'pic',
         optional: true
-    } ,
+    },
     signed: {
         type: Boolean,
         label: "signed",
         defaultValue: false,
-        optional:true
+        optional: true
     },
     sign_date: {
         type: Date,
@@ -280,7 +284,6 @@ StandardApplySchema = new SimpleSchema({
 });
 
 
-
 RFQDetailsSchema = new SimpleSchema({
     title: {
         type: String,
@@ -295,18 +298,18 @@ RFQDetailsSchema = new SimpleSchema({
     createdAt: {
         type: Date,
         label: 'date',
-        autoValue: function() {
-            if ( this.isInsert ) {
+        autoValue: function () {
+            if (this.isInsert) {
                 return new Date;
             }
         },
         optional: true
     },
-    chahida:{
+    chahida: {
         type: ChahidaPotroSchema,
         label: 'chahida'
     },
-    standard:{
+    standard: {
         type: StandardDocumentSchema,
         label: 'standard',
         optional: true

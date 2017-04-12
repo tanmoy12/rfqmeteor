@@ -346,7 +346,7 @@ export default class SignUp extends Component {
                                         description: description,
                                         compname: compname,
                                         mobno: mobno,
-                                        LogoPic: fileObjLogo._id,
+                                        ProPic: fileObjLogo._id,
                                         SealPic: fileObjSeal._id,
                                         TradePic: fileObjTrade._id,
                                         SolvencyPic: fileObjSolvency._id
