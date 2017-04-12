@@ -128,7 +128,9 @@ class ChahidaPotroLoad extends Component {
                 return <option value={i++} key={AcOfficers._id}>{AcOfficers.username}</option>
             });
         } else if (this.props.RFQ_details.chahida.substep_no == 3) {
-            return <option>Specification Committee</option>
+            return acc.map(function (AcOfficers) {
+                return <option value={i++} key={AcOfficers._id}>{AcOfficers.username}</option>
+            });
         }
     }
 
@@ -246,7 +248,7 @@ class ChahidaPotroLoad extends Component {
             } else if (this.props.RFQ_details.chahida.substep_no == 2) {
                 var AcOff = this.props.DrOf[this.state.selectValue];
             } else {
-                AcOff = 'Specification Committee';
+                var AcOff = this.props.AcOf[this.state.selectValue];
             }
 
             if (AcOff) {
@@ -273,10 +275,13 @@ class ChahidaPotroLoad extends Component {
                 }
                 else if (this.props.RFQ_details.chahida.substep_no == 3) {
                     updateForm = {
-                        step_no : 2,
+                        step_no : 3,
                         'chahida.substep_no': 4,
                         'chahida.director.signed': true,
                         'chahida.director.sign_date': new Date(),
+                        'standard.initiator.user_id': AcOff._id,
+                        'standard.initiator.username': AcOff.username,
+                        'standard.initiator.pic': AcOff.profile.seal
                     }
                 }
                 var that = this;

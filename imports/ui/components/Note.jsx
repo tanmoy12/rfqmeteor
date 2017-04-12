@@ -67,16 +67,8 @@ class Note extends Component {
                                 প্রস্তুতকরন কমিটিকে দেয়া যেতে পারে।
                             </p>
 
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <p className="verify"> নিবেদক </p>
-                                    <div className="boxed"> Image & Signature</div>
-                                </div>
-                                <div className="col-md-6">
-                                    <p className="verify"> জাছাইকারি </p>
-                                    <div className="boxed"> Image & Signature</div>
-                                </div>
-                            </div>
+                            {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
+                            {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
 
                             <p className="text"> ৪। নোটানুচ্ছেদ ০৩ এর মাধ্যমে প্রাপ্ত আদেশের আলোকে প্রয়োজনীয় …………..
                                 সমূহের
