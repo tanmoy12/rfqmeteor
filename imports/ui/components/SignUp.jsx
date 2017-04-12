@@ -46,6 +46,10 @@ export default class SignUp extends Component {
         e.preventDefault();
 
         that = this;
+
+        var firstname = ReactDOM.findDOMNode(this.refs.empFirstname).value.trim();
+        var lastname = ReactDOM.findDOMNode(this.refs.empLastname).value.trim();
+        var name= firstname+ ' '+ lastname;
         var username = ReactDOM.findDOMNode(this.refs.empUsername).value.trim();
         var email = ReactDOM.findDOMNode(this.refs.empEmail).value.trim();
         var password = ReactDOM.findDOMNode(this.refs.empPassword).value.trim();
@@ -82,7 +86,8 @@ export default class SignUp extends Component {
                                 designation: designation,
                                 mobno: mobno,
                                 ProPic: fileObjPro._id,
-                                seal: fileObjSeal._id
+                                seal: fileObjSeal._id,
+                                name: name
                             }
                         };
                         Accounts.createUser(User, function (err) {

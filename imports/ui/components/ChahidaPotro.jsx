@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 import ReactDOM from "react-dom";
 import Table from "./Table";
+import SideBar from "./SideBar";
 
 class ChahidaPotro extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class ChahidaPotro extends Component {
             estimate: 0,
             signed: false,
             title: "",
-            selectValue: 0
+            selectValue: null
         };
     }
 
@@ -99,6 +100,10 @@ class ChahidaPotro extends Component {
         return words_string;
     }
 
+    setSelected(value){
+        this.setState({selectValue: value});
+    }
+
 
     renderScOf() {
         let scc = this.props.ScOf;
@@ -142,9 +147,13 @@ class ChahidaPotro extends Component {
         })
     }
 
-    handleCreate(e) {
-        e.preventDefault();
-        var ScOff = this.props.ScOf[this.state.selectValue];
+    handleCreate(value) {
+        var ScOff;
+        this.props.ScOf.map(function (Of) {
+            if(Of._id==value){
+                ScOff=Of;
+            }
+        });
         var sutrono = ReactDOM.findDOMNode(this.refs.sutrono).value.trim();
         var title = ReactDOM.findDOMNode(this.refs.title).value.trim();
         var year = ReactDOM.findDOMNode(this.refs.year).value.trim();
@@ -242,10 +251,6 @@ class ChahidaPotro extends Component {
             });
         }
     }
-    handleSelect(e){
-        e.preventDefault();
-        this.setState({selectValue:e.target.value});
-    }
 
     render() {
         var signBlock;
@@ -255,33 +260,49 @@ class ChahidaPotro extends Component {
             if (cursor) {
                 link = cursor.link();
             }
-        }
-        if (this.state.signed) {
-            signBlock =
-                <div className="col-md-6 center-block">
-                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <p id="signLabel"><strong>নিবেদক</strong></p>
-                </div>
-        } else {
-            signBlock =
-                <div className="col-md-6 center-block form-group">
-                    <div className="col-md-1">
-                    </div>
-                    <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
-                        <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password" ref="password"
-                               placeholder="Password"/><br/>
-                    </div>
-                    <div>
+            if (this.state.signed) {
+                signBlock =
+                    <div className="col-md-6 center-block">
+                        <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                        <p id="signLabel"><strong>{Meteor.user().profile.name}</strong></p>
+                        <hr/>
                         <p id="signLabel"><strong>নিবেদক</strong></p>
                     </div>
+            } else {
+                signBlock =
+                    <div className="col-md-6 center-block form-group">
+                        <div className="col-md-1">
+                        </div>
+                        <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
+                            <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password" ref="password"
+                                   placeholder="Password"/><br/>
+                        </div>
+                        <div>
+                            <p id="signLabel"><strong>{Meteor.user().profile.name}</strong></p>
+                            <hr/>
+                            <p id="signLabel"><strong>নিবেদক</strong></p>
+                        </div>
 
-                </div>
+                    </div>
+            }
         }
+
         return (
 
             <div className="container">
                 <div className="row">
-                    <div className="col-md-10">
+                    <div className="col-md-3" >
+                        <SideBar ref="SideBar"
+                            forwardTo = {{toWhom: "যাচাইকারী",
+                                dropdownList: this.props.ScOf,
+                                sendSelect: (value) => this.handleCreate(value)
+                            }}
+
+                        />
+
+
+                    </div>
+                    <div className="col-md-9">
                         <div id="chahidajumbo" className="jumbotron text-center">
                             <div className="row">
                                 <div className="title-top col-md-12">
@@ -370,25 +391,6 @@ class ChahidaPotro extends Component {
                             </div>
                         </div>
 
-                    </div>
-                    <div className="col-md-10">
-                        <div className="col-md-2"></div>
-                        <div id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
-                            <div className="form-group text-center">
-                                <p>FORWARD TO <strong>যাচাইকারী :</strong></p>
-                                <div className="form-group">
-                                    <select onChange={this.handleSelect.bind(this)} ref="ScOf" className="form-control">
-                                        {this.renderScOf()}
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"
-                                           id="submit-all"
-                                           className="btn btn-primary" value="FORWARD"/>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

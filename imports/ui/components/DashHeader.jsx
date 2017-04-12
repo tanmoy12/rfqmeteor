@@ -14,7 +14,7 @@ class DashHeader extends Component {
         if (Meteor.loggingIn()) {
             return "Loading"
         } else {
-            return Meteor.user().username
+            return Meteor.user().profile.name
         }
     }
 
@@ -32,7 +32,7 @@ class DashHeader extends Component {
         let user = "";
         let link= "";
         if (Meteor.user() && this.props.images && this.props.nots) {
-            user = Meteor.user().username;
+            user = Meteor.user().profile.name;
             //console.log(Meteor.user().profile.ProPic);
             const cursor = ImagesCol.findOne({_id: Meteor.user().profile.ProPic});
             if (cursor) {
