@@ -11,7 +11,6 @@ export default class SideBar extends Component {
             addClass4: "sidebar_li",
             addClass5: "sidebar_li",
             minimizeDiv: [false, false, false, false, false],
-
         };
     }
 
@@ -281,6 +280,11 @@ export default class SideBar extends Component {
                     </li>
                 </div>
         }
+
+        //*********************************FOR SETTINGS.JSX*************************************
+        //CREATE FIVE BUTTONS
+
+
 
         return (
             <div className="navbar navbar-inverse navbar-fixed-left sidebar">

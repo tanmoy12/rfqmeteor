@@ -7,6 +7,7 @@ import App from '../imports/ui/components/App';
 import Dash from '../imports/ui/components/Dash';
 import ChahidaPotro from '../imports/ui/components/ChahidaPotro';
 import DemoChahidaPotro from '../imports/ui/components/DemoChahidaPotro';
+import Settings from '../imports/ui/components/Settings';
 import ChahidaPotroLoad from '../imports/ui/components/ChahidaPotroLoad';
 import Note from '../imports/ui/components/Note';
 import StandardDocument from '../imports/ui/components/StandardDocument';
@@ -53,6 +54,14 @@ FlowRouter.route('/demochahidapotro', {
     action(){
         mount(LayoutDash, {
             content: (<DemoChahidaPotro />)
+        })
+    }
+});
+
+FlowRouter.route('/settings', {
+    action(){
+        mount(LayoutDash, {
+            content: (<Settings />)
         })
     }
 });

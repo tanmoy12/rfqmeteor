@@ -65,39 +65,20 @@ export default class SideBar extends Component {
 
         }
         return (
-            // <div style={{display: "inline-block"}}>
-            //     <p>
-            //         <input
-            //
-            //             style={{border: "none", borderBottom: "2px dotted darkred", outline:"none"}}
-            //             type="text"
-            //             value={ this.state.value }
-            //             placeholder="YYYY-MM-DD"
-            //             onChange={ this.handleInputChange }
-            //             onFocus={ this.showCurrentDate }
-            //             onClick={this.showCalender.bind(this)}
-            //         />
-            //     </p>
-            //     {calender}
-            // </div>
-            <div className="container">
-                <div className="row">
-                    <div className='col-sm-6'>
-                        <div className="form-group">
-                            <div className='input-group date' id='datetimepicker1'>
-                                <input type='text' className="form-control" />
-                                <span className="input-group-addon">
-                        <span className="glyphicon glyphicon-calendar"></span>
-                    </span>
-                            </div>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                        $('#datetimepicker1').datetimepicker();
-                    });
-                    </script>
-                </div>
+            <div style={{display: "inline-block"}}>
+                <p>
+                    <input
+
+                        style={{border: "none", borderBottom: "2px dotted darkred", outline:"none"}}
+                        type="text"
+                        value={ this.state.value }
+                        placeholder="YYYY-MM-DD"
+                        onChange={ this.handleInputChange }
+                        onFocus={ this.showCurrentDate }
+                        onClick={this.showCalender.bind(this)}
+                    />
+                </p>
+                {calender}
             </div>
         );
 
