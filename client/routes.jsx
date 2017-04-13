@@ -16,6 +16,11 @@ import StandardDocumentApply from '../imports/ui/components/StandardDocumentAppl
 import LoginCaraousal from '../imports/ui/components/LoginCaraousal';
 import FileUpload from '../imports/ui/components/FileUpload';
 import AllowanceNikosh from '../imports/ui/components/AllowanceNikosh';
+import MeetingNotice from '../imports/ui/components/MeetingNotice';
+import Minutes from '../imports/ui/components/Minutes';
+
+
+
 
 FlowRouter.route('/', {
     action(){
@@ -131,6 +136,28 @@ FlowRouter.route('/AllowanceNikosh', {
     action(){
         mount(LayoutDash, {
             content: (<AllowanceNikosh />)
+        })
+    }
+});
+
+
+
+
+FlowRouter.route('/MeetingNotice', {
+    action(){
+        mount(LayoutDash, {
+            content: (<MeetingNotice />)
+        })
+    }
+});
+
+
+
+
+FlowRouter.route('/Minutes', {
+    action(){
+        mount(LayoutDash, {
+            content: (<Minutes />)
         })
     }
 });
