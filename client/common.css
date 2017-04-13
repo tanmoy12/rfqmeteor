@@ -565,7 +565,18 @@ hr {
 #text-stnd{
     font-size: medium;
     font-family: "Times New Roman", Times, serif;
+    line-height: 1.8;
 }
+
+
+#meeting{
+    font-size: large;
+    font-family: "Times New Roman", Times, serif;
+    line-height: 1.8;
+    text-align: justify;
+
+}
+
 
 .main-layout {
     background: #EAEBEF;
