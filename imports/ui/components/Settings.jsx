@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import $ from 'jquery';
 
-const specCommDivRows = [];
+var specCommDivRows = [];
+var spec_id = 0;
 
 export default class Settings extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ export default class Settings extends Component {
             commDivShow: [false, false, false, false, false],
             noOfSpecCommMem: 0,
             specCommButtClassRows: [],
+            specCommMemAdd: false,
         };
     }
 
@@ -136,47 +138,62 @@ export default class Settings extends Component {
             newBgColorComm[i] = this.state.bgColorComm[i];
         }
         newBgColorComm[parseInt(e)] = col;
-        var a = [];
-        a.push("btn btn-success btn-add bb");
-
+        this.state.specCommButtClassRows = [];
+        this.state.specCommButtClassRows.push("btn btn-success btn-add bb");
         this.setState({
             commDivShow: newcommDivShow,
             bgColorComm: newBgColorComm,
-            specCommButtClassRows: a,
+            specCommMemAdd: true
         });
+        // console.log("specCommButtClassRows : "+this.state.specCommButtClassRows);
+
+
     }
 
     specCommMemAddButtClick(todo, re){
+        var x = parseInt(this.state.noOfSpecCommMem);
         if(todo=="add"){
-            var x = this.state.noOfSpecCommMem;
             x++;
-
-            var a = [];
-            for(var i=0;i<specCommDivRows.length;i++){
-                a[i] = "btn btn-danger btn-remove bb";
-            }
-            a[specCommDivRows.length] = "btn btn-success btn-add bb";
-
             this.setState({
-                noOfSpecCommMem: x,
-                specCommButtClassRows: a,
+                specCommMemAdd: true,
             });
 
         }
         else{
-            var x = this.state.noOfSpecCommMem;
-            var elem = this.refs.i;
-            var elem_idx = specCommDivRows.indexOf(elem);
-            var newAra = specCommDivRows.slice();
-            newAra.splice(elem_idx,1);
-            for(var i=0;i<x-1;i++){
-                specCommDivRows[i] = newAra[i];
+            var elm = document.getElementById(re);
+            //console.log(elm);
+            var newAra = [];
+            // console.log("BEFORE");
+            // console.log(specCommDivRows);
+            for(var i=0;i<specCommDivRows.length;i++){
+                if(specCommDivRows[i].ref!=elm.id){
+                    newAra.push(specCommDivRows[i]);
+                }
+                //console.log(specCommDivRows[i].ref);
+                //console.log(elm.ref);
             }
+            // console.log(newAra);
+            specCommDivRows = [];
+            for(var i=0;i<newAra.length;i++){
+                specCommDivRows.push(newAra[i]);
+            }
+            // console.log("AFTER");
+            // console.log(specCommDivRows);
             x--;
-            this.setState({
-                noOfSpecCommMem: x,
-            });
+
+
         }
+
+        var a = [];
+        for(var i=0;i<x;i++){
+            a[i] = "btn btn-danger btn-remove bb";
+        }
+        a[x] = "btn btn-success btn-add bb";
+
+        this.setState({
+            noOfSpecCommMem: x,
+            specCommButtClassRows: a,
+        });
 
     }
 
@@ -221,48 +238,87 @@ export default class Settings extends Component {
         var specCommDiv;
 
         if(this.state.commDivShow[0]){
-
             var x = parseInt(this.state.noOfSpecCommMem);
-
-            for(var i=0;i<x;i++){
-                specCommDivRows[i] = <div key={i} ref={i} className="row" style={{paddingLeft: "2%", paddingRight: "2%"}}>
+            if(this.state.specCommMemAdd){
+                specCommDivRows.push(<div key={spec_id.toString()} ref={spec_id.toString()} id={spec_id.toString()} className="row" style={{paddingLeft: "2%", paddingRight: "2%"}}>
                     <div className="control-group" id="fields">
                         <div className="controls">
                             <form role="form" autocomplete="off">
                                 <div className="entry input-group col-xs-3">
                                     <input className="form-control" name="fields[]" type="text" placeholder="Type something" />
                                     <span className="input-group-btn">
-                                        <button className={this.state.specCommButtClassRows[i]} onClick={this.specCommMemAddButtClick.bind(this, "rmv", i)} type="button">
-                                            <span className="glyphicon glyphicon-minus"></span>
-                                        </button>
-                                    </span>
+                                            <button className="btn btn-danger btn-remove bb" onClick={this.specCommMemAddButtClick.bind(this, "rmv", spec_id.toString())} type="button">
+                                                 <span className="glyphicon glyphicon-minus"></span>
+                                             </button>
+                                            <button className="btn btn-success btn-add bb" onClick={this.specCommMemAddButtClick.bind(this, "add", spec_id.toString())} type="button">
+                                                <span className="glyphicon glyphicon-plus"></span>
+                                            </button>
+                                        </span>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>;
+                </div>);
+                this.setState({
+                    specCommMemAdd: false,
+                });
+                spec_id++;
             }
-            console.log(x);
-            console.log(this.state.specCommButtClassRows);
-            specCommDivRows[x] = <div key={x} ref={x} className="row" style={{paddingLeft: "2%", paddingRight: "2%"}}>
-                <div className="control-group" id="fields">
-                    <div className="controls">
-                        <form role="form" autocomplete="off">
-                            <div className="entry input-group col-xs-3">
-                                <input className="form-control" name="fields[]" type="text" placeholder="Type something" />
-                                <span className="input-group-btn">
-                                        <button className={this.state.specCommButtClassRows[x]} onClick={this.specCommMemAddButtClick.bind(this, "add", x)} type="button">
-                                            <span className="glyphicon glyphicon-plus"></span>
-                                        </button>
-                                    </span>
-                            </div>
-                        </form>
-                    </div>
+            console.log(specCommDivRows);
+
+            var finalContainer =
+                <div>
+                    {
+                        specCommDivRows.map(function (x) {
+                            return (x)
+                        })
+                    }
                 </div>
-            </div>;
+
+
+            // for(var i=0;i<x;i++){
+            //     specCommDivRows[i] = <div key={i} ref={i} className="row" style={{paddingLeft: "2%", paddingRight: "2%"}}>
+            //         <div className="control-group" id="fields">
+            //             <div className="controls">
+            //                 <form role="form" autocomplete="off">
+            //                     <div className="entry input-group col-xs-3">
+            //                         <input className="form-control" name="fields[]" type="text" placeholder="Type something" />
+            //                         <span className="input-group-btn">
+            //                             <button className={this.state.specCommButtClassRows[i]} onClick={this.specCommMemAddButtClick.bind(this, "rmv", i)} type="button">
+            //                                 <span className="glyphicon glyphicon-minus"></span>
+            //                             </button>
+            //                         </span>
+            //                     </div>
+            //                 </form>
+            //             </div>
+            //         </div>
+            //     </div>;
+            // }
+            // console.log(x);
+            // console.log(this.state.specCommButtClassRows);
+            // specCommDivRows[x] = <div key={x} ref={x} className="row" style={{paddingLeft: "2%", paddingRight: "2%"}}>
+            //     <div className="control-group" id="fields">
+            //         <div className="controls">
+            //             <form role="form" autocomplete="off">
+            //                 <div className="entry input-group col-xs-3">
+            //                     <input className="form-control" name="fields[]" type="text" placeholder="Type something" />
+            //                     <span className="input-group-btn">
+            //                             <button className={this.state.specCommButtClassRows[x]} onClick={this.specCommMemAddButtClick.bind(this, "add", x)} type="button">
+            //                                 <span className="glyphicon glyphicon-plus"></span>
+            //                             </button>
+            //                         </span>
+            //                 </div>
+            //             </form>
+            //         </div>
+            //     </div>
+            // </div>;
 
 
         }
+        // console.log("REF PRINTING......");
+        // for(var i=0;i<specCommDivRows.length;i++){
+        //     console.log("REF IS: "+specCommDivRows[i].ref);
+        // }
 
         var specCommitte =
             <div>
