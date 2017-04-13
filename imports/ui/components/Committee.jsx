@@ -54,7 +54,7 @@ export default class Committee extends Component {
             // console.log("BEFORE");
             // console.log(specCommDivRows);
             for(var i=0;i<specCommDivRows.length;i++){
-                if(specCommDivRows[i].ref!=elm.id){
+                if(specCommDivRows[i].ref!=elm.id || specCommDivRows.length==1){
                     newAra.push(specCommDivRows[i]);
                 }
                 //console.log(specCommDivRows[i].ref);
