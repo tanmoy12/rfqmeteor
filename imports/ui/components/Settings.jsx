@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import $ from 'jquery';
 
+const specCommDivRows = [];
+
 export default class Settings extends Component {
     constructor(props) {
         super(props);
@@ -12,8 +14,12 @@ export default class Settings extends Component {
             addClass5: "sidebar_li",
             bgColorComm: ["#337ab7","#337ab7","#337ab7","#337ab7","#337ab7"],
             commDivShow: [false, false, false, false, false],
+            noOfSpecCommMem: 0,
+            specCommButtClassRows: [],
         };
     }
+
+
 
     sidebar_link_click(e) {
         //console.log(e);
@@ -130,11 +136,48 @@ export default class Settings extends Component {
             newBgColorComm[i] = this.state.bgColorComm[i];
         }
         newBgColorComm[parseInt(e)] = col;
+        var a = [];
+        a.push("btn btn-success btn-add bb");
 
         this.setState({
             commDivShow: newcommDivShow,
             bgColorComm: newBgColorComm,
+            specCommButtClassRows: a,
         });
+    }
+
+    specCommMemAddButtClick(todo, re){
+        if(todo=="add"){
+            var x = this.state.noOfSpecCommMem;
+            x++;
+
+            var a = [];
+            for(var i=0;i<specCommDivRows.length;i++){
+                a[i] = "btn btn-danger btn-remove bb";
+            }
+            a[specCommDivRows.length] = "btn btn-success btn-add bb";
+
+            this.setState({
+                noOfSpecCommMem: x,
+                specCommButtClassRows: a,
+            });
+
+        }
+        else{
+            var x = this.state.noOfSpecCommMem;
+            var elem = this.refs.i;
+            var elem_idx = specCommDivRows.indexOf(elem);
+            var newAra = specCommDivRows.slice();
+            newAra.splice(elem_idx,1);
+            for(var i=0;i<x-1;i++){
+                specCommDivRows[i] = newAra[i];
+            }
+            x--;
+            this.setState({
+                noOfSpecCommMem: x,
+            });
+        }
+
     }
 
 
@@ -176,31 +219,49 @@ export default class Settings extends Component {
             </div>
 
         var specCommDiv;
+
         if(this.state.commDivShow[0]){
-            specCommDiv=
-                <div>
-                    <h1 style={{textAlign: "center", paddingTop:"2%"}}>THE COW</h1>
-                    <p style={{marginLeft:"3%",marginRight:"3%", paddingBottom:"2%"}}>
-                        Cow is a domestic and very successful animal. It is of great importance for the people of Hindu religion. It is a most important pet animal kept by almost all people of Hindu religion. It is female animal who gives us milk daily two times, in the morning and evening. Some cow gives milk three times a day according to their diet and capacity. Cow is considered by the Hindu people as a mother and called as the Gau Mata. Hindu people respect cow very much and do worship. Cow milk is offered to God during pooja and katha. It is also used to do abhishek of the God and Goddess statue during festivals and pooja.
-                        Cow milk is given high status in the society as it is very beneficial to us. She gives birth to a small calf after 12 months. She does not give any practice to her child to walk or run, he/she starts walking and running just after the birth. Her calf drinks her milk for some days or months and starts eating food like her. Cow is a very sacred animal for all Hindus. It is a big domestic animal having four legs, a tail, two ear, two eyes, one nose, one mouth, one head and a wide back.
-                        Cow is a domestic and very successful animal. It is of great importance for the people of Hindu religion. It is a most important pet animal kept by almost all people of Hindu religion. It is female animal who gives us milk daily two times, in the morning and evening. Some cow gives milk three times a day according to their diet and capacity. Cow is considered by the Hindu people as a mother and called as the Gau Mata. Hindu people respect cow very much and do worship. Cow milk is offered to God during pooja and katha. It is also used to do abhishek of the God and Goddess statue during festivals and pooja.
-                        Cow milk is given high status in the society as it is very beneficial to us. She gives birth to a small calf after 12 months. She does not give any practice to her child to walk or run, he/she starts walking and running just after the birth. Her calf drinks her milk for some days or months and starts eating food like her. Cow is a very sacred animal for all Hindus. It is a big domestic animal having four legs, a tail, two ear, two eyes, one nose, one mouth, one head and a wide back.
-                        Cow is a domestic and very successful animal. It is of great importance for the people of Hindu religion. It is a most important pet animal kept by almost all people of Hindu religion. It is female animal who gives us milk daily two times, in the morning and evening. Some cow gives milk three times a day according to their diet and capacity. Cow is considered by the Hindu people as a mother and called as the Gau Mata. Hindu people respect cow very much and do worship. Cow milk is offered to God during pooja and katha. It is also used to do abhishek of the God and Goddess statue during festivals and pooja.
-                        Cow milk is given high status in the society as it is very beneficial to us. She gives birth to a small calf after 12 months. She does not give any practice to her child to walk or run, he/she starts walking and running just after the birth. Her calf drinks her milk for some days or months and starts eating food like her. Cow is a very sacred animal for all Hindus. It is a big domestic animal having four legs, a tail, two ear, two eyes, one nose, one mouth, one head and a wide back.
-                        Cow is a domestic and very successful animal. It is of great importance for the people of Hindu religion. It is a most important pet animal kept by almost all people of Hindu religion. It is female animal who gives us milk daily two times, in the morning and evening. Some cow gives milk three times a day according to their diet and capacity. Cow is considered by the Hindu people as a mother and called as the Gau Mata. Hindu people respect cow very much and do worship. Cow milk is offered to God during pooja and katha. It is also used to do abhishek of the God and Goddess statue during festivals and pooja.
-                        Cow milk is given high status in the society as it is very beneficial to us. She gives birth to a small calf after 12 months. She does not give any practice to her child to walk or run, he/she starts walking and running just after the birth. Her calf drinks her milk for some days or months and starts eating food like her. Cow is a very sacred animal for all Hindus. It is a big domestic animal having four legs, a tail, two ear, two eyes, one nose, one mouth, one head and a wide back.
-                        Cow is a domestic and very successful animal. It is of great importance for the people of Hindu religion. It is a most important pet animal kept by almost all people of Hindu religion. It is female animal who gives us milk daily two times, in the morning and evening. Some cow gives milk three times a day according to their diet and capacity. Cow is considered by the Hindu people as a mother and called as the Gau Mata. Hindu people respect cow very much and do worship. Cow milk is offered to God during pooja and katha. It is also used to do abhishek of the God and Goddess statue during festivals and pooja.
-                        Cow milk is given high status in the society as it is very beneficial to us. She gives birth to a small calf after 12 months. She does not give any practice to her child to walk or run, he/she starts walking and running just after the birth. Her calf drinks her milk for some days or months and starts eating food like her. Cow is a very sacred animal for all Hindus. It is a big domestic animal having four legs, a tail, two ear, two eyes, one nose, one mouth, one head and a wide back.
-                        Cow is a domestic and very successful animal. It is of great importance for the people of Hindu religion. It is a most important pet animal kept by almost all people of Hindu religion. It is female animal who gives us milk daily two times, in the morning and evening. Some cow gives milk three times a day according to their diet and capacity. Cow is considered by the Hindu people as a mother and called as the Gau Mata. Hindu people respect cow very much and do worship. Cow milk is offered to God during pooja and katha. It is also used to do abhishek of the God and Goddess statue during festivals and pooja.
-                        Cow milk is given high status in the society as it is very beneficial to us. She gives birth to a small calf after 12 months. She does not give any practice to her child to walk or run, he/she starts walking and running just after the birth. Her calf drinks her milk for some days or months and starts eating food like her. Cow is a very sacred animal for all Hindus. It is a big domestic animal having four legs, a tail, two ear, two eyes, one nose, one mouth, one head and a wide back.
-                        Cow is a domestic and very successful animal. It is of great importance for the people of Hindu religion. It is a most important pet animal kept by almost all people of Hindu religion. It is female animal who gives us milk daily two times, in the morning and evening. Some cow gives milk three times a day according to their diet and capacity. Cow is considered by the Hindu people as a mother and called as the Gau Mata. Hindu people respect cow very much and do worship. Cow milk is offered to God during pooja and katha. It is also used to do abhishek of the God and Goddess statue during festivals and pooja.
-                        Cow milk is given high status in the society as it is very beneficial to us. She gives birth to a small calf after 12 months. She does not give any practice to her child to walk or run, he/she starts walking and running just after the birth. Her calf drinks her milk for some days or months and starts eating food like her. Cow is a very sacred animal for all Hindus. It is a big domestic animal having four legs, a tail, two ear, two eyes, one nose, one mouth, one head and a wide back.
-                        Cow is a domestic and very successful animal. It is of great importance for the people of Hindu religion. It is a most important pet animal kept by almost all people of Hindu religion. It is female animal who gives us milk daily two times, in the morning and evening. Some cow gives milk three times a day according to their diet and capacity. Cow is considered by the Hindu people as a mother and called as the Gau Mata. Hindu people respect cow very much and do worship. Cow milk is offered to God during pooja and katha. It is also used to do abhishek of the God and Goddess statue during festivals and pooja.
-                        Cow milk is given high status in the society as it is very beneficial to us. She gives birth to a small calf after 12 months. She does not give any practice to her child to walk or run, he/she starts walking and running just after the birth. Her calf drinks her milk for some days or months and starts eating food like her. Cow is a very sacred animal for all Hindus. It is a big domestic animal having four legs, a tail, two ear, two eyes, one nose, one mouth, one head and a wide back.
-                        Cow is a domestic and very successful animal. It is of great importance for the people of Hindu religion. It is a most important pet animal kept by almost all people of Hindu religion. It is female animal who gives us milk daily two times, in the morning and evening. Some cow gives milk three times a day according to their diet and capacity. Cow is considered by the Hindu people as a mother and called as the Gau Mata. Hindu people respect cow very much and do worship. Cow milk is offered to God during pooja and katha. It is also used to do abhishek of the God and Goddess statue during festivals and pooja.
-                        Cow milk is given high status in the society as it is very beneficial to us. She gives birth to a small calf after 12 months. She does not give any practice to her child to walk or run, he/she starts walking and running just after the birth. Her calf drinks her milk for some days or months and starts eating food like her. Cow is a very sacred animal for all Hindus. It is a big domestic animal having four legs, a tail, two ear, two eyes, one nose, one mouth, one head and a wide back.
-                    </p>
+
+            var x = parseInt(this.state.noOfSpecCommMem);
+
+            for(var i=0;i<x;i++){
+                specCommDivRows[i] = <div key={i} ref={i} className="row" style={{paddingLeft: "2%", paddingRight: "2%"}}>
+                    <div className="control-group" id="fields">
+                        <div className="controls">
+                            <form role="form" autocomplete="off">
+                                <div className="entry input-group col-xs-3">
+                                    <input className="form-control" name="fields[]" type="text" placeholder="Type something" />
+                                    <span className="input-group-btn">
+                                        <button className={this.state.specCommButtClassRows[i]} onClick={this.specCommMemAddButtClick.bind(this, "rmv", i)} type="button">
+                                            <span className="glyphicon glyphicon-minus"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>;
+            }
+            console.log(x);
+            console.log(this.state.specCommButtClassRows);
+            specCommDivRows[x] = <div key={x} ref={x} className="row" style={{paddingLeft: "2%", paddingRight: "2%"}}>
+                <div className="control-group" id="fields">
+                    <div className="controls">
+                        <form role="form" autocomplete="off">
+                            <div className="entry input-group col-xs-3">
+                                <input className="form-control" name="fields[]" type="text" placeholder="Type something" />
+                                <span className="input-group-btn">
+                                        <button className={this.state.specCommButtClassRows[x]} onClick={this.specCommMemAddButtClick.bind(this, "add", x)} type="button">
+                                            <span className="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+            </div>;
+
+
         }
 
         var specCommitte =
@@ -208,9 +269,9 @@ export default class Settings extends Component {
                 <button type="button" className="btn btn-primary"
                         style={{width: "100%", backgroundColor: this.state.bgColorComm[0]}}
                         onClick={this.commClicked.bind(this, "0")}>
-                    Specification Company
+                    Specification Committee
                 </button>
-                {specCommDiv}
+                {specCommDivRows}
             </div>
 
 
