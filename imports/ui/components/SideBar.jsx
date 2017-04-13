@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import ReactDOM from "react-dom";
 
 export default class SideBar extends Component {
     constructor(props) {
@@ -118,6 +119,12 @@ export default class SideBar extends Component {
         }
     }
 
+    handleForward(e){
+        e.preventDefault();
+        var select = ReactDOM.findDOMNode(this.refs.ForwardSelect).value.trim();
+        this.props.forwardTo.sendSelect(select);
+    }
+
     render() {
         var forward_to_style = {
             // backgroundColor: "#7a9c9c",
@@ -192,12 +199,12 @@ export default class SideBar extends Component {
 
 
                     <div className="form-group" style={{borderRadius: "3px"}}>
-                        <select ref="AcOf" className="form-control" style={{color: "white"}}>
+                        <select ref="ForwardSelect" className="form-control" style={{color: "white"}}>
                             {/*<option value="" disabled selected hidden>Select to forward</option>*/}
                             {
-                                this.props.forwardTo.dropdownList.map(function (username) {
-                                    return (<option value={username} key={username}
-                                                    style={{color: "black"}}>{username}</option>)
+                                this.props.forwardTo.dropdownList.map(function (User) {
+                                    return (<option value={User._id} key={User._id}
+                                                    style={{color: "black"}}>{User.profile.name}</option>)
                                 })
                             }
                         </select>
@@ -205,6 +212,7 @@ export default class SideBar extends Component {
 
                     <div>
                         <input
+                            onClick={this.handleForward.bind(this)}
                             type="submit" name="login-submit"
                             id="submit-all"
                             className="btn btn-primary sidebarButt" value="Forward"/>
