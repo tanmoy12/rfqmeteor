@@ -2,10 +2,9 @@ import React, {Component, PropTypes} from 'react';
 import $ from 'jquery';
 import Committee from './Committee';
 
-var specCommDivRows = [];
-var spec_id = 0;
 
 export default class Settings extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -14,11 +13,6 @@ export default class Settings extends Component {
             addClass3: "sidebar_li",
             addClass4: "sidebar_li",
             addClass5: "sidebar_li",
-            bgColorComm: ["#337ab7","#337ab7","#337ab7","#337ab7","#337ab7"],
-            commDivShow: [false, false, false, false, false],
-            noOfSpecCommMem: 0,
-            specCommButtClassRows: [],
-            specCommMemAdd: false,
         };
     }
 
@@ -160,17 +154,17 @@ export default class Settings extends Component {
             </div>
         var height = screen.height - (screen.height*0.257);
         return (
-            <div className="row " style={{overflow: "hidden"}}>
+            <div className="row ">
                 <div className="col-md-2">
                     {sideBar}
                 </div>
-                <div className="col-md-10" style={{height: height}}>
+                <div className="col-md-10" style={{minHeight: height}}>
                     <div  ref="div1" style={{marginLeft:"3%",marginRight:"3%", marginTop:"2%", marginBottom:"6%",backgroundColor:"white"}}>
-                        <Committee refVal="div1" name="Specification Committee"/>
+                        <Committee refVal="com1" name="Specification Committee" idx="0"/>
                     </div>
 
-                    <div  ref="div1" style={{marginLeft:"3%",marginRight:"3%", marginTop:"2%", marginBottom:"6%",backgroundColor:"white"}}>
-                        <Committee refVal="div2" name="Verification Committee"/>
+                    <div  ref="div2" style={{marginLeft:"3%",marginRight:"3%", marginTop:"2%", marginBottom:"6%",backgroundColor:"white"}}>
+                        <Committee refVal="com2" name="Verification Committee" idx="1"/>
                     </div>
 
                 </div>
