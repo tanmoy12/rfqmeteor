@@ -23,11 +23,10 @@ export default class Committee extends Component {
     }
 
     commClicked(e){
-        var x = !this.state.commDivShow;
-        newcommDivShow = x;
+        var ind_id = parseInt(this.props.idx);
 
         var col = "#337ab7";
-        if(x){
+        if(!this.state.commDivShow){
             col = "darkred";
         }
 
@@ -43,8 +42,8 @@ export default class Committee extends Component {
         }
 
         this.setState({
-            commDivShow: newcommDivShow,
             bgColorComm: newBgColorComm,
+            commDivShow: !this.state.commDivShow,
         });
 
         // console.log("specCommButtClassRows : "+this.state.specCommButtClassRows);
@@ -115,9 +114,6 @@ export default class Committee extends Component {
         return idx;
     }
 
-    showHoverText(){
-        $('[data-toggle="tooltip"]').tooltip();
-    }
 
     render() {
 
@@ -126,7 +122,10 @@ export default class Committee extends Component {
         if(this.state.commDivShow){
             var x = parseInt(this.state.noOfSpecCommMem);
             var ref_val = spec_id[ind_id].toString() +"_" +  this.props.refVal;
+            var butt_id = ref_val + "butt";
+
             if(this.state.specCommMemAdd[ind_id]){
+                //console.log("BUTTON ADDED: "+butt_id);
                 specCommDivRows[ind_id].push(<div key={ref_val} ref={ref_val} id={ref_val} className="row" style={{paddingLeft: "2%", paddingRight: "2%"}}>
                     <div className="control-group" id="fields">
                         <div className="controls">
@@ -136,14 +135,12 @@ export default class Committee extends Component {
                                     <span className="input-group-btn">
                                             <button className="btn btn-danger btn-remove bb"
                                                     onClick={this.specCommMemAddButtClick.bind(this, "rmv", ref_val)}
-                                                    onmouseover={this.showHoverText.bind(this)}
-                                                    data-toggle="tooltip" title="Remove From Committee" type="button">
+                                                    title="Remove From Committee" type="button">
                                                  <span className="glyphicon glyphicon-minus"></span>
                                              </button>
-                                            <button className="btn btn-success btn-add bb"
+                                            <button className="btn btn-success btn-add bb" id={butt_id}
                                                     onClick={this.specCommMemAddButtClick.bind(this, "add", ref_val)}
-                                                    onmouseover={this.showHoverText.bind(this)}
-                                                    data-toggle="tooltip" title="Add To Committee" type="button">
+                                                    title="Add More To Committee" type="button">
                                                 <span className="glyphicon glyphicon-plus"></span>
                                             </button>
                                         </span>
@@ -155,18 +152,23 @@ export default class Committee extends Component {
                 this.state.specCommMemAdd[ind_id] = false;
                 spec_id[ind_id]++;
             }
-            console.log("FROM :"+this.props.refVal);
-            console.log(specCommDivRows);
+            //console.log("FROM :"+this.props.refVal);
+            //console.log(specCommDivRows);
 
         }
+
+
 
         var specCommDivRow2 = [];
         specCommDivRow2[ind_id] = [];
         if(this.state.commDivShow){
+
             for(var i=0;i<specCommDivRows[ind_id].length;i++){
                 specCommDivRow2[ind_id].push(specCommDivRows[ind_id][i]);
             }
         }
+        // console.log("FINAL: ");
+        // console.log(specCommDivRow2[ind_id]);
 
         var specCommitte =
             <div>

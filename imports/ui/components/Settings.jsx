@@ -13,6 +13,7 @@ export default class Settings extends Component {
             addClass3: "sidebar_li",
             addClass4: "sidebar_li",
             addClass5: "sidebar_li",
+            commShow: [false,false,false,false,false]
         };
     }
 
