@@ -18,7 +18,7 @@ import FileUpload from '../imports/ui/components/FileUpload';
 import AllowanceNikosh from '../imports/ui/components/AllowanceNikosh';
 import MeetingNotice from '../imports/ui/components/MeetingNotice';
 import Minutes from '../imports/ui/components/Minutes';
-
+import CompanyS from '../imports/ui/components/CompanyS';
 
 
 
@@ -158,6 +158,16 @@ FlowRouter.route('/Minutes', {
     action(){
         mount(LayoutDash, {
             content: (<Minutes />)
+        })
+    }
+});
+
+
+
+FlowRouter.route('/CS', {
+    action(){
+        mount(LayoutDash, {
+            content: (<CompanyS />)
         })
     }
 });
