@@ -27,7 +27,7 @@ export default class Committee extends Component {
 
         var col = "#337ab7";
         if (!this.state.commDivShow) {
-            col = "darkred";
+            col = "#32127a";
         }
 
         var newBgColorComm = col;
@@ -61,7 +61,6 @@ export default class Committee extends Component {
         }
         else {
 
-            var idx = this.getIdx(re);
             var elm = document.getElementById(re);
             //console.log(elm);
             var newAra = [];
@@ -70,7 +69,7 @@ export default class Committee extends Component {
             for (var i = 0; i < specCommDivRows[ind_id].length; i++) {
                 var r = specCommDivRows[ind_id][i].ref;
                 var id = elm.id;
-                if (r != id || specCommDivRows.length == 1) {
+                if (r != id || specCommDivRows[ind_id].length == 1) {
                     newAra.push(specCommDivRows[ind_id][i]);
                     //console.log("DHUKSI");
                 }
@@ -100,18 +99,9 @@ export default class Committee extends Component {
 
     }
 
-    getIdx(re) {
-        var idx_str = "";
-        for (var i = 0; i < re.length; i++) {
-            if (re[i] != '_') {
-                idx_str[i] = re[i];
-            }
-            else {
-                break;
-            }
-        }
-        var idx = parseInt(idx_str);
-        return idx;
+    showSelectedOption(spanId, option) {
+        var s = '#' + spanId;
+        $(s).text(option);
     }
 
 
@@ -126,20 +116,13 @@ export default class Committee extends Component {
                 <div className="control-group" id="fields">
                     <div className="controls">
                         <form role="form" autocomplete="off">
-                            <div className="entry input-group col-xs-3">
-                                {/*<label className="form-control arrow_box" name="fields[]"*/}
-                                {/*style={{backgroundColor: "#00796B", color: "white"}} type="text">*/}
-                                {/*Add More To Committee*/}
-                                {/*</label>*/}
-
-                                {/*<span className="input-group-btn">*/}
-                                {/*<button className="btn btn-success btn-add bb"*/}
-                                {/*onClick={this.specCommMemAddButtClick.bind(this, "add", ref_val)}*/}
-                                {/*title="Add More To Committee" type="button">*/}
-                                {/*<span className="glyphicon glyphicon-plus"></span>*/}
-                                {/*</button>*/}
-                                {/*</span>*/}
-                                <button className="btn btn-success btn-add bb addButton"
+                            <div className="entry input-group col-xs-5">
+                                <button className="btn btn-success btn-add bb" style={{
+                                    marginBottom: "7px",
+                                    float: "right",
+                                    fontSize: "12px",
+                                    fontWeight: "bold"
+                                }}
                                         onClick={this.specCommMemAddButtClick.bind(this, "add", ref_val)}
                                         title="Add More To Committee" type="button" value="Add More">
                                     Add More
@@ -158,9 +141,45 @@ export default class Committee extends Component {
                     <div className="control-group" id="fields">
                         <div className="controls">
                             <form role="form" autocomplete="off">
-                                <div className="entry input-group col-xs-3">
-                                    <input className="form-control" name="fields[]" type="text"
-                                           placeholder="Type something"/>
+                                <div className="entry input-group col-xs-5">
+
+                                    <div className="dropdown" style={{display:"inline-block", width: "55%"}}>
+                                        <button type="button" className="btn btn-default dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                style={{width: "100%"}}>
+                                            <span id="selected">Select</span>
+                                            <span className="caret" style={{marginLeft: "3px"}}></span>
+                                        </button>
+                                        <ul className="dropdown-menu">
+                                            <li className="dropdown-header">Usernames</li>
+                                            <li><a
+                                                onClick={this.showSelectedOption.bind(this, "selected", "shadman264")}
+                                                href="#">shadman264</a></li>
+                                            <li><a onClick={this.showSelectedOption.bind(this, "selected", "tanmoy12")}
+                                                   href="#">tanmoy12</a></li>
+                                            <li><a onClick={this.showSelectedOption.bind(this, "selected", "hasib123")}
+                                                   href="#">hasib123</a></li>
+                                        </ul>
+                                    </div>
+                                    <div className="dropdown" style={{display:"inline-block", width: "45%"}}>
+                                        <button type="button" className="btn btn-default dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                style={{width: "100%"}}>
+                                            <span id="selected2">Designation</span>
+                                            <span className="caret" style={{marginLeft: "3px"}}></span>
+                                        </button>
+                                        <ul className="dropdown-menu">
+                                            <li className="dropdown-header">Designation</li>
+                                            <li><a onClick={this.showSelectedOption.bind(this, "selected2", "Member")}
+                                                   href="#">Member</a></li>
+                                            <li><a onClick={this.showSelectedOption.bind(this, "selected2", "Chairman")}
+                                                   href="#">Chairman</a></li>
+                                            <li><a
+                                                onClick={this.showSelectedOption.bind(this, "selected2", "Secretary")}
+                                                href="#">Secretary</a></li>
+                                        </ul>
+                                    </div>
+
                                     <span className="input-group-btn">
                                             <button className="btn btn-danger btn-remove bb"
                                                     onClick={this.specCommMemAddButtClick.bind(this, "rmv", ref_val)}
