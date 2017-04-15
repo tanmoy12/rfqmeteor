@@ -147,7 +147,7 @@ export default class Committee extends Component {
                                         <button type="button" className="btn btn-default dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                                 style={{width: "100%"}}>
-                                            <span id="selected">Select</span>
+                                            <span id="selected">Name</span>
                                             <span className="caret" style={{marginLeft: "3px"}}></span>
                                         </button>
                                         <ul className="dropdown-menu">
@@ -172,11 +172,11 @@ export default class Committee extends Component {
                                             <li className="dropdown-header">Designation</li>
                                             <li><a onClick={this.showSelectedOption.bind(this, "selected2", "Member")}
                                                    href="#">Member</a></li>
-                                            <li><a onClick={this.showSelectedOption.bind(this, "selected2", "Chairman")}
-                                                   href="#">Chairman</a></li>
+                                            <li><a onClick={this.showSelectedOption.bind(this, "selected2", "Chairperson")}
+                                                   href="#">Chairperson</a></li>
                                             <li><a
-                                                onClick={this.showSelectedOption.bind(this, "selected2", "Secretary")}
-                                                href="#">Secretary</a></li>
+                                                onClick={this.showSelectedOption.bind(this, "selected2", "সদস্যসচিব")}
+                                                href="#">সদস্যসচিব</a></li>
                                         </ul>
                                     </div>
 
