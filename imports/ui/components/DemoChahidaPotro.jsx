@@ -2,10 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 import SideBar from './SideBar';
-import MyDayPicker3 from './MyDayPicker3';
-//import MyDayPicker2 from './MyDayPicker2';
-
-import Table from "./Table";
+import Calendar from './Calendar';
 
 export default class ChahidaPotroLoad extends Component {
     constructor(props) {
@@ -187,14 +184,18 @@ export default class ChahidaPotroLoad extends Component {
 
                                     </div>
                                     <p className="text">
-                                        <span style={{display: "inline-block"}}>
-                                            ২। এ জন্য আনুমানিক
-                                        </span>
-                                        <MyDayPicker3/>
-                                        <span style={{display: "inline-block"}}>
-                                            (কথায়)
-                                        ................................. টাকা ব্যয়।
-                                        </span>
+                                        <div className="form-inline">
+                                            <span>২। এ জন্য আনুমানিক</span>
+                                            <span style={{display: "initial"}}>
+                                                <Calendar/>
+                                            </span>
+
+                                            <span>(কথায়)
+                                        ................................. টাকা ব্যয়।</span>
+                                        </div>
+
+
+
                                         <br/>
 
 
