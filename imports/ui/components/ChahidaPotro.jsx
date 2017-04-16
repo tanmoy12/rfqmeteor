@@ -293,7 +293,10 @@ class ChahidaPotro extends Component {
                                    placeholder="Password"/><br/>
                         </div>
                         <div>
-                            <p id="signLabel"><strong>{Meteor.user().profile.name}</strong></p>
+                            <div className="form-inline" style={{marginLeft: "10%", marginRight: "10%"}}>
+                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}><strong>{Meteor.user().profile.name}</strong></p>
+                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}><strong>12/04/2003</strong></p>
+                            </div>
                             <hr className="center-block" id="signhr"/>
                             <p id="signLabel"><strong>নিবেদক</strong></p>
                         </div>
