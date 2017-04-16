@@ -2,8 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 import SideBar from './SideBar';
-// import MyDayPicker from './MyDayPicker';
-// import MyDayPicker2 from './MyDayPicker2';
+import Calendar from './Calendar';
+import $ from 'jquery'
 
 import Table from "./Table";
 
@@ -187,14 +187,18 @@ export default class ChahidaPotroLoad extends Component {
 
                                     </div>
                                     <p className="text">
-                                        <span style={{display: "inline-block"}}>
-                                            ২। এ জন্য আনুমানিক
-                                        </span>
+                                        <div className="form-inline">
+                                            <span>২। এ জন্য আনুমানিক</span>
+                                            <span style={{display: "none"}}>
+                                                <Calendar/>
+                                            </span>
 
-                                        <span style={{display: "inline-block"}}>
-                                            (কথায়)
-                                        ................................. টাকা ব্যয়।
-                                        </span>
+                                            <span>(কথায়)
+                                        ................................. টাকা ব্যয়।</span>
+                                        </div>
+
+
+
                                         <br/>
 
 
@@ -207,6 +211,11 @@ export default class ChahidaPotroLoad extends Component {
                             <div className="row">
                                 <div className="col-md-6 center-block">
                                     <img src="sign1.png" className="img-circle" alt="User Image"/>
+                                    <div className="form-inline" style={{marginLeft: "10%", marginRight: "10%"}}>
+                                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}><strong>Shadman Mahdi Rahman</strong></p>
+                                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}><strong>12/04/2003</strong></p>
+                                    </div>
+                                    <hr id="signhr" style={{width: "100%"}}/>
                                     <p id="signLabel"><strong>নিবেদক</strong></p>
                                 </div>
                                 {signBlock}

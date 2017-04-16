@@ -39,8 +39,7 @@
 .navbar-login
 {
     width: 280px;
-    padding: 10px;
-    padding-bottom: 0px;
+    padding: 10px 10px 0px;
     background: snow;
 }
 
@@ -79,7 +78,7 @@
 
 #designation{
     font-size: 15px;
-    font-family: "Tahoma";
+    font-family: "Tahoma", serif;
     font-weight: bold;
 
 }
@@ -555,6 +554,10 @@ hr {
     border: 1px solid #000;
 }
 
+#signhr{
+    width: 80%;
+}
+
 #TITLERFQ{
     font-size:10px;
     font-style: italic;
@@ -692,7 +695,6 @@ span b {
 #signLabel {
     font-size: small;
     font-style: italic;
-    margin-top: 10px;
 }
 #unsignLabel {
     font-size: small;
@@ -1185,8 +1187,62 @@ opacity */
     margin-bottom: 10px;
 }
 .bb{
-    font-size: 11px;
+    font-size: 14px;
 }
 /*DEMO CHAHIDA POTRO ENDS*/
+
+/*SETTINGS.JSX*/
+.addButton {
+    -moz-box-shadow: 0px 10px 14px -7px #3a7320;
+    -webkit-box-shadow: 0px 10px 14px -7px #3a7320;
+    box-shadow: 0px 10px 14px -7px #3a7320;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #85d45d), color-stop(1, #6e9959));
+    background:-moz-linear-gradient(top, #85d45d 5%, #6e9959 100%);
+    background:-webkit-linear-gradient(top, #85d45d 5%, #6e9959 100%);
+    background:-o-linear-gradient(top, #85d45d 5%, #6e9959 100%);
+    background:-ms-linear-gradient(top, #85d45d 5%, #6e9959 100%);
+    background:linear-gradient(to bottom, #85d45d 5%, #6e9959 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#85d45d', endColorstr='#6e9959',GradientType=0);
+    background-color:#85d45d;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    border:1px solid #4a8f28;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+    font-size:13px;
+    font-weight:bold;
+    padding:5px 12px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #5b8a3c;
+    margin-bottom: 7px;
+    float: right;
+}
+.addButton:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6e9959), color-stop(1, #85d45d));
+    background:-moz-linear-gradient(top, #6e9959 5%, #85d45d 100%);
+    background:-webkit-linear-gradient(top, #6e9959 5%, #85d45d 100%);
+    background:-o-linear-gradient(top, #6e9959 5%, #85d45d 100%);
+    background:-ms-linear-gradient(top, #6e9959 5%, #85d45d 100%);
+    background:linear-gradient(to bottom, #6e9959 5%, #85d45d 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6e9959', endColorstr='#85d45d',GradientType=0);
+    background-color:#6e9959;
+}
+.addButton:active {
+    position:relative;
+    top:1px;
+}
+
+/*Calender.jsx*/
+
+#example-datepicker_group{
+    margin-left: 3px;
+    margin-right: 3px;
+    /*display: inline-flex;*/
+    width: 30%;
+}
+
 
 /*SHADMAN'S CSS ENDS*/

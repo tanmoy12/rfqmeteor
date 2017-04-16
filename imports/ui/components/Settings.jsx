@@ -25,7 +25,7 @@ export default class Settings extends Component {
 
             //SCROLL ANIMATE
             var x = this.refs.div1;
-            var top = $(x).offset().top - 70;
+            var top = $(x).offset().top-70;
                 $('html, body').animate({
                     scrollTop: top
                 }, 600);
@@ -43,7 +43,7 @@ export default class Settings extends Component {
 
             //SCROLL ANIMATE
             var x = this.refs.div2;
-            var top = $(x).offset().top - 70;
+            var top = $(x).offset().top-70;
             $('html, body').animate({
                 scrollTop: top
             }, 600);
@@ -61,7 +61,7 @@ export default class Settings extends Component {
 
             //SCROLL ANIMATE
             var x = this.refs.div3;
-            var top = $(x).offset().top - 70;
+            var top = $(x).offset().top-70;
             $('html, body').animate({
                 scrollTop: top
             }, 600);
@@ -80,7 +80,7 @@ export default class Settings extends Component {
 
             //SCROLL ANIMATE
             var x = this.refs.div4;
-            var top = $(x).offset().top - 70;
+            var top = $(x).offset().top-70;
             $('html, body').animate({
                 scrollTop: top
             }, 600);
@@ -98,7 +98,7 @@ export default class Settings extends Component {
 
             //SCROLL ANIMATE
             var x = this.refs.div5;
-            var top = $(x).offset().top - 70;
+            var top = $(x).offset().top-70;
             $('html, body').animate({
                 scrollTop: top
             }, 600);
@@ -160,12 +160,26 @@ export default class Settings extends Component {
                     {sideBar}
                 </div>
                 <div className="col-md-10" style={{minHeight: height}}>
-                    <div  ref="div1" style={{marginLeft:"3%",marginRight:"3%", marginTop:"2%", marginBottom:"6%",backgroundColor:"white"}}>
-                        <Committee refVal="com1" name="Specification Committee" idx="0"/>
-                    </div>
+                    <div ref="div1">
 
-                    <div  ref="div2" style={{marginLeft:"3%",marginRight:"3%", marginTop:"2%", marginBottom:"6%",backgroundColor:"white"}}>
-                        <Committee refVal="com2" name="Verification Committee" idx="1"/>
+                    </div>
+                    <div ref="div2">
+                        <div style={{marginLeft:"3%",marginRight:"3%", marginTop:"2%", marginBottom:"6%",backgroundColor:"white"}}>
+                            <Committee refVal="com1" name="Specification Committee" idx="0"/>
+                        </div>
+
+                        <div style={{marginLeft:"3%",marginRight:"3%", marginTop:"2%", marginBottom:"6%",backgroundColor:"white"}}>
+                            <Committee refVal="com2" name="Verification Committee" idx="1"/>
+                        </div>
+                    </div>
+                    <div ref="div3">
+
+                    </div>
+                    <div ref="div4">
+
+                    </div>
+                    <div ref="div5">
+
                     </div>
 
                 </div>

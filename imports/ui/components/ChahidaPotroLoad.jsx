@@ -2,6 +2,8 @@ import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 import ReactDOM from "react-dom";
 
+import SideBar from './SideBar';
+
 
 class ChahidaPotroLoad extends Component {
     constructor(props) {
@@ -205,50 +207,28 @@ class ChahidaPotroLoad extends Component {
         }
     }
 
-    showBlock(forward_to) {
-        if ((Meteor.userId() == this.props.RFQ_details.chahida.verifier.user_id) && !this.props.RFQ_details.chahida.accountant.username ||
-            (Meteor.userId() == this.props.RFQ_details.chahida.accountant.user_id) && !this.props.RFQ_details.chahida.director.username ||
-            (Meteor.userId() == this.props.RFQ_details.chahida.director.user_id) && !this.props.RFQ_details.chahida.director.signed) {
-            return (
-                <div className="col-md-10">
-                    <div className="col-md-2"></div>
-                    <div id="chahidajumbo" className="jumbotron col-md-8 col-md-offset-2">
-                        <div className="form-group text-center">
-                            <p>FORWARD TO <strong>
-                                {forward_to} </strong></p>
-                            <div className="form-group">
-                                <select onChange={this.handleSelect.bind(this)} ref="AcOf" className="form-control">
-                                    {this.renderAcOf()}
-                                </select>
-                            </div>
-
-                            <div>
-                                <input onClick={this.handleForward.bind(this)}
-                                       type="submit" name="login-submit"
-                                       id="submit-all"
-                                       className="btn btn-primary" value="FORWARD"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )
-        }
-    }
-
-    handleSelect(e) {
-        e.preventDefault();
-        this.setState({selectValue: e.target.value});
-    }
-
-    handleForward(e) {
-        e.preventDefault();
+    handleForward(value) {
         if (this.state.signed == true) {
+            var AcOff=null;
+
             if (this.props.RFQ_details.chahida.substep_no == 1) {
-                var AcOff = this.props.AcOf[this.state.selectValue];
+                this.props.ScOf.map(function (Of) {
+                    if(Of._id==value){
+                        AcOff=Of;
+                    }
+                });
             } else if (this.props.RFQ_details.chahida.substep_no == 2) {
-                var AcOff = this.props.DrOf[this.state.selectValue];
-            } else {
-                var AcOff = this.props.AcOf[this.state.selectValue];
+                this.props.DrOf.map(function (Of) {
+                    if(Of._id==value){
+                        AcOff=Of;
+                    }
+                });
+            } else if (this.props.RFQ_details.chahida.substep_no == 3) {
+                this.props.ScOf.map(function (Of) {
+                    if(Of._id==value){
+                        AcOff=Of;
+                    }
+                });
             }
 
             if (AcOff) {
@@ -311,19 +291,38 @@ class ChahidaPotroLoad extends Component {
     render() {
         if (this.props.RFQ_details) {
             var chahida_potro = this.props.RFQ_details.chahida;
-            var forward_to;
-            if (chahida_potro.substep_no == 1) {
-                forward_to = "হিসাবরক্ষক";
-            } else if (chahida_potro.substep_no == 2) {
-                forward_to = "অনুমোদনকারী";
-            } else if (chahida_potro.substep_no == 3) {
-                forward_to = null;
+            var forward_to,dropdownList;
+            if (chahida_potro.substep_no == 1 && Meteor.userId() == this.props.RFQ_details.chahida.verifier.user_id) {
+                forward_to = {
+                    toWhom: "হিসাবরক্ষক",
+                    dropdownList: this.props.AcOf,
+                    sendSelect: (value) => this.handleForward(value)
+                }
+            } else if (chahida_potro.substep_no == 2 && Meteor.userId() == this.props.RFQ_details.chahida.accountant.user_id) {
+                forward_to = {
+                    toWhom: "অনুমোদনকারী",
+                    dropdownList: this.props.DrOf,
+                    sendSelect: (value) => this.handleForward(value)
+                }
+            } else if (chahida_potro.substep_no == 3 && Meteor.userId() == this.props.RFQ_details.chahida.director.user_id) {
+                forward_to = {
+                    toWhom: "Specification committee",
+                    dropdownList: this.props.AcOf,
+                    sendSelect: (value) => this.handleForward(value)
+                }
             }
-
             return (
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-10">
+                        <div className="col-md-3" >
+                            <SideBar ref="SideBar"
+                                     forwardTo = {forward_to}
+                                     goToNote = {'/Note/' + this.props.RFQ_details._id}
+                            />
+
+
+                        </div>
+                        <div className="col-md-9">
                             <div id="chahidajumbo" className="jumbotron text-center">
                                 <div className="row">
                                     <div className="title-top col-md-12">
@@ -437,7 +436,6 @@ class ChahidaPotroLoad extends Component {
                             </div>
 
                         </div>
-                        {this.showBlock(forward_to)}
                     </div>
                 </div>
 

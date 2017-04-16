@@ -136,6 +136,20 @@ class ChahidaPotro extends Component {
         return <p id="datetoday"><strong>Date : {dateshow}</strong></p>;
     }
 
+    dateTodayString() {
+        var d = new Date();
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
     RFQtitleChange(evt) {
         var item = {
             id: evt.target.id,
@@ -148,7 +162,7 @@ class ChahidaPotro extends Component {
     }
 
     handleCreate(value) {
-        var ScOff;
+        var ScOff=null;
         this.props.ScOf.map(function (Of) {
             if(Of._id==value){
                 ScOff=Of;
@@ -178,12 +192,12 @@ class ChahidaPotro extends Component {
                     year: year,
                     verifier: {
                         user_id: ScOff._id,
-                        username: ScOff.username,
+                        name: ScOff.profile.name,
                         pic: ScOff.profile.seal
                     },
                     initiator: {
                         user_id: Meteor.userId(),
-                        username: Meteor.user().username,
+                        name: Meteor.user().profile.name,
                         pic: Meteor.user().profile.seal,
                         signed: true,
                         sign_date: new Date()
@@ -201,7 +215,7 @@ class ChahidaPotro extends Component {
                     else {
                         var from= {
                             user_id: Meteor.userId(),
-                            username: Meteor.user().username,
+                            name: Meteor.user().profile.name,
                             pic: Meteor.user().profile.ProPic,
                         };
                         var Rfqid = res;
@@ -265,6 +279,7 @@ class ChahidaPotro extends Component {
                     <div className="col-md-6 center-block">
                         <img id="signPic" src={link} className="img-circle" alt="User Image"/>
                         <p id="signLabel"><strong>{Meteor.user().profile.name}</strong></p>
+                        <p id="signLabel"><strong>{this.dateTodayString()}</strong></p>
                         <hr/>
                         <p id="signLabel"><strong>নিবেদক</strong></p>
                     </div>
@@ -278,17 +293,18 @@ class ChahidaPotro extends Component {
                                    placeholder="Password"/><br/>
                         </div>
                         <div>
-                            <p id="signLabel"><strong>{Meteor.user().profile.name}</strong></p>
-                            <hr/>
+                            <div className="form-inline" style={{marginLeft: "10%", marginRight: "10%"}}>
+                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}><strong>{Meteor.user().profile.name}</strong></p>
+                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}><strong>12/04/2003</strong></p>
+                            </div>
+                            <hr className="center-block" id="signhr"/>
                             <p id="signLabel"><strong>নিবেদক</strong></p>
                         </div>
 
                     </div>
             }
         }
-
         return (
-
             <div className="container">
                 <div className="row">
                     <div className="col-md-3" >
@@ -297,7 +313,6 @@ class ChahidaPotro extends Component {
                                 dropdownList: this.props.ScOf,
                                 sendSelect: (value) => this.handleCreate(value)
                             }}
-
                         />
 
 
