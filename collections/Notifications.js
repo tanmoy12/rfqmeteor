@@ -13,7 +13,7 @@ UserFrom= new SimpleSchema({
         label: "user",
         optional: true
     },
-    username : {
+    name : {
         type: String,
         label: 'username',
         optional: true

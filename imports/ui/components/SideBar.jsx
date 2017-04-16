@@ -11,7 +11,7 @@ export default class SideBar extends Component {
             addClass3: "sidebar_li",
             addClass4: "sidebar_li",
             addClass5: "sidebar_li",
-            minimizeDiv: [false, false, false, false, false],
+            minimizeDiv: [false, true, false, false, false],
         };
     }
 
@@ -163,14 +163,14 @@ export default class SideBar extends Component {
                         }
                     </div>
 
-                    <div>
-                        <form action={this.props.chahidaBlock.link} method="get">
-                            <input
-                                type="submit" name="login-submit"
-                                id="submit-all"
-                                className="btn btn-primary sidebarButt" value={this.butt_val_create(this.props.chahidaBlock.name)}/>
-                        </form>
-                    </div>
+                    <nav className=" navbar-custom navbar navbar-default text-center">
+                        <div className="container">
+                            <div className="navbar-header">
+                                <a href={this.props.chahidaBlock.link} className="navbar-brand">Chahida
+                                    Potro</a>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
         }
         var create_chahida_block;
@@ -288,6 +288,18 @@ export default class SideBar extends Component {
                     </li>
                 </div>
         }
+        //Go To Note
+        var go_to_note;
+        if(this.props.goToNote) {
+            go_to_note =
+                <div>
+                    <li className={this.state.addClass5}>
+                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "5")} href={this.props.goToNote.link}>
+                            Create Standard Doc
+                        </a>
+                    </li>
+                </div>
+        }
 
         //*********************************FOR SETTINGS.JSX*************************************
         //CREATE FIVE BUTTONS
@@ -298,13 +310,11 @@ export default class SideBar extends Component {
             <div className="navbar navbar-inverse navbar-fixed-left sidebar">
 
                 <ul className="sidebar_ul">
+                    {go_to_note}
                     {create_chahida_block}
                     {create_forward_block}
                     {create_standard_block}
                     {create_standard_doc_butt_create}
-                    <li className={this.state.addClass5}>
-                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "5")} href="#">Contact</a>
-                    </li>
                 </ul>
             </div>
 
