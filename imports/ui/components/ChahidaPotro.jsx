@@ -301,9 +301,7 @@ class ChahidaPotro extends Component {
                     </div>
             }
         }
-
         return (
-
             <div className="container">
                 <div className="row">
                     <div className="col-md-3" >
@@ -312,7 +310,6 @@ class ChahidaPotro extends Component {
                                 dropdownList: this.props.ScOf,
                                 sendSelect: (value) => this.handleCreate(value)
                             }}
-
                         />
 
 

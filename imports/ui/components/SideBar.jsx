@@ -11,7 +11,7 @@ export default class SideBar extends Component {
             addClass3: "sidebar_li",
             addClass4: "sidebar_li",
             addClass5: "sidebar_li",
-            minimizeDiv: [false, true, false, false, false],
+            minimizeDiv: [false, false, false, false, false],
         };
     }
 
@@ -197,7 +197,6 @@ export default class SideBar extends Component {
                         marginRight: "2%"
                     }}>{this.props.forwardTo.toWhom}</p>
 
-
                     <div className="form-group" style={{borderRadius: "3px"}}>
                         <select ref="ForwardSelect" className="form-control" style={{color: "white"}}>
                             {/*<option value="" disabled selected hidden>Select to forward</option>*/}
@@ -209,7 +208,6 @@ export default class SideBar extends Component {
                             }
                         </select>
                     </div>
-
                     <div>
                         <input
                             onClick={this.handleForward.bind(this)}
@@ -230,8 +228,6 @@ export default class SideBar extends Component {
                     </li>
                 </div>
         }
-
-
         //SATNDARD DOC CREATE
         if ((this.state.addClass3 == "current sidebar_li" && this.state.minimizeDiv[2] == true)) {
             standard_block =
@@ -294,8 +290,8 @@ export default class SideBar extends Component {
             go_to_note =
                 <div>
                     <li className={this.state.addClass5}>
-                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "5")} href={this.props.goToNote.link}>
-                            Create Standard Doc
+                        <a className="sidebar_a" href={this.props.goToNote}>
+                            Go To Note
                         </a>
                     </li>
                 </div>

@@ -1,0 +1,5 @@
+kendo-ui-core@2017.1.411 node_modules\kendo-ui-core
+
+kendo-ui-react-jquery-datepicker@1.0.5 node_modules\kendo-ui-react-jquery-datepicker
+├── deep-diff@0.3.4
+└── kendo-ui-core@2016.3.1317
