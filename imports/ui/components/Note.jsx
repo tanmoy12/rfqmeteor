@@ -2,13 +2,13 @@ import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 
-import SideNote from "./SideNote";
-
+import SideBar from './SideBar';
 
 class Note extends Component {
     constructor(props) {
         super(props);
     }
+
     genSignBlock(signfor, user) {
         const cursor = ImagesCol.findOne({_id: user.pic});
         var link='';
@@ -33,9 +33,35 @@ class Note extends Component {
     }
     render() {
         if(this.props.RFQ) {
+            var RFQItem = this.props.RFQ;
+            var chahidaSend= {
+                name: "চাহিদা পত্র",
+                info: [
+                    {
+                        title: 'RFQ Title',
+                        details: RFQItem.chahida.title
+                    },
+                    {
+                        title: 'RFQ Estimae',
+                        details: 'TK. ' +RFQItem.chahida.estimate + ' /='
+                    },
+                    {
+                        title: 'Initiator',
+                        details: RFQItem.chahida.initiator.name
+                    }
+                ],
+                link : '/ChahidaPotroload/' + RFQItem._id
+            }
             return (
                 <div className="container">
                     <div className="row">
+                        <div className="col-md-3" >
+                            <SideBar
+                                chahidaBlock={chahidaSend}
+                            />
+
+
+                        </div>
                         <div className="col-md-9 jumbotron text-center">
                             <div className="row">
                                 <div className="col-md-12">
@@ -50,7 +76,7 @@ class Note extends Component {
 
                             <p className="text">
                                 ১। বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ (বিসিএসআইআর)-এর আওতাধীন ডেজিগনেটেড
-                                রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস- এর বৈজ্ঞানিক কর্মকর্তা <strong>{this.props.RFQ.chahida.initiator.username}</strong>- এর কাছ
+                                রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস- এর বৈজ্ঞানিক কর্মকর্তা <strong>{this.props.RFQ.chahida.initiator.name}</strong>- এর কাছ
                                 থেকে প্রাপ্ত চাহিদার (কপি সংযুক্ত) আলোকে গবেষণার জন্য <strong>{this.props.RFQ.title}</strong> ক্রয় করা প্রয়োজন। কাজটি
                                 জরুরী বিধায় স্থানীয় সরবরাহকারী প্রতিষ্ঠানের সাথে যোগাযোগ করে তুলনামূলক প্রতিযোগী
                                 দরদাতা দ্বারা PPR-২০০৮ এর তফসীল-২-এর বিধি ৯(২)(ক) অনুসরণে RFQ পদ্ধতিতে সংগ্রহ করা
@@ -89,7 +115,6 @@ class Note extends Component {
                             </div>
 
                         </div>
-                        <SideNote RFQ={this.props.RFQ}/>
                     </div>
                 </div>
 

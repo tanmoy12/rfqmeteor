@@ -39,8 +39,7 @@
 .navbar-login
 {
     width: 280px;
-    padding: 10px;
-    padding-bottom: 0px;
+    padding: 10px 10px 0px;
     background: snow;
 }
 
@@ -79,7 +78,7 @@
 
 #designation{
     font-size: 15px;
-    font-family: "Tahoma";
+    font-family: "Tahoma", serif;
     font-weight: bold;
 
 }
@@ -555,6 +554,10 @@ hr {
     border: 1px solid #000;
 }
 
+#signhr{
+    width: 80%;
+}
+
 #TITLERFQ{
     font-size:10px;
     font-style: italic;
@@ -691,7 +694,6 @@ span b {
 #signLabel {
     font-size: small;
     font-style: italic;
-    margin-top: 10px;
 }
 #unsignLabel {
     font-size: small;

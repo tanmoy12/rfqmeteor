@@ -2,6 +2,8 @@ import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 import ReactDOM from "react-dom";
 
+import SideBar from './SideBar';
+
 
 class ChahidaPotroLoad extends Component {
     constructor(props) {
@@ -323,7 +325,19 @@ class ChahidaPotroLoad extends Component {
             return (
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-10">
+                        <div className="col-md-3" >
+                            <SideBar ref="SideBar"
+                                     forwardTo = {{toWhom: "যাচাইকারী",
+                                         dropdownList: this.props.ScOf,
+                                         sendSelect: (value) => this.handleCreate(value)
+                                     }}
+                                     goToNote = {'/Note/' + this.props.RFQ_details._id}
+
+                            />
+
+
+                        </div>
+                        <div className="col-md-9">
                             <div id="chahidajumbo" className="jumbotron text-center">
                                 <div className="row">
                                     <div className="title-top col-md-12">

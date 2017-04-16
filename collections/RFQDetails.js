@@ -15,9 +15,9 @@ UserSignFalse = new SimpleSchema({
         label: "user",
         optional: true
     },
-    username: {
+    name: {
         type: String,
-        label: 'username',
+        label: 'name',
         optional: true
     },
     pic: {
