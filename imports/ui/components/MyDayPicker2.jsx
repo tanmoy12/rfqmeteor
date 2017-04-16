@@ -1,41 +1,34 @@
 import React, {Component, PropTypes} from 'react';
-import { findDOMNode } from 'react-dom';
+import {findDOMNode} from 'react-dom';
 import $ from 'jquery';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
-export default class SideBar extends Component {
+
+import 'react-datepicker/dist/react-datepicker.css';
+
+// CSS Modules, react-datepicker-cssmodules.css
+// require('react-datepicker/dist/react-datepicker-cssmodules.css');
+
+export default class MyDayPicker2 extends Component{
     constructor(props) {
         super(props);
 
         this.state = {
-
+            startDate: moment(), // The value of the input field
+            displayName: 'Example',
         };
     }
 
-    handleCalender(){
-        const el = findDOMNode(this.refs.datetimepicker1);
-        $(el).datetimepicker();
+    handleChange(date) {
+        this.setState({
+            startDate: date
+        });
     }
 
-
-    render() {
-
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className='col-sm-6'>
-                        <div className="form-group">
-                            <div className='input-group date' ref='datetimepicker1' onClick={this.handleCalender.bind(this)}>
-                                <input type='text' className="form-control" />
-                                <span className="input-group-addon">
-                        <span className="glyphicon glyphicon-calendar"></span>
-                    </span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        );
-
+    render(){
+        return (<DatePicker style={{marginLeft: "7px", marginRight: "7px"}}
+            selected={this.state.startDate}
+            onChange={this.handleChange.bind(this)} />);
     }
 }

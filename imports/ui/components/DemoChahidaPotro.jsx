@@ -2,8 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 import SideBar from './SideBar';
-// import MyDayPicker from './MyDayPicker';
-// import MyDayPicker2 from './MyDayPicker2';
+import MyDayPicker3 from './MyDayPicker3';
+//import MyDayPicker2 from './MyDayPicker2';
 
 import Table from "./Table";
 
@@ -190,7 +190,7 @@ export default class ChahidaPotroLoad extends Component {
                                         <span style={{display: "inline-block"}}>
                                             ২। এ জন্য আনুমানিক
                                         </span>
-
+                                        <MyDayPicker3/>
                                         <span style={{display: "inline-block"}}>
                                             (কথায়)
                                         ................................. টাকা ব্যয়।

@@ -22,19 +22,19 @@ export default class Committee extends Component {
         this.state.init[ind_id] = true;
     }
 
-    commClicked(e){
+    commClicked(e) {
         var ind_id = parseInt(this.props.idx);
 
         var col = "#337ab7";
-        if(!this.state.commDivShow){
-            col = "darkred";
+        if (!this.state.commDivShow) {
+            col = "#32127a";
         }
 
         var newBgColorComm = col;
         this.state.specCommButtClassRows = [];
         this.state.specCommButtClassRows.push("btn btn-success btn-add bb");
         var ind_id = parseInt(this.props.idx);
-        if(this.state.init[ind_id]){
+        if (this.state.init[ind_id]) {
             this.state.specCommMemAdd[ind_id] = true;
             this.state.init[ind_id] = false;
             specCommDivRows[ind_id] = [];
@@ -51,26 +51,25 @@ export default class Committee extends Component {
 
     }
 
-    specCommMemAddButtClick(todo, re){
+    specCommMemAddButtClick(todo, re) {
         var x = parseInt(this.state.noOfSpecCommMem);
         var ind_id = parseInt(this.props.idx);
-        if(todo=="add"){
+        if (todo == "add") {
             this.state.specCommMemAdd[ind_id] = true;
             x++;
 
         }
-        else{
+        else {
 
-            var idx = this.getIdx(re);
             var elm = document.getElementById(re);
             //console.log(elm);
             var newAra = [];
             // console.log("BEFORE");
             // console.log(specCommDivRows);
-            for(var i=0;i<specCommDivRows[ind_id].length;i++){
+            for (var i = 0; i < specCommDivRows[ind_id].length; i++) {
                 var r = specCommDivRows[ind_id][i].ref;
                 var id = elm.id;
-                if(r!=id || specCommDivRows.length==1){
+                if (r != id || specCommDivRows[ind_id].length == 1) {
                     newAra.push(specCommDivRows[ind_id][i]);
                     //console.log("DHUKSI");
                 }
@@ -78,7 +77,7 @@ export default class Committee extends Component {
                 //console.log(elm.id);
             }
             specCommDivRows[ind_id] = [];
-            for(var i=0;i<newAra.length;i++){
+            for (var i = 0; i < newAra.length; i++) {
                 specCommDivRows[ind_id].push(newAra[i]);
             }
             // console.log("AFTER");
@@ -89,7 +88,7 @@ export default class Committee extends Component {
         }
 
         var a = [];
-        for(var i=0;i<x;i++){
+        for (var i = 0; i < x; i++) {
             a[i] = "btn btn-danger btn-remove bb";
         }
         a[x] = "btn btn-success btn-add bb";
@@ -100,18 +99,9 @@ export default class Committee extends Component {
 
     }
 
-    getIdx(re){
-        var idx_str = "";
-        for(var i=0;i<re.length;i++){
-            if(re[i]!='_'){
-                idx_str[i] = re[i];
-            }
-            else{
-                break;
-            }
-        }
-        var idx = parseInt(idx_str);
-        return idx;
+    showSelectedOption(spanId, option) {
+        var s = '#' + spanId;
+        $(s).text(option);
     }
 
 
@@ -119,30 +109,83 @@ export default class Committee extends Component {
 
         var specCommDiv;
         var ind_id = parseInt(this.props.idx);
-        if(this.state.commDivShow){
+        if (this.state.commDivShow) {
             var x = parseInt(this.state.noOfSpecCommMem);
-            var ref_val = spec_id[ind_id].toString() +"_" +  this.props.refVal;
+            var ref_val = spec_id[ind_id].toString() + "_" + this.props.refVal;
+            var addButton =
+                <div className="control-group" id="fields">
+                    <div className="controls">
+                        <form role="form" autocomplete="off">
+                            <div className="entry input-group col-xs-5">
+                                <button className="btn btn-success btn-add bb" style={{
+                                    marginBottom: "7px",
+                                    float: "right",
+                                    fontSize: "12px",
+                                    fontWeight: "bold"
+                                }}
+                                        onClick={this.specCommMemAddButtClick.bind(this, "add", ref_val)}
+                                        title="Add More To Committee" type="button" value="Add More">
+                                    Add More
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             var butt_id = ref_val + "butt";
 
-            if(this.state.specCommMemAdd[ind_id]){
+            if (this.state.specCommMemAdd[ind_id]) {
                 //console.log("BUTTON ADDED: "+butt_id);
-                specCommDivRows[ind_id].push(<div key={ref_val} ref={ref_val} id={ref_val} className="row" style={{paddingLeft: "2%", paddingRight: "2%"}}>
+                specCommDivRows[ind_id].push(<div key={ref_val} ref={ref_val} id={ref_val} className="row"
+                                                  style={{paddingLeft: "2%", paddingRight: "2%"}}>
                     <div className="control-group" id="fields">
                         <div className="controls">
                             <form role="form" autocomplete="off">
-                                <div className="entry input-group col-xs-3">
-                                    <input className="form-control" name="fields[]" type="text" placeholder="Type something" />
+                                <div className="entry input-group col-xs-5">
+
+                                    <div className="dropdown" style={{display:"inline-block", width: "55%"}}>
+                                        <button type="button" className="btn btn-default dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                style={{width: "100%"}}>
+                                            <span id="selected">Name</span>
+                                            <span className="caret" style={{marginLeft: "3px"}}></span>
+                                        </button>
+                                        <ul className="dropdown-menu">
+                                            <li className="dropdown-header">Usernames</li>
+                                            <li><a
+                                                onClick={this.showSelectedOption.bind(this, "selected", "shadman264")}
+                                                href="#">shadman264</a></li>
+                                            <li><a onClick={this.showSelectedOption.bind(this, "selected", "tanmoy12")}
+                                                   href="#">tanmoy12</a></li>
+                                            <li><a onClick={this.showSelectedOption.bind(this, "selected", "hasib123")}
+                                                   href="#">hasib123</a></li>
+                                        </ul>
+                                    </div>
+                                    <div className="dropdown" style={{display:"inline-block", width: "45%"}}>
+                                        <button type="button" className="btn btn-default dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                style={{width: "100%"}}>
+                                            <span id="selected2">Designation</span>
+                                            <span className="caret" style={{marginLeft: "3px"}}></span>
+                                        </button>
+                                        <ul className="dropdown-menu">
+                                            <li className="dropdown-header">Designation</li>
+                                            <li><a onClick={this.showSelectedOption.bind(this, "selected2", "Member")}
+                                                   href="#">Member</a></li>
+                                            <li><a onClick={this.showSelectedOption.bind(this, "selected2", "Chairperson")}
+                                                   href="#">Chairperson</a></li>
+                                            <li><a
+                                                onClick={this.showSelectedOption.bind(this, "selected2", "সদস্যসচিব")}
+                                                href="#">সদস্যসচিব</a></li>
+                                        </ul>
+                                    </div>
+
                                     <span className="input-group-btn">
                                             <button className="btn btn-danger btn-remove bb"
                                                     onClick={this.specCommMemAddButtClick.bind(this, "rmv", ref_val)}
                                                     title="Remove From Committee" type="button">
                                                  <span className="glyphicon glyphicon-minus"></span>
                                              </button>
-                                            <button className="btn btn-success btn-add bb" id={butt_id}
-                                                    onClick={this.specCommMemAddButtClick.bind(this, "add", ref_val)}
-                                                    title="Add More To Committee" type="button">
-                                                <span className="glyphicon glyphicon-plus"></span>
-                                            </button>
                                         </span>
                                 </div>
                             </form>
@@ -158,12 +201,11 @@ export default class Committee extends Component {
         }
 
 
-
         var specCommDivRow2 = [];
         specCommDivRow2[ind_id] = [];
-        if(this.state.commDivShow){
+        if (this.state.commDivShow) {
 
-            for(var i=0;i<specCommDivRows[ind_id].length;i++){
+            for (var i = 0; i < specCommDivRows[ind_id].length; i++) {
                 specCommDivRow2[ind_id].push(specCommDivRows[ind_id][i]);
             }
         }
@@ -178,11 +220,12 @@ export default class Committee extends Component {
                     {this.props.name}
                 </button>
                 {specCommDivRow2[ind_id]}
+                {addButton}
             </div>
 
 
         return (
-            <div  ref={this.props.refVal}>
+            <div ref={this.props.refVal}>
                 {specCommitte}
             </div>
         );
