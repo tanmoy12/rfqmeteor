@@ -566,6 +566,7 @@ hr {
     font-size: medium;
     font-family: "Times New Roman", Times, serif;
     line-height: 1.8;
+
 }
 
 
@@ -577,6 +578,8 @@ hr {
     text-align: justify;
 
 }
+
+
 
 
 .main-layout {
@@ -591,8 +594,6 @@ hr {
 #nss{
     text-align: center;
 }
-
-
 
 
 
@@ -709,7 +710,7 @@ span b {
 
 p.text{
     text-align: justify;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.5;
 
 }
@@ -718,6 +719,13 @@ p.text2{
     font-size: 15px;
     line-height: 1.5;
     margin-bottom: 2em;
+}
+
+p.wo {
+  margin-left: 40px;
+    font-size: 15px;
+    text-align: justify;
+    line-height: 1.5;
 }
 
 th{
@@ -793,6 +801,11 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
     padding: 0;
 }
+
+
+
+
+
 /* tanmoy's css parts */
 
 
