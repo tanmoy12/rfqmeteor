@@ -1,8 +1,7 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 import ReactDOM from "react-dom";
-
-import SideBar from './SideBar';
+import SideBar from "./SideBar";
 
 
 class ChahidaPotroLoad extends Component {
@@ -149,9 +148,24 @@ class ChahidaPotroLoad extends Component {
         return dateshow;
     }
 
+    dateTodayString() {
+        var d = new Date();
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
+
     genSignBlock(signfor, user) {
         const cursor = ImagesCol.findOne({_id: user.pic});
-        var link='';
+        var link = '';
         if (cursor) {
             link = cursor.link();
         }
@@ -159,7 +173,15 @@ class ChahidaPotroLoad extends Component {
             return (
                 <div className="col-md-6 center-block">
                     <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <p id="signLabel"><strong>{signfor}</strong></p>
+                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                            <strong>{user.name}</strong></p>
+                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                            <strong>{this.datefromcreate(user.sign_date)}</strong>
+                        </p>
+                    </div>
+                    <hr id="signhr" style={{width: "80%"}}/>
+                    <p id="signTag"><strong>{signfor}</strong></p>
                 </div>
             )
         }
@@ -169,7 +191,15 @@ class ChahidaPotroLoad extends Component {
                     return (
                         <div className="col-md-6 center-block">
                             <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                            <p id="signLabel"><strong>{signfor}</strong></p>
+                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                                    <strong>{Meteor.user().profile.name}</strong></p>
+                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                                    <strong>{this.dateTodayString()}</strong>
+                                </p>
+                            </div>
+                            <hr id="signhr" style={{width: "80%"}}/>
+                            <p id="signTag"><strong>{signfor}</strong></p>
                         </div>
                     )
                 } else {
@@ -177,15 +207,19 @@ class ChahidaPotroLoad extends Component {
                         <div className="col-md-6 center-block form-group">
                             <div className="col-md-1">
                             </div>
-                            <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
-                                <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
+                            <div id="signblock" className="form-style-4">
+                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
                                        ref="password"
                                        placeholder="Password"/><br/>
                             </div>
                             <div>
-                                <p id="signLabel"><strong>{signfor}</strong></p>
+                                <div className="form-inline">
+                                    <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
+                                        <strong>{Meteor.user().profile.name}</strong></p>
+                                </div>
+                                <hr id="signhr" style={{width: "80%"}}/>
+                                <p id="signTag"><strong>{signfor}</strong></p>
                             </div>
-
                         </div>
                     )
                 }
@@ -193,7 +227,8 @@ class ChahidaPotroLoad extends Component {
             else {
                 return (
                     <div className="col-md-6 center-block">
-                        <p id="unsignLabel"><strong>{signfor}</strong></p>
+                        <hr id="unsignhr" style={{width: "80%"}}/>
+                        <p id="signTag"><strong>{signfor} </strong></p>
                     </div>
                 )
             }
@@ -201,7 +236,8 @@ class ChahidaPotroLoad extends Component {
         else {
             return (
                 <div className="col-md-6 center-block">
-                    <p id="unsignLabel"><strong>{signfor}</strong></p>
+                    <hr id="unsignhr" style={{width: "80%"}}/>
+                    <p id="signTag"><strong>{signfor} </strong></p>
                 </div>
             )
         }
@@ -209,24 +245,24 @@ class ChahidaPotroLoad extends Component {
 
     handleForward(value) {
         if (this.state.signed == true) {
-            var AcOff=null;
+            var AcOff = null;
 
             if (this.props.RFQ_details.chahida.substep_no == 1) {
-                this.props.ScOf.map(function (Of) {
-                    if(Of._id==value){
-                        AcOff=Of;
+                this.props.AcOf.map(function (Of) {
+                    if (Of._id == value) {
+                        AcOff = Of;
                     }
                 });
             } else if (this.props.RFQ_details.chahida.substep_no == 2) {
                 this.props.DrOf.map(function (Of) {
-                    if(Of._id==value){
-                        AcOff=Of;
+                    if (Of._id == value) {
+                        AcOff = Of;
                     }
                 });
             } else if (this.props.RFQ_details.chahida.substep_no == 3) {
-                this.props.ScOf.map(function (Of) {
-                    if(Of._id==value){
-                        AcOff=Of;
+                this.props.AcOf.map(function (Of) {
+                    if (Of._id == value) {
+                        AcOff = Of;
                     }
                 });
             }
@@ -239,7 +275,7 @@ class ChahidaPotroLoad extends Component {
                         'chahida.verifier.signed': true,
                         'chahida.verifier.sign_date': new Date(),
                         'chahida.accountant.user_id': AcOff._id,
-                        'chahida.accountant.username': AcOff.username,
+                        'chahida.accountant.name': AcOff.profile.name,
                         'chahida.accountant.pic': AcOff.profile.seal
                     }
                 }
@@ -249,18 +285,18 @@ class ChahidaPotroLoad extends Component {
                         'chahida.accountant.signed': true,
                         'chahida.accountant.sign_date': new Date(),
                         'chahida.director.user_id': AcOff._id,
-                        'chahida.director.username': AcOff.username,
+                        'chahida.director.name': AcOff.profile.name,
                         'chahida.director.pic': AcOff.profile.seal
                     }
                 }
                 else if (this.props.RFQ_details.chahida.substep_no == 3) {
                     updateForm = {
-                        step_no : 3,
+                        step_no: 3,
                         'chahida.substep_no': 4,
                         'chahida.director.signed': true,
                         'chahida.director.sign_date': new Date(),
                         'standard.initiator.user_id': AcOff._id,
-                        'standard.initiator.username': AcOff.username,
+                        'standard.initiator.name': AcOff.profile.name,
                         'standard.initiator.pic': AcOff.profile.seal
                     }
                 }
@@ -291,7 +327,7 @@ class ChahidaPotroLoad extends Component {
     render() {
         if (this.props.RFQ_details) {
             var chahida_potro = this.props.RFQ_details.chahida;
-            var forward_to,dropdownList;
+            var forward_to, dropdownList;
             if (chahida_potro.substep_no == 1 && Meteor.userId() == this.props.RFQ_details.chahida.verifier.user_id) {
                 forward_to = {
                     toWhom: "হিসাবরক্ষক",
@@ -314,10 +350,10 @@ class ChahidaPotroLoad extends Component {
             return (
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-3" >
+                        <div className="col-md-3">
                             <SideBar ref="SideBar"
-                                     forwardTo = {forward_to}
-                                     goToNote = {'/Note/' + this.props.RFQ_details._id}
+                                     forwardTo={forward_to}
+                                     goToNote={'/Note/' + this.props.RFQ_details._id}
                             />
 
 

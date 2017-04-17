@@ -10,7 +10,7 @@ export default class StandardDocumentPageThree extends Component {
 
     render() {
         return (
-            <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+            <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="title-top col-md-12">

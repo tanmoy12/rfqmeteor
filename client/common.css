@@ -479,7 +479,7 @@ a.notification:hover{
     padding-top: 2px;
     padding: 4px;
     margin: 0px;
-    font-size: smaller;
+    font-size: 10px;
     padding-bottom: 1px;
     text-decoration: none;
 }
@@ -555,7 +555,8 @@ hr {
 }
 
 #signhr{
-    width: 80%;
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
 #TITLERFQ{
@@ -694,15 +695,24 @@ span b {
 #signLabel {
     font-size: small;
     font-style: italic;
+    margin-bottom: 3px;
+    margin-top: 5px;
 }
-#unsignLabel {
+
+#signTag {
     font-size: small;
     font-style: italic;
-    margin-top: 85px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+#unsignhr {
+    margin-top: 100px;
+    margin-bottom: 15px;
 }
 
 #signblock {
-    height: 85px;
+    height: 75px;
 }
 
 #signblock input {

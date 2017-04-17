@@ -187,7 +187,7 @@ export default class SideBar extends Component {
 
 
         //FORWARD CREATE
-        if (this.state.addClass2 == "current sidebar_li" && this.state.minimizeDiv[1] == true) {
+        if (this.state.addClass2 == "current sidebar_li" && this.state.minimizeDiv[1] == true && this.props.forwardTo) {
             forward_to =
                 <div style={forward_to_style}>
                     <p style={{display: "inline-block", float: "left", marginLeft: "4%"}}>To:</p>
@@ -199,7 +199,6 @@ export default class SideBar extends Component {
 
                     <div className="form-group" style={{borderRadius: "3px"}}>
                         <select ref="ForwardSelect" className="form-control" style={{color: "white"}}>
-                            {/*<option value="" disabled selected hidden>Select to forward</option>*/}
                             {
                                 this.props.forwardTo.dropdownList.map(function (User) {
                                     return (<option value={User._id} key={User._id}
@@ -278,8 +277,8 @@ export default class SideBar extends Component {
             create_standard_doc_butt_create =
                 <div>
                     <li className={this.state.addClass4}>
-                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "4")} href={this.props.createStandardDoc.link}>
-                            Create Standard Doc
+                        <a className="sidebar_a" onClick={this.sidebar_link_click.bind(this, "4")} href={this.props.createStandardDoc}>
+                            Create Standard Document
                         </a>
                     </li>
                 </div>
