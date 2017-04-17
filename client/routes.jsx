@@ -19,6 +19,7 @@ import AllowanceNikosh from '../imports/ui/components/AllowanceNikosh';
 import MeetingNotice from '../imports/ui/components/MeetingNotice';
 import Minutes from '../imports/ui/components/Minutes';
 import CompanyS from '../imports/ui/components/CompanyS';
+import WO from '../imports/ui/components/WO';
 
 
 
@@ -168,6 +169,15 @@ FlowRouter.route('/CS', {
     action(){
         mount(LayoutDash, {
             content: (<CompanyS />)
+        })
+    }
+});
+
+
+FlowRouter.route('/WO', {
+    action(){
+        mount(LayoutDash, {
+            content: (<WO />)
         })
     }
 });
