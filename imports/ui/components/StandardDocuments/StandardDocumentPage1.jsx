@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
+import Calendar from "../Calendar";
 
 export default class StandardDocumentPage1 extends Component {
     constructor(props) {
@@ -45,10 +46,6 @@ export default class StandardDocumentPage1 extends Component {
                             <div className="col-md-6">
                                 {this.props.dateToday()}
                             </div>
-                            <div id="input" className="pull-right">
-                                <input/>
-
-                            </div>
                         </div>
 
                         <div id="text-stnd" className="text-left">
@@ -92,19 +89,21 @@ export default class StandardDocumentPage1 extends Component {
                                 awarded) respectively. </p>
 
 
-                            <p className="text">
-                                6. Quotation in a sealed envelope or by fax or through electronic mail shall
-                                be
-                                submitted to the office of the undersigned
-                                ............................................................... . The
-                                envelope containing the Quotation must be clearly marked <strong>“Quotation
-                                for
-                                Supply
-                                of </strong> {this.props.RFQ.title}” and <strong>DO NOT OPEN </strong>
-                                before
-                                ................................... Quotations received later than the time
-                                specified herein shall not be accepted.
-                            </p>
+                            <div className="form-inline">
+                                <span className="text">6. Quotation in a sealed envelope or by fax or through electronic mail shall be
+                                    submitted to the office of the undersigned <strong>on or before</strong>
+                                </span>
+                                <span className="text">
+                                    <Calendar/>
+                                </span>
+                                <span className="text">The envelope containing the Quotation must be clearly marked
+                                    <strong>“Quotation for Supply of
+                                        {this.props.RFQ.title}” </strong> and <strong>DO NOT OPEN BEFORE</strong>
+                                    ................................... Quotations received later than the time
+                                    specified here in shall not be accepted.
+                                </span>
+                            </div>
+
 
                             <p className="text">
                                 7. Quotations received by fax or through electronic mail shall be

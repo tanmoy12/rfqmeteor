@@ -27,73 +27,7 @@ export default class StandardDocumentPage5 extends Component {
         });
     }
 
-    handleCreate(e) {
-        e.preventDefault();
-        var productbool = true;
-        var that = this;
-        if (this.props.RFQno) {
-            this.state.products.map(function (product) {
-                if (product.spec && product.making) {
 
-                } else {
-                    productbool = false;
-                }
-            });
-            if (productbool) {
-                var StandardForm;
-                if(this.props.RFQ.step_no==3){
-                    StandardForm = {
-                        step_no: 4,
-                        'standard.RFQ_no': this.props.RFQno,
-                        'standard.standard_details': this.state.products,
-                        'standard.createdAt' : new Date(),
-                        'standard.initiator.signed': true,
-                        'standard.initiator.sign_date': new Date(),
-                        'standard.accountant.user_id': this.props.RFQ.chahida.accountant.user_id,
-                        'standard.accountant.username': this.props.RFQ.chahida.accountant.username,
-                        'standard.accountant.pic': this.props.RFQ.chahida.accountant.pic
-
-                    };
-                }
-                else if(this.props.RFQ.step_no==4){
-                    StandardForm = {
-                        step_no: 5,
-                        'standard.accountant.signed': true,
-                        'standard.accountant.sign_date': new Date(),
-                        'standard.director.user_id': this.props.RFQ.chahida.director.user_id,
-                        'standard.director.username': this.props.RFQ.chahida.director.username,
-                        'standard.director.pic': this.props.RFQ.chahida.director.pic
-                    };
-                }
-                else if(this.props.RFQ.step_no==5){
-                    StandardForm = {
-                        step_no: 6,
-                        'standard.director.signed': true,
-                        'standard.director.sign_date': new Date()
-                    };
-                }
-
-                RFQDetails.update(
-                    that.props.RFQ._id,
-                    {
-                        $set: StandardForm
-                    }, function (err, res) {
-                        if (err) {
-                            console.log(err);
-                            Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
-                        }
-                        else {
-                            FlowRouter.go('/Note/' + that.props.RFQ._id);
-                        }
-                    });
-
-            } else {
-                Bert.alert('Please Fill up Table details!!', 'danger', 'growl-top-right');
-            }
-        } else {
-            Bert.alert('Please Fill up all Details!!', 'danger', 'growl-top-right');
-        }
-    }
 
     render() {
         return (
@@ -192,9 +126,6 @@ export default class StandardDocumentPage5 extends Component {
                         literature/brochures for the listed items.
                     </strong>
                 </p>
-                <input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"
-                       id="submit-all"
-                       className="btn btn-primary" value="FORWARD"/>
             </div>
         );
     }
