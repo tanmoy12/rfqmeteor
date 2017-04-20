@@ -10,7 +10,7 @@ export default class StandardDocumentPage2 extends Component {
 
     render() {
         return (
-            <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+            <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="title-top col-md-12">
                     <img src="../dricmlogo.jpg" className="center-block"/>
                     <h3>Designated Reference Institute for Chemical Measurements (DRiCM) </h3>

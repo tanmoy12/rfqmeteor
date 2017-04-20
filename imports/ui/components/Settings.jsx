@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {createContainer} from 'meteor/react-meteor-data';
 import $ from 'jquery';
 import Committee from './Committee';
 
@@ -165,7 +166,17 @@ export default class Settings extends Component {
                     </div>
                     <div ref="div2">
                         <div style={{marginLeft:"3%",marginRight:"3%", marginTop:"2%", marginBottom:"6%",backgroundColor:"white"}}>
-                            <Committee refVal="com1" name="Specification Committee" idx="0"/>
+                            <Committee refVal="com1" name="Specification Committee" idx="0"
+                                       members = {{
+                                           info: [
+                                               {name: "Shadman", designation: "chair"},
+                                                {name: "Tanmoy", designation: "table"},
+                                                {name: "hasib", designation: "khata"}]
+                                        }}
+                                       allUsers = {{
+                                           users: ['anik', 'razon', 'apu']
+                                       }}
+                                />
                         </div>
 
                         <div style={{marginLeft:"3%",marginRight:"3%", marginTop:"2%", marginBottom:"6%",backgroundColor:"white"}}>

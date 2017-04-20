@@ -189,7 +189,7 @@ export default class ChahidaPotroLoad extends Component {
                                     <p className="text">
                                         <div className="form-inline">
                                             <span>২। এ জন্য আনুমানিক</span>
-                                            <span style={{display: "none"}}>
+                                            <span>
                                                 <Calendar/>
                                             </span>
 
@@ -211,12 +211,12 @@ export default class ChahidaPotroLoad extends Component {
                             <div className="row">
                                 <div className="col-md-6 center-block">
                                     <img src="sign1.png" className="img-circle" alt="User Image"/>
-                                    <div className="form-inline" style={{marginLeft: "10%", marginRight: "10%"}}>
+                                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
                                         <p id="signLabel" style={{display: "inline-flex", float: "left"}}><strong>Shadman Mahdi Rahman</strong></p>
                                         <p id="signLabel" style={{display: "inline-flex", float: "right"}}><strong>12/04/2003</strong></p>
                                     </div>
-                                    <hr id="signhr" style={{width: "100%"}}/>
-                                    <p id="signLabel"><strong>নিবেদক</strong></p>
+                                    <hr id="signhr" style={{width: "80%"}}/>
+                                    <p id="signTag"><strong>নিবেদক</strong></p>
                                 </div>
                                 {signBlock}
                             </div>

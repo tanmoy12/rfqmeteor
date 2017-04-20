@@ -8,6 +8,18 @@ class Note extends Component {
     constructor(props) {
         super(props);
     }
+    datefromcreate(createdAt) {
+        var date = createdAt.getDate();
+        var month = createdAt.getMonth() + 1;
+        var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
 
     genSignBlock(signfor, user) {
         const cursor = ImagesCol.findOne({_id: user.pic});
@@ -19,14 +31,23 @@ class Note extends Component {
             return (
                 <div className="col-md-6 center-block">
                     <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <p id="signLabel"><strong>{signfor}</strong></p>
+                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                            <strong>{user.name}</strong></p>
+                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                            <strong>{this.datefromcreate(user.sign_date)}</strong>
+                        </p>
+                    </div>
+                    <hr id="signhr" style={{width: "80%"}}/>
+                    <p id="signTag"><strong>{signfor}</strong></p>
                 </div>
             )
         }
         else {
             return (
                 <div className="col-md-6 center-block">
-                    <p id="unsignLabel"><strong>{signfor}</strong></p>
+                    <hr id="unsignhr" style={{width: "80%"}}/>
+                    <p id="signTag"><strong>{signfor} </strong></p>
                 </div>
             )
         }
@@ -53,12 +74,17 @@ class Note extends Component {
                 ],
                 link: '/ChahidaPotroload/' + RFQItem._id
             }
+            var specCreate;
+            if(this.props.RFQ.step_no==3 && Meteor.userId()==this.props.RFQ.standard.initiator.user_id){
+                specCreate = "/StandardDocument/" + this.props.RFQ._id;
+            }
             return (
                 <div className="container">
                     <div className="row">
                         <div className="col-md-3">
                             <SideBar
                                 chahidaBlock={chahidaSend}
+                                createStandardDoc={specCreate}
                             />
 
 

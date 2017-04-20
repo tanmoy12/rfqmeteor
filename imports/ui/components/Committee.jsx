@@ -1,9 +1,10 @@
-import React, {Component, PropTypes} from 'react';
-import ReactDOM from "react-dom";
-import $ from 'jquery';
+import React, {Component, PropTypes} from "react";
+import {createContainer} from "meteor/react-meteor-data";
+import $ from "jquery";
 
 var specCommDivRows = [];
 var spec_id = [];
+
 export default class Committee extends Component {
     constructor(props) {
         super(props);
@@ -106,7 +107,6 @@ export default class Committee extends Component {
 
 
     render() {
-
         var specCommDiv;
         var ind_id = parseInt(this.props.idx);
         if (this.state.commDivShow) {
@@ -115,7 +115,7 @@ export default class Committee extends Component {
             var addButton =
                 <div className="control-group" id="fields">
                     <div className="controls">
-                        <form role="form" autocomplete="off">
+                        <form role="form" autoComplete="off">
                             <div className="entry input-group col-xs-5">
                                 <button className="btn btn-success btn-add bb" style={{
                                     marginBottom: "7px",
@@ -140,10 +140,10 @@ export default class Committee extends Component {
                                                   style={{paddingLeft: "2%", paddingRight: "2%"}}>
                     <div className="control-group" id="fields">
                         <div className="controls">
-                            <form role="form" autocomplete="off">
+                            <form role="form" autoComplete="off">
                                 <div className="entry input-group col-xs-5">
 
-                                    <div className="dropdown" style={{display:"inline-block", width: "55%"}}>
+                                    <div className="dropdown" style={{display: "inline-block", width: "55%"}}>
                                         <button type="button" className="btn btn-default dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                                 style={{width: "100%"}}>
@@ -155,13 +155,15 @@ export default class Committee extends Component {
                                             <li><a
                                                 onClick={this.showSelectedOption.bind(this, "selected", "shadman264")}
                                                 href="#">shadman264</a></li>
-                                            <li><a onClick={this.showSelectedOption.bind(this, "selected", "tanmoy12")}
-                                                   href="#">tanmoy12</a></li>
-                                            <li><a onClick={this.showSelectedOption.bind(this, "selected", "hasib123")}
-                                                   href="#">hasib123</a></li>
+                                            <li><a
+                                                onClick={this.showSelectedOption.bind(this, "selected", "tanmoy12")}
+                                                href="#">tanmoy12</a></li>
+                                            <li><a
+                                                onClick={this.showSelectedOption.bind(this, "selected", "hasib123")}
+                                                href="#">hasib123</a></li>
                                         </ul>
                                     </div>
-                                    <div className="dropdown" style={{display:"inline-block", width: "45%"}}>
+                                    <div className="dropdown" style={{display: "inline-block", width: "45%"}}>
                                         <button type="button" className="btn btn-default dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                                 style={{width: "100%"}}>
@@ -170,10 +172,12 @@ export default class Committee extends Component {
                                         </button>
                                         <ul className="dropdown-menu">
                                             <li className="dropdown-header">Designation</li>
-                                            <li><a onClick={this.showSelectedOption.bind(this, "selected2", "Member")}
-                                                   href="#">Member</a></li>
-                                            <li><a onClick={this.showSelectedOption.bind(this, "selected2", "Chairperson")}
-                                                   href="#">Chairperson</a></li>
+                                            <li><a
+                                                onClick={this.showSelectedOption.bind(this, "selected2", "Member")}
+                                                href="#">Member</a></li>
+                                            <li><a
+                                                onClick={this.showSelectedOption.bind(this, "selected2", "Chairperson")}
+                                                href="#">Chairperson</a></li>
                                             <li><a
                                                 onClick={this.showSelectedOption.bind(this, "selected2", "সদস্যসচিব")}
                                                 href="#">সদস্যসচিব</a></li>
@@ -231,3 +235,23 @@ export default class Committee extends Component {
         );
     }
 }
+//
+// Committee.propTypes = {
+//     members: PropTypes.array.isRequired,
+//     allusers: PropTypes.array.isRequired
+// };
+// export default createContainer( props => {
+//     return {
+//         members: Meteor.users.find(
+//             {
+//                 'profile.committee': props.name
+//             }
+//         ).fetch(),
+//         allusers: Meteor.users.find(
+//             {
+//                 'profile.committee' : {$ne: props.name}
+//             }
+//         ).fetch()
+//
+//     };
+// }, Committee);
