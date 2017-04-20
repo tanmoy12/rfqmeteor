@@ -39,7 +39,7 @@ export default class CompanyS extends Component {
                                 <table className="table">
                                     <thead className="text-center">
                                     <tr>
-                                        <th>S/N</th>
+                                        <td>S/N</td>
                                         <td id="nss">As tender document</td>
                                         <td id="nss">Millennium Dreams Co.
                                             Mamun Plaza, Shop-127(G.F), 31 Hatkhola Road, Tikatuli, Dhaka- 1203.
