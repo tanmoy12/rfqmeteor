@@ -6,10 +6,48 @@ export default class StandardDocumentApply2 extends Component {
         super(props);
         this.state = {}
     }
+    datefromcreate(createdAt) {
+        var date = createdAt.getDate();
+        var month = createdAt.getMonth() + 1;
+        var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
 
-    render() {
+    genSignBlock(signfor, user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link = '';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
+            return (
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                            <strong>{user.name}</strong></p>
+                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                            <strong>{this.datefromcreate(user.sign_date)}</strong>
+                        </p>
+                    </div>
+                    <hr id="signhr" style={{width: "80%"}}/>
+                    <p id="signTag"><strong>{signfor}</strong></p>
+                </div>
+            )
+        }
+    }
+
+
+        render() {
+
         return (
-            <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+            <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 {this.props.head}
                 <div className="row">
                     <div className="col-md-12">
@@ -72,6 +110,7 @@ export default class StandardDocumentApply2 extends Component {
                         </div>
                     </div>
                 </div>
+                {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.standard.director)}
                 <p className="text text-left">
                     <br/>
                     <br/>

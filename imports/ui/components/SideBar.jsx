@@ -141,6 +141,7 @@ export default class SideBar extends Component {
         var chahidapotro_block;
         var standard_block;
 
+
         //CHAHIDA POTRO CREATE
         if ((this.state.addClass1 == "current sidebar_li" && this.state.minimizeDiv[0] == true)) {
             chahidapotro_block =
@@ -249,14 +250,13 @@ export default class SideBar extends Component {
                         }
                     </div>
 
-                    <div>
-                        <form action={this.props.standardBlock.link} method="get">
-                            <input
-                                type="submit" name="login-submit"
-                                id="submit-all"
-                                className="btn btn-primary sidebarButt" value={this.butt_val_create(this.props.standardBlock.name)}/>
-                        </form>
-                    </div>
+                    <nav className=" navbar-custom navbar navbar-default text-center">
+                        <div className="container">
+                            <div className="navbar-header">
+                                <a href={this.props.standardBlock.link} className="navbar-brand">Standard Document</a>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
         }
         var create_standard_block;
@@ -291,6 +291,16 @@ export default class SideBar extends Component {
                     <li className={this.state.addClass5}>
                         <a className="sidebar_a" href={this.props.goToNote}>
                             Go To Note
+                        </a>
+                    </li>
+                </div>
+        }
+        if(this.props.Apply) {
+            go_to_note =
+                <div>
+                    <li className={this.state.addClass5}>
+                        <a onClick={this.props.Apply} className="sidebar_a">
+                            Apply
                         </a>
                     </li>
                 </div>

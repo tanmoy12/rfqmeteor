@@ -1,105 +1,86 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
+
 import StandardDocumentApply1 from "./StandardDocumentApply/StandardDocumentApply1";
 import StandardDocumentApply2 from "./StandardDocumentApply/StandardDocumentApply2";
 import StandardDocumentApply3 from "./StandardDocumentApply/StandardDocumentApply3";
 import StandardDocumentApply4 from "./StandardDocumentApply/StandardDocumentApply4";
 import StandardDocumentApply5 from "./StandardDocumentApply/StandardDocumentApply5";
+import SideBar from "./SideBar";
 
 class StandardDocumentApply extends Component {
     constructor(props) {
         super(props);
 
+        var pro = [];
+        this.props.RFQ.chahida.details.map(function (detail) {
+            pro.push({
+                id: detail.id,
+                item_no: detail.item_no,
+                rate: 0,
+                desc: detail.desc,
+                unit: detail.unit,
+                qty: detail.qty,
+                total: 0
+            });
+        });
+
         this.state = {
-            RFQno: "",
-            products: [],
-            pageno: 1
+            signed3: false,
+            signed4: false,
+            signed5: false,
+            products: pro,
+            estimate: 0,
+            pageno: 1,
+            destination: 'DRiCM,BCSIR',
+            datesub: null
         }
     }
 
-    static convertNumberToWords(amount) {
-        var words = [];
-        words[0] = '';
-        words[1] = 'One';
-        words[2] = 'Two';
-        words[3] = 'Three';
-        words[4] = 'Four';
-        words[5] = 'Five';
-        words[6] = 'Six';
-        words[7] = 'Seven';
-        words[8] = 'Eight';
-        words[9] = 'Nine';
-        words[10] = 'Ten';
-        words[11] = 'Eleven';
-        words[12] = 'Twelve';
-        words[13] = 'Thirteen';
-        words[14] = 'Fourteen';
-        words[15] = 'Fifteen';
-        words[16] = 'Sixteen';
-        words[17] = 'Seventeen';
-        words[18] = 'Eighteen';
-        words[19] = 'Nineteen';
-        words[20] = 'Twenty';
-        words[30] = 'Thirty';
-        words[40] = 'Forty';
-        words[50] = 'Fifty';
-        words[60] = 'Sixty';
-        words[70] = 'Seventy';
-        words[80] = 'Eighty';
-        words[90] = 'Ninety';
-        amount = amount.toString();
-        var atemp = amount.split(".");
-        var number = atemp[0].split(",").join("");
-        var n_length = number.length;
-        var words_string = "";
-        var value;
-        if (n_length <= 9) {
-            var n_array = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-            var received_n_array = new Array();
-            for (var i = 0; i < n_length; i++) {
-                received_n_array[i] = number.substr(i, 1);
-            }
-            for (var i = 9 - n_length, j = 0; i < 9; i++, j++) {
-                n_array[i] = received_n_array[j];
-            }
-            for (var i = 0, j = 1; i < 9; i++, j++) {
-                if (i == 0 || i == 2 || i == 4 || i == 7) {
-                    if (n_array[i] == 1) {
-                        n_array[j] = 10 + parseInt(n_array[j]);
-                        n_array[i] = 0;
-                    }
-                }
-            }
-            value = "";
-            for (var i = 0; i < 9; i++) {
-                if (i == 0 || i == 2 || i == 4 || i == 7) {
-                    value = n_array[i] * 10;
-                } else {
-                    value = n_array[i];
-                }
-                if (value != 0) {
-                    words_string += words[value] + " ";
-                }
-                if ((i == 1 && value != 0) || (i == 0 && value != 0 && n_array[i + 1] == 0)) {
-                    words_string += "Crores ";
-                }
-                if ((i == 3 && value != 0) || (i == 2 && value != 0 && n_array[i + 1] == 0)) {
-                    words_string += "Lakhs ";
-                }
-                if ((i == 5 && value != 0) || (i == 4 && value != 0 && n_array[i + 1] == 0)) {
-                    words_string += "Thousand ";
-                }
-                if (i == 6 && value != 0 && (n_array[i + 1] != 0 && n_array[i + 2] != 0)) {
-                    words_string += "Hundred and ";
-                } else if (i == 6 && value != 0) {
-                    words_string += "Hundred ";
-                }
-            }
-            words_string = words_string.split("  ").join(" ");
-        }
-        return words_string;
+    getdatafromtable(products, estimate) {
+        this.setState({
+            products: products,
+            estimate: estimate
+        });
     }
 
+    getdestinationfromtable(destination) {
+        this.setState({
+            destination: destination
+        });
+    }
+
+    getdeliveryfromtable(delivery) {
+        this.setState({
+            destination: delivery
+        });
+    }
+
+    getwarrantyfromtable(warranty) {
+        this.setState({
+            destination: warranty
+        });
+    }
+
+    getSign(value){
+        this.setState({
+            signed3: value
+        });
+    }
+
+    getSign4(value){
+        console.log(value);
+        this.setState({
+            signed4: value
+        });
+    }
+
+    getSign5(value){
+        console.log(value);
+        this.setState({
+            signed5: value
+        });
+    }
 
     dateToday() {
         var d = new Date();
@@ -146,6 +127,16 @@ class StandardDocumentApply extends Component {
         }
     }
 
+    datesubChange(dateValue) {
+        this.setState({
+            datesub: dateValue
+        })
+    }
+
+    handleApply(){
+        console.log('applied');
+    }
+
     render() {
 
         if (this.props.RFQ) {
@@ -156,14 +147,15 @@ class StandardDocumentApply extends Component {
                     link = cursor.link();
                 }
             }
+            var side = <SideBar Apply={this.handleApply}/>;
 
             var header =
                 <div className="title-top col-md-12">
                     <img id="companylogo" src={link} className="center-block"/>
-                    <h3>{Meteor.user().profile.compname}</h3>
+                    <h3>{Meteor.user().profile.name}</h3>
                     <hr/>
                 </div>
-            var footer=
+            var footer =
                 <div>
                     <hr/>
                     <h4>{Meteor.user().profile.description}</h4>
@@ -173,15 +165,22 @@ class StandardDocumentApply extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentApply1 RFQ={this.props.RFQ} head={header} foot={footer}/>
+                            <div className="col-md-3">
+                                {side}
+                            </div>
+                            <div className="col-md-9">
+                                <StandardDocumentApply1 RFQ={this.props.RFQ} head={header} foot={footer}/>
 
-                            <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>
-                                    next
-                                </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>
-                                    previous
-                                </button>
+                                <div className="col-md-12">
+                                    <button className="btn btn-lg btn-link pull-right"
+                                            onClick={this.nextClick.bind(this)}>
+                                        next
+                                    </button>
+                                    <button className="btn btn-lg btn-link pull-right"
+                                            onClick={this.prevClick.bind(this)}>
+                                        previous
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -191,15 +190,22 @@ class StandardDocumentApply extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentApply2 head={header} foot={footer}/>
+                            <div className="col-md-3">
+                                {side}
+                            </div>
+                            <div className="col-md-9">
+                                <StandardDocumentApply2 RFQ={this.props.RFQ} head={header} foot={footer}/>
 
-                            <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>
-                                    next
-                                </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>
-                                    previous
-                                </button>
+                                <div className="col-md-12">
+                                    <button className="btn btn-lg btn-link pull-right"
+                                            onClick={this.nextClick.bind(this)}>
+                                        next
+                                    </button>
+                                    <button className="btn btn-lg btn-link pull-right"
+                                            onClick={this.prevClick.bind(this)}>
+                                        previous
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -208,15 +214,27 @@ class StandardDocumentApply extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentApply4 RFQ={this.props.RFQ} head={header} foot={footer}/>
+                            <div className="col-md-3">
+                                {side}
+                            </div>
+                            <div className="col-md-9">
+                                <StandardDocumentApply4 products={this.state.products} getSign={(value) => this.getSign(value)}
+                                                        sendData={(products, estimate) => this.getdatafromtable(products, estimate)}
+                                                        sendDestination={(destination) => this.getdestinationfromtable(destination)}
+                                                        senddelivery={(delivery) => this.getdeliveryfromtable(delivery)}
+                                                        sendwarranty={(warranty) => this.getwarrantyfromtable(warranty)}
+                                                        RFQ={this.props.RFQ} head={header} foot={footer}/>
 
-                            <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>
-                                    next
-                                </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>
-                                    previous
-                                </button>
+                                <div className="col-md-12">
+                                    <button className="btn btn-lg btn-link pull-right"
+                                            onClick={this.nextClick.bind(this)}>
+                                        next
+                                    </button>
+                                    <button className="btn btn-lg btn-link pull-right"
+                                            onClick={this.prevClick.bind(this)}>
+                                        previous
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -226,15 +244,25 @@ class StandardDocumentApply extends Component {
 
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentApply3 RFQ={this.props.RFQ} head={header} foot={footer}/>
+                            <div className="col-md-3">
+                                {side}
+                            </div>
+                            <div className="col-md-9">
+                                <StandardDocumentApply3 RFQ={this.props.RFQ} head={header} foot={footer}
+                                                        estimate={this.state.estimate}
+                                                        getSign4={(value) => this.getSign4(value)}
+                                                        datesubChange={(dateValue) => this.datesubChange(dateValue)}/>
 
-                            <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>
-                                    next
-                                </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>
-                                    previous
-                                </button>
+                                <div className="col-md-12">
+                                    <button className="btn btn-lg btn-link pull-right"
+                                            onClick={this.nextClick.bind(this)}>
+                                        next
+                                    </button>
+                                    <button className="btn btn-lg btn-link pull-right"
+                                            onClick={this.prevClick.bind(this)}>
+                                        previous
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -243,15 +271,23 @@ class StandardDocumentApply extends Component {
                 return (
                     <div className="container">
                         <div className="row">
-                            <StandardDocumentApply5 RFQ={this.props.RFQ} head={header} foot={footer}/>
+                            <div className="col-md-3">
+                                {side}
+                            </div>
+                            <div className="col-md-9">
+                                <StandardDocumentApply5 getSign5={(value) => this.getSign5(value)}
+                                                        RFQ={this.props.RFQ} head={header} foot={footer}/>
 
-                            <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>
-                                    next
-                                </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>
-                                    previous
-                                </button>
+                                <div className="col-md-12">
+                                    <button className="btn btn-lg btn-link pull-right"
+                                            onClick={this.nextClick.bind(this)}>
+                                        next
+                                    </button>
+                                    <button className="btn btn-lg btn-link pull-right"
+                                            onClick={this.prevClick.bind(this)}>
+                                        previous
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -275,8 +311,14 @@ StandardDocumentApply.propTypes = {
 };
 
 export default createContainer(props => {
+    var RFQ = RFQDetails.findOne(props.id);
+    var Acc, Dcc;
+    if (RFQ) {
+        Acc = Meteor.users.find({_id: RFQ.chahida.accountant.user_id}).fetch();
+    }
     return {
-        RFQ: RFQDetails.findOne(props.id),
+        RFQ: RFQ,
+        Acc: Acc
     };
 }, StandardDocumentApply);
 

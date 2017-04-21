@@ -16,12 +16,11 @@ export default class MyDayPicker extends Component{
             value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
             formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
         });
+        this.props.dateSubChange(value);
     }
     componentDidUpdate(){
         // Access ISO String and formatted values from the DOM.
         var hiddenInputElement = document.getElementById("example-datepicker");
-        console.log(hiddenInputElement.value); // ISO String, ex: "2016-11-19T12:00:00.000Z"
-        console.log(hiddenInputElement.getAttribute('data-formattedvalue')) // Formatted String, ex: "11/19/2016"
     }
     render(){
 
@@ -31,7 +30,7 @@ export default class MyDayPicker extends Component{
 
         return (
             <DatePicker id="example-datepicker" value={this.state.value} onChange={this.handleChange.bind(this)}
-                        dateFormat="DD/MM/YYYY" clearButtonElement={cal}
+                        dateFormat="DD/MM/YYYY"
                         previousButtonElement={prev_butt_elem} nextButtonElement={next_butt_elem}
                         style={{width: "100%"}} />
         );

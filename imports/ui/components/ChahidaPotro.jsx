@@ -100,20 +100,6 @@ class ChahidaPotro extends Component {
         return words_string;
     }
 
-    setSelected(value) {
-        this.setState({selectValue: value});
-    }
-
-
-    renderScOf() {
-        let scc = this.props.ScOf;
-        var i = 0;
-        return scc.map(function (ScOfficers) {
-
-            return <option value={i++} key={ScOfficers._id}>{ScOfficers.username}</option>
-        });
-    }
-
     getdatafromtable(products, estimate) {
         this.setState({
             products: products,

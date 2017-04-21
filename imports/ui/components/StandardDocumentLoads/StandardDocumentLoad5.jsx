@@ -39,7 +39,7 @@ export default class StandardDocumentLoad5 extends Component {
 
     render() {
         return (
-            <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+            <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="title-top col-md-12">
@@ -68,10 +68,6 @@ export default class StandardDocumentLoad5 extends Component {
                             </div>
                             <div className="col-md-6 text-right">
                                 {this.datefromcreate(this.props.RFQ.standard.createdAt)}
-                            </div>
-                            <div id="input" className="pull-right">
-                                <input/>
-
                             </div>
                         </div>
                     </div>

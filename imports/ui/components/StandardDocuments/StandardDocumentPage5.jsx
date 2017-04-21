@@ -5,19 +5,9 @@ import TableStandard from "../TableStandard";
 export default class StandardDocumentPage5 extends Component {
     constructor(props) {
         super(props);
-        var pro = [];
-        this.props.RFQ.chahida.details.map(function (detail) {
-            pro.push({
-                id: detail.id,
-                item_no: detail.item_no,
-                desc: detail.desc,
-                spec: 'Pack size: ' + detail.unit,
-                making: 'To be mentioned',
-                qty: detail.qty
-            });
-        });
+
         this.state = {
-            products: pro
+            products: this.props.products
         }
     }
 
@@ -25,6 +15,7 @@ export default class StandardDocumentPage5 extends Component {
         this.setState({
             products: products
         });
+        this.props.productChange(products);
     }
 
 

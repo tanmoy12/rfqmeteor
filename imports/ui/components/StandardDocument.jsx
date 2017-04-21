@@ -10,11 +10,23 @@ import SideBar from "./SideBar";
 class StandardDocument extends Component {
     constructor(props) {
         super(props);
+        var pro = [];
+        this.props.RFQ.chahida.details.map(function (detail) {
+            pro.push({
+                id: detail.id,
+                item_no: detail.item_no,
+                desc: detail.desc,
+                spec: '\nPack size: ' + detail.unit,
+                making: 'To be mentioned',
+                qty: detail.qty
+            });
+        });
 
         this.state = {
             RFQno: "",
-            products: [],
-            pageno: 1
+            products: pro,
+            pageno: 1,
+            datesub: null
         }
     }
 
@@ -127,6 +139,18 @@ class StandardDocument extends Component {
         })
     }
 
+    datesubChange(dateValue) {
+        this.setState({
+            datesub: dateValue
+        })
+    }
+
+    productChange(products) {
+        this.setState({
+            products: products
+        })
+    }
+
     nextClick(e) {
         e.preventDefault();
         let pageno = this.state.pageno + 1;
@@ -148,14 +172,9 @@ class StandardDocument extends Component {
     }
 
     handleForward(value) {
-        console.log(value);
-    }
-
-    handleCreate(e) {
-        e.preventDefault();
         var productbool = true;
         var that = this;
-        if (this.props.RFQno) {
+        if (this.state.RFQno && value && this.state.datesub) {
             this.state.products.map(function (product) {
                 if (product.spec && product.making) {
 
@@ -164,38 +183,36 @@ class StandardDocument extends Component {
                 }
             });
             if (productbool) {
-                var StandardForm;
-                if(this.props.RFQ.step_no==3){
-                    StandardForm = {
+                var StandardForm = {
                         step_no: 4,
-                        'standard.RFQ_no': this.props.RFQno,
+                        'standard.apply_date': this.state.datesub,
+                        'standard.RFQ_no': this.state.RFQno,
                         'standard.standard_details': this.state.products,
                         'standard.createdAt' : new Date(),
                         'standard.initiator.signed': true,
                         'standard.initiator.sign_date': new Date(),
                         'standard.accountant.user_id': this.props.RFQ.chahida.accountant.user_id,
-                        'standard.accountant.username': this.props.RFQ.chahida.accountant.username,
+                        'standard.accountant.name': this.props.RFQ.chahida.accountant.name,
                         'standard.accountant.pic': this.props.RFQ.chahida.accountant.pic
 
                     };
-                }
-                else if(this.props.RFQ.step_no==4){
-                    StandardForm = {
-                        step_no: 5,
-                        'standard.accountant.signed': true,
-                        'standard.accountant.sign_date': new Date(),
-                        'standard.director.user_id': this.props.RFQ.chahida.director.user_id,
-                        'standard.director.username': this.props.RFQ.chahida.director.username,
-                        'standard.director.pic': this.props.RFQ.chahida.director.pic
-                    };
-                }
-                else if(this.props.RFQ.step_no==5){
-                    StandardForm = {
-                        step_no: 6,
-                        'standard.director.signed': true,
-                        'standard.director.sign_date': new Date()
-                    };
-                }
+                // else if(this.props.RFQ.step_no==4){
+                //     StandardForm = {
+                //         step_no: 5,
+                //         'standard.accountant.signed': true,
+                //         'standard.accountant.sign_date': new Date(),
+                //         'standard.director.user_id': this.props.RFQ.chahida.director.user_id,
+                //         'standard.director.username': this.props.RFQ.chahida.director.username,
+                //         'standard.director.pic': this.props.RFQ.chahida.director.pic
+                //     };
+                // }
+                // else if(this.props.RFQ.step_no==5){
+                //     StandardForm = {
+                //         step_no: 6,
+                //         'standard.director.signed': true,
+                //         'standard.director.sign_date': new Date()
+                //     };
+                // }
 
                 RFQDetails.update(
                     that.props.RFQ._id,
@@ -230,7 +247,7 @@ class StandardDocument extends Component {
             }
 
             var side = <SideBar forwardTo={forward_to}
-                                goToNote={'/Note/' + this.props.RFQ._id}/>
+                                goToNote={'/Note/' + this.props.RFQ._id}/>;
             if (this.state.pageno == 1) {
                 return (
                     <div className="container">
@@ -240,7 +257,8 @@ class StandardDocument extends Component {
                             </div>
                             <div className="col-md-9">
                                 <StandardDocumentPage1 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
-                                                       RFQnoChange={(RFQno) => this.RFQnoChange(RFQno)}
+                                                       RFQnoChange={this.RFQnoChange.bind(this)}
+                                                       datesubChange={(dateValue) => this.datesubChange(dateValue)}
                                                        dateToday={this.dateToday}/>
 
                                 <div className="col-md-12">
@@ -340,7 +358,8 @@ class StandardDocument extends Component {
                             </div>
                             <div className="col-md-9">
                                 <StandardDocumentPage5 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
-                                                       dateToday={this.dateToday}/>
+                                                       dateToday={this.dateToday} products={this.state.products}
+                                                       productChange={(products) => this.productChange(products)}/>
 
                                 <div className="col-md-12">
                                     <button className="btn btn-lg btn-link pull-right"
@@ -379,12 +398,10 @@ export default createContainer(props => {
     var Acc, Dcc;
     if (RFQ) {
         Acc = Meteor.users.find({_id: RFQ.chahida.accountant.user_id}).fetch();
-        Dcc = Meteor.users.find({_id: RFQ.chahida.director.user_id}).fetch();
     }
     return {
         RFQ: RFQ,
-        Acc: Acc,
-        Dcc: Dcc
+        Acc: Acc
     };
 }, StandardDocument);
 

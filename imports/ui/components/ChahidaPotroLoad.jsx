@@ -116,25 +116,6 @@ class ChahidaPotroLoad extends Component {
         }
     }
 
-    renderAcOf() {
-        let acc = this.props.AcOf;
-        let dcc = this.props.DrOf;
-        var i = 0;
-        if (this.props.RFQ_details.chahida.substep_no == 1) {
-            return acc.map(function (AcOfficers) {
-                return <option value={i++} key={AcOfficers._id}>{AcOfficers.username}</option>
-            });
-        } else if (this.props.RFQ_details.chahida.substep_no == 2) {
-            return dcc.map(function (AcOfficers) {
-                return <option value={i++} key={AcOfficers._id}>{AcOfficers.username}</option>
-            });
-        } else if (this.props.RFQ_details.chahida.substep_no == 3) {
-            return acc.map(function (AcOfficers) {
-                return <option value={i++} key={AcOfficers._id}>{AcOfficers.username}</option>
-            });
-        }
-    }
-
     datefromcreate(createdAt) {
         var date = createdAt.getDate();
         var month = createdAt.getMonth() + 1;

@@ -180,6 +180,11 @@ StandardDocumentSchema = new SimpleSchema({
         minCount: 1,
         optional: true
     },
+    apply_date: {
+        type: Date,
+        label: 'date',
+        optional: true
+    },
     initiator: {
         type: UserSignFalse,
         label: 'initiator',

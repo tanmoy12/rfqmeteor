@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 import ReactDOM from "react-dom";
+import Calendar from "../Calendar";
 
 export default class StandardDocumentApply3 extends Component {
     constructor(props) {
@@ -31,6 +32,7 @@ export default class StandardDocumentApply3 extends Component {
             var digest = Package.sha.SHA256(password);
             Meteor.call('checkPassword', digest, function (err, result) {
                 if (result) {
+                    that.props.getSign4(true);
                     that.setState({
                         signed: true
                     })
@@ -46,7 +48,7 @@ export default class StandardDocumentApply3 extends Component {
         var signBlock;
         let link = '';
         if (Meteor.user()) {
-            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.seal});
+            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.SealPic});
             if (cursor) {
                 link = cursor.link();
             }
@@ -57,7 +59,7 @@ export default class StandardDocumentApply3 extends Component {
                     <img className="col-md-12 pull-left" id="signPic" src={link}  alt="User Image"/>
                     <p className="text" style={{display: "block"}}>
                         Signature of Quotationer with Seal <br/>
-                        Date:
+                        Date: {this.datefromcreate(new Date())}
                     </p>
                 </div>
 
@@ -81,7 +83,7 @@ export default class StandardDocumentApply3 extends Component {
         }
 
         return (
-            <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+            <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="row">
                     <div className="col-md-12">
                         {this.props.head}
@@ -126,8 +128,7 @@ export default class StandardDocumentApply3 extends Component {
 
                             <p className="text displayinblock">
                                 The total Price of my/our Quotation is BDT
-                                <input className="text-right" type='text' name="amount"
-                                       placeholder="0"/>
+                                <strong>{this.props.estimate}</strong>
 
                             </p>
 
@@ -162,8 +163,7 @@ export default class StandardDocumentApply3 extends Component {
                             <p className="text displayinblock">
                                 I/We have examined and have no reservations to the RFQ Document issued by
                                 you on
-                                <input className="text-right" type='text' name="amount"
-                                       placeholder="0"/>
+                                <Calendar dateSubChange={this.props.datesubChange}/>
                             </p>
 
                             <p className="text">

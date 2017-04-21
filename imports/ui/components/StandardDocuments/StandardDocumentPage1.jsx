@@ -94,7 +94,7 @@ export default class StandardDocumentPage1 extends Component {
                                     submitted to the office of the undersigned <strong>on or before</strong>
                                 </span>
                                 <span className="text">
-                                    <Calendar/>
+                                    <Calendar dateSubChange={this.props.datesubChange}/>
                                 </span>
                                 <span className="text">The envelope containing the Quotation must be clearly marked
                                     <strong>“Quotation for Supply of
