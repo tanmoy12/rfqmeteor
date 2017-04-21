@@ -165,7 +165,7 @@ FlowRouter.route('/Minutes', {
 
 
 
-FlowRouter.route('/CS', {
+FlowRouter.route('/CompanyS', {
     action(){
         mount(LayoutDash, {
             content: (<CompanyS />)
