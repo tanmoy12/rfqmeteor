@@ -487,6 +487,6 @@ export default createContainer(props => {
                 'profile.designation': "Director",
                 _id: {$ne: Meteor.userId()}
             }).fetch(),
-        RFQ_details: RFQDetails.findOne({_id: props.id})
+        RFQ_details: RFQDetails.findOne({_id: props.id}),
     };
 }, ChahidaPotroLoad);

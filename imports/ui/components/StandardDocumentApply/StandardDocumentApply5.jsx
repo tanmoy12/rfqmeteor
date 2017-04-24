@@ -120,10 +120,6 @@ export default class StandardDocumentApply5 extends Component {
                             <div className="col-md-6 text-right">
                                 {this.datefromcreate(this.props.RFQ.standard.createdAt)}
                             </div>
-                            <div id="input" className="pull-right">
-                                <input/>
-
-                            </div>
                         </div>
                     </div>
                 </div>

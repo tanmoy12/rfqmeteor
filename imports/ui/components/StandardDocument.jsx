@@ -151,26 +151,6 @@ class StandardDocument extends Component {
         })
     }
 
-    nextClick(e) {
-        e.preventDefault();
-        let pageno = this.state.pageno + 1;
-        if (this.state.pageno < 5) {
-            this.setState({
-                pageno: pageno
-            });
-        }
-    }
-
-    prevClick(e) {
-        e.preventDefault();
-        let pageno = this.state.pageno - 1;
-        if (this.state.pageno > 1) {
-            this.setState({
-                pageno: pageno
-            });
-        }
-    }
-
     handleForward(value) {
         var productbool = true;
         var that = this;
@@ -196,23 +176,6 @@ class StandardDocument extends Component {
                         'standard.accountant.pic': this.props.RFQ.chahida.accountant.pic
 
                     };
-                // else if(this.props.RFQ.step_no==4){
-                //     StandardForm = {
-                //         step_no: 5,
-                //         'standard.accountant.signed': true,
-                //         'standard.accountant.sign_date': new Date(),
-                //         'standard.director.user_id': this.props.RFQ.chahida.director.user_id,
-                //         'standard.director.username': this.props.RFQ.chahida.director.username,
-                //         'standard.director.pic': this.props.RFQ.chahida.director.pic
-                //     };
-                // }
-                // else if(this.props.RFQ.step_no==5){
-                //     StandardForm = {
-                //         step_no: 6,
-                //         'standard.director.signed': true,
-                //         'standard.director.sign_date': new Date()
-                //     };
-                // }
 
                 RFQDetails.update(
                     that.props.RFQ._id,
@@ -238,7 +201,7 @@ class StandardDocument extends Component {
 
     render() {
 
-        if (this.props.RFQ && this.props.Acc && this.props.Dcc) {
+        if (this.props.RFQ && this.props.Acc) {
             var forward_to;
             forward_to = {
                 toWhom: "হিসাবরক্ষক",
@@ -248,7 +211,6 @@ class StandardDocument extends Component {
 
             var side = <SideBar forwardTo={forward_to}
                                 goToNote={'/Note/' + this.props.RFQ._id}/>;
-            if (this.state.pageno == 1) {
                 return (
                     <div className="container">
                         <div className="row">
@@ -256,132 +218,42 @@ class StandardDocument extends Component {
                                 {side}
                             </div>
                             <div className="col-md-9">
-                                <StandardDocumentPage1 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
-                                                       RFQnoChange={this.RFQnoChange.bind(this)}
-                                                       datesubChange={(dateValue) => this.datesubChange(dateValue)}
-                                                       dateToday={this.dateToday}/>
-
                                 <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>previous
-                                    </button>
+                                    <StandardDocumentPage1 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
+                                                           RFQnoChange={this.RFQnoChange.bind(this)}
+                                                           datesubChange={(dateValue) => this.datesubChange(dateValue)}
+                                                           dateToday={this.dateToday}/>
                                 </div>
+                                <div className="col-md-12">
+                                    <StandardDocumentPage2 RFQ={this.props.RFQ}/>
+                                </div>
+                                <div className="col-md-12">
+                                    <StandardDocumentPage3 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
+                                                           dateToday={this.dateToday}/>
+                                </div>
+                                <div className="col-md-12">
+                                    <StandardDocumentPage4 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
+                                                           dateToday={this.dateToday}/>
+
+                                </div>
+                                <div className="col-md-12">
+                                    <StandardDocumentPage5 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
+                                                           dateToday={this.dateToday} products={this.state.products}
+                                                           productChange={(products) => this.productChange(products)}/>
+
+                                </div>
+
                             </div>
 
                         </div>
 
                     </div>
                 );
-            } else if (this.state.pageno == 2) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
-                                <StandardDocumentPage2 RFQ={this.props.RFQ}/>
-
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                );
-            } else if (this.state.pageno == 3) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
-                                <StandardDocumentPage3 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
-                                                       dateToday={this.dateToday}/>
-
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                );
-            } else if (this.state.pageno == 4) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
-                                <StandardDocumentPage4 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
-                                                       dateToday={this.dateToday}/>
-
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                );
-            } else if (this.state.pageno == 5) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
-                                <StandardDocumentPage5 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
-                                                       dateToday={this.dateToday} products={this.state.products}
-                                                       productChange={(products) => this.productChange(products)}/>
-
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                );
-            }
-
         }
         else {
             return (
                 <div>
-                    Loading
+                    Loading..
                 </div>
             )
         }
@@ -395,7 +267,7 @@ StandardDocument.propTypes = {
 
 export default createContainer(props => {
     var RFQ = RFQDetails.findOne(props.id);
-    var Acc, Dcc;
+    var Acc;
     if (RFQ) {
         Acc = Meteor.users.find({_id: RFQ.chahida.accountant.user_id}).fetch();
     }

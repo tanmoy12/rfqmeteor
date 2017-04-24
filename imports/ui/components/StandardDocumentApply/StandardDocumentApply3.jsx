@@ -163,7 +163,7 @@ export default class StandardDocumentApply3 extends Component {
                             <p className="text displayinblock">
                                 I/We have examined and have no reservations to the RFQ Document issued by
                                 you on
-                                <Calendar dateSubChange={this.props.datesubChange}/>
+                                {this.datefromcreate(this.props.RFQ.standard.createdAt)}
                             </p>
 
                             <p className="text">

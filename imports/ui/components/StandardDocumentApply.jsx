@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
-
 import StandardDocumentApply1 from "./StandardDocumentApply/StandardDocumentApply1";
 import StandardDocumentApply2 from "./StandardDocumentApply/StandardDocumentApply2";
 import StandardDocumentApply3 from "./StandardDocumentApply/StandardDocumentApply3";
@@ -21,7 +20,8 @@ class StandardDocumentApply extends Component {
                 desc: detail.desc,
                 unit: detail.unit,
                 qty: detail.qty,
-                total: 0
+                total: 0,
+                destination: 'DRiCM, BCSIR'
             });
         });
 
@@ -33,6 +33,8 @@ class StandardDocumentApply extends Component {
             estimate: 0,
             pageno: 1,
             destination: 'DRiCM,BCSIR',
+            delivery: '',
+            warranty: '',
             datesub: null
         }
     }
@@ -52,31 +54,29 @@ class StandardDocumentApply extends Component {
 
     getdeliveryfromtable(delivery) {
         this.setState({
-            destination: delivery
+            delivery: delivery
         });
     }
 
     getwarrantyfromtable(warranty) {
         this.setState({
-            destination: warranty
+            warranty: warranty
         });
     }
 
-    getSign(value){
+    getSign(value) {
         this.setState({
             signed3: value
         });
     }
 
-    getSign4(value){
-        console.log(value);
+    getSign4(value) {
         this.setState({
             signed4: value
         });
     }
 
-    getSign5(value){
-        console.log(value);
+    getSign5(value) {
         this.setState({
             signed5: value
         });
@@ -127,14 +127,56 @@ class StandardDocumentApply extends Component {
         }
     }
 
-    datesubChange(dateValue) {
-        this.setState({
-            datesub: dateValue
-        })
-    }
 
-    handleApply(){
-        console.log('applied');
+    handleApply() {
+        var productbool = true;
+        if (this.state.destination && this.state.warranty && this.state.delivery && this.state.estimate
+            && this.state.signed3 && this.state.signed4 && this.state.signed5) {
+            this.state.products.map(function (product) {
+                if (product.rate && product.total) {
+
+                } else {
+                    productbool = false;
+                }
+            });
+            if (productbool) {
+                console.log(this.state);
+                var company = {
+                    user_id: Meteor.userId(),
+                    name: Meteor.user().profile.name,
+                    pic: Meteor.user().profile.SealPic,
+                    signed: true,
+                    sign_date: new Date()
+                }
+                var standardApply= {
+                    amount: this.state.estimate,
+                    createdAt: new Date(),
+                    company: company,
+                    StandardApply: this.state.products
+                }
+                RFQDetails.update(
+                    this.props.RFQ._id,
+                    {
+                        $push:
+                        {
+                            standard_apply: standardApply
+                        }
+                    }, function (err, res) {
+                        if (err) {
+                            console.log(err);
+                            Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
+                        }
+                        else {
+                            FlowRouter.go('/dashboard');
+                        }
+                    });
+            } else {
+                Bert.alert('Please Fill up Table details!!', 'danger', 'growl-top-right');
+            }
+        } else {
+            Bert.alert('Please Fill up All Details!!', 'danger', 'growl-top-right');
+        }
+
     }
 
     render() {
@@ -147,7 +189,7 @@ class StandardDocumentApply extends Component {
                     link = cursor.link();
                 }
             }
-            var side = <SideBar Apply={this.handleApply}/>;
+            var side = <SideBar Apply={this.handleApply.bind(this)}/>;
 
             var header =
                 <div className="title-top col-md-12">
@@ -161,139 +203,48 @@ class StandardDocumentApply extends Component {
                     <h4>{Meteor.user().profile.description}</h4>
                     <h4>Tel : {Meteor.user().profile.mobno}, Email: {Meteor.user().emails[0].address} </h4>
                 </div>
-            if (this.state.pageno == 1) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
+            return (
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-3">
+                            {side}
+                        </div>
+                        <div className="col-md-9">
+                            <div className="col-md-12">
                                 <StandardDocumentApply1 RFQ={this.props.RFQ} head={header} foot={footer}/>
 
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
                             </div>
-                        </div>
-
-                    </div>
-                );
-            } else if (this.state.pageno == 2) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
+                            <div className="col-md-12">
                                 <StandardDocumentApply2 RFQ={this.props.RFQ} head={header} foot={footer}/>
 
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                );
-            } else if (this.state.pageno == 3) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
-                                <StandardDocumentApply4 products={this.state.products} getSign={(value) => this.getSign(value)}
+                            <div className="col-md-12">
+                                <StandardDocumentApply4 products={this.state.products}
+                                                        getSign={(value) => this.getSign(value)}
                                                         sendData={(products, estimate) => this.getdatafromtable(products, estimate)}
                                                         sendDestination={(destination) => this.getdestinationfromtable(destination)}
                                                         senddelivery={(delivery) => this.getdeliveryfromtable(delivery)}
                                                         sendwarranty={(warranty) => this.getwarrantyfromtable(warranty)}
                                                         RFQ={this.props.RFQ} head={header} foot={footer}/>
 
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                );
-            } else if (this.state.pageno == 4) {
-                return (
-
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
+                            <div className="col-md-12">
                                 <StandardDocumentApply3 RFQ={this.props.RFQ} head={header} foot={footer}
                                                         estimate={this.state.estimate}
                                                         getSign4={(value) => this.getSign4(value)}
-                                                        datesubChange={(dateValue) => this.datesubChange(dateValue)}/>
+                                />
 
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                );
-            } else if (this.state.pageno == 5) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
+                            <div className="col-md-12">
                                 <StandardDocumentApply5 getSign5={(value) => this.getSign5(value)}
                                                         RFQ={this.props.RFQ} head={header} foot={footer}/>
 
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>
-                );
-            }
 
+                </div>
+            );
         }
         else {
             return (

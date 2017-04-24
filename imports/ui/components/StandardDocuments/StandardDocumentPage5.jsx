@@ -12,9 +12,7 @@ export default class StandardDocumentPage5 extends Component {
     }
 
     getdatafromtable(products) {
-        this.setState({
-            products: products
-        });
+
         this.props.productChange(products);
     }
 
@@ -57,7 +55,7 @@ export default class StandardDocumentPage5 extends Component {
                     </div>
                 </div>
                 <div>
-                    <TableStandard data={this.state.products}
+                    <TableStandard data={this.props.products}
                                    sendData={(products) => this.getdatafromtable(products) }/>
                 </div>
 

@@ -111,7 +111,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/observe-sequence/1.0.14/web.browser/observe_sequence.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/sha/1.0.9/web.browser/sha256.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/web.browser/upstream/css/font-awesome.css" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/nilsdannemann_pdfmake/1.0.38/web.browser/packages/nilsdannemann_pdfmake.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/srp/1.0.10/web.browser/biginteger.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/srp/1.0.10/web.browser/srp.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/localstorage/1.0.12/web.browser/localstorage.js" />
@@ -433,7 +432,6 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/observe-sequence/1.0.14/web.browser/observe_sequence.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/sha/1.0.9/web.browser/sha256.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/web.browser/upstream/css/font-awesome.css" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/nilsdannemann_pdfmake/1.0.38/web.browser/packages/nilsdannemann_pdfmake.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/srp/1.0.10/web.browser/biginteger.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/srp/1.0.10/web.browser/srp.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/localstorage/1.0.12/web.browser/localstorage.js" />
