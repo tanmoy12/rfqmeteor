@@ -5,7 +5,7 @@ import $ from "jquery";
 var specCommDivRows = [];
 var spec_id = [];
 
-export default class Committee extends Component {
+class Committee extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -107,6 +107,11 @@ export default class Committee extends Component {
 
 
     render() {
+        if(this.props.members && this.props.allusers){
+            console.log(this.props.members);
+            console.log(this.props.allusers);
+        }
+
         var specCommDiv;
         var ind_id = parseInt(this.props.idx);
         if (this.state.commDivShow) {
@@ -235,23 +240,24 @@ export default class Committee extends Component {
         );
     }
 }
-//
-// Committee.propTypes = {
-//     members: PropTypes.array.isRequired,
-//     allusers: PropTypes.array.isRequired
-// };
-// export default createContainer( props => {
-//     return {
-//         members: Meteor.users.find(
-//             {
-//                 'profile.committee': props.name
-//             }
-//         ).fetch(),
-//         allusers: Meteor.users.find(
-//             {
-//                 'profile.committee' : {$ne: props.name}
-//             }
-//         ).fetch()
-//
-//     };
-// }, Committee);
+
+Committee.propTypes = {
+    members: PropTypes.array.isRequired,
+    allusers: PropTypes.array.isRequired
+};
+export default createContainer( props => {
+    //console.log(props.name);
+    return {
+        members: Meteor.users.find(
+            {
+                'profile.committee.name': props.name,
+
+            }).fetch(),
+        allusers: Meteor.users.find(
+            {
+                'profile.committee.name' : {$ne: props.name}
+            }
+        ).fetch()
+
+    };
+}, Committee);

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import LoginForm from "./LoginForm";
 import SignUp from "./SignUp";
+import Caraousal from './LoginCaraousal';
 
 export default class App extends Component {
     render() {
@@ -36,7 +37,8 @@ export default class App extends Component {
                         </div>
                     </div>
                 </nav>
-                <SignUp/>
+                {/*<SignUp/>*/}
+                <Caraousal/>
             </div>
 
         );

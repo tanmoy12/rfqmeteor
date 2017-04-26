@@ -96,39 +96,9 @@ class StandardDocumentApply extends Component {
         return <p id="datetodaystand"><strong>Date : {dateshow}</strong></p>;
     }
 
-    RFQnoChange(evt) {
-        var item = {
-            id: evt.target.id,
-            name: evt.target.name,
-            value: evt.target.value
-        };
-        this.setState({
-            RFQno: item.value
-        })
-    }
-
-    nextClick(e) {
-        e.preventDefault();
-        let pageno = this.state.pageno + 1;
-        if (this.state.pageno < 5) {
-            this.setState({
-                pageno: pageno
-            });
-        }
-    }
-
-    prevClick(e) {
-        e.preventDefault();
-        let pageno = this.state.pageno - 1;
-        if (this.state.pageno > 1) {
-            this.setState({
-                pageno: pageno
-            });
-        }
-    }
 
 
-    handleApply() {
+    handleApply(e) {
         var productbool = true;
         if (this.state.destination && this.state.warranty && this.state.delivery && this.state.estimate
             && this.state.signed3 && this.state.signed4 && this.state.signed5) {
@@ -140,7 +110,7 @@ class StandardDocumentApply extends Component {
                 }
             });
             if (productbool) {
-                console.log(this.state);
+                //console.log(this.state);
                 var company = {
                     user_id: Meteor.userId(),
                     name: Meteor.user().profile.name,

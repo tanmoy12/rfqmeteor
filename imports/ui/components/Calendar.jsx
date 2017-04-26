@@ -16,7 +16,7 @@ export default class MyDayPicker extends Component{
             value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
             formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
         });
-        this.props.dateSubChange(value);
+        this.props.datesubChange(value);
     }
     componentDidUpdate(){
         // Access ISO String and formatted values from the DOM.

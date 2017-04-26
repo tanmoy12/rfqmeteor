@@ -65,6 +65,8 @@ class StandardDocumentLoad extends Component {
         if (this.props.RFQ.step_no == 4) {
             this.state.signed = true;
         }
+        var ini= this.props.Dcc[0];
+
         if (this.state.signed) {
             var StandardForm;
             if (this.props.RFQ.step_no == 4) {
@@ -81,7 +83,10 @@ class StandardDocumentLoad extends Component {
                 StandardForm = {
                     step_no: 6,
                     'standard.director.signed': true,
-                    'standard.director.sign_date': new Date()
+                    'standard.director.sign_date': new Date(),
+                    'meeting.initiator.user_id': ini._id,
+                    'meeting.initiator.name': ini.profile.name,
+                    'meeting.initiator.pic': ini.profile.seal
                 };
             }
 
@@ -105,18 +110,18 @@ class StandardDocumentLoad extends Component {
 
     render() {
 
-        if (this.props.RFQ && this.props.Dcc) {
+        if (this.props.RFQ && this.props.Dcc && this.props.Director) {
             var forward_to;
 
             if (this.props.RFQ.step_no == 4 && Meteor.userId() == this.props.RFQ.standard.accountant.user_id) {
                 forward_to = {
                     toWhom: "অনুমোদনকারী",
-                    dropdownList: this.props.Dcc,
+                    dropdownList: this.props.Director,
                     sendSelect: (value) => this.handleForward(value)
                 }
             } else if (this.props.RFQ.step_no == 5 && Meteor.userId() == this.props.RFQ.standard.director.user_id) {
                 forward_to = {
-                    toWhom: "Company Application",
+                    toWhom: "Specification Committee",
                     dropdownList: this.props.Dcc,
                     sendSelect: (value) => this.handleForward(value)
                 }
@@ -174,13 +179,22 @@ StandardDocumentLoad.propTypes = {
 
 export default createContainer(props => {
     var RFQ = RFQDetails.findOne(props.id);
-    var Acc, Dcc;
+    var Director, Dcc;
     if (RFQ) {
-        Dcc = Meteor.users.find({_id: RFQ.chahida.director.user_id}).fetch();
+        Dcc = Meteor.users.find(
+            {
+                'profile.committee.name': "Specification Committee",
+                'profile.committee.des': 'Shochib'
+            }).fetch();
+        Director = Meteor.users.find(
+            {
+                _id: RFQ.chahida.director.user_id
+            }).fetch()
     }
     return {
         RFQ: RFQ,
-        Dcc: Dcc
+        Dcc: Dcc,
+        Director: Director
     };
 }, StandardDocumentLoad);
 
