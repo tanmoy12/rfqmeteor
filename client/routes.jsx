@@ -133,26 +133,21 @@ FlowRouter.route('/LoginCaraousal', {
 
 
 
-FlowRouter.route('/AllowanceNikosh', {
-    action(){
+FlowRouter.route('/AllowanceNikosh/:id', {
+    action(params){
         mount(LayoutDash, {
-            content: (<AllowanceNikosh />)
+            content: (<AllowanceNikosh id={params.id}/>)
         })
     }
 });
 
-
-
-
-FlowRouter.route('/MeetingNotice', {
-    action(){
+FlowRouter.route('/MeetingNotice/:id', {
+    action(params){
         mount(LayoutDash, {
-            content: (<MeetingNotice />)
+            content: (<MeetingNotice id={params.id} />)
         })
     }
 });
-
-
 
 
 FlowRouter.route('/Minutes', {

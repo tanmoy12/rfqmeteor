@@ -7,6 +7,10 @@ import SideBar from './SideBar';
 class Note extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            signed: false
+        };
     }
     datefromcreate(createdAt) {
         var date = createdAt.getDate();
@@ -54,8 +58,9 @@ class Note extends Component {
     }
 
     render() {
-        if (this.props.RFQ) {
-            var RFQItem = this.props.RFQ;
+        if (this.props.RFQ_details) {
+            var chahida_potro = this.props.RFQ_details.chahida;
+            var RFQItem = this.props.RFQ_details;
             var chahidaSend = {
                 name: "চাহিদা পত্র",
                 info: [
@@ -74,16 +79,22 @@ class Note extends Component {
                 ],
                 link: '/ChahidaPotroload/' + RFQItem._id
             }
-            var stanCreate, stanLoad;
-            if(this.props.RFQ.step_no==3 && Meteor.userId()==this.props.RFQ.standard.initiator.user_id){
-                stanCreate = "/StandardDocument/" + this.props.RFQ._id;
+            var stanCreate, stanLoad, allowanceNikosh,meetingNotice;
+            if(this.props.RFQ_details.step_no==3 && Meteor.userId()==this.props.RFQ_details.standard.initiator.user_id){
+                stanCreate = "/StandardDocument/" + this.props.RFQ_details._id;
             }
-            if(this.props.RFQ.step_no>3){
+            if(this.props.RFQ_details.step_no>3){
                 stanLoad = {
                     name: 'Standard Document',
                     info: [],
-                    link: "/StandardDocumentLoad/" + this.props.RFQ._id
+                    link: "/StandardDocumentLoad/" + this.props.RFQ_details._id
                 };
+            }
+            if(this.props.RFQ_details.step_no==6 && Meteor.userId()==this.props.RFQ_details.meeting.initiator.user_id){
+                meetingNotice= "/MeetingNotice/"+this.props.RFQ_details._id;
+            }
+            if(this.props.RFQ_details.step_no>6){
+                meetingNotice= "/MeetingNotice/"+this.props.RFQ_details._id;
             }
             return (
                 <div className="container">
@@ -93,6 +104,8 @@ class Note extends Component {
                                 chahidaBlock={chahidaSend}
                                 createStandardDoc={stanCreate}
                                 standardBlock={stanLoad}
+                                allowanceNikosh={allowanceNikosh}
+                                meetingNotice={meetingNotice}
                             />
 
 
@@ -112,9 +125,9 @@ class Note extends Component {
                             <p className="text">
                                 ১। বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ (বিসিএসআইআর)-এর আওতাধীন ডেজিগনেটেড
                                 রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস- এর বৈজ্ঞানিক কর্মকর্তা
-                                <strong>{this.props.RFQ.chahida.initiator.name}</strong>- এর কাছ
+                                <strong>{this.props.RFQ_details.chahida.initiator.name}</strong>- এর কাছ
                                 থেকে প্রাপ্ত চাহিদার (কপি সংযুক্ত) আলোকে গবেষণার জন্য
-                                <strong>{this.props.RFQ.title}</strong> ক্রয় করা প্রয়োজন। কাজটি
+                                <strong>{this.props.RFQ_details.title}</strong> ক্রয় করা প্রয়োজন। কাজটি
                                 জরুরী বিধায় স্থানীয় সরবরাহকারী প্রতিষ্ঠানের সাথে যোগাযোগ করে তুলনামূলক প্রতিযোগী
                                 দরদাতা দ্বারা PPR-২০০৮ এর তফসীল-২-এর বিধি ৯(২)(ক) অনুসরণে RFQ পদ্ধতিতে সংগ্রহ করা
                                 যেতে পারে।
@@ -122,16 +135,16 @@ class Note extends Component {
 
                             <p className="text"> ২। সদয় অনুমোদনের জন্য নথি উপস্থাপন করা হলো </p>
 
-                            {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
-                            {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
+                            {this.genSignBlock("হিসাবরক্ষক", chahida_potro.accountant)}
+                            {this.genSignBlock("অনুমোদনকারী", chahida_potro.director)}
 
                             <p className="text"> ৩। নোটানুচ্ছেদ ০১ এর অনুমোদনের আলোকে গবেষণাগারের প্রয়োজনের নিরীখে
                                 ……………….. এর Specification প্রস্তুত করার দায়িত্ব বাজারমূল্য নির্ধারন ও স্পেসিফিকেশন
                                 প্রস্তুতকরন কমিটিকে দেয়া যেতে পারে।
                             </p>
 
-                            {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
-                            {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
+                            {this.genSignBlock("হিসাবরক্ষক", chahida_potro.accountant)}
+                            {this.genSignBlock("অনুমোদনকারী", chahida_potro.director)}
 
                             <p className="text"> ৪। নোটানুচ্ছেদ ০৩ এর মাধ্যমে প্রাপ্ত আদেশের আলোকে প্রয়োজনীয় …………..
                                 সমূহের
@@ -187,16 +200,12 @@ class Note extends Component {
                                         ব্যাপারে অনুমোদনের জন্য নথি উপস্থাপন করা হলো।
                                     </p>
 
-                                    {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
-                                    {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
 
                                     <p className="text">
                                         ৬। নোটানুচ্ছেদ ০৫ এর অনুমোদনের আলোকে স্বচ্ছপত্র স্বাক্ষরের জন্য উপস্থাপন করা
                                         হলো।
                                     </p>
 
-                                    {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
-                                    {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
 
                                     <p className="text">
                                         ৭। ২৮/০২/২০১৬ তারিখে দরপত্র আহ্বানের প্রেক্ষিতে মোট ০৩ (তিন) টি দরপত্র পাওয়া
@@ -205,8 +214,6 @@ class Note extends Component {
                                         মূল্যায়ন কমিটির সভা আহ্বান করা যেতে পারে।
                                     </p>
 
-                                    {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
-                                    {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
 
                                 </div>
                                 <div className="notefooter">
@@ -248,8 +255,6 @@ class Note extends Component {
                                         <br/>
                                     </p>
 
-                                    {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
-                                    {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
 
                                     <p className="text">
                                         ৯। টোকানুচ্ছেদ ০৮ এর আলোকে দরপত্রগুলো পুঙ্খানুপুঙ্খরূপে বিশ্লেষণের লক্ষ্যে
@@ -326,8 +331,6 @@ class Note extends Component {
                                             লক্ষ চল্লিশ হাজার টাকা মাত্র) টাকার কার্যাদেশ প্রদানের সদয় অনুমোদনের জন্য
                                             উপস্থাপন করা হলো।
                                         </p>
-                                        {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
-                                        {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
 
                                     </div>
                                 </div>
@@ -366,8 +369,6 @@ class Note extends Component {
                                         উপস্থাপন করা হলো।
                                     </p>
 
-                                    {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
-                                    {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
 
                                     <p className="text">
                                         ১২। ২৯/০২/২০১৬ ইং তারিখে 39.378.007.08.01.001.2016/WO-01 সংখ্যক কার্যাদেশের
@@ -383,8 +384,6 @@ class Note extends Component {
                                         (চালান পৃ: নং- )
                                     </p>
 
-                                    {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ.chahida.accountant)}
-                                    {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.chahida.director)}
 
                                     <p className="text">
                                         ১৩। অত্র ইনষ্টিটিউট- এ Chemicals এর প্রয়োজনীয়তা দেখা দেয়ায় BSTFA,
@@ -517,7 +516,7 @@ class Note extends Component {
         } else {
             return (
                 <div>
-                    Loading
+                    Loading...
                 </div>
             )
         }
@@ -526,11 +525,11 @@ class Note extends Component {
 
 
 Note.propTypes = {
-    RFQ: PropTypes.object
+    RFQ_details: PropTypes.object
 };
 
 export default createContainer(props => {
     return {
-        RFQ: RFQDetails.findOne(props.id)
+        RFQ_details: RFQDetails.findOne({_id: props.id})
     };
 }, Note);

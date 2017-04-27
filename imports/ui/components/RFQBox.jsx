@@ -55,7 +55,7 @@ export default class RFQBox extends Component {
                             </div>
                             <p id="dashrfq">Date</p>
                             <div>
-                                <h4><strong>{this.dateString(this.props.RFQItem.standard.apply_date)}</strong></h4>
+                                <h4><strong>{this.dateString(this.props.RFQItem.chahida.createdAt)}</strong></h4>
                             </div>
                         </div>
                         <div className="media-right">

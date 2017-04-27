@@ -48,11 +48,9 @@ export default class TableStandard extends Component {
             name: evt.target.name,
             value: evt.target.value
         };
-
+        this.props.sendwarranty(item.value);
         this.setState({
             warranty: item.value
-        }, function () {
-            this.props.sendwarranty(this.state.warranty);
         });
     }
 
@@ -80,11 +78,11 @@ export default class TableStandard extends Component {
         this.state.products.map(function (product) {
             total += Number(product.total);
         });
+        var that=this;
+        this.props.sendData(newProducts, total);
         this.setState({
             estimate: total,
             products: newProducts
-        }, function () {
-            this.props.sendData(this.state.products, this.state.estimate);
         });
     };
 
@@ -297,7 +295,7 @@ class ProductRow extends React.Component {
                     <input className="text-right" type='number' name="total" id={this.props.product.id}
                            value={this.props.product.total} placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>
-                <td> DRiCM,BCSIR</td>
+                <td> {this.props.product.destination}</td>
             </tr>
         );
 

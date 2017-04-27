@@ -241,7 +241,7 @@ class ChahidaPotroLoad extends Component {
                     }
                 });
             } else if (this.props.RFQ_details.chahida.substep_no == 3) {
-                this.props.AcOf.map(function (Of) {
+                this.props.SpOf.map(function (Of) {
                     if (Of._id == value) {
                         AcOff = Of;
                     }
@@ -324,7 +324,7 @@ class ChahidaPotroLoad extends Component {
             } else if (chahida_potro.substep_no == 3 && Meteor.userId() == this.props.RFQ_details.chahida.director.user_id) {
                 forward_to = {
                     toWhom: "Specification committee",
-                    dropdownList: this.props.AcOf,
+                    dropdownList: this.props.SpOf,
                     sendSelect: (value) => this.handleForward(value)
                 }
             }
@@ -472,6 +472,7 @@ class ChahidaPotroLoad extends Component {
 ChahidaPotroLoad.propTypes = {
     AcOf: PropTypes.array.isRequired,
     DrOf: PropTypes.array.isRequired,
+    SpOf: PropTypes.array.isRequired,
     RFQ_details: PropTypes.object
 };
 
@@ -487,6 +488,11 @@ export default createContainer(props => {
                 'profile.designation': "Director",
                 _id: {$ne: Meteor.userId()}
             }).fetch(),
-        RFQ_details: RFQDetails.findOne({_id: props.id})
+        SpOf: Meteor.users.find(
+            {
+                'profile.committee.name': "Specification Committee",
+                'profile.committee.des': 'Shochib'
+            }).fetch(),
+        RFQ_details: RFQDetails.findOne({_id: props.id}),
     };
 }, ChahidaPotroLoad);

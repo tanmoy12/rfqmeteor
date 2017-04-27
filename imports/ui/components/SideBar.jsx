@@ -99,6 +99,7 @@ export default class SideBar extends Component {
                 addClass3: "sidebar_li",
                 addClass4: "sidebar_li",
                 addClass5: "current sidebar_li",
+
                 minimizeDiv: newMinimizeDiv
 
             });
@@ -272,7 +273,7 @@ export default class SideBar extends Component {
 
 
         //CREATE_STANDARD_DOC BUTT CREATE
-        var create_standard_doc_butt_create;
+        var create_standard_doc_butt_create, allowanceNikosh,meetingNotice;
         if(this.props.createStandardDoc) {
             create_standard_doc_butt_create =
                 <div>
@@ -295,13 +296,33 @@ export default class SideBar extends Component {
                     </li>
                 </div>
         }
+        if(this.props.allowanceNikosh) {
+            allowanceNikosh =
+                <div>
+                    <li className={this.state.addClass4}>
+                        <a className="sidebar_a" href={this.props.allowanceNikosh}>
+                            Allowance Nikosh
+                        </a>
+                    </li>
+                </div>
+        }
+        if(this.props.meetingNotice) {
+            meetingNotice =
+                <div>
+                    <li className="sidebar_li">
+                        <a className="sidebar_a" href={this.props.meetingNotice}>
+                            Meeting Notice
+                        </a>
+                    </li>
+                </div>
+        }
         if(this.props.Apply) {
             go_to_note =
                 <div>
                     <li className={this.state.addClass5}>
-                        <a onClick={this.props.Apply} className="sidebar_a">
+                        <button onClick={this.props.Apply} className="sidebar_a btn btn-link">
                             Apply
-                        </a>
+                        </button>
                     </li>
                 </div>
         }
@@ -320,6 +341,8 @@ export default class SideBar extends Component {
                     {create_forward_block}
                     {create_standard_block}
                     {create_standard_doc_butt_create}
+                    {allowanceNikosh}
+                    {meetingNotice}
                 </ul>
             </div>
 

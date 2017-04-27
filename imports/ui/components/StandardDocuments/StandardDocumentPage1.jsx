@@ -10,6 +10,7 @@ export default class StandardDocumentPage1 extends Component {
     }
 
     render() {
+        //console.log(this.props);
         return (
             <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="row">
@@ -94,7 +95,7 @@ export default class StandardDocumentPage1 extends Component {
                                     submitted to the office of the undersigned <strong>on or before</strong>
                                 </span>
                                 <span className="text">
-                                    <Calendar dateSubChange={this.props.datesubChange}/>
+                                    <Calendar datesubChange={(dateValue) => this.props.datesubChange(dateValue)}/>
                                 </span>
                                 <span className="text">The envelope containing the Quotation must be clearly marked
                                     <strong>“Quotation for Supply of

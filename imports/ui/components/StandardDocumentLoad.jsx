@@ -34,9 +34,9 @@ class StandardDocumentLoad extends Component {
         return <p id="datetodaystand"><strong>Date : {dateshow}</strong></p>;
     }
 
-    getSign(value){
+    getSign(value) {
         this.setState({
-           signed: value
+            signed: value
         });
     }
 
@@ -62,12 +62,14 @@ class StandardDocumentLoad extends Component {
 
     handleForward(value) {
         var that = this;
-        if(this.props.RFQ.step_no==4){
-            this.state.signed=true;
+        if (this.props.RFQ.step_no == 4) {
+            this.state.signed = true;
         }
+        var ini= this.props.Dcc[0];
+
         if (this.state.signed) {
-            var StandardForm ;
-            if(this.props.RFQ.step_no==4){
+            var StandardForm;
+            if (this.props.RFQ.step_no == 4) {
                 StandardForm = {
                     step_no: 5,
                     'standard.accountant.signed': true,
@@ -77,11 +79,14 @@ class StandardDocumentLoad extends Component {
                     'standard.director.pic': this.props.RFQ.chahida.director.pic
                 };
             }
-            else if(this.props.RFQ.step_no==5){
+            else if (this.props.RFQ.step_no == 5) {
                 StandardForm = {
                     step_no: 6,
                     'standard.director.signed': true,
-                    'standard.director.sign_date': new Date()
+                    'standard.director.sign_date': new Date(),
+                    'meeting.initiator.user_id': ini._id,
+                    'meeting.initiator.name': ini.profile.name,
+                    'meeting.initiator.pic': ini.profile.seal
                 };
             }
 
@@ -105,18 +110,18 @@ class StandardDocumentLoad extends Component {
 
     render() {
 
-        if (this.props.RFQ && this.props.Dcc) {
+        if (this.props.RFQ && this.props.Dcc && this.props.Director) {
             var forward_to;
 
             if (this.props.RFQ.step_no == 4 && Meteor.userId() == this.props.RFQ.standard.accountant.user_id) {
                 forward_to = {
                     toWhom: "অনুমোদনকারী",
-                    dropdownList: this.props.Dcc,
+                    dropdownList: this.props.Director,
                     sendSelect: (value) => this.handleForward(value)
                 }
             } else if (this.props.RFQ.step_no == 5 && Meteor.userId() == this.props.RFQ.standard.director.user_id) {
                 forward_to = {
-                    toWhom: "Company Application",
+                    toWhom: "Specification Committee",
                     dropdownList: this.props.Dcc,
                     sendSelect: (value) => this.handleForward(value)
                 }
@@ -124,127 +129,38 @@ class StandardDocumentLoad extends Component {
 
             var side = <SideBar forwardTo={forward_to}
                                 goToNote={'/Note/' + this.props.RFQ._id}/>;
-            if (this.state.pageno == 1) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
-                                <StandardDocumentLoad1 RFQ={this.props.RFQ} />
-
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>previous
-                                    </button>
-                                </div>
-                            </div>
+            return (
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-3">
+                            {side}
                         </div>
+                        <div className="col-md-9">
+                            <div className="col-md-12">
+                                <StandardDocumentLoad1 RFQ={this.props.RFQ}/>
 
-                    </div>
-                );
-            } else if (this.state.pageno == 2) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
                             </div>
-                            <div className="col-md-9">
+                            <div className="col-md-12">
                                 <StandardDocumentLoad2 RFQ={this.props.RFQ} getSign={(value) => this.getSign(value)}/>
 
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                );
-            } else if (this.state.pageno == 3) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
+                            <div className="col-md-12">
                                 <StandardDocumentLoad3 RFQ={this.props.RFQ}/>
 
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                );
-            } else if (this.state.pageno == 4) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
+                            <div className="col-md-12">
                                 <StandardDocumentLoad4 RFQ={this.props.RFQ}/>
 
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-                );
-            } else if (this.state.pageno == 5) {
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-3">
-                                {side}
-                            </div>
-                            <div className="col-md-9">
+                            <div className="col-md-12">
                                 <StandardDocumentLoad5 RFQ={this.props.RFQ}/>
 
-                                <div className="col-md-12">
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.nextClick.bind(this)}>
-                                        next
-                                    </button>
-                                    <button className="btn btn-lg btn-link pull-right"
-                                            onClick={this.prevClick.bind(this)}>
-                                        previous
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>
-                );
-            }
 
+                </div>
+            );
         }
         else {
             return (
@@ -263,13 +179,22 @@ StandardDocumentLoad.propTypes = {
 
 export default createContainer(props => {
     var RFQ = RFQDetails.findOne(props.id);
-    var Acc, Dcc;
+    var Director, Dcc;
     if (RFQ) {
-        Dcc = Meteor.users.find({_id: RFQ.chahida.director.user_id}).fetch();
+        Dcc = Meteor.users.find(
+            {
+                'profile.committee.name': "Specification Committee",
+                'profile.committee.des': 'Shochib'
+            }).fetch();
+        Director = Meteor.users.find(
+            {
+                _id: RFQ.chahida.director.user_id
+            }).fetch()
     }
     return {
         RFQ: RFQ,
-        Dcc: Dcc
+        Dcc: Dcc,
+        Director: Director
     };
 }, StandardDocumentLoad);
 
