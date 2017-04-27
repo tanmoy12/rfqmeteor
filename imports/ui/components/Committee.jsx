@@ -40,6 +40,11 @@ class Committee extends Component {
             this.state.init[ind_id] = false;
             specCommDivRows[ind_id] = [];
             spec_id[ind_id] = 0;
+
+            //INIT PREVIOUS MEMBER OF COMMITTEE
+            this.props.members.map(function (mem) {
+
+            });
         }
 
         this.setState({
@@ -108,7 +113,9 @@ class Committee extends Component {
 
     render() {
         if(this.props.members && this.props.allusers){
+            console.log("MEMBERS");
             console.log(this.props.members);
+            console.log("ALL USERS");
             console.log(this.props.allusers);
         }
 
@@ -141,66 +148,9 @@ class Committee extends Component {
 
             if (this.state.specCommMemAdd[ind_id]) {
                 //console.log("BUTTON ADDED: "+butt_id);
-                specCommDivRows[ind_id].push(<div key={ref_val} ref={ref_val} id={ref_val} className="row"
-                                                  style={{paddingLeft: "2%", paddingRight: "2%"}}>
-                    <div className="control-group" id="fields">
-                        <div className="controls">
-                            <form role="form" autoComplete="off">
-                                <div className="entry input-group col-xs-5">
-
-                                    <div className="dropdown" style={{display: "inline-block", width: "55%"}}>
-                                        <button type="button" className="btn btn-default dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                                style={{width: "100%"}}>
-                                            <span id="selected">Name</span>
-                                            <span className="caret" style={{marginLeft: "3px"}}></span>
-                                        </button>
-                                        <ul className="dropdown-menu">
-                                            <li className="dropdown-header">Usernames</li>
-                                            <li><a
-                                                onClick={this.showSelectedOption.bind(this, "selected", "shadman264")}
-                                                href="#">shadman264</a></li>
-                                            <li><a
-                                                onClick={this.showSelectedOption.bind(this, "selected", "tanmoy12")}
-                                                href="#">tanmoy12</a></li>
-                                            <li><a
-                                                onClick={this.showSelectedOption.bind(this, "selected", "hasib123")}
-                                                href="#">hasib123</a></li>
-                                        </ul>
-                                    </div>
-                                    <div className="dropdown" style={{display: "inline-block", width: "45%"}}>
-                                        <button type="button" className="btn btn-default dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                                style={{width: "100%"}}>
-                                            <span id="selected2">Designation</span>
-                                            <span className="caret" style={{marginLeft: "3px"}}></span>
-                                        </button>
-                                        <ul className="dropdown-menu">
-                                            <li className="dropdown-header">Designation</li>
-                                            <li><a
-                                                onClick={this.showSelectedOption.bind(this, "selected2", "Member")}
-                                                href="#">Member</a></li>
-                                            <li><a
-                                                onClick={this.showSelectedOption.bind(this, "selected2", "Chairperson")}
-                                                href="#">Chairperson</a></li>
-                                            <li><a
-                                                onClick={this.showSelectedOption.bind(this, "selected2", "সদস্যসচিব")}
-                                                href="#">সদস্যসচিব</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <span className="input-group-btn">
-                                            <button className="btn btn-danger btn-remove bb"
-                                                    onClick={this.specCommMemAddButtClick.bind(this, "rmv", ref_val)}
-                                                    title="Remove From Committee" type="button">
-                                                 <span className="glyphicon glyphicon-minus"></span>
-                                             </button>
-                                        </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>);
+                specCommDivRows[ind_id].push(<Member ref_val={ref_val}
+                                                     showSelectedOption={this.showSelectedOption.bind(this, "selected", "shadman264")}
+                                                     specCommMemAddButtClick={this.specCommMemAddButtClick.bind(this, "rmv", this.props.ref_val)}/>);
                 this.state.specCommMemAdd[ind_id] = false;
                 spec_id[ind_id]++;
             }
@@ -261,3 +211,75 @@ export default createContainer( props => {
 
     };
 }, Committee);
+
+
+class Member extends React.Component {
+
+
+    render() {
+        return (
+            <div key={this.props.ref_val} ref={this.props.ref_val} id={this.props.ref_val} className="row"
+                 style={{paddingLeft: "2%", paddingRight: "2%"}}>
+                <div className="control-group" id="fields">
+                    <div className="controls">
+                        <form role="form" autoComplete="off">
+                            <div className="entry input-group col-xs-5">
+
+                                <div className="dropdown" style={{display: "inline-block", width: "55%"}}>
+                                    <button type="button" className="btn btn-default dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            style={{width: "100%"}}>
+                                        <span id="selected">Name</span>
+                                        <span className="caret" style={{marginLeft: "3px"}}></span>
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li className="dropdown-header">Names</li>
+                                        <li><a
+                                            onClick={this.props.showSelectedOption}
+                                            href="#">shadman264</a></li>
+                                        <li><a
+                                            onClick={this.props.showSelectedOption}
+                                            href="#">shadman264</a></li>
+                                        <li><a
+                                            onClick={this.props.showSelectedOption}
+                                            href="#">shadman264</a></li>
+                                    </ul>
+                                </div>
+                                <div className="dropdown" style={{display: "inline-block", width: "45%"}}>
+                                    <button type="button" className="btn btn-default dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            style={{width: "100%"}}>
+                                        <span id="selected2">Designation</span>
+                                        <span className="caret" style={{marginLeft: "3px"}}></span>
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li className="dropdown-header">Designation</li>
+                                        <li><a
+                                            onClick={this.props.showSelectedOption}
+                                            href="#">Member</a></li>
+                                        <li><a
+                                            onClick={this.props.showSelectedOption}
+                                            href="#">Chairperson</a></li>
+                                        <li><a
+                                            onClick={this.props.showSelectedOption}
+                                            href="#">সদস্যসচিব</a></li>
+                                    </ul>
+                                </div>
+
+                                <span className="input-group-btn">
+                                            <button className="btn btn-danger btn-remove bb"
+                                                    onClick={this.props.specCommMemAddButtClick}
+                                                    title="Remove From Committee" type="button">
+                                                 <span className="glyphicon glyphicon-minus"></span>
+                                             </button>
+                                        </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        );
+
+    }
+
+}
