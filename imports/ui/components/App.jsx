@@ -37,7 +37,7 @@ export default class App extends Component {
                         </div>
                     </div>
                 </nav>
-                {/*<SignUp/>*/}
+                <SignUp/>
                 <Caraousal/>
             </div>
 

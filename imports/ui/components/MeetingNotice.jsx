@@ -10,8 +10,8 @@ class MeetingNotice extends Component {
         super(props);
         //  this.state.products = [];
         this.state = {
-            signed: false,
-            datesub: null
+            signed: true,
+            datesub: new Date()
         };
     }
 
@@ -125,7 +125,8 @@ class MeetingNotice extends Component {
                             <div className="col-md-1">
                             </div>
                             <div id="signblock" className="form-style-4">
-                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
+                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)}
+                                       type="password" name="password"
                                        ref="password"
                                        placeholder="Password"/><br/>
                             </div>
@@ -160,26 +161,39 @@ class MeetingNotice extends Component {
         }
     }
 
-    genMembers(){
-        var i=0;
+    genMembers() {
+        var i = 0;
         return this.props.members.map(function (member) {
             i++;
             return (
                 <p key={member._id} id="meeting" className="pull-left">
-                    {i}. {member.profile.name}, {member.profile.designation}, {member.profile.committee.des} <br/>
+                    {i}. {member.profile.name}, {member.profile.designation}, {member.profile.committee.des} <br/><br/>
                 </p>
             )
         });
     }
 
-    handleForward(value){
-        var that=this;
-        if(this.state.datesub && this.state.signed){
+    handleForward(value) {
+        var that = this;
+        if (this.state.datesub && this.state.signed) {
+            var comList = this.props.members.map(function (member) {
+                return (
+                {
+                    user_id: member._id,
+                    name: member.profile.name,
+                    pic: member.profile.seal,
+                    signed: false
+                }
+                )
+            });
+            console.log(comList);
             var MeetingForm = {
+                step_no: 7,
                 'meeting.createdAt': new Date(),
                 'meeting.dateOfMeeting': this.state.datesub,
                 'meeting.initiator.sign_date': new Date(),
-                'meeting.initiator.signed': true
+                'meeting.initiator.signed': true,
+                allowance_nikosh: comList
             };
             RFQDetails.update(
                 that.props.RFQ_details._id,
@@ -194,21 +208,33 @@ class MeetingNotice extends Component {
                         FlowRouter.go('/Note/' + that.props.RFQ_details._id);
                     }
                 });
-        }
-        {
+        } else {
             Bert.alert('Please Fill up Details!!', 'danger', 'growl-top-right');
         }
     }
 
     render() {
-        if(this.props.RFQ_details) {
+        if (this.props.RFQ_details) {
             var forward_to;
-            forward_to = {
-                toWhom: "হিসাবরক্ষক",
-                dropdownList: [],
-                sendSelect: (value) => this.handleForward(value)
-            }
 
+
+            var date;
+            if (this.props.RFQ_details.meeting.dateOfMeeting) {
+                date = this.datefromcreate(this.props.RFQ_details.meeting.dateOfMeeting);
+                forward_to = {
+                    toWhom: "হিসাবরক্ষক",
+                    dropdownList: [],
+                    sendSelect: (value) => this.handleForward(value)
+                }
+
+            } else {
+                date = <Calendar datesubChange={(dateValue) => this.datesubChange(dateValue)}/>
+                forward_to = {
+                    toWhom: "হিসাবরক্ষক",
+                    dropdownList: [],
+                    sendSelect: (value) => this.handleForward(value)
+                }
+            }
             var side = <SideBar forwardTo={forward_to}
                                 goToNote={'/Note/' + this.props.RFQ_details._id}/>;
             return (
@@ -261,7 +287,7 @@ class MeetingNotice extends Component {
                                             লক্ষ্যে
                                             স্বল্প মূল্যের ক্রয়ের জন্য দরপত্র প্রস্তাব ও মূল্যায়ন কমিটি (TEC) এর সভা
                                             অদ্য
-                                            <Calendar datesubChange={(dateValue) => this.datesubChange(dateValue)}/>
+                                            {date}
                                             ইং তারিখ দুপুর ৩:৩০ ঘটিকার সময় ডিআরআইসিএম সভা কক্ষে অনুষ্ঠিত হবে
                                             ।
                                             (meeting date) <br/>
@@ -307,8 +333,8 @@ class MeetingNotice extends Component {
 
 
             );
-        }else{
-            return(
+        } else {
+            return (
                 <div>
                     Loading...
                 </div>

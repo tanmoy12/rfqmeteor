@@ -346,6 +346,11 @@ RFQDetailsSchema = new SimpleSchema({
         type: MeetingNoticeSchema,
         label: 'meeting',
         optional: true
+    },
+    allowance_nikosh: {
+        type: [UserSignFalse],
+        label: 'allowance',
+        optional: true
     }
 });
 
