@@ -96,6 +96,9 @@ class Note extends Component {
             if(this.props.RFQ_details.step_no>6){
                 meetingNotice= "/MeetingNotice/"+this.props.RFQ_details._id;
             }
+            if(this.props.RFQ_details.step_no>6){
+                allowanceNikosh= "/AllowanceNikosh/"+this.props.RFQ_details._id;
+            }
             return (
                 <div className="container">
                     <div className="row">

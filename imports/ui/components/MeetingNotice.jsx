@@ -186,7 +186,7 @@ class MeetingNotice extends Component {
                 }
                 )
             });
-            console.log(comList);
+            //console.log(comList);
             var MeetingForm = {
                 step_no: 7,
                 'meeting.createdAt': new Date(),
