@@ -341,8 +341,9 @@ export default class SideBar extends Component {
                     {create_forward_block}
                     {create_standard_block}
                     {create_standard_doc_butt_create}
-                    {allowanceNikosh}
+
                     {meetingNotice}
+                    {allowanceNikosh}
                 </ul>
             </div>
 
