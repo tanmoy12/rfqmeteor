@@ -285,7 +285,7 @@ export default class SideBar extends Component {
                 </div>
         }
         //Go To Note
-        var go_to_note;
+        var go_to_note,cs;
         if(this.props.goToNote) {
             go_to_note =
                 <div>
@@ -312,6 +312,16 @@ export default class SideBar extends Component {
                     <li className="sidebar_li">
                         <a className="sidebar_a" href={this.props.meetingNotice}>
                             Meeting Notice
+                        </a>
+                    </li>
+                </div>
+        }
+        if(this.props.cs) {
+            cs =
+                <div>
+                    <li className="sidebar_li">
+                        <a className="sidebar_a" href={this.props.cs}>
+                            CS
                         </a>
                     </li>
                 </div>
@@ -344,6 +354,7 @@ export default class SideBar extends Component {
 
                     {meetingNotice}
                     {allowanceNikosh}
+                    {cs}
                 </ul>
             </div>
 
