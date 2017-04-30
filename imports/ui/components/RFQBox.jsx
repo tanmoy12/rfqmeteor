@@ -32,6 +32,11 @@ export default class RFQBox extends Component {
         var d = new Date();
 
         var applyDiv,diffDays,moreinfo;
+        var daysLeft= this.props.RFQItem.standard.apply_date - d;
+        diffDays = <button href="#" className="btn btn-primary"><span className="glyphicon glyphicon-time"></span>{Math.floor(daysLeft / (1000 * 3600 * 24))} Days Remaning</button>
+        applyDiv= <button onClick={this.gotoRFQApply.bind(this)} className="btn btn-primary"><span className="glyphicon glyphicon-hand-right"></span>Apply for RFQ</button>
+
+
         if(d<this.props.RFQItem.standard.apply_date && Meteor.user().profile.tradelicenseno){
             var daysLeft= this.props.RFQItem.standard.apply_date - d;
             diffDays = <button href="#" className="btn btn-primary"><span className="glyphicon glyphicon-time"></span>{Math.floor(daysLeft / (1000 * 3600 * 24))} Days Remaning</button>

@@ -234,6 +234,14 @@ StandardApplyDetails = new SimpleSchema({
     destination: {
         type: String,
         label: 'destination'
+    },
+    spec: {
+        type: String,
+        label: 'spec'
+    },
+    making: {
+        type: String,
+        label: 'making'
     }
 });
 
