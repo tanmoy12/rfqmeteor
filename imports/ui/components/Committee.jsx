@@ -17,6 +17,8 @@ class Committee extends Component {
             specCommButtClassRows: [],
             specCommMemAdd: [],
             init: [],
+            initialize: false,
+
         };
 
         var ind_id = parseInt(this.props.idx);
@@ -59,6 +61,7 @@ class Committee extends Component {
         var ind_id = parseInt(this.props.idx);
         if (todo == "add") {
             this.state.specCommMemAdd[ind_id] = true;
+            this.state.initialize = true;
             x++;
         }
         this.setState({
@@ -76,6 +79,27 @@ class Committee extends Component {
             console.log(this.props.members);
             console.log("ALL USERS");
             console.log(this.props.allusers);
+
+            let ind_id = parseInt(this.props.idx);
+            let ref_val = "_" + this.props.refVal;
+            //console.log("ref value : "+ref_val);
+            let serial = spec_id[ind_id];
+            let memAra = specCommDivRows[ind_id];
+            let that = this;
+
+            if(!this.state.initialize) {
+                this.props.members.map(function (member, index) {
+                    //console.log("ALL USERS FROM COMMITTEE : ");
+                    //console.log(that.props.allusers);
+                    //console.log(user);
+                    let refValue = index.toString() + ref_val;
+                    memAra.push(<Member serial={serial} ref_val={refValue}
+                                        allUsersList={that.props.allusers} name={member.profile.name}
+                                        des={member.profile.committee.des}/>)
+                });
+            }
+
+            spec_id[ind_id] += this.props.members.length;
         }
 
         var specCommDiv;
@@ -109,7 +133,7 @@ class Committee extends Component {
             if (this.state.specCommMemAdd[ind_id]) {
                 addClickFunc = this.specCommMemAddButtClick.bind(this);
                 specCommDivRows[ind_id].push(<Member serial={spec_id[ind_id]} ref_val={ref_val}
-                                                     allUsersList={this.props.allusers}/>);
+                                                     allUsersList={this.props.allusers} name="Name" des="Designation"/>);
                 this.state.specCommMemAdd[ind_id] = false;
                 spec_id[ind_id]++;
             }
@@ -161,7 +185,7 @@ export default createContainer(props => {
         allusers: Meteor.users.find(
             {
                 'profile.committee.name': {$ne: props.name}
-            }
+            },
         ).fetch()
 
     };

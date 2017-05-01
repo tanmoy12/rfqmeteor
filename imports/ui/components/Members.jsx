@@ -30,6 +30,7 @@ export default class Members extends Component {
     }
 
 
+
     render() {
 
         var ind_id = parseInt(this.props.idx);
@@ -38,7 +39,7 @@ export default class Members extends Component {
         var selected_id1 = ref_val + "selected1";
         var selected_id2 = ref_val + "selected2";
 
-        //console.log("USER LIST");
+        console.log("USER LIST");
         var that = this;
         var dropdownList1 =
             this.props.allUsersList.map(function (user) {
@@ -46,7 +47,7 @@ export default class Members extends Component {
                 return (<li><a
                     href="#" key={user._id} id={selected_id1} onClick={that.showSelectedOption.bind(this, selected_id1, user.profile.name)}>{user.profile.name}</a></li>)
             });
-        //console.log(dropdownList);
+        console.log(dropdownList1);
 
 
 
@@ -65,7 +66,7 @@ export default class Members extends Component {
                                         <button type="button" className="btn btn-default dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                                 style={{width: "100%"}}>
-                                            <span id={selected_id1}>Name</span>
+                                            <span id={selected_id1}>{this.props.name}</span>
                                             <span className="caret" style={{marginLeft: "3px"}}></span>
                                         </button>
                                         <ul className="dropdown-menu">
@@ -78,7 +79,7 @@ export default class Members extends Component {
                                         <button type="button" className="btn btn-default dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                                 style={{width: "100%"}}>
-                                            <span id={selected_id2}>Designation</span>
+                                            <span id={selected_id2}>{this.props.des}</span>
                                             <span className="caret" style={{marginLeft: "3px"}}></span>
                                         </button>
                                         <ul className="dropdown-menu">
