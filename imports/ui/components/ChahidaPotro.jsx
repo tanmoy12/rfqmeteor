@@ -100,20 +100,6 @@ class ChahidaPotro extends Component {
         return words_string;
     }
 
-    setSelected(value){
-        this.setState({selectValue: value});
-    }
-
-
-    renderScOf() {
-        let scc = this.props.ScOf;
-        var i=0;
-        return scc.map(function (ScOfficers) {
-
-            return <option value={i++} key={ScOfficers._id}>{ScOfficers.username}</option>
-        });
-    }
-
     getdatafromtable(products, estimate) {
         this.setState({
             products: products,
@@ -136,6 +122,20 @@ class ChahidaPotro extends Component {
         return <p id="datetoday"><strong>Date : {dateshow}</strong></p>;
     }
 
+    dateTodayString() {
+        var d = new Date();
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
     RFQtitleChange(evt) {
         var item = {
             id: evt.target.id,
@@ -148,10 +148,10 @@ class ChahidaPotro extends Component {
     }
 
     handleCreate(value) {
-        var ScOff;
+        var ScOff = null;
         this.props.ScOf.map(function (Of) {
-            if(Of._id==value){
-                ScOff=Of;
+            if (Of._id == value) {
+                ScOff = Of;
             }
         });
         var sutrono = ReactDOM.findDOMNode(this.refs.sutrono).value.trim();
@@ -168,7 +168,7 @@ class ChahidaPotro extends Component {
                     productbool = false;
                 }
             });
-            if (productbool && this.state.selectValue>-1) {
+            if (productbool && this.state.selectValue > -1) {
                 var Chahidaform = {
                     title: title,
                     sutro_no: sutrono,
@@ -178,12 +178,12 @@ class ChahidaPotro extends Component {
                     year: year,
                     verifier: {
                         user_id: ScOff._id,
-                        username: ScOff.username,
+                        name: ScOff.profile.name,
                         pic: ScOff.profile.seal
                     },
                     initiator: {
                         user_id: Meteor.userId(),
-                        username: Meteor.user().username,
+                        name: Meteor.user().profile.name,
                         pic: Meteor.user().profile.seal,
                         signed: true,
                         sign_date: new Date()
@@ -199,9 +199,9 @@ class ChahidaPotro extends Component {
                         Bert.alert('Unknown Error2!!', 'danger', 'growl-top-right');
                     }
                     else {
-                        var from= {
+                        var from = {
                             user_id: Meteor.userId(),
-                            username: Meteor.user().username,
+                            name: Meteor.user().profile.name,
                             pic: Meteor.user().profile.ProPic,
                         };
                         var Rfqid = res;
@@ -254,8 +254,8 @@ class ChahidaPotro extends Component {
 
     render() {
         var signBlock;
-        let link='';
-        if(Meteor.user()) {
+        let link = '';
+        if (Meteor.user()) {
             const cursor = ImagesCol.findOne({_id: Meteor.user().profile.seal});
             if (cursor) {
                 link = cursor.link();
@@ -264,40 +264,48 @@ class ChahidaPotro extends Component {
                 signBlock =
                     <div className="col-md-6 center-block">
                         <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                        <p id="signLabel"><strong>{Meteor.user().profile.name}</strong></p>
-                        <hr/>
-                        <p id="signLabel"><strong>নিবেদক</strong></p>
+                        <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                            <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                                <strong>{Meteor.user().profile.name}</strong></p>
+                            <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                                <strong>{this.dateTodayString()}</strong>
+                            </p>
+                        </div>
+                        <hr id="signhr" style={{width: "80%"}}/>
+                        <p id="signTag"><strong>নিবেদক</strong></p>
                     </div>
             } else {
                 signBlock =
                     <div className="col-md-6 center-block form-group">
                         <div className="col-md-1">
                         </div>
-                        <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
-                            <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password" ref="password"
+                        <div id="signblock" className="form-style-4">
+                            <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
+                                   ref="password"
                                    placeholder="Password"/><br/>
                         </div>
                         <div>
-                            <p id="signLabel"><strong>{Meteor.user().profile.name}</strong></p>
-                            <hr/>
-                            <p id="signLabel"><strong>নিবেদক</strong></p>
+                            <div className="form-inline">
+                                <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
+                                    <strong>{Meteor.user().profile.name}</strong></p>
+                            </div>
+                            <hr id="signhr" style={{width: "80%"}}/>
+                            <p id="signTag"><strong>নিবেদক</strong></p>
                         </div>
 
                     </div>
             }
         }
-
         return (
-
             <div className="container">
                 <div className="row">
-                    <div className="col-md-3" >
+                    <div className="col-md-3">
                         <SideBar ref="SideBar"
-                            forwardTo = {{toWhom: "যাচাইকারী",
-                                dropdownList: this.props.ScOf,
-                                sendSelect: (value) => this.handleCreate(value)
-                            }}
-
+                                 forwardTo={{
+                                     toWhom: "যাচাইকারী",
+                                     dropdownList: this.props.ScOf,
+                                     sendSelect: (value) => this.handleCreate(value)
+                                 }}
                         />
 
 
@@ -363,8 +371,8 @@ class ChahidaPotro extends Component {
                             <div className="row">
                                 {signBlock}
                                 <div className="col-md-6 center-block">
-
-                                    <p id="unsignLabel"><strong>যাচাইকারী </strong></p>
+                                    <hr id="unsignhr" style={{width: "80%"}}/>
+                                    <p id="signTag"><strong>যাচাইকারী </strong></p>
                                 </div>
                             </div>
                             <div className="row">
@@ -381,12 +389,12 @@ class ChahidaPotro extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-6 center-block">
-
-                                    <p id="unsignLabel"><strong>হিসাবরক্ষক </strong></p>
+                                    <hr id="unsignhr" style={{width: "80%"}}/>
+                                    <p id="signTag"><strong>হিসাবরক্ষক </strong></p>
                                 </div>
                                 <div className="col-md-6 center-block">
-
-                                    <p id="unsignLabel"><strong>অনুমোদনকারী </strong></p>
+                                    <hr id="unsignhr" style={{width: "80%"}}/>
+                                    <p id="signTag"><strong>অনুমোদনকারী </strong></p>
                                 </div>
                             </div>
                         </div>
@@ -409,7 +417,7 @@ export default createContainer(() => {
         ScOf: Meteor.users.find(
             {
                 'profile.designation': "Scientific Officer",
-                _id: { $ne: Meteor.userId() }
+                _id: {$ne: Meteor.userId()}
             }
         ).fetch()
     };

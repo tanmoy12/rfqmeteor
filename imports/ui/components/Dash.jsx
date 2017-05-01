@@ -51,6 +51,6 @@ Dash.propTypes = {
 export default createContainer(() => {
     Meteor.subscribe('rfqdetails');
     return {
-        RFQList: RFQDetails.find({}).fetch()
+        RFQList: RFQDetails.find({}, {sort: {createdAt: -1}}).fetch()
     };
 }, Dash);

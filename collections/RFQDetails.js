@@ -15,9 +15,9 @@ UserSignFalse = new SimpleSchema({
         label: "user",
         optional: true
     },
-    username: {
+    name: {
         type: String,
-        label: 'username',
+        label: 'name',
         optional: true
     },
     pic: {
@@ -180,6 +180,11 @@ StandardDocumentSchema = new SimpleSchema({
         minCount: 1,
         optional: true
     },
+    apply_date: {
+        type: Date,
+        label: 'date',
+        optional: true
+    },
     initiator: {
         type: UserSignFalse,
         label: 'initiator',
@@ -283,6 +288,24 @@ StandardApplySchema = new SimpleSchema({
     }
 });
 
+MeetingNoticeSchema = new SimpleSchema({
+    createdAt: {
+        type: Date,
+        label: 'date',
+        optional: true
+    },
+    initiator: {
+        type: UserSignFalse,
+        label: 'ini',
+        optional: true
+    },
+    dateOfMeeting: {
+        type: Date,
+        label: 'date',
+        optional: true
+    }
+});
+
 
 RFQDetailsSchema = new SimpleSchema({
     title: {
@@ -317,6 +340,11 @@ RFQDetailsSchema = new SimpleSchema({
     standard_apply: {
         type: [StandardApplySchema],
         label: 'standard_apply',
+        optional: true
+    },
+    meeting: {
+        type: MeetingNoticeSchema,
+        label: 'meeting',
         optional: true
     }
 });

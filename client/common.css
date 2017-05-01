@@ -39,9 +39,8 @@
 .navbar-login
 {
     width: 280px;
-    padding: 10px;
-    padding-bottom: 0px;
-    background: snow;
+    padding: 10px 10px 0px;
+    background: white;
 }
 
 .navbar-login-session
@@ -79,7 +78,7 @@
 
 #designation{
     font-size: 15px;
-    font-family: "Tahoma";
+    font-family: "Tahoma", serif;
     font-weight: bold;
 
 }
@@ -480,7 +479,8 @@ a.notification:hover{
     padding-top: 2px;
     padding: 4px;
     margin: 0px;
-    font-size: smaller;
+    font-size: medium;
+    font-size: 10px;
     padding-bottom: 1px;
     text-decoration: none;
 }
@@ -555,6 +555,11 @@ hr {
     border: 1px solid #000;
 }
 
+#signhr{
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
 #TITLERFQ{
     font-size:10px;
     font-style: italic;
@@ -565,7 +570,27 @@ hr {
 #text-stnd{
     font-size: medium;
     font-family: "Times New Roman", Times, serif;
+    line-height: 1.8;
+
 }
+
+
+
+#meeting{
+    font-size: large;
+    font-family: "Times New Roman", Times, serif;
+    line-height: 1.8;
+    text-align: justify;
+
+}
+
+.notetext{
+    margin-top:40px;
+    margin-bottom: 20px;
+
+}
+
+
 
 .main-layout {
     background: #EAEBEF;
@@ -579,8 +604,6 @@ hr {
 #nss{
     text-align: center;
 }
-
-
 
 
 
@@ -679,16 +702,24 @@ span b {
 #signLabel {
     font-size: small;
     font-style: italic;
-    margin-top: 10px;
+    margin-bottom: 3px;
+    margin-top: 5px;
 }
-#unsignLabel {
+
+#signTag {
     font-size: small;
     font-style: italic;
-    margin-top: 85px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+#unsignhr {
+    margin-top: 100px;
+    margin-bottom: 15px;
 }
 
 #signblock {
-    height: 85px;
+    height: 75px;
 }
 
 #signblock input {
@@ -697,8 +728,9 @@ span b {
 
 p.text{
     text-align: justify;
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 2em;
 
 }
 p.text2{
@@ -707,6 +739,26 @@ p.text2{
     line-height: 1.5;
     margin-bottom: 2em;
 }
+
+p.wo {
+  margin-left: 40px;
+    font-size: 15px;
+    text-align: justify;
+    line-height: 1.8;
+    margin-bottom: 2em;
+}
+
+#text-stnd1{
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+.notefooter{
+    margin-top: 180px;
+
+}
+
 
 th{
     font-size: 13px;
@@ -781,6 +833,11 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
     padding: 0;
 }
+
+
+
+
+
 /* tanmoy's css parts */
 
 
@@ -1160,8 +1217,62 @@ opacity */
     margin-bottom: 10px;
 }
 .bb{
-    font-size: 11px;
+    font-size: 14px;
 }
 /*DEMO CHAHIDA POTRO ENDS*/
+
+/*SETTINGS.JSX*/
+.addButton {
+    -moz-box-shadow: 0px 10px 14px -7px #3a7320;
+    -webkit-box-shadow: 0px 10px 14px -7px #3a7320;
+    box-shadow: 0px 10px 14px -7px #3a7320;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #85d45d), color-stop(1, #6e9959));
+    background:-moz-linear-gradient(top, #85d45d 5%, #6e9959 100%);
+    background:-webkit-linear-gradient(top, #85d45d 5%, #6e9959 100%);
+    background:-o-linear-gradient(top, #85d45d 5%, #6e9959 100%);
+    background:-ms-linear-gradient(top, #85d45d 5%, #6e9959 100%);
+    background:linear-gradient(to bottom, #85d45d 5%, #6e9959 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#85d45d', endColorstr='#6e9959',GradientType=0);
+    background-color:#85d45d;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    border:1px solid #4a8f28;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Trebuchet MS;
+    font-size:13px;
+    font-weight:bold;
+    padding:5px 12px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #5b8a3c;
+    margin-bottom: 7px;
+    float: right;
+}
+.addButton:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6e9959), color-stop(1, #85d45d));
+    background:-moz-linear-gradient(top, #6e9959 5%, #85d45d 100%);
+    background:-webkit-linear-gradient(top, #6e9959 5%, #85d45d 100%);
+    background:-o-linear-gradient(top, #6e9959 5%, #85d45d 100%);
+    background:-ms-linear-gradient(top, #6e9959 5%, #85d45d 100%);
+    background:linear-gradient(to bottom, #6e9959 5%, #85d45d 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6e9959', endColorstr='#85d45d',GradientType=0);
+    background-color:#6e9959;
+}
+.addButton:active {
+    position:relative;
+    top:1px;
+}
+
+/*Calender.jsx*/
+
+#example-datepicker_group{
+    margin-left: 3px;
+    margin-right: 3px;
+    /*display: inline-flex;*/
+    width: 30%;
+}
+
 
 /*SHADMAN'S CSS ENDS*/

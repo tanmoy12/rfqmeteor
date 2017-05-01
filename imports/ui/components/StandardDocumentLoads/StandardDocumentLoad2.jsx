@@ -1,15 +1,145 @@
 import React, {Component, PropTypes} from "react";
+import ReactDOM from "react-dom";
 import {createContainer} from "meteor/react-meteor-data";
 
 export default class StandardDocumentLoad2 extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            signed: false
+        }
+    }
+
+    passwordcheck(e) {
+        if (e.key === 'Enter') {
+            var that = this;
+            var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+            var digest = Package.sha.SHA256(password);
+            Meteor.call('checkPassword', digest, function (err, result) {
+                if (result) {
+                    that.props.getSign(true);
+                    that.setState({
+                        signed: true
+                    })
+                }
+                else {
+                    Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
+                }
+            });
+        }
+    }
+
+    datefromcreate(createdAt) {
+        var date = createdAt.getDate();
+        var month = createdAt.getMonth() + 1;
+        var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
+    dateTodayString() {
+        var d = new Date();
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
+
+    genSignBlock(signfor, user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link = '';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
+            return (
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                            <strong>{user.name}</strong></p>
+                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                            <strong>{this.datefromcreate(user.sign_date)}</strong>
+                        </p>
+                    </div>
+                    <hr id="signhr" style={{width: "80%"}}/>
+                    <p id="signTag"><strong>{signfor}</strong></p>
+                </div>
+            )
+        }
+        else if (user.user_id && !user.signed) {
+            if (Meteor.userId() == user.user_id) {
+                if (this.state.signed) {
+                    return (
+                        <div className="col-md-6 center-block">
+                            <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                                    <strong>{Meteor.user().profile.name}</strong></p>
+                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                                    <strong>{this.dateTodayString()}</strong>
+                                </p>
+                            </div>
+                            <hr id="signhr" style={{width: "80%"}}/>
+                            <p id="signTag"><strong>{signfor}</strong></p>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div className="col-md-6 center-block form-group">
+                            <div className="col-md-1">
+                            </div>
+                            <div id="signblock" className="form-style-4">
+                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
+                                       ref="password"
+                                       placeholder="Password"/><br/>
+                            </div>
+                            <div>
+                                <div className="form-inline">
+                                    <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
+                                        <strong>{Meteor.user().profile.name}</strong></p>
+                                </div>
+                                <hr id="signhr" style={{width: "80%"}}/>
+                                <p id="signTag"><strong>{signfor}</strong></p>
+                            </div>
+                        </div>
+                    )
+                }
+            }
+            else {
+                return (
+                    <div className="col-md-6 center-block">
+                        <hr id="unsignhr" style={{width: "80%"}}/>
+                        <p id="signTag"><strong>{signfor} </strong></p>
+                    </div>
+                )
+            }
+        }
+        else {
+            return (
+                <div className="col-md-6 center-block">
+                    <hr id="unsignhr" style={{width: "80%"}}/>
+                    <p id="signTag"><strong>{signfor} </strong></p>
+                </div>
+            )
+        }
     }
 
     render() {
         return (
-            <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+            <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="title-top col-md-12">
                     <img src="../dricmlogo.jpg" className="center-block"/>
                     <h3>Designated Reference Institute for Chemical Measurements (DRiCM) </h3>
@@ -77,6 +207,7 @@ export default class StandardDocumentLoad2 extends Component {
                         </div>
                     </div>
                 </div>
+                {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.standard.director)}
                 <p className="text text-left">
                     <br/>
                     <br/>

@@ -5,99 +5,22 @@ import TableStandard from "../TableStandard";
 export default class StandardDocumentPage5 extends Component {
     constructor(props) {
         super(props);
-        var pro = [];
-        this.props.RFQ.chahida.details.map(function (detail) {
-            pro.push({
-                id: detail.id,
-                item_no: detail.item_no,
-                desc: detail.desc,
-                spec: 'Pack size: ' + detail.unit,
-                making: 'To be mentioned',
-                qty: detail.qty
-            });
-        });
+
         this.state = {
-            products: pro
+            products: this.props.products
         }
     }
 
     getdatafromtable(products) {
-        this.setState({
-            products: products
-        });
+
+        this.props.productChange(products);
     }
 
-    handleCreate(e) {
-        e.preventDefault();
-        var productbool = true;
-        var that = this;
-        if (this.props.RFQno) {
-            this.state.products.map(function (product) {
-                if (product.spec && product.making) {
 
-                } else {
-                    productbool = false;
-                }
-            });
-            if (productbool) {
-                var StandardForm;
-                if(this.props.RFQ.step_no==3){
-                    StandardForm = {
-                        step_no: 4,
-                        'standard.RFQ_no': this.props.RFQno,
-                        'standard.standard_details': this.state.products,
-                        'standard.createdAt' : new Date(),
-                        'standard.initiator.signed': true,
-                        'standard.initiator.sign_date': new Date(),
-                        'standard.accountant.user_id': this.props.RFQ.chahida.accountant.user_id,
-                        'standard.accountant.username': this.props.RFQ.chahida.accountant.username,
-                        'standard.accountant.pic': this.props.RFQ.chahida.accountant.pic
-
-                    };
-                }
-                else if(this.props.RFQ.step_no==4){
-                    StandardForm = {
-                        step_no: 5,
-                        'standard.accountant.signed': true,
-                        'standard.accountant.sign_date': new Date(),
-                        'standard.director.user_id': this.props.RFQ.chahida.director.user_id,
-                        'standard.director.username': this.props.RFQ.chahida.director.username,
-                        'standard.director.pic': this.props.RFQ.chahida.director.pic
-                    };
-                }
-                else if(this.props.RFQ.step_no==5){
-                    StandardForm = {
-                        step_no: 6,
-                        'standard.director.signed': true,
-                        'standard.director.sign_date': new Date()
-                    };
-                }
-
-                RFQDetails.update(
-                    that.props.RFQ._id,
-                    {
-                        $set: StandardForm
-                    }, function (err, res) {
-                        if (err) {
-                            console.log(err);
-                            Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
-                        }
-                        else {
-                            FlowRouter.go('/Note/' + that.props.RFQ._id);
-                        }
-                    });
-
-            } else {
-                Bert.alert('Please Fill up Table details!!', 'danger', 'growl-top-right');
-            }
-        } else {
-            Bert.alert('Please Fill up all Details!!', 'danger', 'growl-top-right');
-        }
-    }
 
     render() {
         return (
-            <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+            <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="title-top col-md-12">
@@ -132,7 +55,7 @@ export default class StandardDocumentPage5 extends Component {
                     </div>
                 </div>
                 <div>
-                    <TableStandard data={this.state.products}
+                    <TableStandard data={this.props.products}
                                    sendData={(products) => this.getdatafromtable(products) }/>
                 </div>
 
@@ -192,9 +115,6 @@ export default class StandardDocumentPage5 extends Component {
                         literature/brochures for the listed items.
                     </strong>
                 </p>
-                <input onClick={this.handleCreate.bind(this)} type="submit" name="login-submit"
-                       id="submit-all"
-                       className="btn btn-primary" value="FORWARD"/>
             </div>
         );
     }

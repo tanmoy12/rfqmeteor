@@ -8,7 +8,9 @@ export default class TableStandard extends Component {
         this.state = {
             products: this.props.data,
             estimate: 0,
-            destination: ''
+            destination: '',
+            delivery: '',
+            warranty: ''
         };
 
     }
@@ -23,6 +25,32 @@ export default class TableStandard extends Component {
             destination: item.value
         }, function () {
             this.props.sendDestination(this.state.destination);
+        });
+    }
+
+    handleDelivery(evt){
+        var item = {
+            id: evt.target.id,
+            name: evt.target.name,
+            value: evt.target.value
+        };
+
+        this.setState({
+            delivery: item.value
+        }, function () {
+            this.props.senddelivery(this.state.delivery);
+        });
+    }
+
+    handleWarranty(evt){
+        var item = {
+            id: evt.target.id,
+            name: evt.target.name,
+            value: evt.target.value
+        };
+        this.props.sendwarranty(item.value);
+        this.setState({
+            warranty: item.value
         });
     }
 
@@ -50,11 +78,11 @@ export default class TableStandard extends Component {
         this.state.products.map(function (product) {
             total += Number(product.total);
         });
+        var that=this;
+        this.props.sendData(newProducts, total);
         this.setState({
             estimate: total,
             products: newProducts
-        }, function () {
-            this.props.sendData(this.state.products, this.state.estimate);
         });
     };
 
@@ -63,6 +91,8 @@ export default class TableStandard extends Component {
             <div>
                 <ProductTable onProductTableUpdate={this.handleProductTable.bind(this)}
                               onDestinationUpdate={this.handleDestination.bind(this)}
+                              senddelivery={this.handleDelivery.bind(this)}
+                              sendwarranty={this.handleWarranty.bind(this)}
                               products={this.state.products} totalestimate={this.state.estimate}/>
             </div>
         );
@@ -197,42 +227,44 @@ class ProductTable extends React.Component {
                     </tr>
 
                     <tr>
-                        <td colSpan="3" scope="colgroup" className="text-left"> Goods to be supplied
+                        <td colSpan="2" scope="colgroup" className="text-left"> Goods to be supplied
                             to
                         </td>
 
-                        <td colSpan="9" scope="colgroup" className="text-center">
-                            <input className="text-center" type='text' name="desc" id="destination"
+                        <td colSpan="10" scope="colgroup" className="text-center">
+                            <input defaultValue="DRiCM,BCSIR" className="text-center" type='text' name="desc" id="destination"
                                    placeholder="Destination" onChange={this.props.onDestinationUpdate}/>
                         </td>
 
                     </tr>
 
                     <tr>
-                        <td colSpan="3" scope="colgroup" className="text-left"> Total Amount in taka
+                        <td colSpan="2" scope="colgroup" className="text-left"> Total Amount in taka
                             (inwords)
                         </td>
 
-                        <td colSpan="9" scope="colgroup" className="text-center"> {ProductTable.convertNumberToWords(this.props.totalestimate)}.
+                        <td colSpan="10" scope="colgroup" className="text-center"> {ProductTable.convertNumberToWords(this.props.totalestimate)}
                         </td>
 
                     </tr>
 
                     <tr>
-                        <td colSpan="3" scope="colgroup" className="text-left"> Delivery Offered</td>
+                        <td colSpan="2" scope="colgroup" className="text-left"> Delivery Offered</td>
 
-                        <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/days]
-                            from
-                            date of issuing the Purchase Order]
+                        <td colSpan="10" scope="colgroup" className="text-center">
+                            <input className="text-center" type='text' name="desc" id="destination"
+                                   placeholder="[insert weeks/days] from date of issuing the Purchase Order]"
+                                   onChange={this.props.senddelivery}/>
                         </td>
 
                     </tr>
                     <tr>
-                        <td colSpan="3" scope="colgroup" className="text-left"> Warranty Provided</td>
+                        <td colSpan="2" scope="colgroup" className="text-left"> Warranty Provided</td>
 
-                        <td colSpan="9" scope="colgroup" className="text-center"> [insert weeks/months
-                            from
-                            date of completion of the delivery; state none if not applicable]
+                        <td colSpan="10" scope="colgroup" className="text-center">
+                            <input className="text-center" type='text' name="desc" id="destination"
+                                   placeholder="[insert weeks/months from date of delivery; state none if not applicable]"
+                                   onChange={this.props.sendwarranty}/>
                         </td>
 
                     </tr>
@@ -263,7 +295,7 @@ class ProductRow extends React.Component {
                     <input className="text-right" type='number' name="total" id={this.props.product.id}
                            value={this.props.product.total} placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>
-                <td> DRiCM,BCSIR</td>
+                <td> {this.props.product.destination}</td>
             </tr>
         );
 

@@ -298,11 +298,6 @@ export default class SignUp extends Component {
         var tradelicenseno = ReactDOM.findDOMNode(this.refs.tradeLicenseNo).value.trim();
         var that = this;
 
-        console.log(this.state.comLogoPic);
-        console.log(this.state.comSolvencyPic);
-        console.log(this.state.comSeal);
-        console.log(this.state.comTradePic);
-
         if (this.state.comLogoPic && this.state.comSolvencyPic && this.state.comSeal && this.state.comTradePic) {
             let uploadInstance = ImagesCol.insert({
                 file: that.state.comLogoPic,
@@ -349,7 +344,7 @@ export default class SignUp extends Component {
                                         tradelicenseno: tradelicenseno,
                                         ownername: ownername,
                                         description: description,
-                                        compname: compname,
+                                        name: compname,
                                         mobno: mobno,
                                         ProPic: fileObjLogo._id,
                                         SealPic: fileObjSeal._id,

@@ -16,6 +16,12 @@ import StandardDocumentApply from '../imports/ui/components/StandardDocumentAppl
 import LoginCaraousal from '../imports/ui/components/LoginCaraousal';
 import FileUpload from '../imports/ui/components/FileUpload';
 import AllowanceNikosh from '../imports/ui/components/AllowanceNikosh';
+import MeetingNotice from '../imports/ui/components/MeetingNotice';
+import Minutes from '../imports/ui/components/Minutes';
+import CompanyS from '../imports/ui/components/CompanyS';
+import WO from '../imports/ui/components/WO';
+
+
 
 FlowRouter.route('/', {
     action(){
@@ -127,10 +133,46 @@ FlowRouter.route('/LoginCaraousal', {
 
 
 
-FlowRouter.route('/AllowanceNikosh', {
+FlowRouter.route('/AllowanceNikosh/:id', {
+    action(params){
+        mount(LayoutDash, {
+            content: (<AllowanceNikosh id={params.id}/>)
+        })
+    }
+});
+
+FlowRouter.route('/MeetingNotice/:id', {
+    action(params){
+        mount(LayoutDash, {
+            content: (<MeetingNotice id={params.id} />)
+        })
+    }
+});
+
+
+FlowRouter.route('/Minutes', {
     action(){
         mount(LayoutDash, {
-            content: (<AllowanceNikosh />)
+            content: (<Minutes />)
+        })
+    }
+});
+
+
+
+FlowRouter.route('/CompanyS', {
+    action(){
+        mount(LayoutDash, {
+            content: (<CompanyS />)
+        })
+    }
+});
+
+
+FlowRouter.route('/WO', {
+    action(){
+        mount(LayoutDash, {
+            content: (<WO />)
         })
     }
 });

@@ -8,36 +8,11 @@ export default class StandardDocumentApply4 extends Component {
     constructor(props) {
         super(props);
 
-        var pro = [];
-        this.props.RFQ.chahida.details.map(function (detail) {
-            pro.push({
-                id: detail.id,
-                item_no: detail.item_no,
-                rate: 0,
-                desc: detail.desc,
-                unit: detail.unit,
-                qty: detail.qty,
-                total: 0
-            });
-        });
-        this.state = {
-            products: pro,
-            estimate: 0,
-            destination: '',
-            signed: false
-        }
-    }
 
-    getdatafromtable(products, estimate) {
-        this.setState({
-            products: products,
-            estimate: estimate
-        });
-    }
-    getdestinationfromtable(destination) {
-        this.setState({
-            destination: destination
-        });
+        this.state = {
+            signed: false,
+            date: '................'
+        }
     }
 
 
@@ -53,6 +28,7 @@ export default class StandardDocumentApply4 extends Component {
         }
         return dateshow;
     }
+
     passwordcheck(e) {
         if (e.key === 'Enter') {
             var that = this;
@@ -60,8 +36,10 @@ export default class StandardDocumentApply4 extends Component {
             var digest = Package.sha.SHA256(password);
             Meteor.call('checkPassword', digest, function (err, result) {
                 if (result) {
+                    that.props.getSign(true);
                     that.setState({
-                        signed: true
+                        signed: true,
+                        date: that.datefromcreate(new Date())
                     })
                 }
                 else {
@@ -76,7 +54,7 @@ export default class StandardDocumentApply4 extends Component {
         var signBlock;
         let link='';
         if(Meteor.user()) {
-            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.seal});
+            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.SealPic});
             if (cursor) {
                 link = cursor.link();
             }
@@ -106,7 +84,7 @@ export default class StandardDocumentApply4 extends Component {
         }
 
         return(
-            <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+            <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="row">
                     <div className="col-md-12">
                         {this.props.head}
@@ -134,9 +112,12 @@ export default class StandardDocumentApply4 extends Component {
                         </div>
                     </div>
                 </div>
-                <TableApply data={this.state.products}
-                            sendData={(products, estimate) => this.getdatafromtable(products, estimate)}
-                            sendDestination={(destination) => this.getdestinationfromtable(destination)} />
+                <TableApply data={this.props.products}
+                            sendData={this.props.sendData}
+                            sendDestination={this.props.sendDestination}
+                            senddelivery={this.props.senddelivery}
+                            sendwarranty={this.props.sendwarranty}
+                />
 
                 <p className="text"><strong>[insert number] number corrections made by me/us have been duly
                     initialed
@@ -153,13 +134,12 @@ export default class StandardDocumentApply4 extends Component {
                             <td colSpan="8" rowSpan="2" scope="colgroup">
                                 <br/>
                                 <br/>
-                                <br/>DATE:given date
+                                <br/>Date: {this.state.date}
                             </td>
                         </tr>
                         <tr>
                             <td className="form-style-4" colSpan="4" scope="colgroup">
-                                <input className="text-center" type='text' name="quotationer"
-                                       placeholder="Name of Quotationer"/>
+                                <strong>{Meteor.user().profile.name}</strong>
                             </td>
                         </tr>
                         </tbody>

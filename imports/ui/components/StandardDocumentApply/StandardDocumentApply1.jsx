@@ -22,7 +22,7 @@ export default class StandardDocumentApply1 extends Component {
 
     render() {
         return (
-            <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+            <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="row">
                     <div className="col-md-12">
                         {this.props.head}
@@ -95,14 +95,14 @@ export default class StandardDocumentApply1 extends Component {
                             <p className="text">
                                 6. Quotation in a sealed envelope or by fax or through electronic mail shall
                                 be
-                                submitted to the office of the undersigned
-                                ............................................................... . The
+                                submitted to the office of the undersigned on or before
+                                { this.datefromcreate(this.props.RFQ.standard.apply_date)} . The
                                 envelope containing the Quotation must be clearly marked <strong>“Quotation
                                 for
                                 Supply
                                 of </strong> {this.props.RFQ.title}” and <strong>DO NOT OPEN </strong>
                                 before
-                                ................................... Quotations received later than the time
+                                {this.datefromcreate(this.props.RFQ.standard.apply_date)} Quotations received later than the time
                                 specified herein shall not be accepted.
                             </p>
 

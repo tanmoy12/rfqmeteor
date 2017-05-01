@@ -1,20 +1,32 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
-
-import StandardDocumentPage1 from './StandardDocuments/StandardDocumentPage1';
-import StandardDocumentPage2 from './StandardDocuments/StandardDocumentPage2';
-import StandardDocumentPage3 from './StandardDocuments/StandardDocumentPageThree';
-import StandardDocumentPage4 from './StandardDocuments/StandardDocumentPage4';
-import StandardDocumentPage5 from './StandardDocuments/StandardDocumentPage5';
+import StandardDocumentPage1 from "./StandardDocuments/StandardDocumentPage1";
+import StandardDocumentPage2 from "./StandardDocuments/StandardDocumentPage2";
+import StandardDocumentPage3 from "./StandardDocuments/StandardDocumentPageThree";
+import StandardDocumentPage4 from "./StandardDocuments/StandardDocumentPage4";
+import StandardDocumentPage5 from "./StandardDocuments/StandardDocumentPage5";
+import SideBar from "./SideBar";
 
 class StandardDocument extends Component {
     constructor(props) {
         super(props);
+        var pro = [];
+        this.props.RFQ.chahida.details.map(function (detail) {
+            pro.push({
+                id: detail.id,
+                item_no: detail.item_no,
+                desc: detail.desc,
+                spec: '\nPack size: ' + detail.unit,
+                making: 'To be mentioned',
+                qty: detail.qty
+            });
+        });
 
         this.state = {
             RFQno: "",
-            products: [],
-            pageno: 1
+            products: pro,
+            pageno: 1,
+            datesub: null
         }
     }
 
@@ -127,105 +139,121 @@ class StandardDocument extends Component {
         })
     }
 
-    nextClick(e){
-        e.preventDefault();
-        let pageno= this.state.pageno+1;
-        if(this.state.pageno<5) {
-            this.setState({
-                pageno: pageno
-            });
-        }
+    datesubChange(dateValue) {
+        this.setState({
+            datesub: dateValue
+        })
     }
-    prevClick(e){
-        e.preventDefault();
-        let pageno= this.state.pageno-1;
-        if(this.state.pageno>1) {
-            this.setState({
-                pageno: pageno
+
+    productChange(products) {
+        this.setState({
+            products: products
+        })
+    }
+
+    handleForward(value) {
+        var productbool = true;
+        var that = this;
+        if (this.state.RFQno && value && this.state.datesub) {
+            this.state.products.map(function (product) {
+                if (product.spec && product.making) {
+
+                } else {
+                    productbool = false;
+                }
             });
+            if (productbool) {
+                var StandardForm = {
+                        step_no: 4,
+                        'standard.apply_date': this.state.datesub,
+                        'standard.RFQ_no': this.state.RFQno,
+                        'standard.standard_details': this.state.products,
+                        'standard.createdAt' : new Date(),
+                        'standard.initiator.signed': true,
+                        'standard.initiator.sign_date': new Date(),
+                        'standard.accountant.user_id': this.props.RFQ.chahida.accountant.user_id,
+                        'standard.accountant.name': this.props.RFQ.chahida.accountant.name,
+                        'standard.accountant.pic': this.props.RFQ.chahida.accountant.pic
+
+                    };
+
+                RFQDetails.update(
+                    that.props.RFQ._id,
+                    {
+                        $set: StandardForm
+                    }, function (err, res) {
+                        if (err) {
+                            console.log(err);
+                            Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
+                        }
+                        else {
+                            FlowRouter.go('/Note/' + that.props.RFQ._id);
+                        }
+                    });
+
+            } else {
+                Bert.alert('Please Fill up Table details!!', 'danger', 'growl-top-right');
+            }
+        } else {
+            Bert.alert('Please Fill up all Details!!', 'danger', 'growl-top-right');
         }
     }
 
     render() {
 
-        if (this.props.RFQ) {
-            if(this.state.pageno==1){
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <StandardDocumentPage1 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
-                                                   RFQnoChange={(RFQno) => this.RFQnoChange(RFQno)} dateToday={this.dateToday}/>
-
-                            <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>previous </button>
-                            </div>
-                        </div>
-
-                    </div>
-                );
-            }else if(this.state.pageno==2){
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <StandardDocumentPage2 RFQ={this.props.RFQ} />
-
-                            <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>previous </button>
-                            </div>
-                        </div>
-                    </div>
-                );
-            }else if(this.state.pageno==3){
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <StandardDocumentPage3 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
-                                                   dateToday={this.dateToday}/>
-
-                            <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>previous </button>
-                            </div>
-                        </div>
-                    </div>
-                );
-            }else if(this.state.pageno==4){
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <StandardDocumentPage4 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
-                                                   dateToday={this.dateToday}/>
-
-                            <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>previous </button>
-                            </div>
-                        </div>
-                    </div>
-                );
-            }else if(this.state.pageno==5){
-                return (
-                    <div className="container">
-                        <div className="row">
-                            <StandardDocumentPage5 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
-                                                   dateToday={this.dateToday}/>
-
-                            <div className="col-md-10">
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.nextClick.bind(this)}>next </button>
-                                <button className="btn btn-lg btn-link pull-right" onClick={this.prevClick.bind(this)}>previous </button>
-                            </div>
-                        </div>
-                    </div>
-                );
+        if (this.props.RFQ && this.props.Acc) {
+            var forward_to;
+            forward_to = {
+                toWhom: "হিসাবরক্ষক",
+                dropdownList: this.props.Acc,
+                sendSelect: (value) => this.handleForward(value)
             }
 
+            var side = <SideBar forwardTo={forward_to}
+                                goToNote={'/Note/' + this.props.RFQ._id}/>;
+                return (
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-3">
+                                {side}
+                            </div>
+                            <div className="col-md-9">
+                                <div className="col-md-12">
+                                    <StandardDocumentPage1 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
+                                                           RFQnoChange={this.RFQnoChange.bind(this)}
+                                                           datesubChange={(dateValue) => this.datesubChange(dateValue)}
+                                                           dateToday={this.dateToday}/>
+                                </div>
+                                <div className="col-md-12">
+                                    <StandardDocumentPage2 RFQ={this.props.RFQ}/>
+                                </div>
+                                <div className="col-md-12">
+                                    <StandardDocumentPage3 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
+                                                           dateToday={this.dateToday}/>
+                                </div>
+                                <div className="col-md-12">
+                                    <StandardDocumentPage4 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
+                                                           dateToday={this.dateToday}/>
+
+                                </div>
+                                <div className="col-md-12">
+                                    <StandardDocumentPage5 RFQ={this.props.RFQ} RFQno={this.state.RFQno}
+                                                           dateToday={this.dateToday} products={this.state.products}
+                                                           productChange={(products) => this.productChange(products)}/>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                );
         }
         else {
             return (
                 <div>
-                    Loading
+                    Loading..
                 </div>
             )
         }
@@ -238,8 +266,14 @@ StandardDocument.propTypes = {
 };
 
 export default createContainer(props => {
+    var RFQ = RFQDetails.findOne(props.id);
+    var Acc;
+    if (RFQ) {
+        Acc = Meteor.users.find({_id: RFQ.chahida.accountant.user_id}).fetch();
+    }
     return {
-        RFQ: RFQDetails.findOne(props.id)
+        RFQ: RFQ,
+        Acc: Acc
     };
 }, StandardDocument);
 

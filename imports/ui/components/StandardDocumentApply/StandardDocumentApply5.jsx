@@ -7,7 +7,8 @@ export default class StandardDocumentApply5 extends Component {
         super(props);
 
         this.state = {
-            signed: false
+            signed: false,
+            date: ''
         }
     }
 
@@ -31,8 +32,10 @@ export default class StandardDocumentApply5 extends Component {
             var digest = Package.sha.SHA256(password);
             Meteor.call('checkPassword', digest, function (err, result) {
                 if (result) {
+                    that.props.getSign5(true);
                     that.setState({
-                        signed: true
+                        signed: true,
+                        date: that.datefromcreate(new Date())
                     })
                 }
                 else {
@@ -62,7 +65,7 @@ export default class StandardDocumentApply5 extends Component {
         var signBlock;
         let link='';
         if(Meteor.user()) {
-            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.seal});
+            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.SealPic});
             if (cursor) {
                 link = cursor.link();
             }
@@ -92,7 +95,7 @@ export default class StandardDocumentApply5 extends Component {
         }
 
         return (
-            <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
+            <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="row">
                     <div className="col-md-12">
                         {this.props.head}
@@ -116,10 +119,6 @@ export default class StandardDocumentApply5 extends Component {
                             </div>
                             <div className="col-md-6 text-right">
                                 {this.datefromcreate(this.props.RFQ.standard.createdAt)}
-                            </div>
-                            <div id="input" className="pull-right">
-                                <input/>
-
                             </div>
                         </div>
                     </div>
@@ -159,21 +158,20 @@ export default class StandardDocumentApply5 extends Component {
                     <table id="customers" className="table">
                         <tbody>
                         <tr>
-                            <td colSpan="4" scope="colgroup" className="text-center">
+                            <td colSpan="3" scope="colgroup" className="text-center">
                                 {signBlock}
                             </td>
 
-                            <td colSpan="8" rowSpan="2" scope="colgroup">
+                            <td colSpan="9" rowSpan="2" scope="colgroup">
                                 <br/>
                                 <br/>
-                                <br/>DATE:given date
+                                <br/>DATE: {this.state.date}
                             </td>
 
                         </tr>
                         <tr>
-                            <td className="form-style-4" colSpan="4" scope="colgroup">
-                                <input className="text-center" type='text' name="quotationer"
-                                       placeholder="Name of Quotationer"/>
+                            <td className="text-center" colSpan="4" scope="colgroup">
+                                <strong>{Meteor.user().profile.name}</strong>
                             </td>
                         </tr>
 
