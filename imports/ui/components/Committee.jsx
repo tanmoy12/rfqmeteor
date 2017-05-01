@@ -109,7 +109,7 @@ class Committee extends Component {
             if (this.state.specCommMemAdd[ind_id]) {
                 addClickFunc = this.specCommMemAddButtClick.bind(this);
                 specCommDivRows[ind_id].push(<Member serial={spec_id[ind_id]} ref_val={ref_val}
-                                                     />);
+                                                     allUsersList={this.props.allusers}/>);
                 this.state.specCommMemAdd[ind_id] = false;
                 spec_id[ind_id]++;
             }

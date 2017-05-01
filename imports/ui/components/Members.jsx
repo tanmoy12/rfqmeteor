@@ -17,10 +17,10 @@ export default class Members extends Component {
 
 
 
-    showSelectedOption(spanId, option) {
-        var s = '#' + spanId;
-        console.log(spanId + " EDITED");
-        $(s).text(option);
+    showSelectedOption(id, text) {
+        var s = '#' + id;
+        console.log(id + " EDITED");
+        $(s).text(text);
     }
 
     removeMember() {
@@ -33,12 +33,22 @@ export default class Members extends Component {
     render() {
 
         var ind_id = parseInt(this.props.idx);
-
         var ref_val = this.props.ref_val;
-
 
         var selected_id1 = ref_val + "selected1";
         var selected_id2 = ref_val + "selected2";
+
+        //console.log("USER LIST");
+        var that = this;
+        var dropdownList1 =
+            this.props.allUsersList.map(function (user) {
+                //console.log(user);
+                return (<li><a
+                    href="#" key={user._id} id={selected_id1} onClick={that.showSelectedOption.bind(this, selected_id1, user.profile.name)}>{user.profile.name}</a></li>)
+            });
+        //console.log(dropdownList);
+
+
 
         console.log("HERE WITHOUT YOU! " + ref_val + " SERIAL: " + this.props.serial);
         let member;
@@ -60,15 +70,8 @@ export default class Members extends Component {
                                         </button>
                                         <ul className="dropdown-menu">
                                             <li className="dropdown-header">Usernames</li>
-                                            <li><a
-                                                onClick={this.showSelectedOption.bind(this, selected_id1, "shadman264")}
-                                                href="#">shadman264</a></li>
-                                            <li><a
-                                                onClick={this.showSelectedOption.bind(this, selected_id1, "tanmoy12")}
-                                                href="#">tanmoy12</a></li>
-                                            <li><a
-                                                onClick={this.showSelectedOption.bind(this, selected_id1, "hasib123")}
-                                                href="#">hasib123</a></li>
+                                            {dropdownList1}
+
                                         </ul>
                                     </div>
                                     <div className="dropdown" style={{display: "inline-block", width: "45%"}}>
