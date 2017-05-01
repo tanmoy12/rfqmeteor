@@ -5,13 +5,214 @@ import ReactDOM from 'react-dom';
 import SideBar from './SideBar';
 
 class AllowanceNikosh extends Component {
+    constructor(props) {
+        super(props);
+        //  this.state.products = [];
+        this.state = {
+            signed: false
+        };
+    }
+
+    handleSign(){
+        Meteor.call('updateAllowanceNikosh', this.props.RFQ_details._id, Meteor.userId());
+    }
+
+    passwordcheck(e) {
+        if (e.key === 'Enter') {
+            var that = this;
+            var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+            var digest = Package.sha.SHA256(password);
+            Meteor.call('checkPassword', digest, function (err, result) {
+                if (result) {
+                    that.handleSign();
+                    that.setState({
+                        signed: true
+                    })
+                }
+                else {
+                    Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
+                }
+            });
+        }
+    }
+
+    datefromcreate(createdAt) {
+        var date = createdAt.getDate();
+        var month = createdAt.getMonth() + 1;
+        var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
+    dateTodayString() {
+        var d = new Date();
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
+    genSignBlock(user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link = '';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
+            return (
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                            <strong>{user.name}</strong></p>
+                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                            <strong>{this.datefromcreate(user.sign_date)}</strong>
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+        else if (user.user_id && !user.signed) {
+            if (Meteor.userId() == user.user_id) {
+                if (this.state.signed) {
+                    return (
+                        <div className="col-md-6 center-block">
+                            <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                                    <strong>{Meteor.user().profile.name}</strong></p>
+                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                                    <strong>{this.dateTodayString()}</strong>
+                                </p>
+                            </div>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div className="col-md-6 center-block form-group">
+                            <div className="col-md-1">
+                            </div>
+                            <div id="signblock" className="form-style-4">
+                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
+                                       ref="password"
+                                       placeholder="Password"/><br/>
+                            </div>
+                            <div>
+                                <div className="form-inline">
+                                    <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
+                                        <strong>{Meteor.user().profile.name}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
+            }
+            else {
+                return (
+                    <div className="col-md-6 center-block">
+                    </div>
+                )
+            }
+        }
+        else {
+            return (
+                <div className="col-md-6 center-block">
+                </div>
+            )
+        }
+    }
+
+    genSignBlock2(user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link = '';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
+            return (
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                            <strong>{user.name}</strong></p>
+                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                            <strong>{this.datefromcreate(user.sign_date)}</strong>
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+
+        else {
+            return (
+                <div className="col-md-6 center-block">
+                </div>
+            )
+        }
+    }
+
+    genTable(){
+        var that=this;
+        //this.handleSign();
+        return this.props.RFQ_details.allowance_nikosh.map(function (member) {
+            var block=that.genSignBlock(member);
+            //console.log(member);
+            return (
+                <tr key={member.user_id}>
+                    <td>০১</td>
+                    <td>{member.name}</td>
+                    <td>বৈজ্ঞানিক কর্মকর্তা <br/>
+                        ডিআরআইসিএম, বিসিএসআইআর <br/>
+                        ও সভাপতি, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
+                        কমিটি
+                    </td>
+                    <td>{block}</td>
+                </tr>
+            );
+        });
+    }
+
+    genTable2(){
+        var that=this;
+        //this.handleSign();
+        return this.props.RFQ_details.allowance_nikosh.map(function (member) {
+            var block=that.genSignBlock2(member);
+            //console.log(member);
+            return (
+                <tr key={member.user_id}>
+                    <td>০১</td>
+                    <td>{member.name}<br/>
+                        বৈজ্ঞানিক কর্মকর্তা <br/>
+                        ডিআরআইসিএম, বিসিএসআইআর <br/>
+                        ও সভাপতি, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
+                        কমিটি
+                    </td>
+                    <td scope="colgroup">৩০০/-</td>
+                    <td scope="colgroup">৩০/-</td>
+                    <td scope="colgroup">২৭০/-</td>
+                    <td scope="colgroup">{block}</td>
+                </tr>
+            );
+        });
+    }
 
     render() {
-        if(this.props.RFQ_details) {
+        if (this.props.RFQ_details && this.props.SpCh) {
             return (
                 <div className="container">
                     <div className="col-md-3">
-                        <SideBar
+                        <SideBar goToNote={'/Note/' + this.props.RFQ_details._id}
                         />
                     </div>
                     <div className="col-md-9">
@@ -33,21 +234,24 @@ class AllowanceNikosh extends Component {
                                             <div className="row">
                                                 <div className="col-md-12 pull-left">
                                         <span
-                                            className="pull-left"><strong>RFQ No :  <b></b></strong></span>
+                                            className="pull-left"><strong>RFQ No :  <b>{this.props.RFQ_details.standard.RFQ_no}</b></strong></span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
-                                            <p id="dateload"><strong>DATE</strong></p>
+                                            <p id="dateload"><strong>{this.datefromcreate(this.props.RFQ_details.meeting.dateOfMeeting)}</strong></p>
                                         </div>
                                     </div>
 
                                     <div id="text-stnd" className="text-left">
-                                        .................... তারিখে অনুষ্ঠিত ডেজিগনেটেড রেফারেন্স ইনষ্টিটিউট ফর কেমিক্যাল
+                                        {this.datefromcreate(this.props.RFQ_details.meeting.dateOfMeeting)} তারিখে অনুষ্ঠিত ডেজিগনেটেড রেফারেন্স ইনষ্টিটিউট ফর
+                                        কেমিক্যাল
                                         মেজারমেন্টস- এর
-                                        Supply of Chemicals কাজের জন্য আহবানকৃত স্বল্পমূল্যের ক্রয় সংক্রান্ত দরপত্র মূল্যায়ন
+                                        Supply of {this.props.RFQ_details.chahida.title} কাজের জন্য আহবানকৃত স্বল্পমূল্যের ক্রয় সংক্রান্ত দরপত্র
+                                        মূল্যায়ন
                                         কমিটির
-                                        সভা কমিটির সভাপতি ফারজানা হোসেন-এর সভাপতিত্বে অনুষ্ঠিত হয়। সভায় সন্মানিত সদস্যগনের
+                                        সভা কমিটির সভাপতি {this.props.SpCh.profile.name}-এর সভাপতিত্বে অনুষ্ঠিত হয়। সভায় সন্মানিত
+                                        সদস্যগনের
                                         উপস্থিতির
                                         তালিকা। <br/>
                                         <br/>
@@ -72,58 +276,8 @@ class AllowanceNikosh extends Component {
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>০১</td>
-                                                <td>ফারজানা হোসেন</td>
-                                                <td>বৈজ্ঞানিক কর্মকর্তা <br/>
-                                                    ডিআরআইসিএম, বিসিএসআইআর <br/>
-                                                    ও সভাপতি, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
-                                                    কমিটি
-                                                </td>
-                                                <td>......................</td>
-                                            </tr>
-                                            <tr>
-                                                <td>০২</td>
-                                                <td>ড. বিলকিস আরা বেগম</td>
-                                                <td>প্রধান বৈজ্ঞানিক কর্মকর্তা <br/>
-                                                    ও বিভাগীয় প্রধান, রসায়ন বিভাগ, <br/>
-                                                    পরমানু শক্তি কেন্দ্র, ঢাকা ও সদস্য, <br/> স্বল্পমূল্যের ক্রয়ের জন্য
-                                                    দরপত্র
-                                                    <br/>
-                                                    ও প্রস্তাব মূল্যায়ন কমিটি
-                                                </td>
-                                                <td></td>
-                                            </tr>
+                                            {this.genTable()}
 
-                                            <tr>
-                                                <td>০৩</td>
-                                                <td>মো: আব্দুল হাই</td>
-                                                <td>টেকনিকাল অফিসার <br/>
-                                                    ক্রয়শাখা, বিসিএসআইআর <br/>
-                                                    ও সদস্য, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/>
-                                                    ও প্রস্তাব মূল্যায়ন কমিটি
-                                                </td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>০৪</td>
-                                                <td>মো: জুয়েল হোসেন</td>
-                                                <td>বৈজ্ঞানিক কর্মকর্তা <br/>
-                                                    ডিআরআইসিএম, বিসিএসআইআর <br/>
-                                                    ও সদস্য, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/>ও প্রস্তাব মূল্যায়ন কমিটি
-                                                </td>
-                                                <td></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>০৫</td>
-                                                <td>সুমাইয়া আক্তার</td>
-                                                <td>বৈজ্ঞানিক কর্মকর্তা <br/>
-                                                    ডিআরআইসিএম, বিসিএসআইআর <br/>
-                                                    ও সদস্য, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/>ও প্রস্তাব মূল্যায়ন কমিটি
-                                                </td>
-                                                <td></td>
-                                            </tr>
                                             </tbody>
 
                                         </table>
@@ -157,21 +311,24 @@ class AllowanceNikosh extends Component {
                                             <div className="row">
                                                 <div className="col-md-12 pull-left">
                                         <span
-                                            className="pull-left"><strong>RFQ No :  <b></b></strong></span>
+                                            className="pull-left"><strong>RFQ No :  <b>{this.props.RFQ_details.standard.RFQ_no}</b></strong></span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
-                                            <p id="dateload"><strong>DATE</strong></p>
+                                            <p id="dateload"><strong>DATE {this.datefromcreate(this.props.RFQ_details.meeting.dateOfMeeting)}</strong></p>
                                         </div>
                                     </div>
 
                                     <div id="text-stnd" className="text-left">
-                                        .................... তারিখে অনুষ্ঠিত ডেজিগনেটেড রেফারেন্স ইনষ্টিটিউট ফর কেমিক্যাল
+                                        {this.datefromcreate(this.props.RFQ_details.meeting.dateOfMeeting)} তারিখে অনুষ্ঠিত ডেজিগনেটেড রেফারেন্স ইনষ্টিটিউট ফর
+                                        কেমিক্যাল
                                         মেজারমেন্টস- এর
-                                        Supply of Chemicals কাজের জন্য আহবানকৃত স্বল্পমূল্যের ক্রয় সংক্রান্ত দরপত্র মূল্যায়ন
+                                        Supply of {this.props.RFQ_details.chahida.title} কাজের জন্য আহবানকৃত স্বল্পমূল্যের ক্রয় সংক্রান্ত দরপত্র
+                                        মূল্যায়ন
                                         কমিটির
-                                        সভা কমিটির সভাপতি ফারজানা হোসেন-এর সভাপতিত্বে অনুষ্ঠিত হয়। সভায় সন্মানিত সদস্যগনের
+                                        সভা কমিটির সভাপতি {this.props.SpCh.profile.name}-এর সভাপতিত্বে অনুষ্ঠিত হয়। সভায় সন্মানিত
+                                        সদস্যগনের
                                         উপস্থিতির
                                         তালিকা। <br/>
                                         <br/>
@@ -204,71 +361,9 @@ class AllowanceNikosh extends Component {
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>০১</td>
-                                                <td>ফারজানা হোসেন <br/>
-                                                    বৈজ্ঞানিক কর্মকর্তা <br/>
-                                                    ডিআরআইসিএম, বিসিএসআইআর <br/>
-                                                    ও সভাপতি, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
-                                                    কমিটি
-                                                </td>
-                                                <td scope="colgroup">৩০০/-</td>
-                                                <td scope="colgroup">৩০/-</td>
-                                                <td scope="colgroup">২৭০/-</td>
-                                                <td scope="colgroup">.....</td>
-                                            </tr>
-                                            <tr>
-                                                <td>০২</td>
-                                                <td>ড. বিলকিস আরা বেগম <br/>
-                                                    প্রধান বৈজ্ঞানিক কর্মকর্তা <br/>
-                                                    ও বিভাগীয় প্রধান, রসায়ন বিভাগ, <br/>
-                                                    পরমানু শক্তি কেন্দ্র, ঢাকা ও <br/>সদস্য, স্বল্পমূল্যের ক্রয়ের জন্য
-                                                    দরপত্র <br/>
-                                                    ও প্রস্তাব মূল্যায়ন কমিটি
-                                                </td>
-                                                <td scope="colgroup">৩০০/-</td>
-                                                <td scope="colgroup">৩০/-</td>
-                                                <td scope="colgroup">২৭০/-</td>
-                                                <td scope="colgroup">.....</td>
-                                            </tr>
-                                            <tr>
-                                                <td>০৩</td>
-                                                <td>মো: আব্দুল হাই <br/>
-                                                    টেকনিকাল অফিসার <br/>
-                                                    ক্রয়শাখা, বিসিএসআইআর <br/>
-                                                    ও সদস্য, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/>ও প্রস্তাব মূল্যায়ন কমিটি
-                                                </td>
-                                                <td scope="colgroup">৩০০/-</td>
-                                                <td scope="colgroup">৩০/-</td>
-                                                <td scope="colgroup">২৭০/-</td>
-                                                <td scope="colgroup">.....</td>
-                                            </tr>
-                                            <tr>
-                                                <td>০৪</td>
-                                                <td>মো: জুয়েল হোসেন <br/>
-                                                    বৈজ্ঞানিক কর্মকর্তা <br/>
-                                                    ডিআরআইসিএম, বিসিএসআইআর <br/>
-                                                    ও সদস্য, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/>ও প্রস্তাব মূল্যায়ন কমিটি
-                                                </td>
-                                                <td scope="colgroup">৩০০/-</td>
-                                                <td scope="colgroup">৩০/-</td>
-                                                <td scope="colgroup">২৭০/-</td>
-                                                <td scope="colgroup">.....</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>০৫</td>
-                                                <td>সুমাইয়া আক্তার <br/>
-                                                    বৈজ্ঞানিক কর্মকর্তা <br/>
-                                                    ডিআরআইসিএম, বিসিএসআইআর <br/>
-                                                    ও সদস্য-সচিব, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/>ও প্রস্তাব মূল্যায়ন
-                                                    কমিটি
-                                                </td>
-                                                <td scope="colgroup">৩০০/-</td>
-                                                <td scope="colgroup">৩০/-</td>
-                                                <td scope="colgroup">২৭০/-</td>
-                                                <td scope="colgroup">.....</td>
-                                            </tr>
+                                            {
+                                                this.genTable2()
+                                            }
 
                                             </tbody>
 
@@ -286,20 +381,29 @@ class AllowanceNikosh extends Component {
                     </div>
                 </div>
             );
-        }else{
-            <div>
-                Loading...
-            </div>
+        } else {
+            return (
+                <div>
+                    Loading...
+                </div>
+            )
+
         }
     }
 }
 
 AllowanceNikosh.propTypes = {
-    RFQ_details: PropTypes.object
+    RFQ_details: PropTypes.object,
+    SpCh: PropTypes.object
 };
 
 export default createContainer(props => {
     return {
+        SpCh: Meteor.users.findOne(
+            {
+                'profile.committee.name': "Specification Committee",
+                'profile.committee.des': 'Chairman'
+            }),
         RFQ_details: RFQDetails.findOne({_id: props.id})
     };
 }, AllowanceNikosh);

@@ -234,6 +234,14 @@ StandardApplyDetails = new SimpleSchema({
     destination: {
         type: String,
         label: 'destination'
+    },
+    spec: {
+        type: String,
+        label: 'spec'
+    },
+    making: {
+        type: String,
+        label: 'making'
     }
 });
 
@@ -345,6 +353,11 @@ RFQDetailsSchema = new SimpleSchema({
     meeting: {
         type: MeetingNoticeSchema,
         label: 'meeting',
+        optional: true
+    },
+    allowance_nikosh: {
+        type: [UserSignFalse],
+        label: 'allowance',
         optional: true
     }
 });

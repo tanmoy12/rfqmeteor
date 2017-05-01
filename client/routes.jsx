@@ -23,6 +23,7 @@ import WO from '../imports/ui/components/WO';
 
 
 
+
 FlowRouter.route('/', {
     action(){
         mount(LayoutLogin, {
@@ -145,6 +146,14 @@ FlowRouter.route('/MeetingNotice/:id', {
     action(params){
         mount(LayoutDash, {
             content: (<MeetingNotice id={params.id} />)
+        })
+    }
+});
+
+FlowRouter.route('/cs/:id', {
+    action(params){
+        mount(LayoutDash, {
+            content: (<CompanyS id={params.id} />)
         })
     }
 });

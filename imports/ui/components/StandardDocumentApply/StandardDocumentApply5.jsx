@@ -44,7 +44,10 @@ export default class StandardDocumentApply5 extends Component {
             });
         }
     }
+
+
     genTable() {
+        var that=this;
         return (
             this.props.RFQ.standard.standard_details.map(function (detail) {
                     return (
@@ -52,7 +55,8 @@ export default class StandardDocumentApply5 extends Component {
                             <td className="col-md-1">{detail.item_no}</td>
                             <td className="col-md-3">{detail.desc}</td>
                             <td><textarea readOnly defaultValue={detail.spec} rows="4" cols="50"></textarea></td>
-                            <td><textarea readOnly defaultValue={detail.making} rows="4" cols="50"></textarea></td>
+                            <td><textarea onChange={that.props.handleProductUpdate} name="making" id={detail.id}
+                                          defaultValue={detail.making} rows="4" cols="50"></textarea></td>
                             <td className="col-md-2 text-center">{detail.qty}</td>
                         </tr>
                     )

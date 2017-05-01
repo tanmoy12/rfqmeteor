@@ -79,7 +79,7 @@ class Note extends Component {
                 ],
                 link: '/ChahidaPotroload/' + RFQItem._id
             }
-            var stanCreate, stanLoad, allowanceNikosh,meetingNotice;
+            var stanCreate, stanLoad, allowanceNikosh,meetingNotice,cs;
             if(this.props.RFQ_details.step_no==3 && Meteor.userId()==this.props.RFQ_details.standard.initiator.user_id){
                 stanCreate = "/StandardDocument/" + this.props.RFQ_details._id;
             }
@@ -93,6 +93,13 @@ class Note extends Component {
             if(this.props.RFQ_details.step_no==6 && Meteor.userId()==this.props.RFQ_details.meeting.initiator.user_id){
                 meetingNotice= "/MeetingNotice/"+this.props.RFQ_details._id;
             }
+            if(this.props.RFQ_details.step_no>6){
+                meetingNotice= "/MeetingNotice/"+this.props.RFQ_details._id;
+            }
+            if(this.props.RFQ_details.step_no>6){
+                allowanceNikosh= "/AllowanceNikosh/"+this.props.RFQ_details._id;
+                cs= "/cs/"+this.props.RFQ_details._id;
+            }
             return (
                 <div className="container">
                     <div className="row">
@@ -103,6 +110,7 @@ class Note extends Component {
                                 standardBlock={stanLoad}
                                 allowanceNikosh={allowanceNikosh}
                                 meetingNotice={meetingNotice}
+                                cs={cs}
                             />
 
 
