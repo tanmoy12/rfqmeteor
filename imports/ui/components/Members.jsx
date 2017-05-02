@@ -9,7 +9,8 @@ export default class Members extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            remove: false
+            remove: false,
+
         };
 
 
@@ -41,13 +42,46 @@ export default class Members extends Component {
 
         console.log("USER LIST");
         var that = this;
-        var dropdownList1 =
+        var dropdownList =
             this.props.allUsersList.map(function (user) {
                 //console.log(user);
+
                 return (<li><a
                     href="#" key={user._id} id={selected_id1} onClick={that.showSelectedOption.bind(this, selected_id1, user.profile.name)}>{user.profile.name}</a></li>)
             });
-        console.log(dropdownList1);
+        //console.log(dropdownList);
+
+
+
+        let desig = this.props.des;
+        if(desig=="Chairman"){
+            desig = "Chairperson";
+        }
+        else if(desig=="Shochib"){
+            desig = "সদস্যসচিব";
+        }
+        else if(desig=="member"){
+            desig = "Member";
+        }
+
+        let chairmanOption;
+        if(this.state.hasChairman){
+            chairmanOption =
+                <li><a
+                    onClick={this.showSelectedOption.bind(this, selected_id2, "Chairperson")}
+                    href="#">Chairperson</a></li>
+        }
+
+        let shochibOption;
+        if(this.state.hasShochib){
+            shochibOption =
+                <li><a
+                    onClick={this.showSelectedOption.bind(this, selected_id2, "সদস্যসচিব")}
+                    href="#">সদস্যসচিব</a></li>
+        }
+
+
+
 
 
 
@@ -71,7 +105,7 @@ export default class Members extends Component {
                                         </button>
                                         <ul className="dropdown-menu">
                                             <li className="dropdown-header">Usernames</li>
-                                            {dropdownList1}
+                                            {dropdownList}
 
                                         </ul>
                                     </div>
@@ -79,19 +113,19 @@ export default class Members extends Component {
                                         <button type="button" className="btn btn-default dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                                 style={{width: "100%"}}>
-                                            <span id={selected_id2}>{this.props.des}</span>
+                                            <span id={selected_id2}>{desig}</span>
                                             <span className="caret" style={{marginLeft: "3px"}}></span>
                                         </button>
                                         <ul className="dropdown-menu">
                                             <li className="dropdown-header">Designation</li>
-                                            <li><a onClick={this.showSelectedOption.bind(this, selected_id2, "Member")}
-                                                   href="#">Member</a></li>
                                             <li><a
                                                 onClick={this.showSelectedOption.bind(this, selected_id2, "Chairperson")}
                                                 href="#">Chairperson</a></li>
                                             <li><a
                                                 onClick={this.showSelectedOption.bind(this, selected_id2, "সদস্যসচিব")}
                                                 href="#">সদস্যসচিব</a></li>
+                                            <li><a onClick={this.showSelectedOption.bind(this, selected_id2, "Member")}
+                                                   href="#">Member</a></li>
                                         </ul>
                                     </div>
 
