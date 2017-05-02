@@ -873,7 +873,7 @@ input[type=number]::-webkit-outer-spin-button {
     padding-right: 4%;
     padding-top: 2%;
     padding-bottom: 2%;
-    margin-bottom: 2%;
+    margin-bottom: 8%;
     border-radius: 5px;
     -webkit-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
@@ -1091,15 +1091,7 @@ opacity */
     width: 17%;
 }
 
-.navbar-fixed-left + .container {
-    /*padding-left: 160px;*/
-}
 
-/* On using dropdown menu (To right shift popuped) */
-.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
-    /*margin-top: -50px;*/
-    /*margin-left: 140px;*/
-}
 
 .sidebarLink{
     width: 100%;
@@ -1218,6 +1210,9 @@ opacity */
 .bb{
     font-size: 14px;
 }
+.bb:focus{
+    outline:0 !important;
+}
 /*DEMO CHAHIDA POTRO ENDS*/
 
 /*SETTINGS.JSX*/
@@ -1272,6 +1267,88 @@ opacity */
     /*display: inline-flex;*/
     width: 30%;
 }
+
+
+
+/*Footer.jsx css starts*/
+.footer-distributed{
+    background-color: #292c2f;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: normal 16px sans-serif;
+
+    padding: 0.2% 2%;
+    /*position: absolute;*/
+    /*top: 90%;*/
+}
+
+.footer-distributed .footer-left a{
+    color:  #8f9296;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Footer links */
+
+.footer-distributed p.footer-links{
+    font-size:18px;
+    font-weight: bold;
+    color:  #ffffff;
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+.footer-distributed p.footer-links a{
+    display:inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color:  inherit;
+}
+
+.footer-distributed .footer-right{
+    float: right;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    max-width: 180px;
+}
+
+.footer-distributed .footer-right a{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color:  #33383b;
+    border-radius: 2px;
+
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+
+    margin-left: 3px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-right{
+        text-align: center;
+    }
+
+    .footer-distributed .footer-right{
+        float: none;
+        margin-top: 0.5%;
+        margin-bottom: 0.5%;
+    }
+
+    .footer-distributed .footer-left p.footer-links{
+        line-height: 1.8;
+    }
+}
+/*Footer.jsx css ends*/
 
 
 /*SHADMAN'S CSS ENDS*/

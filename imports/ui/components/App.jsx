@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import LoginForm from "./LoginForm";
 import SignUp from "./SignUp";
 import Caraousal from './LoginCaraousal';
+import Footer from './Footer';
+
 
 export default class App extends Component {
     render() {
@@ -37,8 +39,11 @@ export default class App extends Component {
                         </div>
                     </div>
                 </nav>
-                <SignUp/>
+                <div style={{marginBottom: "50%"}}>
+                    <SignUp/>
+                </div>
                 {/*<Caraousal/>*/}
+                <Footer/>
             </div>
 
         );
