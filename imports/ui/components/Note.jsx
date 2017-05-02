@@ -79,17 +79,21 @@ class Note extends Component {
                 ],
                 link: '/ChahidaPotroload/' + RFQItem._id
             }
-            var stanCreate, stanLoad, allowanceNikosh,meetingNotice,cs;
+            var stanCreate, stanLoad, allowanceNikosh,meetingNotice,cs,applications, RFQ_id;
             if(this.props.RFQ_details.step_no==3 && Meteor.userId()==this.props.RFQ_details.standard.initiator.user_id){
                 stanCreate = "/StandardDocument/" + this.props.RFQ_details._id;
             }
-            if(this.props.RFQ_details.step_no>3){
+            if(this.props.RFQ_details.step_no>3) {
                 stanLoad = {
                     name: 'Standard Document',
                     info: [],
                     link: "/StandardDocumentLoad/" + this.props.RFQ_details._id
                 };
+                var that=this;
+                applications = this.props.RFQ_details.standard_apply;
+                RFQ_id= this.props.RFQ_details._id;
             }
+            //console.log(applications);
             if(this.props.RFQ_details.step_no==6 && Meteor.userId()==this.props.RFQ_details.meeting.initiator.user_id){
                 meetingNotice= "/MeetingNotice/"+this.props.RFQ_details._id;
             }
@@ -111,6 +115,8 @@ class Note extends Component {
                                 allowanceNikosh={allowanceNikosh}
                                 meetingNotice={meetingNotice}
                                 cs={cs}
+                                applications={applications}
+                                RFQ_id={RFQ_id}
                             />
 
 
@@ -151,10 +157,10 @@ class Note extends Component {
                             {this.genSignBlock("হিসাবরক্ষক", chahida_potro.accountant)}
                             {this.genSignBlock("অনুমোদনকারী", chahida_potro.director)}
 
-                            <p className="text"> ৪। নোটানুচ্ছেদ ০৩ এর মাধ্যমে প্রাপ্ত আদেশের আলোকে প্রয়োজনীয় …………..
+                            <p className="text"> ৪। নোটানুচ্ছেদ ০৩ এর মাধ্যমে প্রাপ্ত আদেশের আলোকে প্রয়োজনীয় {chahida_potro.title}
                                 সমূহের
                                 Specification ও বাজারমূল্য নির্ধারনকৃত হয়েছে(কপি সংযুক্ত)। প্রস্তুতকৃত Specification
-                                ও বাজারমূল্যের আলোকে প্রয়োজনীয় ……………… ক্রয় করা যেতে পারে।
+                                ও বাজারমূল্যের আলোকে প্রয়োজনীয় {chahida_potro.title} ক্রয় করা যেতে পারে।
 
                             </p>
                             {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ_details.standard.accountant)}
@@ -193,18 +199,20 @@ class Note extends Component {
 
                                 <div>
                                     <p className="text">
-                                        ৫। নোটানুচ্ছেদ ০১ এর অনুমোদনের আলোকে Chemicals সরবরাহকারী প্রতিষ্ঠানের নিকট হতে
+                                        ৫। নোটানুচ্ছেদ ০১ এর অনুমোদনের আলোকে {chahida_potro.title} সরবরাহকারী প্রতিষ্ঠানের নিকট হতে
                                         দরপত্র আহ্বানের লক্ষ্যে নোটিশ বোর্ডে বিজ্ঞপ্তি প্রকাশ এবং চিঠির মাধ্যমে অবগত
                                         করার
                                         ব্যাপারে অনুমোদনের জন্য নথি উপস্থাপন করা হলো।
                                     </p>
 
-
+                                    {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ_details.standard.accountant)}
+                                    {this.genSignBlock("অনুমোদনকারী", this.props.RFQ_details.standard.director)}
                                     <p className="text">
                                         ৬। নোটানুচ্ছেদ ০৫ এর অনুমোদনের আলোকে স্বচ্ছপত্র স্বাক্ষরের জন্য উপস্থাপন করা
                                         হলো।
                                     </p>
-
+                                    {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ_details.standard.accountant)}
+                                    {this.genSignBlock("অনুমোদনকারী", this.props.RFQ_details.standard.director)}
 
                                     <p className="text">
                                         ৭। ২৮/০২/২০১৬ তারিখে দরপত্র আহ্বানের প্রেক্ষিতে মোট ০৩ (তিন) টি দরপত্র পাওয়া

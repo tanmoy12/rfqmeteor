@@ -158,7 +158,11 @@ class StandardDocumentApply extends Component {
                     amount: this.state.estimate,
                     createdAt: new Date(),
                     company: company,
-                    StandardApply: this.state.products
+                    StandardApply: this.state.products,
+                    destination: this.state.destination,
+                    delivery: this.state.delivery,
+                    warranty: this.state.warranty,
+                    datesub: this.state.datesub
                 }
                 RFQDetails.update(
                     this.props.RFQ._id,

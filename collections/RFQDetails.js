@@ -271,6 +271,11 @@ CompanySchema = new SimpleSchema({
         type: Date,
         label: "datesign",
         optional: true
+    },
+    name: {
+        type: String,
+        label: 'name',
+        optional: true
     }
 });
 
@@ -293,6 +298,26 @@ StandardApplySchema = new SimpleSchema({
         type: CompanySchema,
         label: 'company',
         optional: true
+    },
+    destination: {
+        type: String,
+        label: 'destination',
+        optional: true
+    },
+    delivery: {
+        type: String,
+        label: 'delivery',
+        optional: true
+    },
+    warranty: {
+        type: String,
+        label: 'warranty',
+        optional: true
+    },
+    datesub: {
+        type: Date,
+        label: 'datesub',
+        optional: true
     }
 });
 
@@ -313,7 +338,6 @@ MeetingNoticeSchema = new SimpleSchema({
         optional: true
     }
 });
-
 
 RFQDetailsSchema = new SimpleSchema({
     title: {

@@ -273,7 +273,7 @@ export default class SideBar extends Component {
 
 
         //CREATE_STANDARD_DOC BUTT CREATE
-        var create_standard_doc_butt_create, allowanceNikosh,meetingNotice;
+        var create_standard_doc_butt_create, allowanceNikosh,meetingNotice, application;
         if(this.props.createStandardDoc) {
             create_standard_doc_butt_create =
                 <div>
@@ -336,6 +336,24 @@ export default class SideBar extends Component {
                     </li>
                 </div>
         }
+        if(this.props.applications) {
+            var that=this;
+            var i=0;
+            application =
+                this.props.applications.map(function (application) {
+                    i++;
+                    return (
+                        <div key={i}>
+                            <li className="sidebar_li">
+                                <a className="sidebar_a" href={"/StandardApplyLoad/" + that.props.RFQ_id+ "/"+ application.company.user_id}>
+                                    {application.company.user_id}
+                                </a>
+                            </li>
+                        </div>
+                    )
+                })
+
+        }
 
         //*********************************FOR SETTINGS.JSX*************************************
         //CREATE FIVE BUTTONS
@@ -355,6 +373,7 @@ export default class SideBar extends Component {
                     {meetingNotice}
                     {allowanceNikosh}
                     {cs}
+                    {application}
                 </ul>
             </div>
 

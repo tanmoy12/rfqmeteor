@@ -42,7 +42,7 @@ export default class App extends Component {
                 <div style={{marginBottom: "50%"}}>
                     <SignUp/>
                 </div>
-                {/*<Caraousal/>*/}
+                <Caraousal/>
                 <Footer/>
             </div>
 

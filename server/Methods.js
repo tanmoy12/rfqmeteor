@@ -52,3 +52,17 @@ Meteor.methods({
             });
     }
 });
+
+Meteor.methods({
+    removeFromCommittee: function(user_id) {
+        check(user_id, String);
+
+        Meteor.users.update(
+            user_id,
+            {
+                $set: {
+                    'profile.committee': ''
+                }
+            });
+    }
+});

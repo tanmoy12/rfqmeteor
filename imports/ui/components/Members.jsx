@@ -29,6 +29,9 @@ export default class Members extends Component {
     }
 
     removeMember() {
+        console.log('user_id');
+        console.log(this.props.idx);
+        Meteor.call('removeFromCommittee', this.props.idx);
         this.setState({
             remove: true
         });
