@@ -4,7 +4,7 @@ import $ from 'jquery';
 import Committee from './Committee';
 
 
-export default class Settings extends Component {
+export default class Footer extends Component {
 
     constructor(props) {
         super(props);

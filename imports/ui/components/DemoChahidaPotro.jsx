@@ -2,8 +2,8 @@ import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 import SideBar from './SideBar';
+import SideBar2 from './SideBar2';
 import Calendar from './Calendar';
-import Footer from './Footer';
 
 
 export default class ChahidaPotroLoad extends Component {
@@ -71,52 +71,53 @@ export default class ChahidaPotroLoad extends Component {
 
                 <div className="row ">
                     <div className="col-md-3" >
-                        <SideBar
-                            chahidaBlock = {{
-                                name: "চাহিদা পত্র",
-                                info: [
-                                    {
-                                        title: "RFQ Title",
-                                        details: "gaja"
-                                    },
-                                    {
-                                        title: "Estimate",
-                                        details: "100"
-                                    },
-                                    {
-                                        title: "Intiated by",
-                                        details: "shadman264"
-                                    }
-                                ],
-                                link: "http://www.youtube.com"
-                            }}
-                            forwardTo = {{toWhom: "যাচাইকারী",
-                                dropdownList: ['shadman', 'tanmoy', 'hasib']
-                            }}
-                            standardBlock = {{
-                                name: "Standard Document",
-                                info: [
-                                    {
-                                        title: "RFQ Title",
-                                        details: "gaja"
-                                    },
-                                    {
-                                        title: "Estimate",
-                                        details: "100"
-                                    },
-                                    {
-                                        title: "Intiated by",
-                                        details: "shadman264"
-                                    }
-                                ],
-                                link: "http://www.youtube.com"
-                            }}
-                            createStandardDoc = {{
-                                link: "http://www.youtube.com"
-                            }}
+                        {/*<SideBar*/}
+                            {/*chahidaBlock = {{*/}
+                                {/*name: "চাহিদা পত্র",*/}
+                                {/*info: [*/}
+                                    {/*{*/}
+                                        {/*title: "RFQ Title",*/}
+                                        {/*details: "gaja"*/}
+                                    {/*},*/}
+                                    {/*{*/}
+                                        {/*title: "Estimate",*/}
+                                        {/*details: "100"*/}
+                                    {/*},*/}
+                                    {/*{*/}
+                                        {/*title: "Intiated by",*/}
+                                        {/*details: "shadman264"*/}
+                                    {/*}*/}
+                                {/*],*/}
+                                {/*link: "http://www.youtube.com"*/}
+                            {/*}}*/}
+                            {/*forwardTo = {{toWhom: "যাচাইকারী",*/}
+                                {/*dropdownList: ['shadman', 'tanmoy', 'hasib']*/}
+                            {/*}}*/}
+                            {/*standardBlock = {{*/}
+                                {/*name: "Standard Document",*/}
+                                {/*info: [*/}
+                                    {/*{*/}
+                                        {/*title: "RFQ Title",*/}
+                                        {/*details: "gaja"*/}
+                                    {/*},*/}
+                                    {/*{*/}
+                                        {/*title: "Estimate",*/}
+                                        {/*details: "100"*/}
+                                    {/*},*/}
+                                    {/*{*/}
+                                        {/*title: "Intiated by",*/}
+                                        {/*details: "shadman264"*/}
+                                    {/*}*/}
+                                {/*],*/}
+                                {/*link: "http://www.youtube.com"*/}
+                            {/*}}*/}
+                            {/*createStandardDoc = {{*/}
+                                {/*link: "http://www.youtube.com"*/}
+                            {/*}}*/}
 
 
-                        />
+                        {/*/>*/}
+                        <SideBar2/>
 
 
                     </div>
@@ -244,7 +245,6 @@ export default class ChahidaPotroLoad extends Component {
                     </div>
 
                 </div>
-                <Footer/>
             </div>
         );
     }
