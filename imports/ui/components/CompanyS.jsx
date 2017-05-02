@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from "react";
-import {createContainer} from "meteor/react-meteor-data";
+import {createContainer} from 'meteor/react-meteor-data';
+import ReactDOM from 'react-dom';
 
-import SideBar from './SideBar';
+import SideBar from "./SideBar";
 
 class CompanyS extends Component {
     constructor(props) {
@@ -107,21 +108,20 @@ class CompanyS extends Component {
         return dateshow;
     }
 
-    genApplyHead(){
-        var i=0;
+    genApplyHead() {
+        var i = 0;
         return this.props.RFQ_details.standard_apply.map(function (application) {
             i++;
             return (
                 <td key={i} id="nss">{application.company.user_id}
-                    Mamun Plaza, Shop-127(G.F), 31 Hatkhola Road, Tikatuli, Dhaka- 1203.
                 </td>
             )
         })
     }
 
-    genApplyAmount(){
-        var i=0;
-        var that=this;
+    genApplyAmount() {
+        var i = 0;
+        var that = this;
         return this.props.RFQ_details.standard_apply.map(function (application) {
             i++;
             return (
@@ -132,9 +132,9 @@ class CompanyS extends Component {
         })
     }
 
-    genApplyTitle(){
-        var i=0;
-        var that=this;
+    genApplyTitle() {
+        var i = 0;
+        var that = this;
         return this.props.RFQ_details.standard_apply.map(function (application) {
             i++;
             return (
@@ -144,9 +144,9 @@ class CompanyS extends Component {
         })
     }
 
-    genApplyTrade(){
-        var i=0;
-        var that=this;
+    genApplyTrade() {
+        var i = 0;
+        var that = this;
         return this.props.RFQ_details.standard_apply.map(function (application) {
             i++;
             return (
@@ -155,9 +155,9 @@ class CompanyS extends Component {
         })
     }
 
-    genApplyTax(){
-        var i=0;
-        var that=this;
+    genApplyTax() {
+        var i = 0;
+        var that = this;
         return this.props.RFQ_details.standard_apply.map(function (application) {
             i++;
             return (
@@ -166,9 +166,9 @@ class CompanyS extends Component {
         })
     }
 
-    genApplySolvency(){
-        var i=0;
-        var that=this;
+    genApplySolvency() {
+        var i = 0;
+        var that = this;
         return this.props.RFQ_details.standard_apply.map(function (application) {
             i++;
             return (
@@ -177,9 +177,9 @@ class CompanyS extends Component {
         })
     }
 
-    genApplyValidity(){
-        var i=0;
-        var that=this;
+    genApplyValidity() {
+        var i = 0;
+        var that = this;
         return this.props.RFQ_details.standard_apply.map(function (application) {
             i++;
             return (
@@ -188,8 +188,189 @@ class CompanyS extends Component {
         })
     }
 
+    genDetailsTable() {
+        var apply = this.props.RFQ_details.standard_apply;
+        var applyNum = apply.length;
+        var detailNum = apply[0].StandardApply.length;
+        console.log(applyNum);
+        console.log(detailNum);
+        var transposed= [];
+        for(var i=0;i<detailNum;i++){
+            var vert= [];
+            for(var j=0;j<applyNum;j++){
+                //console.log(apply[j].StandardApply[i]);
+                vert.push(apply[j].StandardApply[i]);
+            }
+            transposed.push(vert);
+        }
+
+        //console.log(transposed);
+        var i=-1;
+        var that=this;
+        return transposed.map(function (t) {
+            i++;
+            var standard = that.props.RFQ_details.standard.standard_details[i];
+            var j=0;
+            var Table= t.map(function (app) {
+                j++;
+                return (
+                    <td key={j} className="text-left">
+                        <strong>{app.desc}</strong> <br/><br/>
+                        {app.spec}<br/>
+                        Quantity: {app.qty} <br/>
+                        Make: {app.making} <br/>
+
+                        <strong>{app.total}</strong>
+                    </td>
+                )
+            });
+
+            return (
+                <tr key={i}>
+                    <td>{i + 1}</td>
+                    <td className="text-left"><strong>{standard.desc}</strong> <br/><br/>
+                        {standard.spec}<br/>
+                        Quantity: {standard.qty} <br/>
+                        Make: {standard.making} <br/>
+                    </td>
+                    {Table}
+                </tr>
+            )
+        });
+
+    }
+
+    handleSign() {
+        Meteor.call('updateCompanyS', this.props.RFQ_details._id, Meteor.userId());
+    }
+
+    passwordcheck(e) {
+        if (e.key === 'Enter') {
+            var that = this;
+            var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+            var digest = Package.sha.SHA256(password);
+            Meteor.call('checkPassword', digest, function (err, result) {
+                if (result) {
+                    that.handleSign();
+                    that.setState({
+                        signed: true
+                    })
+                }
+                else {
+                    Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
+                }
+            });
+        }
+    }
+
+    dateTodayString() {
+        var d = new Date();
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
+    genSignBlock(user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link = '';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
+            return (
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                            <strong>{user.name}</strong></p>
+                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                            <strong>{this.datefromcreate(user.sign_date)}</strong>
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+        else if (user.user_id && !user.signed) {
+            if (Meteor.userId() == user.user_id) {
+                if (this.state.signed) {
+                    return (
+                        <div className="col-md-6 center-block">
+                            <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                                    <strong>{Meteor.user().profile.name}</strong></p>
+                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                                    <strong>{this.dateTodayString()}</strong>
+                                </p>
+                            </div>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div className="col-md-6 center-block form-group">
+                            <div className="col-md-1">
+                            </div>
+                            <div id="signblock" className="form-style-4">
+                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)}
+                                       type="password" name="password"
+                                       ref="password"
+                                       placeholder="Password"/><br/>
+                            </div>
+                            <div>
+                                <div className="form-inline">
+                                    <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
+                                        <strong>{Meteor.user().profile.name}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
+            }
+            else {
+                return (
+                    <div className="col-md-6 center-block">
+                    </div>
+                )
+            }
+        }
+        else {
+            return (
+                <div className="col-md-6 center-block">
+                </div>
+            )
+        }
+    }
+
+    genTable2() {
+        var that = this;
+        //this.handleSign();
+        return this.props.RFQ_details.company_s.map(function (member) {
+            var block = that.genSignBlock(member);
+            //console.log(member);
+            return (
+                <tr key={member.user_id}>
+                    <td>০১</td>
+                    <td>{member.name}<br/>
+                        বৈজ্ঞানিক কর্মকর্তা <br/>
+                        ডিআরআইসিএম, বিসিএসআইআর <br/>
+                        ও সভাপতি, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
+                        কমিটি
+                    </td>
+                    <td scope="colgroup">{block}</td>
+                </tr>
+            );
+        });
+    }
+
     render() {
-        if(this.props.RFQ_details) {
+        if (this.props.RFQ_details) {
             var side = <SideBar goToNote={'/Note/' + this.props.RFQ_details._id}/>;
             return (
                 <div className="container">
@@ -220,14 +401,16 @@ class CompanyS extends Component {
                                             </div>
                                         </div>
                                         <div className="col-md-6">
-                                            <p id="dateload"><strong>DATE {this.datefromcreate(this.props.RFQ_details.meeting.dateOfMeeting)}</strong></p>
+                                            <p id="dateload">
+                                                <strong>DATE {this.datefromcreate(this.props.RFQ_details.meeting.dateOfMeeting)}</strong>
+                                            </p>
                                         </div>
                                     </div>
 
 
                                     <div className="table table-bordered table-responsive">
                                         <table className="table">
-                                            <thead className="text-center">
+                                            <thead className="text-left">
                                             <tr>
                                                 <td>S/N</td>
                                                 <td id="nss">As tender document</td>
@@ -254,7 +437,7 @@ class CompanyS extends Component {
                                             </tr>
                                             <tr>
                                                 <td>d</td>
-                                                <td>মIncome tax certificate</td>
+                                                <td>Income tax certificate</td>
                                                 {this.genApplyTax()}
                                             </tr>
 
@@ -286,308 +469,16 @@ class CompanyS extends Component {
 
                             <div className="table table-bordered table-responsive">
                                 <table className="table">
-                                    <thead>
+                                    <thead className="text-left">
                                     <tr>
                                         <td>Item No</td>
-                                        <td>Required Specification</td>
+                                        <td className="text-left">Required Specification</td>
                                         {this.genApplyHead()}
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><strong>01</strong></td>
-                                        <td><strong>BSTFA</strong></td>
-                                        <td><strong>BSTFA</strong></td>
-                                        <td><strong>BSTFA</strong></td>
-                                        <td><strong>BSTFA</strong></td>
-                                    </tr>
+                                    {this.genDetailsTable()}
 
-                                    <tr>
-                                        <td></td>
-                                        <td>N, O- bis (trimethylsilyl) trifluoroacetamide <br/>
-                                            Grade: Derivatization Grade for GC <br/>
-                                            derivatization <br/>
-                                            Pack Size: 25 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: To be mentioned <br/>
-                                            Origin: To be mentioned
-                                        </td>
-                                        <td>N, O- bis (trimethylsilyl) trifluoroacetamide <br/>
-                                            Grade: Derivatization Grade for GC derivatization <br/>
-                                            Pack Size: 25 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe <br/>
-                                            <br/>
-                                            <br/>
-                                            <strong>Price: 14,400.00 TK</strong>
-
-                                        </td>
-                                        <td>N, O- bis (trimethylsilyl) trifluoroacetamide <br/>
-                                            Grade: Derivatization Grade for GC <br/>
-                                            derivatization <br/>
-                                            Pack Size: 25 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Fluka <br/>
-                                            Origin: USA <br/>
-                                            <br/>
-                                            <br/>
-                                            <strong>Price: 15,500.00 TK</strong>
-                                        </td>
-                                        <td>N, O- bis (trimethylsilyl) trifluoroacetamide <br/>
-                                            Grade: Derivatization Grade for GC derivatization <br/>
-                                            Pack Size: 25 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Fluka <br/>
-                                            Origin: USA <br/>
-                                            <br/>
-                                            <br/>
-                                            <strong>Price: 16,000.00 TK</strong>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><strong>02</strong></td>
-                                        <td><strong>Tert- butyldimethylsilyl trifluoromethanesulfonate</strong></td>
-                                        <td><strong>Tert- butyldimethylsilyl trifluoromethanesulfonate</strong></td>
-                                        <td><strong>Tert- butyldimethylsilyl trifluoromethanesulfonate</strong></td>
-                                        <td><strong>Tert- butyldimethylsilyl trifluoromethanesulfonate</strong></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td>Tert- butyldimethylsilyl trifluoromethanesulfonate <br/>
-                                            Grade: GC derivatization
-                                            <br/>
-                                            Pack Size: 10 mL<br/>
-                                            Quantity: 01<br/>
-                                            Make: To be mentioned <br/>
-                                            Origin: To be mentioned
-
-                                        </td>
-                                        <td>Tert- butyldimethylsilyl trifluoromethanesulfonate <br/>
-                                            Grade: GC derivatization <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe <br/>
-                                            <br/>
-                                            <strong>Price: 33,200.00 TK</strong>
-
-                                        </td>
-                                        <td>Tert- butyldimethylsilyl trifluoromethanesulfonate<br/>
-                                            Grade: GC derivatization<br/>
-                                            <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Fluka <br/>
-                                            Origin: USA
-                                            <br/>
-                                            <strong>Price: 35,000.00 TK</strong>
-                                        </td>
-                                        <td>Tert- butyldimethylsilyl trifluoromethanesulfonate <br/>
-                                            Grade: GC derivatization <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe
-                                            <br/>
-                                            <strong>Price: 35,200.00 TK</strong>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><strong>03</strong></td>
-                                        <td><strong>N- tert- Butyldimethylsilyl- N- methyltrifluoroacetamide</strong></td>
-                                        <td><strong>N- tert- Butyldimethylsilyl- N- methyltrifluoroacetamide</strong></td>
-                                        <td><strong>N- tert- Butyldimethylsilyl- N- methyltrifluoroacetamide</strong></td>
-                                        <td><strong>N- tert- Butyldimethylsilyl- N- methyltrifluoroacetamide</strong></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td>N- tert- Butyldimethylsilyl- N methyltrifluoroacetamide <br/>
-                                            N- tert- Butyldimethylsilyl- N methyltrifluoroacetamide <br/>
-                                            with 1% tert- Butyldimethylchlorosilane <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: To be mentioned <br/>
-                                            Origin: To be mentioned
-                                        </td>
-                                        <td>N- tert- Butyldimethylsilyl- N methyltrifluoroacetamide <br/>
-                                            N- tert- Butyldimethylsilyl- N methyltrifluoroacetamide <br/>
-                                            with 1% tert- Butyldimethylchlorosilane <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe
-                                            <br/>
-                                            <strong>Price: 38,200.00 TK </strong>
-                                        </td>
-                                        <td>N- tert- Butyldimethylsilyl- N methyltrifluoroacetamide <br/>
-                                            N- tert- Butyldimethylsilyl- N methyltrifluoroacetamide <br/>
-                                            with 1% tert- Butyldimethylchlorosilane <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe
-                                            <br/>
-                                            <strong>Price: 40,500.00 TK</strong>
-                                        </td>
-                                        <td>N- tert- Butyldimethylsilyl- N methyltrifluoroacetamide <br/>
-                                            N- tert- Butyldimethylsilyl- N methyltrifluoroacetamide <br/>
-                                            with 1% tert- Butyldimethylchlorosilane <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe
-                                            <br/>
-                                            <strong>Price: 42,500.00 TK </strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>04</strong></td>
-                                        <td><strong>1- (Trimethylsilyl)imidazole- Pyridine mixture</strong></td>
-                                        <td><strong>1- (Trimethylsilyl)imidazole- Pyridine mixture</strong></td>
-                                        <td><strong>1- (Trimethylsilyl)imidazole- Pyridine mixture</strong></td>
-                                        <td><strong>1- (Trimethylsilyl)imidazole- Pyridine mixture</strong></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td>1- (Trimethylsilyl)imidazole- Pyridine mixture
-                                            Grade: GC derivatization <br/>
-                                            Assay: 98% <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: To be mentioned <br/>
-                                            Origin: To be mentioned
-
-                                        </td>
-                                        <td>1- (Trimethylsilyl)imidazole- Pyridine mixture <br/>
-                                            Grade: GC derivatization <br/>
-                                            Assay: 98% <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe
-                                            <br/>
-                                            <strong>Price: 20,200.00 TK</strong>
-
-                                        </td>
-                                        <td>1- (Trimethylsilyl)imidazole- Pyridine mixture <br/>
-                                            Grade: GC derivatization <br/>
-                                            Assay: 98% <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe
-                                            <br/>
-                                            <strong>Price: 22,000.00 TK</strong>
-                                        </td>
-                                        <td>1- (Trimethylsilyl)imidazole- Pyridine mixture <br/>
-                                            Grade: GC derivatization <br/>
-                                            Assay: 98% <br/>
-                                            Pack Size: 10 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Fluka <br/>
-                                            Origin: USA
-                                            <br/>
-                                            <strong>Price: 20,500.00 TK</strong>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><strong>05</strong></td>
-                                        <td><strong>Toluene</strong></td>
-                                        <td><strong>Toluene</strong></td>
-                                        <td><strong>Toluene</strong></td>
-                                        <td><strong>Toluene</strong></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td>Toluene <br/>
-                                            Grade: Analytical standard <br/>
-                                            Pack Size: 5 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: To be mentioned <br/>
-                                            Origin: To be mentioned
-                                        </td>
-                                        <td>Toluene <br/>
-                                            Grade: Analytical standard <br/>
-                                            Pack Size: 5 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe
-                                            <br/>
-                                            <strong>Price: 4,000.00 TK </strong>
-                                        </td>
-                                        <td>Toluene <br/>
-                                            Grade: Analytical standard <br/>
-                                            Pack Size: 5 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe
-                                            <br/>
-                                            <strong>Price: 4,750.00 TK</strong>
-                                        </td>
-                                        <td>Toluene <br/>
-                                            Grade: Analytical standard <br/>
-                                            Pack Size: 5 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe
-                                            <br/>
-                                            <strong>Price: 5,000.00 TK</strong>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><strong>06</strong></td>
-                                        <td><strong>Suprapure Nitric Acid</strong></td>
-                                        <td><strong>Suprapure Nitric Acid</strong></td>
-                                        <td><strong>Suprapure Nitric Acid</strong></td>
-                                        <td><strong>Suprapure Nitric Acid</strong></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td>Nitric Acid <br/>
-                                            Grade: Suprapure <br/>
-                                            Pack Size: 250 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: To be mentioned <br/>
-                                            Origin: To be mentioned
-                                        </td>
-                                        <td>Nitric Acid <br/>
-                                            Grade: Suprapure <br/>
-                                            Pack Size: 250 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Roth <br/>
-                                            Origin: Spain
-                                            <br/>
-                                            <strong>Price: 30,000.00 TK</strong>
-                                        </td>
-                                        <td>Nitric Acid <br/>
-                                            Grade: Suprapure <br/>
-                                            Pack Size: 250 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Roth <br/>
-                                            Origin: Spain
-                                            <br/>
-                                            <strong>Price: 32,400.00 TK</strong>
-                                        </td>
-                                        <td>Nitric Acid <br/>
-                                            Grade: Suprapure <br/>
-                                            Pack Size: 250 mL <br/>
-                                            Quantity: 01 <br/>
-                                            Make: Sigma Aldrich <br/>
-                                            Origin: Europe
-                                            <br/>
-                                            <strong> Price: 34,500.00 TK </strong>
-                                        </td>
-                                    </tr>
                                     </tbody>
 
                                 </table>
@@ -596,83 +487,26 @@ class CompanyS extends Component {
 
                             <div className="row">
                                 <div className="col-lg-12 ">
-                                    <div className="col-lg-6 col-md-6 text-center">
-                                        <p id="text-stnd">
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            (Sumiya Akter) <br/>
-                                            Scientific Officer <br/>
-                                            DRiCM, BCSIR <br/>
-                                            & Member- Secretary, TEC
-                                        </p>
-                                    </div>
+                                    <div className="table table-bordered table-responsive">
+                                        <table className="table">
+                                            <thead className="text-center">
+                                            <tr>
+                                                <th>ক্র.নং</th>
+                                                <th className="text-center">কর্মকর্তার নাম</th>
+                                                <th className="text-center">স্বাক্ষর</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {this.genTable2()}
 
-                                    <div className="col-lg-6 col-md-6 text-center">
-                                        <p id="text-stnd">
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            (Md. Juwel Hossen) <br/>
-                                            Scientific Officer <br/>
-                                            DRiCM, BCSIR <br/>
-                                            & Member, TEC
+                                            </tbody>
 
-                                        </p>
-                                    </div>
+                                        </table>
 
-                                    <div className="col-lg-6 col-md-6 text-center">
-                                        <p id="text-stnd">
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            (Md. Abdul Hai) <br/>
-                                            Technical Officer (Purchase) <br/>
-                                            BCSIR <br/>
-                                            & Member, TEC
-
-                                        </p>
-                                    </div>
-
-                                    <div className="col-lg-6 col-md-6 text-center">
-                                        <p id="text-stnd">
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            <br/>
-                                            (Dr. Bilkis Ara Begum) <br/>
-                                            PSO & Head,Chemistry Division <br/>
-                                            Bangladesh Atomic Energy Center,Dhaka <br/>
-                                            & Member, TEC
-
-                                        </p>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="text-center">
-                                <p id="text-stnd">
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    (Farzana Hossain) <br/>
-                                    Scientific Officer <br/>
-                                    DRiCM, BCSIR <br/>
-                                    &Chairman, TEC
-                                </p>
 
                             </div>
-
-
                             <div>
                                 <hr/>
                                 <h4>Dr. Qudrat-I-Khuda Road, Dhanmondi, Dhaka-1205</h4>
@@ -686,7 +520,7 @@ class CompanyS extends Component {
 
 
             );
-        }else{
+        } else {
             return (
                 <div>
                     Loading...

@@ -359,6 +359,11 @@ RFQDetailsSchema = new SimpleSchema({
         type: [UserSignFalse],
         label: 'allowance',
         optional: true
+    },
+    company_s: {
+        type: [UserSignFalse],
+        label: 'cs',
+        optional: true
     }
 });
 

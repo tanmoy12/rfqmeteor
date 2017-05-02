@@ -33,3 +33,22 @@ Meteor.methods({
             });
     }
 });
+
+Meteor.methods({
+    updateCompanyS: function(rfq_id, user_id) {
+        check(rfq_id, String);
+        check(user_id, String);
+
+        RFQDetails.update(
+            {
+                _id : rfq_id,
+                'company_s.user_id': user_id
+            },
+            {
+                $set: {
+                    'company_s.$.signed': true,
+                    'company_s.$.sign_date': new Date()
+                }
+            });
+    }
+});
