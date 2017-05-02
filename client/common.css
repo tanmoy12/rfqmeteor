@@ -1218,6 +1218,9 @@ opacity */
 .bb{
     font-size: 14px;
 }
+.bb:focus{
+    outline:0 !important;
+}
 /*DEMO CHAHIDA POTRO ENDS*/
 
 /*SETTINGS.JSX*/

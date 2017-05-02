@@ -45,6 +45,9 @@ class Committee extends Component {
             specCommDivRows[ind_id] = [];
             spec_id[ind_id] = 0;
         }
+        if(spec_id[ind_id]>0){
+            this.state.initialize = true;
+        }
 
         this.setState({
             bgColorComm: newBgColorComm,
@@ -79,17 +82,22 @@ class Committee extends Component {
         let errorFlag = 0;
 
         for(let i=0;i<ara[id].length;i++){
-            console.log("NUMBER : "+ (i));
 
             let s1 = '#' + i.toString() + idTail + "selected1";
             let s2 = '#' + i.toString() + idTail + "selected2";
 
             let name = $(s1).text();
             let desig = $(s2).text();
+            let idx = ara[id][i].props.idx;
+
 
             if(name=="Name" || desig=="Designation"){
                 errorFlag = 1;
                 break;
+            }
+            if(name=="" || desig==""){
+                //DELETED ITEM
+                continue;
             }
 
             if(desig=="Chairperson"){
@@ -106,9 +114,10 @@ class Committee extends Component {
             }
 
 
-
+            console.log("NUMBER : "+ (i));
             console.log("NAME : "+name);
             console.log("DESIGNATION : "+desig);
+            console.log("ID : "+idx);
 
 
         }
@@ -154,9 +163,9 @@ class Committee extends Component {
                     //console.log(that.props.allusers);
                     //console.log(user);
                     let refValue = index.toString() + ref_val;
-                    memAra.push(<Member serial={serial} ref_val={refValue}
+                    memAra[index] = <Member serial={serial} ref_val={refValue}
                                         allUsersList={that.props.allusers} name={member.profile.name}
-                                        des={member.profile.committee.des}/>)
+                                        des={member.profile.committee.des} idx={member._id}/>
                 });
                 spec_id[ind_id] = this.props.members.length;
             }
@@ -187,7 +196,7 @@ class Committee extends Component {
                                     fontSize: "14px",
                                     fontWeight: "bold",
                                     paddingLeft: "3.3%",
-                                    paddingRight: "3.3%"
+                                    paddingRight: "3.3%",
                                 }}
                                         onClick={this.specCommMemAddButtClick.bind(this, "add", ref_val, "")}
                                         title="Add More To Committee" type="button" value="Add More">
@@ -201,10 +210,11 @@ class Committee extends Component {
                                     paddingLeft: "3.3%",
                                     paddingRight: "3.3%",
                                     marginRight: "3%",
-                                    backgroundColor: "#1d9385"
+                                    backgroundColor: "#4682b4",
+                                    color: "white",
                                 }}
                                         onClick={this.doneCommittee.bind(this, specCommDivRows, ind_id, done_val)}
-                                        title="Done Editing Committee" type="button" value="Add More">
+                                        title="Done Editing Committee" type="button" value="Done Editing Committee">
                                     <span className="glyphicon glyphicon-ok" style={{marginRight: 0}}></span>
                                 </button>
                             </div>
@@ -219,7 +229,7 @@ class Committee extends Component {
                 console.log(spec_id[ind_id]);
                 addClickFunc = this.specCommMemAddButtClick.bind(this);
                 specCommDivRows[ind_id].push(<Member serial={spec_id[ind_id]} ref_val={ref_val}
-                                                     allUsersList={this.props.allusers} name="Name" des="Designation"/>);
+                                                     allUsersList={this.props.allusers} name="Name" des="Designation" idx="idx"/>);
                 this.state.specCommMemAdd[ind_id] = false;
                 spec_id[ind_id]++;
                 console.log("AFTER THAT : "+ spec_id[ind_id]);
@@ -243,7 +253,7 @@ class Committee extends Component {
 
         var specCommitte =
             <div>
-                <button type="button" className="btn btn-primary"
+                <button type="button" className="btn btn-primary bb"
                         style={{width: "100%", backgroundColor: this.state.bgColorComm}}
                         onClick={this.commClicked.bind(this)}>
                     {this.props.name}
@@ -255,7 +265,7 @@ class Committee extends Component {
 
 
         return (
-            <div ref={this.props.refVal}>
+            <div ref={this.props.refVal} style={{borderLeft: "1px solid #337ab7", borderRight: "1px solid #337ab7", borderBottom: "1px solid #337ab7", borderRadius: "5px"}}>
                 {specCommitte}
             </div>
         );
