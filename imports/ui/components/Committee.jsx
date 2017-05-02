@@ -88,7 +88,8 @@ class Committee extends Component {
 
             let name = $(s1).text();
             let desig = $(s2).text();
-            let idx = ara[id][i].props.idx;
+            let idx = $(s1+"butt").val();
+            //console.log("VALUE OF BUTT IS : "+ $(s1+"butt").val())
 
 
             if(name=="Name" || desig=="Designation"){

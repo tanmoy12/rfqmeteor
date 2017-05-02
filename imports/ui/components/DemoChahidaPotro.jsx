@@ -3,9 +3,8 @@ import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 import SideBar from './SideBar';
 import Calendar from './Calendar';
-import $ from 'jquery'
+import Footer from './Footer';
 
-import Table from "./Table";
 
 export default class ChahidaPotroLoad extends Component {
     constructor(props) {
@@ -245,6 +244,7 @@ export default class ChahidaPotroLoad extends Component {
                     </div>
 
                 </div>
+                <Footer/>
             </div>
         );
     }

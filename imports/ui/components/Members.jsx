@@ -18,9 +18,13 @@ export default class Members extends Component {
 
 
 
-    showSelectedOption(id, text) {
+    showSelectedOption(id, text, idx) {
         var s = '#' + id;
-        console.log(id + " EDITED");
+        //console.log("GOT THE IDX : "+idx);
+        //console.log("BUTT");
+        $(s+"butt").val(idx);
+        //console.log($(s+"butt").val());
+        //console.log(id + " EDITED");
         $(s).text(text);
     }
 
@@ -47,7 +51,7 @@ export default class Members extends Component {
                 //console.log(user);
 
                 return (<li><a
-                    href="#" key={user._id} id={selected_id1} onClick={that.showSelectedOption.bind(this, selected_id1, user.profile.name)}>{user.profile.name}</a></li>)
+                    href="#" key={user._id} id={selected_id1} onClick={that.showSelectedOption.bind(this, selected_id1, user.profile.name, user._id)}>{user.profile.name}</a></li>)
             });
         //console.log(dropdownList);
 
@@ -97,9 +101,9 @@ export default class Members extends Component {
                                 <div className="entry input-group col-xs-5">
 
                                     <div className="dropdown" style={{display: "inline-block", width: "55%"}}>
-                                        <button type="button" className="btn btn-default dropdown-toggle"
+                                        <button id={selected_id1+"butt"} type="button" className="btn btn-default dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                                style={{width: "100%"}}>
+                                                style={{width: "100%"}} value={this.props.idx}>
                                             <span id={selected_id1}>{this.props.name}</span>
                                             <span className="caret" style={{marginLeft: "3px"}}></span>
                                         </button>
@@ -112,7 +116,7 @@ export default class Members extends Component {
                                     <div className="dropdown" style={{display: "inline-block", width: "45%"}}>
                                         <button type="button" className="btn btn-default dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                                style={{width: "100%"}}>
+                                                style={{width: "100%"}} >
                                             <span id={selected_id2}>{desig}</span>
                                             <span className="caret" style={{marginLeft: "3px"}}></span>
                                         </button>
