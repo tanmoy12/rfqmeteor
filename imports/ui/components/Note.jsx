@@ -157,16 +157,10 @@ class Note extends Component {
                                 ও বাজারমূল্যের আলোকে প্রয়োজনীয় ……………… ক্রয় করা যেতে পারে।
 
                             </p>
-
+                            {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ_details.standard.accountant)}
+                            {this.genSignBlock("অনুমোদনকারী", this.props.RFQ_details.standard.director)}
                             <div className="row">
-                                <div className="col-md-6">
-                                    <p className="verify"> নিবেদক </p>
-                                    <div className="boxed"> Image & Signature</div>
-                                </div>
-                                <div className="col-md-6">
-                                    <p className="verify"> জাছাইকারি </p>
-                                    <div className="boxed"> Image & Signature</div>
-                                </div>
+
                                 <div className="notefooter">
                                     <hr/>
                                     <h4>Dr. Qudrat-I-Khuda Road, Dhanmondi, Dhaka-1205</h4>
