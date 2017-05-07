@@ -20,6 +20,7 @@ import MeetingNotice from '../imports/ui/components/MeetingNotice';
 import Minutes from '../imports/ui/components/Minutes';
 import CompanyS from '../imports/ui/components/CompanyS';
 import WO from '../imports/ui/components/WO';
+import LoginandSignup from '../imports/ui/components/LogInandSignUp';
 
 
 
@@ -173,6 +174,16 @@ FlowRouter.route('/WO', {
     action(){
         mount(LayoutDash, {
             content: (<WO />)
+        })
+    }
+});
+
+
+
+FlowRouter.route('/login', {
+    action(){
+        mount(LayoutDash, {
+            content: (<LoginandSignup />)
         })
     }
 });

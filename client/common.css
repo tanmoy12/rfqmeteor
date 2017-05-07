@@ -1,6 +1,95 @@
+*{
+    padding:0px;
+    margin: 0px;
+}
+
+
+
+/*LoginandsignUp*/
+
+.box{
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    right: 15%;
+    background: #FFFFFF;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
+    font-size: large;
+}
+
+.logo img{
+    height: 120px;
+    weight:120px;
+    padding: 10px 0 0 10px;
+    margin-top: 30%;
+
+}
+
+.loginbtn .btn,
+.loginbtn .btn:hover{
+    margin-top: 5px;
+    padding: 20px;
+    border: none;
+    font-size: larger;
+    font-weight: 500;
+    font-family: Tahoma;
+    background-color: transparent;
+    color: #000000;
+}
+
+
+
+.loginuser input{
+    background: transparent;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    border: none;
+    border-bottom: 1px solid darkred;
+    width: 85%;
+    outline: none;
+    padding: 0 0 0 0;
+    font-size: medium;
+    font-family: Tahoma;
+    float: left;
+    margin-left: 10px;
+}
+
+.forgotpass a{
+    color: #2a87d0;
+    margin-top: 10px;
+    font-size: x-small;
+    margin-right: 70px;
+}
+
+.submit .btn{
+    margin-top: 8%;
+    margin-left: 85px;
+    width: 50%;
+    height: 40px;
+    border-radius: 0px 0px 2px 2px;
+    background-color: #2a62bc;
+    color: #FFFFFF;
+    font-size: medium;
+    font-weight: 300;
+}
+
+
+
+/*end of loginandsignup*/
+
+
+/* navbar*/
 
 .navbar{
-    background-color: black;
+    background-color: #000000;
     margin-bottom: 0px;
 }
 
@@ -109,6 +198,7 @@
 body {
     padding-top: 1.5%;
 }
+
 /* General sizing */
 ul.dropdown-lr {
     width: 300px;
@@ -177,6 +267,7 @@ input:focus::-webkit-input-placeholder {
 
 #Dasboardjumbo{
     background: #ebf5fd;
+
 }
 
 #SideJumbobody{
@@ -385,24 +476,6 @@ input:focus::-webkit-input-placeholder {
 }
 
 
-@media (min-width: 992px) {
-    .anchor-block small {
-        display: block;
-        font-weight: normal;
-        color: #777777;
-    }
-    .dropdown-menu > li > a.anchor-block {
-        padding-top: 6px;
-        padding-bottom: 6px;
-        text-decoration: none;
-    }
-}
-@media (min-width: 992px) {
-    .dropdown.hoverable:hover > ul {
-        display: block;
-        text-decoration: none;
-    }
-}
 .dropdown-position-topright {
     top: auto;
     right: 0;
@@ -511,7 +584,7 @@ a.notification:hover{
 }
 
 
-
+/*side jumbo*/
 .navbar-custom{
     background: darkgreen;
 }
