@@ -10,8 +10,8 @@ class MeetingNotice extends Component {
         super(props);
         //  this.state.products = [];
         this.state = {
-            signed: true,
-            datesub: new Date()
+            signed: false,
+            datesub: ''
         };
     }
 
@@ -125,8 +125,7 @@ class MeetingNotice extends Component {
                             <div className="col-md-1">
                             </div>
                             <div id="signblock" className="form-style-4">
-                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)}
-                                       type="password" name="password"
+                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
                                        ref="password"
                                        placeholder="Password"/><br/>
                             </div>
@@ -193,7 +192,8 @@ class MeetingNotice extends Component {
                 'meeting.dateOfMeeting': this.state.datesub,
                 'meeting.initiator.sign_date': new Date(),
                 'meeting.initiator.signed': true,
-                allowance_nikosh: comList
+                allowance_nikosh: comList,
+                company_s: comList
             };
             RFQDetails.update(
                 that.props.RFQ_details._id,
@@ -279,9 +279,9 @@ class MeetingNotice extends Component {
                                         <p id="meeting">
                                             বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ (বিসিএসআইআর)- এর আওতাধীন ডেজিগনেটেড
                                             রেফারেন্স
-                                            ইনষ্টিটিউট ফর কেমিক্যাল মেজারমেন্টস্ (ডিআরআইসিএম)- এ ২০১৫-২০১৬ অর্থবছরের
+                                            ইনষ্টিটিউট ফর কেমিক্যাল মেজারমেন্টস্ (ডিআরআইসিএম)- এ {this.props.RFQ_details.chahida.year} অর্থবছরের
                                             রাজস্ব ক্রয়
-                                            পরিকল্পনা অনুযায়ী Supply of Chemicals ক্রয়ের জন্য RFQ পদ্ধতিতে দরপত্র আহবান
+                                            পরিকল্পনা অনুযায়ী Supply of {this.props.RFQ_details.chahida.title} ক্রয়ের জন্য RFQ পদ্ধতিতে দরপত্র আহবান
                                             করা
                                             হয়েছে । জমাকৃত দরপত্রগুলোর তুলনামূলক তালিকা প্রস্তুতপূর্বক যাচাই বাছাই করার
                                             লক্ষ্যে

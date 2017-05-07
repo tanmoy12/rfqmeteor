@@ -20,11 +20,9 @@ export default class TableStandard extends Component {
             name: evt.target.name,
             value: evt.target.value
         };
-
+        this.props.sendDestination(item.value);
         this.setState({
             destination: item.value
-        }, function () {
-            this.props.sendDestination(this.state.destination);
         });
     }
 
@@ -34,11 +32,9 @@ export default class TableStandard extends Component {
             name: evt.target.name,
             value: evt.target.value
         };
-
+        this.props.senddelivery(item.value);
         this.setState({
             delivery: item.value
-        }, function () {
-            this.props.senddelivery(this.state.delivery);
         });
     }
 

@@ -1,10 +1,12 @@
-import React, {Component, PropTypes} from "react";
+import React, {Component, PropTypes} from 'react';
+import ReactDOM from "react-dom";
 import {createContainer} from "meteor/react-meteor-data";
-import $ from "jquery";
+import $ from 'jquery';
+
+import Member from './Members';
 
 var specCommDivRows = [];
 var spec_id = [];
-
 class Committee extends Component {
     constructor(props) {
         super(props);
@@ -15,6 +17,8 @@ class Committee extends Component {
             specCommButtClassRows: [],
             specCommMemAdd: [],
             init: [],
+            initialize: false,
+
         };
 
         var ind_id = parseInt(this.props.idx);
@@ -36,15 +40,13 @@ class Committee extends Component {
         this.state.specCommButtClassRows.push("btn btn-success btn-add bb");
         var ind_id = parseInt(this.props.idx);
         if (this.state.init[ind_id]) {
-            this.state.specCommMemAdd[ind_id] = true;
+            this.state.specCommMemAdd[ind_id] = false;
             this.state.init[ind_id] = false;
             specCommDivRows[ind_id] = [];
             spec_id[ind_id] = 0;
-
-            //INIT PREVIOUS MEMBER OF COMMITTEE
-            this.props.members.map(function (mem) {
-
-            });
+        }
+        if(spec_id[ind_id]>0){
+            this.state.initialize = true;
         }
 
         this.setState({
@@ -57,102 +59,181 @@ class Committee extends Component {
 
     }
 
-    specCommMemAddButtClick(todo, re) {
+    specCommMemAddButtClick(todo, re, serial) {
         var x = parseInt(this.state.noOfSpecCommMem);
         var ind_id = parseInt(this.props.idx);
         if (todo == "add") {
             this.state.specCommMemAdd[ind_id] = true;
+            //this.state.initialize = true;
             x++;
-
         }
-        else {
-
-            var elm = document.getElementById(re);
-            //console.log(elm);
-            var newAra = [];
-            // console.log("BEFORE");
-            // console.log(specCommDivRows);
-            for (var i = 0; i < specCommDivRows[ind_id].length; i++) {
-                var r = specCommDivRows[ind_id][i].ref;
-                var id = elm.id;
-                if (r != id || specCommDivRows[ind_id].length == 1) {
-                    newAra.push(specCommDivRows[ind_id][i]);
-                    //console.log("DHUKSI");
-                }
-                //console.log(specCommDivRows[ind_id][i].ref);
-                //console.log(elm.id);
-            }
-            specCommDivRows[ind_id] = [];
-            for (var i = 0; i < newAra.length; i++) {
-                specCommDivRows[ind_id].push(newAra[i]);
-            }
-            // console.log("AFTER");
-            // console.log(specCommDivRows);
-            x--;
-
-
-        }
-
-        var a = [];
-        for (var i = 0; i < x; i++) {
-            a[i] = "btn btn-danger btn-remove bb";
-        }
-        a[x] = "btn btn-success btn-add bb";
-        this.state.specCommButtClassRows[ind_id] = a;
         this.setState({
             noOfSpecCommMem: x,
+            initialize: true,
         });
 
     }
 
-    showSelectedOption(spanId, option) {
-        var s = '#' + spanId;
-        $(s).text(option);
+    doneCommittee(ara, id, idTail){
+        //FOR SENDING DATA TO SERVER
+        console.log("DATA IS GETTING READY FOR SERVER : ****************************");
+        let noOfChairman = 0;
+        let noOfShochib = 0;
+        let errorFlag = 0;
+
+        for(let i=0;i<ara[id].length;i++){
+
+            let s1 = '#' + i.toString() + idTail + "selected1";
+            let s2 = '#' + i.toString() + idTail + "selected2";
+
+            let name = $(s1).text();
+            let desig = $(s2).text();
+            let idx = $(s1+"butt").val();
+            //console.log("VALUE OF BUTT IS : "+ $(s1+"butt").val())
+
+
+            if(name=="Name" || desig=="Designation"){
+                errorFlag = 1;
+                break;
+            }
+            if(name=="" || desig==""){
+                //DELETED ITEM
+                continue;
+            }
+
+            if(desig=="Chairperson"){
+                desig = "Chairman";
+                //console.log("plus Chairperson!!");
+                noOfChairman++;
+            }
+            else if(desig=="সদস্যসচিব"){
+                desig="Shochib";
+                noOfShochib++;
+            }
+            else if(desig=="Member"){
+                desig="member";
+            }
+
+
+            console.log("NUMBER : "+ (i));
+            console.log("NAME : "+name);
+            console.log("DESIGNATION : "+desig);
+            console.log("ID : "+idx);
+
+
+        }
+        if(noOfChairman>1){
+            //console.log("More than one Chairperson!!");
+            Bert.alert('More than one Chairperson!!', 'danger', 'growl-top-right');
+        }
+        else if(noOfShochib>1){
+            //console.log("More than one সদস্যসচিব!!");
+            Bert.alert('More than one সদস্যসচিব!!', 'danger', 'growl-top-right');
+        }
+        else if(errorFlag==1){
+            Bert.alert('Empty Fields Cannot Be Left Behind!!', 'danger', 'growl-top-right');
+        }
+        else{
+            let com_name = this.props.name;
+            com_name +=  " has been successfully created";
+            Bert.alert(com_name, 'success', 'growl-top-right');
+        }
+        console.log("DATA IS SERVED FOR SERVER : ****************************");
     }
 
 
     render() {
-        if(this.props.members && this.props.allusers){
+
+        if (this.props.members && this.props.allusers) {
+            console.log("FOR COMMITTE NO : "+ this.props.idx);
             console.log("MEMBERS");
             console.log(this.props.members);
             console.log("ALL USERS");
             console.log(this.props.allusers);
+
+            let ind_id = parseInt(this.props.idx);
+            let ref_val = "_" + this.props.refVal;
+            //console.log("ref value : "+ref_val);
+            let serial = spec_id[ind_id];
+            let memAra = specCommDivRows[ind_id];
+            let that = this;
+
+            if(!this.state.initialize) {
+                this.props.members.map(function (member, index) {
+                    //console.log("ALL USERS FROM COMMITTEE : ");
+                    //console.log(that.props.allusers);
+                    //console.log(user);
+                    let refValue = index.toString() + ref_val;
+                    memAra[index] = <Member serial={serial} ref_val={refValue}
+                                        allUsersList={that.props.allusers} name={member.profile.name}
+                                        des={member.profile.committee.des} idx={member._id}/>
+                });
+                spec_id[ind_id] = this.props.members.length;
+            }
+
+
         }
 
         var specCommDiv;
         var ind_id = parseInt(this.props.idx);
+        //console.log("IND_ID : "+ind_id);
         if (this.state.commDivShow) {
             var x = parseInt(this.state.noOfSpecCommMem);
             var ref_val = spec_id[ind_id].toString() + "_" + this.props.refVal;
-            var addButton =
-                <div className="control-group" id="fields">
+            console.log("ref_val : " + ref_val);
+
+
+            //CREATE ADD_BUTTON & DONE_BUTTON
+            var done_val = "_" + this.props.refVal;
+
+            var buttons =
+                <div className="control-group" id="fields" style={{display: "inline"}}>
                     <div className="controls">
-                        <form role="form" autoComplete="off">
+                        <form role="form" autocomplete="off">
                             <div className="entry input-group col-xs-5">
                                 <button className="btn btn-success btn-add bb" style={{
                                     marginBottom: "7px",
                                     float: "right",
-                                    fontSize: "12px",
-                                    fontWeight: "bold"
+                                    fontSize: "14px",
+                                    fontWeight: "bold",
+                                    paddingLeft: "3.3%",
+                                    paddingRight: "3.3%",
                                 }}
-                                        onClick={this.specCommMemAddButtClick.bind(this, "add", ref_val)}
+                                        onClick={this.specCommMemAddButtClick.bind(this, "add", ref_val, "")}
                                         title="Add More To Committee" type="button" value="Add More">
-                                    Add More
+                                    <span className="glyphicon glyphicon-plus" style={{marginRight: 0}}></span>
+                                </button>
+                                <button className="btn btn-add bb" style={{
+                                    marginBottom: "7px",
+                                    float: "right",
+                                    fontSize: "14px",
+                                    fontWeight: "bold",
+                                    paddingLeft: "3.3%",
+                                    paddingRight: "3.3%",
+                                    marginRight: "3%",
+                                    backgroundColor: "#4682b4",
+                                    color: "white",
+                                }}
+                                        onClick={this.doneCommittee.bind(this, specCommDivRows, ind_id, done_val)}
+                                        title="Done Editing Committee" type="button" value="Done Editing Committee">
+                                    <span className="glyphicon glyphicon-ok" style={{marginRight: 0}}></span>
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
 
-            var butt_id = ref_val + "butt";
+
 
             if (this.state.specCommMemAdd[ind_id]) {
-                //console.log("BUTTON ADDED: "+butt_id);
-                specCommDivRows[ind_id].push(<Member ref_val={ref_val}
-                                                     showSelectedOption={this.showSelectedOption.bind(this, "selected", "shadman264")}
-                                                     specCommMemAddButtClick={this.specCommMemAddButtClick.bind(this, "rmv", this.props.ref_val)}/>);
+                console.log("NEW MEMBER ADDED!!!!!!");
+                console.log(spec_id[ind_id]);
+                addClickFunc = this.specCommMemAddButtClick.bind(this);
+                specCommDivRows[ind_id].push(<Member serial={spec_id[ind_id]} ref_val={ref_val}
+                                                     allUsersList={this.props.allusers} name="Name" des="Designation" idx="idx"/>);
                 this.state.specCommMemAdd[ind_id] = false;
                 spec_id[ind_id]++;
+                console.log("AFTER THAT : "+ spec_id[ind_id]);
             }
             //console.log("FROM :"+this.props.refVal);
             //console.log(specCommDivRows);
@@ -173,29 +254,26 @@ class Committee extends Component {
 
         var specCommitte =
             <div>
-                <button type="button" className="btn btn-primary"
+                <button type="button" className="btn btn-primary bb"
                         style={{width: "100%", backgroundColor: this.state.bgColorComm}}
                         onClick={this.commClicked.bind(this)}>
                     {this.props.name}
                 </button>
                 {specCommDivRow2[ind_id]}
-                {addButton}
+                {buttons}
             </div>
 
 
+
         return (
-            <div ref={this.props.refVal}>
+            <div ref={this.props.refVal} style={{borderLeft: "1px solid #337ab7", borderRight: "1px solid #337ab7", borderBottom: "1px solid #337ab7", borderRadius: "5px"}}>
                 {specCommitte}
             </div>
         );
     }
 }
 
-Committee.propTypes = {
-    members: PropTypes.array.isRequired,
-    allusers: PropTypes.array.isRequired
-};
-export default createContainer( props => {
+export default createContainer(props => {
     //console.log(props.name);
     return {
         members: Meteor.users.find(
@@ -205,81 +283,9 @@ export default createContainer( props => {
             }).fetch(),
         allusers: Meteor.users.find(
             {
-                'profile.committee.name' : {$ne: props.name}
-            }
+                'profile.committee.name': {$ne: props.name}
+            },
         ).fetch()
 
     };
 }, Committee);
-
-
-class Member extends React.Component {
-
-
-    render() {
-        return (
-            <div key={this.props.ref_val} ref={this.props.ref_val} id={this.props.ref_val} className="row"
-                 style={{paddingLeft: "2%", paddingRight: "2%"}}>
-                <div className="control-group" id="fields">
-                    <div className="controls">
-                        <form role="form" autoComplete="off">
-                            <div className="entry input-group col-xs-5">
-
-                                <div className="dropdown" style={{display: "inline-block", width: "55%"}}>
-                                    <button type="button" className="btn btn-default dropdown-toggle"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                            style={{width: "100%"}}>
-                                        <span id="selected">Name</span>
-                                        <span className="caret" style={{marginLeft: "3px"}}></span>
-                                    </button>
-                                    <ul className="dropdown-menu">
-                                        <li className="dropdown-header">Names</li>
-                                        <li><a
-                                            onClick={this.props.showSelectedOption}
-                                            href="#">shadman264</a></li>
-                                        <li><a
-                                            onClick={this.props.showSelectedOption}
-                                            href="#">shadman264</a></li>
-                                        <li><a
-                                            onClick={this.props.showSelectedOption}
-                                            href="#">shadman264</a></li>
-                                    </ul>
-                                </div>
-                                <div className="dropdown" style={{display: "inline-block", width: "45%"}}>
-                                    <button type="button" className="btn btn-default dropdown-toggle"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                            style={{width: "100%"}}>
-                                        <span id="selected2">Designation</span>
-                                        <span className="caret" style={{marginLeft: "3px"}}></span>
-                                    </button>
-                                    <ul className="dropdown-menu">
-                                        <li className="dropdown-header">Designation</li>
-                                        <li><a
-                                            onClick={this.props.showSelectedOption}
-                                            href="#">Member</a></li>
-                                        <li><a
-                                            onClick={this.props.showSelectedOption}
-                                            href="#">Chairperson</a></li>
-                                        <li><a
-                                            onClick={this.props.showSelectedOption}
-                                            href="#">সদস্যসচিব</a></li>
-                                    </ul>
-                                </div>
-
-                                <span className="input-group-btn">
-                                            <button className="btn btn-danger btn-remove bb"
-                                                    onClick={this.props.specCommMemAddButtClick}
-                                                    title="Remove From Committee" type="button">
-                                                 <span className="glyphicon glyphicon-minus"></span>
-                                             </button>
-                                        </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        );
-
-    }
-
-}

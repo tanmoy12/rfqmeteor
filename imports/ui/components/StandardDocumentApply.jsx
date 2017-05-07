@@ -21,9 +21,19 @@ class StandardDocumentApply extends Component {
                 unit: detail.unit,
                 qty: detail.qty,
                 total: 0,
-                destination: 'DRiCM, BCSIR'
+                destination: 'DRiCM, BCSIR',
+                spec: '',
+                making: '',
             });
         });
+        var i=0;
+        this.props.RFQ.standard.standard_details.map(function (detail) {
+                pro[i].spec= detail.spec;
+                pro[i].making= detail.making;
+                i++;
+            }
+        );
+        //console.log(pro);
 
         this.state = {
             signed3: false,
@@ -38,6 +48,32 @@ class StandardDocumentApply extends Component {
             datesub: null
         }
     }
+
+    handleProductTable(evt) {
+        var item = {
+            id: evt.target.id,
+            name: evt.target.name,
+            value: evt.target.value
+        };
+        var products = this.state.products;
+
+        var newProducts = products.map(function (product) {
+            for (var key in product) {
+                //console.log(key);
+                if (key == item.name && product.id == item.id) {
+                    product[key] = item.value;
+                }
+            }
+            return product;
+        });
+
+        //console.log(newProducts);
+        this.setState({
+            products: newProducts
+        });
+
+    };
+
 
     getdatafromtable(products, estimate) {
         this.setState({
@@ -122,7 +158,11 @@ class StandardDocumentApply extends Component {
                     amount: this.state.estimate,
                     createdAt: new Date(),
                     company: company,
-                    StandardApply: this.state.products
+                    StandardApply: this.state.products,
+                    destination: this.state.destination,
+                    delivery: this.state.delivery,
+                    warranty: this.state.warranty,
+                    datesub: this.state.datesub
                 }
                 RFQDetails.update(
                     this.props.RFQ._id,
@@ -206,7 +246,7 @@ class StandardDocumentApply extends Component {
 
                             </div>
                             <div className="col-md-12">
-                                <StandardDocumentApply5 getSign5={(value) => this.getSign5(value)}
+                                <StandardDocumentApply5 getSign5={(value) => this.getSign5(value)} handleProductUpdate={this.handleProductTable.bind(this)}
                                                         RFQ={this.props.RFQ} head={header} foot={footer}/>
 
                             </div>

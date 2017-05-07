@@ -13,6 +13,7 @@ import Note from '../imports/ui/components/Note';
 import StandardDocument from '../imports/ui/components/StandardDocument';
 import StandardDocumentLoad from '../imports/ui/components/StandardDocumentLoad';
 import StandardDocumentApply from '../imports/ui/components/StandardDocumentApply';
+import StandardApplyLoad from '../imports/ui/components/StandardApplyLoad';
 import LoginCaraousal from '../imports/ui/components/LoginCaraousal';
 import FileUpload from '../imports/ui/components/FileUpload';
 import AllowanceNikosh from '../imports/ui/components/AllowanceNikosh';
@@ -21,6 +22,7 @@ import Minutes from '../imports/ui/components/Minutes';
 import CompanyS from '../imports/ui/components/CompanyS';
 import WO from '../imports/ui/components/WO';
 import LoginandSignup from '../imports/ui/components/LogInandSignUp';
+
 
 
 
@@ -97,6 +99,14 @@ FlowRouter.route('/StandardDocumentLoad/:id', {
     }
 });
 
+FlowRouter.route('/StandardApplyLoad/:id/:idx', {
+    action(params){
+        mount(LayoutDash, {
+            content: (<StandardApplyLoad id={params.id} idx={params.idx}/>)
+        })
+    }
+});
+
 FlowRouter.route('/StandardDocumentApply/:id', {
     action(params){
         mount(LayoutDash, {
@@ -146,6 +156,14 @@ FlowRouter.route('/MeetingNotice/:id', {
     action(params){
         mount(LayoutDash, {
             content: (<MeetingNotice id={params.id} />)
+        })
+    }
+});
+
+FlowRouter.route('/cs/:id', {
+    action(params){
+        mount(LayoutDash, {
+            content: (<CompanyS id={params.id} />)
         })
     }
 });

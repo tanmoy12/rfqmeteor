@@ -14,3 +14,55 @@ Meteor.methods({
         }
     }
 });
+
+Meteor.methods({
+    updateAllowanceNikosh: function(rfq_id, user_id) {
+        check(rfq_id, String);
+        check(user_id, String);
+
+        RFQDetails.update(
+            {
+                _id : rfq_id,
+                'allowance_nikosh.user_id': user_id
+            },
+            {
+                $set: {
+                    'allowance_nikosh.$.signed': true,
+                    'allowance_nikosh.$.sign_date': new Date()
+                }
+            });
+    }
+});
+
+Meteor.methods({
+    updateCompanyS: function(rfq_id, user_id) {
+        check(rfq_id, String);
+        check(user_id, String);
+
+        RFQDetails.update(
+            {
+                _id : rfq_id,
+                'company_s.user_id': user_id
+            },
+            {
+                $set: {
+                    'company_s.$.signed': true,
+                    'company_s.$.sign_date': new Date()
+                }
+            });
+    }
+});
+
+Meteor.methods({
+    removeFromCommittee: function(user_id) {
+        check(user_id, String);
+
+        Meteor.users.update(
+            user_id,
+            {
+                $set: {
+                    'profile.committee': ''
+                }
+            });
+    }
+});

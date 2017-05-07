@@ -234,6 +234,14 @@ StandardApplyDetails = new SimpleSchema({
     destination: {
         type: String,
         label: 'destination'
+    },
+    spec: {
+        type: String,
+        label: 'spec'
+    },
+    making: {
+        type: String,
+        label: 'making'
     }
 });
 
@@ -263,6 +271,11 @@ CompanySchema = new SimpleSchema({
         type: Date,
         label: "datesign",
         optional: true
+    },
+    name: {
+        type: String,
+        label: 'name',
+        optional: true
     }
 });
 
@@ -285,6 +298,26 @@ StandardApplySchema = new SimpleSchema({
         type: CompanySchema,
         label: 'company',
         optional: true
+    },
+    destination: {
+        type: String,
+        label: 'destination',
+        optional: true
+    },
+    delivery: {
+        type: String,
+        label: 'delivery',
+        optional: true
+    },
+    warranty: {
+        type: String,
+        label: 'warranty',
+        optional: true
+    },
+    datesub: {
+        type: Date,
+        label: 'datesub',
+        optional: true
     }
 });
 
@@ -305,7 +338,6 @@ MeetingNoticeSchema = new SimpleSchema({
         optional: true
     }
 });
-
 
 RFQDetailsSchema = new SimpleSchema({
     title: {
@@ -350,6 +382,11 @@ RFQDetailsSchema = new SimpleSchema({
     allowance_nikosh: {
         type: [UserSignFalse],
         label: 'allowance',
+        optional: true
+    },
+    company_s: {
+        type: [UserSignFalse],
+        label: 'cs',
         optional: true
     }
 });

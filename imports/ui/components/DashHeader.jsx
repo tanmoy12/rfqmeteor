@@ -40,17 +40,15 @@ class DashHeader extends Component {
             }
             return (
                 <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                    <div className="container">
+                    <div className="container" style={{paddingLeft: "3%"}}>
                         <div className="navbar-header">
-                            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span className="sr-only">Toggle navigation</span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                                <span className="icon-bar"></span>
-                            </button>
 
-                            <a onClick={this.gotoHome.bind(this)} className="btn btn-link navbar-brand">DRICM</a>
+                            <a onClick={this.gotoHome.bind(this)} className="navbar-brand" href="#" style={{padding: 0, paddingTop: "3.3%"}}>
+                                <span >
+                                    <img src="dricmlogo.jpg" style={{width: "27%", height: "auto"}}/>
+                                </span>
+                                <span style={{paddingLeft: "4%", paddingTop: "6.2%"}}>DRICM</span>
+                            </a>
                         </div>
 
 

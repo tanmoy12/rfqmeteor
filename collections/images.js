@@ -1,6 +1,6 @@
     ImagesCol = new FilesCollection({
         collectionName: 'Images',
-        storagePath: '/data',
+
         allowClientCode: false, // Disallow remove files from Client
         onBeforeUpload: function (file) {
             // Allow upload files under 10MB, and only in png/jpg/jpeg formats

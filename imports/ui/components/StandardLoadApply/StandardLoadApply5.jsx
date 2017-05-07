@@ -1,15 +1,10 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
-import ReactDOM from "react-dom";
 
-export default class StandardDocumentApply5 extends Component {
+export default class StandardApplyLoad5 extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            signed: false,
-            date: ''
-        }
     }
 
     datefromcreate(createdAt) {
@@ -25,38 +20,41 @@ export default class StandardDocumentApply5 extends Component {
         return dateshow;
     }
 
-    passwordcheck(e) {
-        if (e.key === 'Enter') {
-            var that = this;
-            var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
-            var digest = Package.sha.SHA256(password);
-            Meteor.call('checkPassword', digest, function (err, result) {
-                if (result) {
-                    that.props.getSign5(true);
-                    that.setState({
-                        signed: true,
-                        date: that.datefromcreate(new Date())
-                    })
-                }
-                else {
-                    Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
-                }
-            });
+    genSignBlock(signfor, user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link = '';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
+            return (
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                    <p id="signLabel"><strong>Signature
+                        of Quotationer with Seal</strong></p>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div className="col-md-6 center-block">
+                    <hr id="unsignhr" style={{width: "80%"}}/>
+                    <p id="signTag"><strong>{signfor} </strong></p>
+                </div>
+            )
         }
     }
 
 
     genTable() {
-        var that=this;
         return (
-            this.props.RFQ.standard.standard_details.map(function (detail) {
+            this.props.stan.StandardApply.map(function (detail) {
                     return (
                         <tr key={detail.id}>
                             <td className="col-md-1">{detail.item_no}</td>
                             <td className="col-md-3">{detail.desc}</td>
                             <td><textarea readOnly defaultValue={detail.spec} rows="4" cols="50"></textarea></td>
-                            <td><textarea onChange={that.props.handleProductUpdate} name="making" id={detail.id}
-                                          defaultValue={detail.making} rows="4" cols="50"></textarea></td>
+                            <td><textarea readOnly defaultValue={detail.making} rows="4" cols="50"></textarea></td>
                             <td className="col-md-2 text-center">{detail.qty}</td>
                         </tr>
                     )
@@ -66,38 +64,6 @@ export default class StandardDocumentApply5 extends Component {
     }
 
     render() {
-        var signBlock;
-        let link='';
-        if(Meteor.user()) {
-            const cursor = ImagesCol.findOne({_id: Meteor.user().profile.SealPic});
-            if (cursor) {
-                link = cursor.link();
-            }
-        }
-        if (this.state.signed) {
-            signBlock =
-                <div className="col-md-6 center-block">
-                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <p id="signLabel"><strong>Signature
-                        of Quotationer with Seal</strong></p>
-                </div>
-        } else {
-            signBlock =
-                <div className="col-md-6 center-block form-group">
-                    <div className="col-md-1">
-                    </div>
-                    <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
-                        <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password" ref="password"
-                               placeholder="Password"/><br/>
-                    </div>
-                    <div>
-                        <p id="signLabel"><strong>Signature
-                            of Quotationer with Seal</strong></p>
-                    </div>
-
-                </div>
-        }
-
         return (
             <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                 <div className="row">
@@ -106,7 +72,7 @@ export default class StandardDocumentApply5 extends Component {
                         <div className="row">
                             <div className="col-md-12 text-center">
                                 <p id="text-stnd">
-                                    <strong>Technical Specification of Chemicals</strong>
+                                    <strong>Technical Specification of {this.props.RFQ.chahida.title}</strong>
                                 </p>
                             </div>
                         </div>
@@ -122,7 +88,7 @@ export default class StandardDocumentApply5 extends Component {
                                 </div>
                             </div>
                             <div className="col-md-6 text-right">
-                                {this.datefromcreate(this.props.RFQ.standard.createdAt)}
+                                {this.datefromcreate(this.props.stan.createdAt)}
                             </div>
                         </div>
                     </div>
@@ -162,21 +128,19 @@ export default class StandardDocumentApply5 extends Component {
                     <table id="customers" className="table">
                         <tbody>
                         <tr>
-                            <td colSpan="3" scope="colgroup" className="text-center">
-                                {signBlock}
+                            <td colSpan="4" scope="colgroup" className="text-center">
+                                {this.genSignBlock('Signature of Quotationer with Seal', this.props.stan.company)}
                             </td>
 
-                            <td colSpan="9" rowSpan="2" scope="colgroup">
+                            <td colSpan="8" rowSpan="2" scope="colgroup">
                                 <br/>
                                 <br/>
-                                <br/>DATE: {this.state.date}
+                                <br/>DATE:{this.datefromcreate(this.props.stan.company.sign_date)}
                             </td>
 
                         </tr>
                         <tr>
-                            <td className="text-center" colSpan="4" scope="colgroup">
-                                <strong>{Meteor.user().profile.name}</strong>
-                            </td>
+                            <td colSpan="4" scope="colgroup">Name of Quotationer</td>
                         </tr>
 
                         </tbody>
