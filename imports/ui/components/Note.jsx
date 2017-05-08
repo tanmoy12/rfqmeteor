@@ -1,8 +1,7 @@
-import React, {Component, PropTypes} from 'react';
-import {createContainer} from 'meteor/react-meteor-data';
-import ReactDOM from 'react-dom';
-
-import SideBar from './SideBar';
+import React, {Component, PropTypes} from "react";
+import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
+import SideBar from "./SideBar";
 
 class Note extends Component {
     constructor(props) {
@@ -12,10 +11,25 @@ class Note extends Component {
             signed: false
         };
     }
+
     datefromcreate(createdAt) {
         var date = createdAt.getDate();
         var month = createdAt.getMonth() + 1;
         var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
+    dateTodayString() {
+        var d = new Date();
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
         var dateshow;
         if (month < 10) {
             dateshow = date + '/0' + month + '/' + year;
@@ -57,8 +71,140 @@ class Note extends Component {
         }
     }
 
+    genSignBlockFull(signfor, user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link = '';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
+            return (
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                            <strong>{user.name}</strong></p>
+                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                            <strong>{this.datefromcreate(user.sign_date)}</strong>
+                        </p>
+                    </div>
+                    <hr id="signhr" style={{width: "80%"}}/>
+                    <p id="signTag"><strong>{signfor}</strong></p>
+                </div>
+            )
+        }
+        else if (user.user_id && !user.signed) {
+            if (Meteor.userId() == user.user_id) {
+                if (this.state.signed) {
+                    return (
+                        <div className="col-md-6 center-block">
+                            <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                                    <strong>{Meteor.user().profile.name}</strong></p>
+                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                                    <strong>{this.dateTodayString()}</strong>
+                                </p>
+                            </div>
+                            <hr id="signhr" style={{width: "80%"}}/>
+                            <p id="signTag"><strong>{signfor}</strong></p>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div className="col-md-6 center-block form-group">
+                            <div className="col-md-1">
+                            </div>
+                            <div id="signblock" className="form-style-4">
+                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)}
+                                       type="password" name="password"
+                                       ref="password"
+                                       placeholder="Password"/><br/>
+                            </div>
+                            <div>
+                                <div className="form-inline">
+                                    <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
+                                        <strong>{Meteor.user().profile.name}</strong></p>
+                                </div>
+                                <hr id="signhr" style={{width: "80%"}}/>
+                                <p id="signTag"><strong>{signfor}</strong></p>
+                            </div>
+                        </div>
+                    )
+                }
+            }
+            else {
+                return (
+                    <div className="col-md-6 center-block">
+                        <hr id="unsignhr" style={{width: "80%"}}/>
+                        <p id="signTag"><strong>{signfor} </strong></p>
+                    </div>
+                )
+            }
+        }
+        else {
+            return (
+                <div className="col-md-6 center-block">
+                    <hr id="unsignhr" style={{width: "80%"}}/>
+                    <p id="signTag"><strong>{signfor} </strong></p>
+                </div>
+            )
+        }
+    }
+
+    passwordcheck(e) {
+        if (e.key === 'Enter') {
+            var that = this;
+            var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+            var digest = Package.sha.SHA256(password);
+            Meteor.call('checkPassword', digest, function (err, result) {
+                if (result) {
+                    that.setState({
+                        signed: true
+                    })
+                }
+                else {
+                    Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
+                }
+            });
+        }
+    }
+
+    handleForward(value) {
+        if (this.state.signed) {
+            var updateForm = {
+                step_no: 7,
+                'step78accountant.signed': true,
+                'step78accountant.sign_date': new Date(),
+                'step78director.user_id': this.props.RFQ_details.chahida.director.user_id,
+                'step78director.name': this.props.RFQ_details.chahida.director.name,
+                'step78director.pic': this.props.RFQ_details.chahida.director.pic
+            }
+
+            var that = this;
+            RFQDetails.update(
+                this.props.RFQ_details._id,
+                {
+                    $set: updateForm
+                }, function (err, res) {
+                    if (err) {
+                        console.log(err);
+                        Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
+                    }
+                    else {
+                        FlowRouter.go('/Note/' + that.props.RFQ_details._id);
+                    }
+                });
+        }
+        else {
+            Bert.alert('Please Sign the Document!!', 'danger', 'growl-top-right');
+        }
+    }
+
     render() {
         if (this.props.RFQ_details) {
+            var standardDate, standardNum;
+
             var chahida_potro = this.props.RFQ_details.chahida;
             var RFQItem = this.props.RFQ_details;
             var chahidaSend = {
@@ -78,32 +224,48 @@ class Note extends Component {
                     }
                 ],
                 link: '/ChahidaPotroload/' + RFQItem._id
-            }
-            var stanCreate, stanLoad, allowanceNikosh,meetingNotice,cs,applications, RFQ_id;
-            if(this.props.RFQ_details.step_no==3 && Meteor.userId()==this.props.RFQ_details.standard.initiator.user_id){
+            };
+            var stanCreate, stanLoad, allowanceNikosh, meetingNotice, cs, applications, RFQ_id, forward_to;
+            var step7Acc = this.genSignBlock("হিসাবরক্ষক", this.props.RFQ_details.step78accountant);
+            var step8Dir = this.genSignBlock("অনুমোদনকারী", this.props.RFQ_details.step78director);
+
+            if (this.props.RFQ_details.step_no == 3 && Meteor.userId() == this.props.RFQ_details.standard.initiator.user_id) {
                 stanCreate = "/StandardDocument/" + this.props.RFQ_details._id;
             }
-            if(this.props.RFQ_details.step_no>3) {
+            if (this.props.RFQ_details.step_no > 3) {
                 stanLoad = {
                     name: 'Standard Document',
                     info: [],
                     link: "/StandardDocumentLoad/" + this.props.RFQ_details._id
                 };
-                var that=this;
+                var that = this;
                 applications = this.props.RFQ_details.standard_apply;
-                RFQ_id= this.props.RFQ_details._id;
+                RFQ_id = this.props.RFQ_details._id;
+                standardDate = this.datefromcreate(this.props.RFQ_details.standard.createdAt);
+                standardNum = this.props.RFQ_details.standard_apply.length;
             }
             //console.log(applications);
-            if(this.props.RFQ_details.step_no==6 && Meteor.userId()==this.props.RFQ_details.meeting.initiator.user_id){
-                meetingNotice= "/MeetingNotice/"+this.props.RFQ_details._id;
+            if (this.props.RFQ_details.step_no == 6 && Meteor.userId() == this.props.RFQ_details.meeting.initiator.user_id) {
+                meetingNotice = "/MeetingNotice/" + this.props.RFQ_details._id;
+
             }
-            if(this.props.RFQ_details.step_no>6){
-                meetingNotice= "/MeetingNotice/"+this.props.RFQ_details._id;
+            //console.log(standardNum);
+            if (this.props.RFQ_details.step_no > 6) {
+                meetingNotice = "/MeetingNotice/" + this.props.RFQ_details._id;
             }
-            if(this.props.RFQ_details.step_no>6){
-                allowanceNikosh= "/AllowanceNikosh/"+this.props.RFQ_details._id;
-                cs= "/cs/"+this.props.RFQ_details._id;
+            if (this.props.RFQ_details.step_no > 6) {
+                allowanceNikosh = "/AllowanceNikosh/" + this.props.RFQ_details._id;
+                cs = "/cs/" + this.props.RFQ_details._id;
             }
+            if (this.props.RFQ_details.step_no == 6 && Meteor.userId() == this.props.RFQ_details.step78accountant.user_id) {
+                step7Acc = this.genSignBlockFull("হিসাবরক্ষক", this.props.RFQ_details.step78accountant);
+                forward_to = {
+                    toWhom: "অনুমোদনকারী",
+                    dropdownList: Meteor.users.find({_id: this.props.RFQ_details.chahida.director.user_id}).fetch(),
+                    sendSelect: (value) => this.handleForward(value)
+                }
+            }
+            console.log(forward_to);
             return (
                 <div className="container">
                     <div className="row">
@@ -117,6 +279,7 @@ class Note extends Component {
                                 cs={cs}
                                 applications={applications}
                                 RFQ_id={RFQ_id}
+                                forwardTo={forward_to}
                             />
 
 
@@ -150,14 +313,16 @@ class Note extends Component {
                             {this.genSignBlock("অনুমোদনকারী", chahida_potro.director)}
 
                             <p className="text"> ৩। নোটানুচ্ছেদ ০১ এর অনুমোদনের আলোকে গবেষণাগারের প্রয়োজনের নিরীখে
-                                ……………….. এর Specification প্রস্তুত করার দায়িত্ব বাজারমূল্য নির্ধারন ও স্পেসিফিকেশন
+                                {this.props.RFQ_details.title} এর Specification প্রস্তুত করার দায়িত্ব বাজারমূল্য
+                                নির্ধারন ও স্পেসিফিকেশন
                                 প্রস্তুতকরন কমিটিকে দেয়া যেতে পারে।
                             </p>
 
                             {this.genSignBlock("হিসাবরক্ষক", chahida_potro.accountant)}
                             {this.genSignBlock("অনুমোদনকারী", chahida_potro.director)}
 
-                            <p className="text"> ৪। নোটানুচ্ছেদ ০৩ এর মাধ্যমে প্রাপ্ত আদেশের আলোকে প্রয়োজনীয় {chahida_potro.title}
+                            <p className="text"> ৪। নোটানুচ্ছেদ ০৩ এর মাধ্যমে প্রাপ্ত আদেশের আলোকে
+                                প্রয়োজনীয় {chahida_potro.title}
                                 সমূহের
                                 Specification ও বাজারমূল্য নির্ধারনকৃত হয়েছে(কপি সংযুক্ত)। প্রস্তুতকৃত Specification
                                 ও বাজারমূল্যের আলোকে প্রয়োজনীয় {chahida_potro.title} ক্রয় করা যেতে পারে।
@@ -199,7 +364,8 @@ class Note extends Component {
 
                                 <div>
                                     <p className="text">
-                                        ৫। নোটানুচ্ছেদ ০১ এর অনুমোদনের আলোকে {chahida_potro.title} সরবরাহকারী প্রতিষ্ঠানের নিকট হতে
+                                        ৫। নোটানুচ্ছেদ ০১ এর অনুমোদনের আলোকে {chahida_potro.title} সরবরাহকারী
+                                        প্রতিষ্ঠানের নিকট হতে
                                         দরপত্র আহ্বানের লক্ষ্যে নোটিশ বোর্ডে বিজ্ঞপ্তি প্রকাশ এবং চিঠির মাধ্যমে অবগত
                                         করার
                                         ব্যাপারে অনুমোদনের জন্য নথি উপস্থাপন করা হলো।
@@ -215,13 +381,17 @@ class Note extends Component {
                                     {this.genSignBlock("অনুমোদনকারী", this.props.RFQ_details.standard.director)}
 
                                     <p className="text">
-                                        ৭। ২৮/০২/২০১৬ তারিখে দরপত্র আহ্বানের প্রেক্ষিতে মোট ০৩ (তিন) টি দরপত্র পাওয়া
+                                        ৭। {standardDate} তারিখে দরপত্র আহ্বানের প্রেক্ষিতে মোট
+                                        {standardNum} টি দরপত্র পাওয়া
                                         গিয়েছে।
                                         দরপত্রগুলো যাচাই-বাছাই করার জন্য স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র ও প্রস্তাব
                                         মূল্যায়ন কমিটির সভা আহ্বান করা যেতে পারে।
                                     </p>
 
+                                    {step7Acc}
+                                    {step8Dir}
 
+                                    <br/>
                                 </div>
                                 <div className="notefooter">
                                     <hr/>

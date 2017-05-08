@@ -45,7 +45,7 @@ class DashHeader extends Component {
 
                             <a onClick={this.gotoHome.bind(this)} className="navbar-brand" href="#" style={{padding: 0, paddingTop: "3.3%"}}>
                                 <span >
-                                    <img src="dricmlogo.jpg" style={{width: "27%", height: "auto"}}/>
+                                    <img src="/dricmlogo.jpg" style={{width: "27%", height: "auto"}}/>
                                 </span>
                                 <span style={{paddingLeft: "4%", paddingTop: "6.2%"}}>DRICM</span>
                             </a>

@@ -366,7 +366,7 @@ export default class SideBar extends Component {
                 <ul className="sidebar_ul">
                     {go_to_note}
                     {create_chahida_block}
-                    {create_forward_block}
+
                     {create_standard_block}
                     {create_standard_doc_butt_create}
 
@@ -374,6 +374,7 @@ export default class SideBar extends Component {
                     {allowanceNikosh}
                     {cs}
                     {application}
+                    {create_forward_block}
                 </ul>
             </div>
 

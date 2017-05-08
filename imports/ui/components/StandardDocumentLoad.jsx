@@ -40,26 +40,6 @@ class StandardDocumentLoad extends Component {
         });
     }
 
-    nextClick(e) {
-        e.preventDefault();
-        let pageno = this.state.pageno + 1;
-        if (this.state.pageno < 5) {
-            this.setState({
-                pageno: pageno
-            });
-        }
-    }
-
-    prevClick(e) {
-        e.preventDefault();
-        let pageno = this.state.pageno - 1;
-        if (this.state.pageno > 1) {
-            this.setState({
-                pageno: pageno
-            });
-        }
-    }
-
     handleForward(value) {
         var that = this;
         if (this.props.RFQ.step_no == 4) {
@@ -84,9 +64,10 @@ class StandardDocumentLoad extends Component {
                     step_no: 6,
                     'standard.director.signed': true,
                     'standard.director.sign_date': new Date(),
-                    'meeting.initiator.user_id': ini._id,
-                    'meeting.initiator.name': ini.profile.name,
-                    'meeting.initiator.pic': ini.profile.seal
+
+                    'step78accountant.user_id': this.props.RFQ.chahida.accountant.user_id,
+                    'step78accountant.name': this.props.RFQ.chahida.accountant.name,
+                    'step78accountant.pic': this.props.RFQ.chahida.accountant.pic
                 };
             }
 
@@ -183,8 +164,7 @@ export default createContainer(props => {
     if (RFQ) {
         Dcc = Meteor.users.find(
             {
-                'profile.committee.name': "Specification Committee",
-                'profile.committee.des': 'Shochib'
+                _id: RFQ.chahida.accountant.user_id
             }).fetch();
         Director = Meteor.users.find(
             {

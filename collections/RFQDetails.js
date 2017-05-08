@@ -369,10 +369,26 @@ RFQDetailsSchema = new SimpleSchema({
         label: 'standard',
         optional: true
     },
+    step78accountant: {
+        type: UserSignFalse,
+        label: 'step7acc',
+        optional: true
+    },
+    step78director: {
+        type: UserSignFalse,
+        label: 'step7dir',
+        optional: true
+    },
+    step78meetingDate: {
+        type: Date,
+        label: 'datemeet',
+        optional: true
+    },
     standard_apply: {
         type: [StandardApplySchema],
         label: 'standard_apply',
-        optional: true
+        optional: true,
+        defaultValue: []
     },
     meeting: {
         type: MeetingNoticeSchema,
