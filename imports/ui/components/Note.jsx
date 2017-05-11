@@ -2,13 +2,15 @@ import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 import ReactDOM from "react-dom";
 import SideBar from "./SideBar";
+import Calendar from "./Calendar";
 
 class Note extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            signed: false
+            signed: false,
+            datesub: ''
         };
     }
 
@@ -113,8 +115,6 @@ class Note extends Component {
                 } else {
                     return (
                         <div className="col-md-6 center-block form-group">
-                            <div className="col-md-1">
-                            </div>
                             <div id="signblock" className="form-style-4">
                                 <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)}
                                        type="password" name="password"
@@ -201,8 +201,52 @@ class Note extends Component {
         }
     }
 
+    handleForward8(value) {
+        if (this.state.signed && this.state.datesub) {
+            var Sp;
+            this.props.SpOf.map(function (Of) {
+                if (Of._id == value) {
+                    Sp = Of;
+                }
+            });
+            var updateForm = {
+                step_no: 8,
+                'step78director.signed': true,
+                'step78director.sign_date': new Date(),
+                'step78meetingDate': this.state.datesub,
+                'meeting.initiator.user_id': Sp._id,
+                'meeting.initiator.name': Sp.profile.name,
+                'meeting.initiator.pic': Sp.profile.seal
+            }
+
+            var that = this;
+            RFQDetails.update(
+                this.props.RFQ_details._id,
+                {
+                    $set: updateForm
+                }, function (err, res) {
+                    if (err) {
+                        console.log(err);
+                        Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
+                    }
+                    else {
+                        FlowRouter.go('/Note/' + that.props.RFQ_details._id);
+                    }
+                });
+        }
+        else {
+            Bert.alert('Please Sign the Document & Set Date of meeting!!', 'danger', 'growl-top-right');
+        }
+    }
+
+    datesubChange(dateValue) {
+        this.setState({
+            datesub: dateValue
+        })
+    }
+
     render() {
-        if (this.props.RFQ_details) {
+        if (this.props.RFQ_details && this.props.Acc && this.props.Dir) {
             var standardDate, standardNum;
 
             var chahida_potro = this.props.RFQ_details.chahida;
@@ -228,6 +272,10 @@ class Note extends Component {
             var stanCreate, stanLoad, allowanceNikosh, meetingNotice, cs, applications, RFQ_id, forward_to;
             var step7Acc = this.genSignBlock("হিসাবরক্ষক", this.props.RFQ_details.step78accountant);
             var step8Dir = this.genSignBlock("অনুমোদনকারী", this.props.RFQ_details.step78director);
+            var step8Block =
+                <p className="text">
+                    ৮।
+                </p>
 
             if (this.props.RFQ_details.step_no == 3 && Meteor.userId() == this.props.RFQ_details.standard.initiator.user_id) {
                 stanCreate = "/StandardDocument/" + this.props.RFQ_details._id;
@@ -244,28 +292,46 @@ class Note extends Component {
                 standardDate = this.datefromcreate(this.props.RFQ_details.standard.createdAt);
                 standardNum = this.props.RFQ_details.standard_apply.length;
             }
-            //console.log(applications);
-            if (this.props.RFQ_details.step_no == 6 && Meteor.userId() == this.props.RFQ_details.meeting.initiator.user_id) {
-                meetingNotice = "/MeetingNotice/" + this.props.RFQ_details._id;
-
-            }
-            //console.log(standardNum);
-            if (this.props.RFQ_details.step_no > 6) {
-                meetingNotice = "/MeetingNotice/" + this.props.RFQ_details._id;
-            }
-            if (this.props.RFQ_details.step_no > 6) {
-                allowanceNikosh = "/AllowanceNikosh/" + this.props.RFQ_details._id;
-                cs = "/cs/" + this.props.RFQ_details._id;
-            }
             if (this.props.RFQ_details.step_no == 6 && Meteor.userId() == this.props.RFQ_details.step78accountant.user_id) {
                 step7Acc = this.genSignBlockFull("হিসাবরক্ষক", this.props.RFQ_details.step78accountant);
                 forward_to = {
                     toWhom: "অনুমোদনকারী",
-                    dropdownList: Meteor.users.find({_id: this.props.RFQ_details.chahida.director.user_id}).fetch(),
+                    dropdownList: this.props.Dir,
                     sendSelect: (value) => this.handleForward(value)
                 }
             }
-            console.log(forward_to);
+            if (this.props.RFQ_details.step_no == 7 && Meteor.userId() == this.props.RFQ_details.step78director.user_id) {
+                step8Dir = this.genSignBlockFull("অনুমোদনকারী", this.props.RFQ_details.step78director);
+                forward_to = {
+                    toWhom: "Specification Committee",
+                    dropdownList: this.props.SpOf,
+                    sendSelect: (value) => this.handleForward8(value)
+                }
+                step8Block =
+                    <div className="form-inline">
+                        <span>৮। </span>
+                        <span>
+                            <Calendar datesubChange={(dateValue) => this.datesubChange(dateValue)}/>
+                        </span>
+
+                        <span> তারিখে মিটিং ডাকা হল </span>
+                    </div>
+            }
+            //console.log(applications);
+            if (this.props.RFQ_details.step_no == 8 && Meteor.userId() == this.props.RFQ_details.meeting.initiator.user_id) {
+                meetingNotice = "/MeetingNotice/" + this.props.RFQ_details._id;
+
+            }
+            //console.log(standardNum);
+            if (this.props.RFQ_details.step_no > 8) {
+                meetingNotice = "/MeetingNotice/" + this.props.RFQ_details._id;
+            }
+            if (this.props.RFQ_details.step_no > 8) {
+                allowanceNikosh = "/AllowanceNikosh/" + this.props.RFQ_details._id;
+                cs = "/cs/" + this.props.RFQ_details._id;
+            }
+
+            //console.log(forward_to);
             return (
                 <div className="container">
                     <div className="row">
@@ -391,7 +457,8 @@ class Note extends Component {
                                     {step7Acc}
                                     {step8Dir}
 
-                                    <br/>
+                                    {step8Block}
+
                                 </div>
                                 <div className="notefooter">
                                     <hr/>
@@ -424,14 +491,6 @@ class Note extends Component {
                                 </div>
 
                                 <div>
-                                    <p className="text">
-                                        ৮।
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                    </p>
-
 
                                     <p className="text">
                                         ৯। টোকানুচ্ছেদ ০৮ এর আলোকে দরপত্রগুলো পুঙ্খানুপুঙ্খরূপে বিশ্লেষণের লক্ষ্যে
@@ -706,7 +765,20 @@ Note.propTypes = {
 };
 
 export default createContainer(props => {
+    var RFQ = RFQDetails.findOne(props.id);
+    var Acc, Dir;
+    if (RFQ) {
+        Acc = Meteor.users.find({_id: RFQ.chahida.accountant.user_id}).fetch();
+        Dir = Meteor.users.find({_id: RFQ.chahida.director.user_id}).fetch();
+    }
     return {
-        RFQ_details: RFQDetails.findOne({_id: props.id})
+        RFQ_details: RFQ,
+        Acc: Acc,
+        Dir: Dir,
+        SpOf: Meteor.users.find(
+            {
+                'profile.committee.name': "Specification Committee",
+                'profile.committee.des': 'Shochib'
+            }).fetch()
     };
 }, Note);
