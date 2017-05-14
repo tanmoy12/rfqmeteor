@@ -51,14 +51,14 @@ class Note extends Component {
             return (
                 <div className="col-md-6 center-block">
                     <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                    <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                         <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                             <strong>{user.name}</strong></p>
                         <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
                             <strong>{this.datefromcreate(user.sign_date)}</strong>
                         </p>
                     </div>
-                    <hr id="signhr" style={{width: "80%"}}/>
+                    <hr id="signhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor}</strong></p>
                 </div>
             )
@@ -66,7 +66,7 @@ class Note extends Component {
         else {
             return (
                 <div className="col-md-6 center-block">
-                    <hr id="unsignhr" style={{width: "80%"}}/>
+                    <hr id="unsignhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor} </strong></p>
                 </div>
             )
@@ -83,14 +83,14 @@ class Note extends Component {
             return (
                 <div className="col-md-6 center-block">
                     <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                    <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                         <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                             <strong>{user.name}</strong></p>
                         <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
                             <strong>{this.datefromcreate(user.sign_date)}</strong>
                         </p>
                     </div>
-                    <hr id="signhr" style={{width: "80%"}}/>
+                    <hr id="signhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor}</strong></p>
                 </div>
             )
@@ -101,14 +101,14 @@ class Note extends Component {
                     return (
                         <div className="col-md-6 center-block">
                             <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                            <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                                 <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                                     <strong>{Meteor.user().profile.name}</strong></p>
                                 <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
                                     <strong>{this.dateTodayString()}</strong>
                                 </p>
                             </div>
-                            <hr id="signhr" style={{width: "80%"}}/>
+                            <hr id="signhr" style={{width: "100%"}}/>
                             <p id="signTag"><strong>{signfor}</strong></p>
                         </div>
                     )
@@ -126,7 +126,7 @@ class Note extends Component {
                                     <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
                                         <strong>{Meteor.user().profile.name}</strong></p>
                                 </div>
-                                <hr id="signhr" style={{width: "80%"}}/>
+                                <hr id="signhr" style={{width: "100%"}}/>
                                 <p id="signTag"><strong>{signfor}</strong></p>
                             </div>
                         </div>
@@ -136,7 +136,7 @@ class Note extends Component {
             else {
                 return (
                     <div className="col-md-6 center-block">
-                        <hr id="unsignhr" style={{width: "80%"}}/>
+                        <hr id="unsignhr" style={{width: "100%"}}/>
                         <p id="signTag"><strong>{signfor} </strong></p>
                     </div>
                 )
@@ -145,7 +145,7 @@ class Note extends Component {
         else {
             return (
                 <div className="col-md-6 center-block">
-                    <hr id="unsignhr" style={{width: "80%"}}/>
+                    <hr id="unsignhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor} </strong></p>
                 </div>
             )
@@ -253,20 +253,6 @@ class Note extends Component {
             var RFQItem = this.props.RFQ_details;
             var chahidaSend = {
                 name: "চাহিদা পত্র",
-                info: [
-                    {
-                        title: 'RFQ Title',
-                        details: RFQItem.chahida.title
-                    },
-                    {
-                        title: 'RFQ Estimae',
-                        details: 'TK. ' + RFQItem.chahida.estimate + ' /='
-                    },
-                    {
-                        title: 'Initiator',
-                        details: RFQItem.chahida.initiator.name
-                    }
-                ],
                 link: '/ChahidaPotroload/' + RFQItem._id
             };
             var stanCreate, stanLoad, allowanceNikosh, meetingNotice, cs, applications, RFQ_id, forward_to;
@@ -283,7 +269,6 @@ class Note extends Component {
             if (this.props.RFQ_details.step_no > 3) {
                 stanLoad = {
                     name: 'Standard Document',
-                    info: [],
                     link: "/StandardDocumentLoad/" + this.props.RFQ_details._id
                 };
                 var that = this;
@@ -308,14 +293,20 @@ class Note extends Component {
                     sendSelect: (value) => this.handleForward8(value)
                 }
                 step8Block =
-                    <div className="form-inline">
+                    <div className="form-inline pull-left">
                         <span>৮। </span>
                         <span>
                             <Calendar datesubChange={(dateValue) => this.datesubChange(dateValue)}/>
                         </span>
 
-                        <span> তারিখে মিটিং ডাকা হল </span>
+                        <span> তারিখে মিটিং ডাকা হল |</span>
                     </div>
+            }
+            if(this.props.RFQ_details.step_no > 7){
+                step8Block =
+                    <p className="text">
+                        ৮। {this.datefromcreate(this.props.RFQ_details.step78meetingDate)} তারিখে মিটিং ডাকা হল |
+                    </p>
             }
             //console.log(applications);
             if (this.props.RFQ_details.step_no == 8 && Meteor.userId() == this.props.RFQ_details.meeting.initiator.user_id) {
@@ -350,7 +341,7 @@ class Note extends Component {
 
 
                         </div>
-                        <div className="col-md-9 jumbotron text-center">
+                        <div id="chahidajumbo" className="col-md-8 jumbotron text-center">
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="title-top col-md-12">
@@ -365,9 +356,9 @@ class Note extends Component {
                             <p className="text">
                                 ১। বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ (বিসিএসআইআর)-এর আওতাধীন ডেজিগনেটেড
                                 রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস- এর বৈজ্ঞানিক কর্মকর্তা
-                                <strong>{this.props.RFQ_details.chahida.initiator.name}</strong>- এর কাছ
+                                 <strong> {this.props.RFQ_details.chahida.initiator.name}</strong>- এর কাছ
                                 থেকে প্রাপ্ত চাহিদার (কপি সংযুক্ত) আলোকে গবেষণার জন্য
-                                <strong>{this.props.RFQ_details.title}</strong> ক্রয় করা প্রয়োজন। কাজটি
+                                 <strong> {this.props.RFQ_details.title}</strong> ক্রয় করা প্রয়োজন। কাজটি
                                 জরুরী বিধায় স্থানীয় সরবরাহকারী প্রতিষ্ঠানের সাথে যোগাযোগ করে তুলনামূলক প্রতিযোগী
                                 দরদাতা দ্বারা PPR-২০০৮ এর তফসীল-২-এর বিধি ৯(২)(ক) অনুসরণে RFQ পদ্ধতিতে সংগ্রহ করা
                                 যেতে পারে।
@@ -379,7 +370,7 @@ class Note extends Component {
                             {this.genSignBlock("অনুমোদনকারী", chahida_potro.director)}
 
                             <p className="text"> ৩। নোটানুচ্ছেদ ০১ এর অনুমোদনের আলোকে গবেষণাগারের প্রয়োজনের নিরীখে
-                                {this.props.RFQ_details.title} এর Specification প্রস্তুত করার দায়িত্ব বাজারমূল্য
+                                <strong> {this.props.RFQ_details.chahida.title} </strong> এর Specification প্রস্তুত করার দায়িত্ব বাজারমূল্য
                                 নির্ধারন ও স্পেসিফিকেশন
                                 প্রস্তুতকরন কমিটিকে দেয়া যেতে পারে।
                             </p>
@@ -388,17 +379,17 @@ class Note extends Component {
                             {this.genSignBlock("অনুমোদনকারী", chahida_potro.director)}
 
                             <p className="text"> ৪। নোটানুচ্ছেদ ০৩ এর মাধ্যমে প্রাপ্ত আদেশের আলোকে
-                                প্রয়োজনীয় {chahida_potro.title}
+                                প্রয়োজনীয় <strong> {this.props.RFQ_details.chahida.title} </strong>
                                 সমূহের
                                 Specification ও বাজারমূল্য নির্ধারনকৃত হয়েছে(কপি সংযুক্ত)। প্রস্তুতকৃত Specification
-                                ও বাজারমূল্যের আলোকে প্রয়োজনীয় {chahida_potro.title} ক্রয় করা যেতে পারে।
+                                ও বাজারমূল্যের আলোকে প্রয়োজনীয় <strong> {this.props.RFQ_details.chahida.title} </strong> ক্রয় করা যেতে পারে।
 
                             </p>
                             {this.genSignBlock("হিসাবরক্ষক", this.props.RFQ_details.standard.accountant)}
                             {this.genSignBlock("অনুমোদনকারী", this.props.RFQ_details.standard.director)}
                             <div className="row">
 
-                                <div className="notefooter">
+                                <div className="notefooter col-md-12">
                                     <hr/>
                                     <h4>Dr. Qudrat-I-Khuda Road, Dhanmondi, Dhaka-1205</h4>
                                     <h4>Tel : 02 9671830, 01715032057</h4>
@@ -416,7 +407,7 @@ class Note extends Component {
                                 />
                             </div>
 
-                            <div className="col-md-9 jumbotron text-center">
+                            <div id="chahidajumbo" className="col-md-8 jumbotron text-center">
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="title-top col-md-12">
@@ -454,9 +445,12 @@ class Note extends Component {
                                         মূল্যায়ন কমিটির সভা আহ্বান করা যেতে পারে।
                                     </p>
 
-                                    {step7Acc}
-                                    {step8Dir}
-
+                                    <div className="row">
+                                        {step7Acc}
+                                        {step8Dir}
+                                    </div>
+                                    <br/>
+                                    <br/>
                                     {step8Block}
 
                                 </div>
@@ -478,7 +472,7 @@ class Note extends Component {
                                 />
                             </div>
 
-                            <div className="col-md-9 jumbotron text-center">
+                            <div id="chahidajumbo" className="col-md-8 jumbotron text-center">
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="title-top col-md-12">
@@ -587,7 +581,7 @@ class Note extends Component {
                                 />
                             </div>
 
-                            <div className="col-md-9 jumbotron text-center">
+                            <div id="chahidajumbo" className="col-md-8 jumbotron text-center">
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="title-top col-md-12">

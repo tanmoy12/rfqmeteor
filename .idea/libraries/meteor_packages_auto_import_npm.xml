@@ -439,13 +439,8 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_baseValues.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_baseIsArguments.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/toNumber.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_freeGlobal.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/map.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/map.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_freeGlobal.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/gt.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/indexOf.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_createRelationalOperation.js" />
@@ -456,13 +451,8 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/isNumber.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/tap.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_overArg.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/forEachRight.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/range.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/range.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/forEachRight.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/eq.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/isArrayBuffer.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_baseUnset.js" />
@@ -470,13 +460,8 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_baseUniq.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/babel-helper-get-function-arity/lib/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/babel-plugin-transform-es2015-classes/lib/lib/memoise-decorators.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_charsStartIndex.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/cloneDeepWith.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/cloneDeepWith.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_charsStartIndex.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/babel-plugin-transform-es2015-classes/lib/vanilla.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/slash/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/entries.js" />
@@ -800,54 +785,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/batch/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/vary/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/send/index.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/rndm/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/mime/build/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/mime/build/build.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/mime/cli.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/mime/mime.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/etag/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/depd/lib/compat/buffer-concat.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/depd/lib/compat/callsite-tostring.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/depd/lib/compat/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/depd/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/csrf/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc32.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc8_1wire.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/create.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc8.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc16_modbus.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc16_xmodem.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc16_ccitt.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc16.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/hex.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc24.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc1.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/qs/lib/parse.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/qs/lib/utils.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/qs/lib/stringify.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/qs/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/ms/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/meteor-promise/promise.d.ts" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/meteor-promise/fiber_pool.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/meteor-promise/promise_server.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/meteor-promise/promise_client.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/core.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/rejection-tracking.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/synchronous.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/finally.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/node-extensions.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/es6-extensions.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/done.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/core.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/rejection-tracking.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/synchronous.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/finally.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/node-extensions.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-object-property/test.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/rndm/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-object-property/index.js" />
@@ -976,7 +913,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/finally.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/node-extensions.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/extsprintf/lib/extsprintf.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/es6-extensions.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/done.js" />
@@ -997,45 +933,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/lib/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/lib/done.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/core.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/polyfill-done.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/polyfill.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/build.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/asap/browser-asap.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/asap/browser-raw.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/asap/raw.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/asap/asap.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/process-nextick-args/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/process-nextick-args/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/require_optional/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/lib/internal/streams/BufferList.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/lib/_stream_readable.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/lib/_stream_transform.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/lib/_stream_passthrough.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/lib/_stream_duplex.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/lib/_stream_writable.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/transform.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/readable.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/duplex.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/passthrough.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/readable-stream/writable.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/util-deprecate/node.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/util-deprecate/browser.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/string_decoder/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/resolve-from/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/wireprotocol/2_4_support.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/wireprotocol/commands.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/wireprotocol/shared.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/wireprotocol/3_2_support.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/wireprotocol/2_6_support.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/topologies/mongos.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/topologies/server.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/topologies/replset.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/topologies/shared.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/topologies/replset_state.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/topologies/read_preference.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/concat-map/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/polyfill-done.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ansi-regex/index.js" />
@@ -1145,7 +1042,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/topologies/replset_state.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/topologies/read_preference.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/index.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/connection/logger.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/connection/commands.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/lib/connection/pool.js" />
@@ -1166,29 +1062,20 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/test.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb-core/test1.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/core-util-is/lib/util.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isarray/test.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isarray/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/core-util-is/lib/util.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/getpass/lib/index.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/core-util-is/test.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/buffer-shims/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/dist/es6-promise.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/dist/es6-promise.min.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/lib/es6-promise/promise/all.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/lib/es6-promise/promise/reject.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/lib/es6-promise/promise/resolve.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/lib/es6-promise/promise/race.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/wrappy/wrappy.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/lib/es6-promise/promise/resolve.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/lib/es6-promise/promise/race.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/verror/lib/verror.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/lib/es6-promise/-internal.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/lib/es6-promise/promise.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/es6-promise/lib/es6-promise/polyfill.js" />
@@ -1200,26 +1087,17 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/inherits/inherits.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/inherits/inherits_browser.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/gridfs-stream/upload.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/gridfs-stream/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/gridfs-stream/download.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/rimraf/rimraf.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/gridfs-stream/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/gridfs-stream/download.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/rimraf/bin.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/gridfs/chunk.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/gridfs/grid_store.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/bulk/ordered.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/bulk/unordered.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/bulk/common.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/pinkie/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/bulk/common.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsprim/lib/jsprim.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/mongos.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/replset.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/command_cursor.js" />
@@ -1236,14 +1114,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/url_parser.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/mongo_client.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/lib/aggregation_cursor.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/insert_bench.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/boot_auth.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/isarray/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/isarray/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/semver/semver.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/extend/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/mongodb/insert_bench.js" />
@@ -1254,36 +1124,42 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/xtend/immutable.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/semver/semver.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/xtend/test.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/alternate_parsers/bson.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/alternate_parsers/faster_bson.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/browser_build/bson.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/tools/gleak.js" />
-<<<<<<< HEAD
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/pem.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/ssh.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/rfc4253.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/pkcs1.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/parser/deserializer.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/pkcs8.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/parser/serializer.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/auto.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/parser/calculate_size.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/ssh-private.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/max_key.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/errors.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/float_parser.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/dhe.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/objectid.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/utils.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/regexp.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/ssh-buffer.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/double.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/long.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/fingerprint.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/decimal128.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/signature.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/map.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/private-key.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/index.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/algs.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/bson.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/ed-compat.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/binary.js" />
-<<<<<<< HEAD
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/key.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/code.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/timestamp.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/lib/bson/symbol.js" />
@@ -1293,17 +1169,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/bson/deserializer_bak.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules-runtime/0.7.7/npm/node_modules/install/docs/public/stylesheets/normalize.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules-runtime/0.7.7/npm/node_modules/install/docs/docco.css" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules-runtime/0.7.7/npm/node_modules/install/install.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules-runtime/0.7.7/npm/node_modules/install/install.min.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/dist/magic-string.cjs.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/dist/magic-string.umd.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/dist/magic-string.es6.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/src/utils/btoa.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/src/utils/isObject.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/src/utils/encodeMappings.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/src/utils/guessIndent.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/debug/node.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules-runtime/0.7.7/npm/node_modules/install/install.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules-runtime/0.7.7/npm/node_modules/install/install.min.js" />
@@ -1320,7 +1185,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/async/dist/async.min.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/src/utils/guessIndent.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/async/lib/async.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/src/utils/getRelativePath.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/src/utils/getLocator.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/magic-string/src/utils/Stats.js" />
@@ -1339,20 +1203,16 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/lib/scope.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/lib/node-path.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/lib/path.js" />
-<<<<<<< HEAD
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sntp/index.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/def/core.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/def/mozilla.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/once/once.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/def/es7.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/def/es6.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/def/babel.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/klaw/src/assign.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/def/jsx.js" />
-<<<<<<< HEAD
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/klaw/src/index.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/def/flow.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/def/e4x.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/ast-types/def/esprima.js" />
@@ -1361,14 +1221,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/node/caching-compiler.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/node/compile-hook.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/node/runtime.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/node/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/lib/empty.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/lib/utils.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/lib/runtime.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/lib/compiler.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/lib/entry.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsbn/example.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/node/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/lib/empty.js" />
@@ -1379,7 +1231,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hoek/lib/escape.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/reify/lib/entry.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hoek/lib/index.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/dist/acorn_loose.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/dist/walk.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/dist/acorn.js" />
@@ -1389,12 +1240,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/loose/state.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/loose/tokenize.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/loose/expression.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/loose/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/walk/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/bin/acorn.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/identifier.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/dist/client.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/loose/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/server.js" />
@@ -1406,7 +1251,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/identifier.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/browser.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/statement.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/state.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/tokenize.js" />
@@ -1422,12 +1266,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/tokencontext.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/lval.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/src/tokentype.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/bin/generate-identifier-regex.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/bin/build-acorn.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/vlq/dist/vlq.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/vlq/src/vlq.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/glob/sync.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/bin/generate-identifier-regex.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/acorn/bin/build-acorn.js" />
@@ -1436,21 +1274,10 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/vlq/dist/vlq.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/modules/0.7.7/npm/node_modules/vlq/src/vlq.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/boom/lib/index.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/uglify-to-browserify/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/repeat-string/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/center-align/utils.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/center-align/index.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/window-size/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/right-align/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/source-map/dist/source-map.debug.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/source-map/dist/source-map.min.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/source-map/dist/source-map.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/source-map/lib/source-node.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/source-map/lib/base64-vlq.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/source-map/lib/array-set.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/aws4/lru.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/window-size/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/right-align/index.js" />
@@ -1469,7 +1296,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/reader.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/index.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/npm/node_modules/validate-npm-package-license/index.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/source-map/lib/source-map-consumer.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/source-map/lib/mapping-list.js" />
@@ -1481,12 +1307,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/npm/node_modules/generate-object-property/test.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/source-map/lib/util.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/npm/node_modules/lodash.templatesettings/index.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/npm/node_modules/normalize-package-data/lib/safe_format.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/npm/node_modules/normalize-package-data/lib/fixer.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/source-map/source-map.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/npm/node_modules/normalize-package-data/lib/normalize.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/qs/dist/qs.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/npm/node_modules/normalize-package-data/lib/safe_format.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/qs/lib/parse.js" />
@@ -1496,7 +1316,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/qs/lib/stringify.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/npm/node_modules/normalize-package-data/lib/normalize.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/qs/lib/index.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/npm/node_modules/normalize-package-data/lib/extract_description.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fortawesome_fontawesome/4.7.0/npm/node_modules/normalize-package-data/lib/make_warning.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/minifier-js/1.2.15/npm/node_modules/lazy-cache/index.js" />
@@ -5933,17 +5752,14 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_baseRandom.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/fn/parse-float.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_baseToString.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/qs/lib/stringify.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/fn/is-iterable.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/takeRight.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/pull.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/fn/set.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/qs/dist/qs.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/isMatchWith.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/hasIn.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/conforms.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/fn/_.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/klaw/src/assign.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_mapToArray.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/fn/parse-int.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/words.js" />
@@ -5972,226 +5788,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_createCurry.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_reEvaluate.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_arrayAggregator.js" />
-<<<<<<< HEAD
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/aws4/aws4.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/wrapperValue.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/sortBy.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/aws4/lru.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_equalArrays.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_defineProperty.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/aws-sign2/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_hasUnicode.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/Gruntfile.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ansi-regex/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_isFlattenable.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ansi-styles/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/types.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/reader.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/writer.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/errors.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/tst/ber/writer.test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/tst/ber/reader.test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/async/lib/async.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/async/dist/async.min.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/async/dist/async.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/assert-plus/assert.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/throttle/throttle.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl.min.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl-fast.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl-fast.min.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/memstore.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/cookie.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/pathMatch.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/pubsuffix.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/store.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/permuteDomain.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tunnel-agent/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/file-type/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/json/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/json/output-json-sync.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/json/output-json.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/json/jsonfile.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/util/utimes.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/util/assign.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/walk/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/empty/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/link.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/file.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/symlink-type.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/symlink.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/symlink-paths.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/move/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/mkdirs/win32.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/mkdirs/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/mkdirs/mkdirs-sync.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/mkdirs/mkdirs.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/output/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/remove/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy/ncp.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy/copy.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy-sync/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy-sync/copy-sync.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy-sync/copy-file-sync.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs.realpath/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs.realpath/old.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/form-data/lib/populate.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/form-data/lib/browser.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/form-data/lib/form_data.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/forever-agent/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/dashdash/lib/dashdash.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/debug/browser.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/debug/debug.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/debug/node.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/delayed-stream/lib/delayed_stream.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hoek/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hoek/lib/escape.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/browser.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/utils.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/client.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/crypto.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/server.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/dist/client.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/has-ansi/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/runner.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/error.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/schemas/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/async.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/verify.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/parser.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/signer.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/utils.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sntp/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sntp/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/algs.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/key.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/private-key.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/ssh-buffer.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/signature.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/dhe.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/utils.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/errors.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/ed-compat.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/auto.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/fingerprint.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/ssh-private.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/rfc4253.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/pkcs8.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/ssh.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/pem.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/pkcs1.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/stream-parser/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/strip-ansi/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/stringstream/stringstream.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/stringstream/example.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/string_decoder/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/supports-color/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/util-deprecate/node.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/util-deprecate/browser.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/bl/bl.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/boom/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/balanced-match/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/brace-expansion/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/chalk/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/caseless/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/caseless/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/cryptiles/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/concat-map/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/core-util-is/lib/util.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/core-util-is/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/commander/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/combined-stream/lib/combined_stream.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/rimraf/bin.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/rimraf/rimraf.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/request.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/multipart.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/tunnel.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/oauth.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/getProxyFromURI.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/cookies.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/auth.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/helpers.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/redirect.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/querystring.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/har.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/passthrough.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/writable.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/readable.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/duplex.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_writable.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/transform.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_passthrough.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_duplex.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_readable.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_transform.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/inflight/inflight.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/inherits/inherits_browser.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/inherits/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/inherits/inherits.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isarray/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isarray/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isstream/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isstream/isstream.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-property/is-property.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-typedarray/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-typedarray/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/formats.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/require.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/example.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/dh.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/curve255.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/utils.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/eddsa.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/core.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsbn/example.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsbn/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsprim/lib/jsprim.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsonfile/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsonpointer/jsonpointer.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsonpointer/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/json-schema/lib/links.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/json-schema/lib/validate.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/json-stringify-safe/stringify.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ecc-jsbn/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ecc-jsbn/lib/ec.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ecc-jsbn/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ecc-jsbn/lib/sec.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/extend/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/extsprintf/lib/extsprintf.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/escape-string-regexp/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/pinkie/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/pinkie-promise/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/path-is-absolute/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/process-nextick-args/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/process-nextick-args/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/glob/common.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/glob/sync.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/glob/glob.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/fs.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/legacy-streams.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/graceful-fs.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/polyfills.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-readlink/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/getpass/lib/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-function/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-function/example.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-function/test.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-object-property/index.js" />
-        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-object-property/test.js" />
-=======
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/wrapperValue.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/sortBy.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/index.js" />
@@ -6200,7 +5796,6 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_hasUnicode.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/Gruntfile.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_isFlattenable.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -6987,60 +6582,134 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/batch/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/vary/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/send/index.js" />
-<<<<<<< HEAD
-=======
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-object-property/test.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/rndm/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-object-property/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/mime/build/test.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/mime/build/build.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/process-nextick-args/test.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/process-nextick-args/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/mime/cli.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/escape-string-regexp/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/mime/mime.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/json-stringify-safe/stringify.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/etag/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/depd/lib/compat/buffer-concat.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-readlink/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/depd/lib/compat/callsite-tostring.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-function/example.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/depd/lib/compat/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-function/test.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-function/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/depd/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/path-is-absolute/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/example.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/require.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/csrf/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/formats.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_readable.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc32.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_transform.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_passthrough.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc8_1wire.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_duplex.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_writable.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/create.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc8.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/transform.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc16_modbus.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc16_xmodem.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc16_ccitt.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/readable.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc16.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/duplex.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/passthrough.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/hex.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc24.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/writable.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/combined-stream/lib/combined_stream.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc1.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/crc/lib/crc.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/brace-expansion/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/qs/lib/parse.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/qs/lib/utils.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/qs/lib/stringify.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/util-deprecate/node.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/util-deprecate/browser.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/qs/lib/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/supports-color/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/string_decoder/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/pinkie-promise/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/signer.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/utils.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/verify.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/parser.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/webapp/1.3.12/npm/node_modules/ms/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/delayed-stream/lib/delayed_stream.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/balanced-match/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/stream-parser/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-typedarray/test.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-typedarray/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/schemas/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/async.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/runner.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/error.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/forever-agent/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tunnel-agent/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/store.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/permuteDomain.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/memstore.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/cookie.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/pathMatch.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/pubsuffix.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/stringstream/example.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/stringstream/stringstream.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/core-util-is/lib/util.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/core-util-is/test.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsonpointer/jsonpointer.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsonpointer/test.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/json-schema/lib/validate.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/json-schema/lib/links.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-property/is-property.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/polyfills.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/legacy-streams.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/graceful-fs.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/fs.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs.realpath/old.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs.realpath/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/meteor-promise/promise.d.ts" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/assert-plus/assert.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/meteor-promise/fiber_pool.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/meteor-promise/promise_server.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/meteor-promise/promise_client.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ansi-styles/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/strip-ansi/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/core.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/rejection-tracking.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/oauth-sign/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/synchronous.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/finally.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/node-extensions.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/mime-types/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/eddsa.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/es6-extensions.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/core.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/utils.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/curve255.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/dh.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/setimmediate/done.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/core.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/rejection-tracking.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/synchronous.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/finally.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/node-extensions.js" />
-<<<<<<< HEAD
-=======
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/extsprintf/lib/extsprintf.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/es6-extensions.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/domains/done.js" />
@@ -7061,26 +6730,34 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/lib/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/lib/done.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/core.js" />
-<<<<<<< HEAD
-=======
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/concat-map/index.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/polyfill-done.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ansi-regex/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl-fast.min.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl-fast.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl.min.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/node-uuid/benchmark/benchmark.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/node-uuid/uuid.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/minimatch/minimatch.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/form-data/lib/form_data.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/form-data/lib/populate.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/form-data/lib/browser.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/polyfill.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/promise/build.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/file-type/index.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/cryptiles/lib/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/asap/browser-asap.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/asap/browser-raw.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/asap/raw.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/commander/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/promise/0.8.8/npm/node_modules/asap/asap.js" />
-<<<<<<< HEAD
-=======
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/aws-sign2/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/throttle/throttle.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsonfile/index.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isstream/isstream.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isstream/test.js" />
->>>>>>> f623e70b8b07d91e6f90f39bb8eec13d3f2455a2
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/process-nextick-args/test.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/inherits/inherits.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/npm-mongo/2.2.11_2/npm/node_modules/process-nextick-args/index.js" />
@@ -11872,17 +11549,14 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_baseRandom.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/fn/parse-float.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_baseToString.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/qs/lib/stringify.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/fn/is-iterable.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/takeRight.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/pull.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/fn/set.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/qs/dist/qs.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/isMatchWith.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/hasIn.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/conforms.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/fn/_.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/klaw/src/assign.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_mapToArray.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/fn/parse-int.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/words.js" />
@@ -11919,212 +11593,6 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_hasUnicode.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ecmascript-runtime/0.3.15/npm/node_modules/core-js/Gruntfile.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/babel-compiler/6.13.0/npm/node_modules/lodash/_isFlattenable.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ansi-styles/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/types.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/reader.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/writer.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/lib/ber/errors.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/tst/ber/writer.test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/asn1/tst/ber/reader.test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/async/lib/async.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/async/dist/async.min.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/async/dist/async.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/assert-plus/assert.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/throttle/throttle.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl.min.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl-fast.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tweetnacl/nacl-fast.min.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/memstore.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/cookie.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/pathMatch.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/pubsuffix.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/store.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tough-cookie/lib/permuteDomain.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/tunnel-agent/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/file-type/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/json/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/json/output-json-sync.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/json/output-json.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/json/jsonfile.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/util/utimes.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/util/assign.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/walk/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/empty/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/link.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/file.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/symlink-type.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/symlink.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/ensure/symlink-paths.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/move/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/mkdirs/win32.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/mkdirs/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/mkdirs/mkdirs-sync.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/mkdirs/mkdirs.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/output/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/remove/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy/ncp.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy/copy.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy-sync/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy-sync/copy-sync.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs-extra/lib/copy-sync/copy-file-sync.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs.realpath/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/fs.realpath/old.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/form-data/lib/populate.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/form-data/lib/browser.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/form-data/lib/form_data.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/forever-agent/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/dashdash/lib/dashdash.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/debug/browser.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/debug/debug.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/debug/node.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/delayed-stream/lib/delayed_stream.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hoek/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hoek/lib/escape.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/browser.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/utils.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/client.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/crypto.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/lib/server.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/hawk/dist/client.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/has-ansi/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/runner.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/error.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/schemas/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/har-validator/lib/async.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/verify.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/parser.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/signer.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/http-signature/lib/utils.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sntp/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sntp/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/algs.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/key.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/private-key.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/ssh-buffer.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/signature.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/dhe.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/utils.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/errors.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/ed-compat.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/auto.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/fingerprint.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/ssh-private.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/rfc4253.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/pkcs8.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/ssh.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/pem.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/sshpk/lib/formats/pkcs1.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/stream-parser/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/strip-ansi/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/stringstream/stringstream.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/stringstream/example.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/string_decoder/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/supports-color/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/util-deprecate/node.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/util-deprecate/browser.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/bl/bl.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/boom/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/balanced-match/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/brace-expansion/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/chalk/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/caseless/test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/caseless/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/cryptiles/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/concat-map/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/core-util-is/lib/util.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/core-util-is/test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/commander/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/combined-stream/lib/combined_stream.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/rimraf/bin.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/rimraf/rimraf.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/request.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/multipart.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/tunnel.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/oauth.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/getProxyFromURI.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/cookies.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/auth.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/helpers.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/redirect.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/querystring.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/request/lib/har.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/passthrough.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/writable.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/readable.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/duplex.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_writable.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/transform.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_passthrough.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_duplex.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_readable.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/readable-stream/lib/_stream_transform.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/inflight/inflight.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/inherits/inherits_browser.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/inherits/test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/inherits/inherits.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isarray/test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isarray/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isstream/test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/isstream/isstream.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-property/is-property.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-typedarray/test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-typedarray/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/formats.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/require.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/is-my-json-valid/example.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/dh.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/curve255.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/utils.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/eddsa.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jodid25519/lib/core.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsbn/example.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsbn/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsprim/lib/jsprim.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsonfile/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsonpointer/jsonpointer.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/jsonpointer/test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/json-schema/lib/links.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/json-schema/lib/validate.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/json-stringify-safe/stringify.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ecc-jsbn/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ecc-jsbn/lib/ec.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ecc-jsbn/test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/ecc-jsbn/lib/sec.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/extend/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/extsprintf/lib/extsprintf.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/escape-string-regexp/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/pinkie/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/pinkie-promise/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/path-is-absolute/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/process-nextick-args/test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/process-nextick-args/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/glob/common.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/glob/sync.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/glob/glob.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/fs.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/legacy-streams.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/graceful-fs.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-fs/polyfills.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/graceful-readlink/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/getpass/lib/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-function/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-function/example.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-function/test.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-object-property/index.js" />
-      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.6.6/npm/node_modules/generate-object-property/test.js" />
     </CLASSES>
     <SOURCES />
   </library>

@@ -107,6 +107,14 @@ FlowRouter.route('/StandardApplyLoad/:id/:idx', {
     }
 });
 
+FlowRouter.route('/Minutes/:id', {
+    action(params){
+        mount(LayoutDash, {
+            content: (<Minutes id={params.id}/>)
+        })
+    }
+});
+
 FlowRouter.route('/StandardDocumentApply/:id', {
     action(params){
         mount(LayoutDash, {
@@ -167,17 +175,6 @@ FlowRouter.route('/cs/:id', {
         })
     }
 });
-
-
-FlowRouter.route('/Minutes', {
-    action(){
-        mount(LayoutDash, {
-            content: (<Minutes />)
-        })
-    }
-});
-
-
 
 FlowRouter.route('/CompanyS', {
     action(){

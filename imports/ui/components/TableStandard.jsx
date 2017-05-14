@@ -96,14 +96,13 @@ class ProductRow extends React.Component {
                 <td className="col-md-3 text-left">
                     {this.props.product.desc}
                 </td>
-                <td className="col-md-4">
+                <td className="col-md-4 textedit">
                     <textarea name="spec" id={this.props.product.id} onChange={this.props.onProductTableUpdate} defaultValue={pack}  rows="4" cols="50">
 
                     </textarea>
                 </td>
-                <td  className="col-md-2">
+                <td className="col-md-2 textedit">
                     <textarea name="making" id={this.props.product.id} onChange={this.props.onProductTableUpdate} defaultValue="To Be Mentioned" rows="4" cols="50">
-
                     </textarea>
                 </td>
                 <td className="col-md-2 text-left">

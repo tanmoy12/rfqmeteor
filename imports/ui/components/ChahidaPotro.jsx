@@ -264,21 +264,19 @@ class ChahidaPotro extends Component {
                 signBlock =
                     <div className="col-md-6 center-block">
                         <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                        <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                        <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                             <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                                 <strong>{Meteor.user().profile.name}</strong></p>
                             <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
                                 <strong>{this.dateTodayString()}</strong>
                             </p>
                         </div>
-                        <hr id="signhr" style={{width: "80%"}}/>
+                        <hr id="signhr" style={{width: "100%"}}/>
                         <p id="signTag"><strong>নিবেদক</strong></p>
                     </div>
             } else {
                 signBlock =
                     <div className="col-md-6 center-block form-group">
-                        <div className="col-md-1">
-                        </div>
                         <div id="signblock" className="form-style-4">
                             <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
                                    ref="password"
@@ -289,7 +287,7 @@ class ChahidaPotro extends Component {
                                 <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
                                     <strong>{Meteor.user().profile.name}</strong></p>
                             </div>
-                            <hr id="signhr" style={{width: "80%"}}/>
+                            <hr id="signhr" style={{width: "100%"}}/>
                             <p id="signTag"><strong>নিবেদক</strong></p>
                         </div>
 
@@ -310,7 +308,7 @@ class ChahidaPotro extends Component {
 
 
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-8">
                         <div id="chahidajumbo" className="jumbotron text-center">
                             <div className="row">
                                 <div className="title-top col-md-12">
@@ -371,7 +369,7 @@ class ChahidaPotro extends Component {
                             <div className="row">
                                 {signBlock}
                                 <div className="col-md-6 center-block">
-                                    <hr id="unsignhr" style={{width: "80%"}}/>
+                                    <hr id="unsignhr" style={{width: "100%"}}/>
                                     <p id="signTag"><strong>যাচাইকারী </strong></p>
                                 </div>
                             </div>
@@ -389,11 +387,11 @@ class ChahidaPotro extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-6 center-block">
-                                    <hr id="unsignhr" style={{width: "80%"}}/>
+                                    <hr id="unsignhr" style={{width: "100%"}}/>
                                     <p id="signTag"><strong>হিসাবরক্ষক </strong></p>
                                 </div>
                                 <div className="col-md-6 center-block">
-                                    <hr id="unsignhr" style={{width: "80%"}}/>
+                                    <hr id="unsignhr" style={{width: "100%"}}/>
                                     <p id="signTag"><strong>অনুমোদনকারী </strong></p>
                                 </div>
                             </div>

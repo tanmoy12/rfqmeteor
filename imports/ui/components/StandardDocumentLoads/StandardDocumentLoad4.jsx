@@ -68,7 +68,7 @@ export default class StandardDocumentLoad4 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
+                                    <strong>RFQ NO : {this.props.RFQ.standard.RFQ_no} </strong>
                                 </div>
                             </div>
                             <div className="col-md-6">

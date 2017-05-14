@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 
 export default class TableStandard extends Component {
-
     constructor(props) {
         super(props);
 
@@ -14,6 +13,7 @@ export default class TableStandard extends Component {
         };
 
     }
+
     handleDestination(evt){
         var item = {
             id: evt.target.id,
@@ -227,7 +227,7 @@ class ProductTable extends React.Component {
                             to
                         </td>
 
-                        <td colSpan="10" scope="colgroup" className="text-center">
+                        <td colSpan="10" scope="colgroup" className="text-center textedit">
                             <input defaultValue="DRiCM,BCSIR" className="text-center" type='text' name="desc" id="destination"
                                    placeholder="Destination" onChange={this.props.onDestinationUpdate}/>
                         </td>
@@ -247,7 +247,7 @@ class ProductTable extends React.Component {
                     <tr>
                         <td colSpan="2" scope="colgroup" className="text-left"> Delivery Offered</td>
 
-                        <td colSpan="10" scope="colgroup" className="text-center">
+                        <td colSpan="10" scope="colgroup" className="text-center textedit">
                             <input className="text-center" type='text' name="desc" id="destination"
                                    placeholder="[insert weeks/days] from date of issuing the Purchase Order]"
                                    onChange={this.props.senddelivery}/>
@@ -257,7 +257,7 @@ class ProductTable extends React.Component {
                     <tr>
                         <td colSpan="2" scope="colgroup" className="text-left"> Warranty Provided</td>
 
-                        <td colSpan="10" scope="colgroup" className="text-center">
+                        <td colSpan="10" scope="colgroup" className="text-center textedit">
                             <input className="text-center" type='text' name="desc" id="destination"
                                    placeholder="[insert weeks/months from date of delivery; state none if not applicable]"
                                    onChange={this.props.sendwarranty}/>
@@ -283,11 +283,11 @@ class ProductRow extends React.Component {
                 <td className="col-md-4 text-left">{product.desc}</td>
                 <td className="col-md-2 text-right">{product.unit}</td>
                 <td className="col-md-1 text-right">{product.qty}</td>
-                <td className="col-md-2">
+                <td className="col-md-2 textedit">
                     <input className="text-right" type='number' name="rate" id={this.props.product.id}
                            placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>
-                <td className="col-md-2">
+                <td className="col-md-2 textedit">
                     <input className="text-right" type='number' name="total" id={this.props.product.id}
                            value={this.props.product.total} placeholder="0" onChange={this.props.onProductTableUpdate}/>
                 </td>

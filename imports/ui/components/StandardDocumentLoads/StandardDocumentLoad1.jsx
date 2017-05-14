@@ -98,17 +98,12 @@ export default class StandardDocumentLoad1 extends Component {
 
 
                             <p className="text">
-                                6. Quotation in a sealed envelope or by fax or through electronic mail shall
-                                be
-                                submitted to the office of the undersigned on or before
-                                { this.datefromcreate(this.props.RFQ.standard.apply_date)} . The
-                                envelope containing the Quotation must be clearly marked <strong>“Quotation
-                                for
-                                Supply
-                                of </strong> {this.props.RFQ.title}” and <strong>DO NOT OPEN </strong>
-                                before
-                                {this.datefromcreate(this.props.RFQ.standard.apply_date)} Quotations received later than the time
-                                specified herein shall not be accepted.
+                                6. Quotation in a sealed envelope or by fax or through electronic mail shall be
+                                submitted to the office of the undersigned on or before {this.datefromcreate(this.props.RFQ.standard.apply_date)}.
+                                The envelope containing the Quotation must be clearly marked
+                                <strong> “Quotation for Supply of {this.props.RFQ.title}” </strong>
+                                and <strong> DO NOT OPEN before {this.datefromcreate(this.props.RFQ.standard.apply_date)} </strong>
+                                Quotations received later than the time specified herein shall not be accepted.
                             </p>
 
                             <p className="text">

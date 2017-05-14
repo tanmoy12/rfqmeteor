@@ -29,14 +29,14 @@ export default class StandardDocumentApply2 extends Component {
             return (
                 <div className="col-md-6 center-block">
                     <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                    <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                         <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                             <strong>{user.name}</strong></p>
                         <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
                             <strong>{this.datefromcreate(user.sign_date)}</strong>
                         </p>
                     </div>
-                    <hr id="signhr" style={{width: "80%"}}/>
+                    <hr id="signhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor}</strong></p>
                 </div>
             )
@@ -110,13 +110,13 @@ export default class StandardDocumentApply2 extends Component {
                         </div>
                     </div>
                 </div>
-                {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.standard.director)}
+                <div className="row">
+                    {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.standard.director)}
+                    <div className="col-md-6">
+
+                    </div>
+                </div>
                 <p className="text text-left">
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
                     (Dr. Mala Khan) <br/>
                     In- Charge <br/>
                     Designated Reference Institute for Chemical Measurements (DRiCM) <br/>

@@ -51,7 +51,7 @@ export default class StandardDocumentLoad5 extends Component {
                         <div className="row">
                             <div className="col-md-12 text-center">
                                 <p id="text-stnd">
-                                    <strong>Technical Specification of Chemicals</strong>
+                                    <strong>Technical Specification of {this.props.RFQ.chahida.title} </strong>
                                 </p>
                             </div>
                         </div>
@@ -63,11 +63,12 @@ export default class StandardDocumentLoad5 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
+                                    <strong>RFQ NO : {this.props.RFQ.standard.RFQ_no} </strong>
                                 </div>
                             </div>
                             <div className="col-md-6 text-right">
-                                {this.datefromcreate(this.props.RFQ.standard.createdAt)}
+                                <p id="dateload"><strong>DATE
+                                    : {this.datefromcreate(this.props.RFQ.standard.createdAt)}</strong></p>
                             </div>
                         </div>
                     </div>
@@ -153,6 +154,11 @@ export default class StandardDocumentLoad5 extends Component {
                         literature/brochures for the listed items.
                     </strong>
                 </p>
+                <div>
+                    <hr/>
+                    <h4>Dr. Qudrat-I-Khuda Road, Dhanmondi, Dhaka-1205</h4>
+                    <h4>Tel : 02 9671830, 01715032057</h4>
+                </div>
             </div>
         );
     }

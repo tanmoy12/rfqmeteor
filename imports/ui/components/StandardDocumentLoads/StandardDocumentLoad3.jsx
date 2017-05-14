@@ -46,7 +46,7 @@ export default class StandardDocumentLoad3 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
+                                    <strong>RFQ NO : {this.props.RFQ.standard.RFQ_no} </strong>
                                 </div>
 
 
@@ -66,9 +66,8 @@ export default class StandardDocumentLoad3 extends Component {
                         <div classID="standardbody">
                             <p className="text">
                                 I/We, the undersigned, offer to supply in conformity with the Terms and
-                                Conditions for delivery of the Goods and related services named <strong>Supply
-                                of
-                                {this.props.RFQ.title} </strong>
+                                Conditions for delivery of the Goods and related services named
+                                <strong> Supply of {this.props.RFQ.title} </strong>
                             </p>
 
                             <p className="text">

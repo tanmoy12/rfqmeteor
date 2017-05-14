@@ -55,17 +55,21 @@ export default class StandardDocumentApply3 extends Component {
         }
         if (this.state.signed) {
             signBlock =
-                <div className="col-md-3 pull-left" style={{paddingLeft: "0"}}>
-                    <img className="col-md-12 pull-left" id="signPic" src={link}  alt="User Image"/>
-                    <p className="text" style={{display: "block"}}>
-                        Signature of Quotationer with Seal <br/>
-                        Date: {this.datefromcreate(new Date())}
-                    </p>
+                <div className="col-md-5 pull-left" style={{paddingLeft: "0"}}>
+                    <div className="col-md-12">
+                        <img className="pull-left" id="signPic" src={link}  alt="User Image"/>
+                    </div>
+                    <div className="col-md-12">
+                        <p className="text" style={{display: "block"}}>
+                            Signature of Quotationer with Seal <br/>
+                            Date: {this.datefromcreate(new Date())}
+                        </p>
+                    </div>
                 </div>
 
         } else {
             signBlock =
-                <div className="col-md-3 pull-left form-group" style={{paddingLeft: "0"}}>
+                <div className="col-md-5 pull-left form-group" style={{paddingLeft: "0"}}>
                     <div id="signblock" className="col-md-12 form-style-4"  style={{paddingLeft: "0"}}>
                         <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
                                ref="password"
@@ -87,13 +91,6 @@ export default class StandardDocumentApply3 extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         {this.props.head}
-                        <div className="row">
-                            <div className="col-md-12 text-center">
-                                <p id="text-stnd">
-                                    Quotation Submission Letter <br/>
-                                    <strong>Use Letter-head Pad</strong></p>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div className="row">
@@ -101,7 +98,7 @@ export default class StandardDocumentApply3 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
+                                    <strong>RFQ NO : {this.props.RFQ.standard.RFQ_no} </strong>
                                 </div>
 
 
@@ -121,14 +118,13 @@ export default class StandardDocumentApply3 extends Component {
                         <div classID="standardbody">
                             <p className="text">
                                 I/We, the undersigned, offer to supply in conformity with the Terms and
-                                Conditions for delivery of the Goods and related services named <strong>Supply
-                                of
-                                {this.props.RFQ.title} </strong>
+                                Conditions for delivery of the Goods and related services named
+                                <strong> Supply of {this.props.RFQ.title} </strong>
                             </p>
 
                             <p className="text displayinblock">
                                 The total Price of my/our Quotation is BDT
-                                <strong>{this.props.estimate}</strong>
+                                <strong> {this.props.estimate} </strong>
 
                             </p>
 
@@ -162,8 +158,7 @@ export default class StandardDocumentApply3 extends Component {
 
                             <p className="text displayinblock">
                                 I/We have examined and have no reservations to the RFQ Document issued by
-                                you on
-                                {this.datefromcreate(this.props.RFQ.standard.createdAt)}
+                                you on <strong>{this.datefromcreate(this.props.RFQ.standard.createdAt)}</strong>
                             </p>
 
                             <p className="text">

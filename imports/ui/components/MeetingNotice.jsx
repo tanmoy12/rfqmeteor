@@ -3,15 +3,13 @@ import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
 
 import SideBar from './SideBar';
-import Calendar from "./Calendar";
 
 class MeetingNotice extends Component {
     constructor(props) {
         super(props);
         //  this.state.products = [];
         this.state = {
-            signed: false,
-            datesub: ''
+            signed: false
         };
     }
 
@@ -174,7 +172,7 @@ class MeetingNotice extends Component {
 
     handleForward(value) {
         var that = this;
-        if (this.state.datesub && this.state.signed) {
+        if (this.state.signed) {
             var comList = this.props.members.map(function (member) {
                 return (
                 {
@@ -189,7 +187,7 @@ class MeetingNotice extends Component {
             var MeetingForm = {
                 step_no: 7,
                 'meeting.createdAt': new Date(),
-                'meeting.dateOfMeeting': this.state.datesub,
+                'meeting.dateOfMeeting': this.props.RFQ_details.step78meetingDate,
                 'meeting.initiator.sign_date': new Date(),
                 'meeting.initiator.signed': true,
                 allowance_nikosh: comList,
@@ -216,24 +214,14 @@ class MeetingNotice extends Component {
     render() {
         if (this.props.RFQ_details) {
             var forward_to;
-
-
-            var date;
+            var date= this.datefromcreate(this.props.RFQ_details.meeting.dateOfMeeting);
             if (this.props.RFQ_details.meeting.dateOfMeeting) {
-                date = this.datefromcreate(this.props.RFQ_details.meeting.dateOfMeeting);
                 forward_to = {
-                    toWhom: "হিসাবরক্ষক",
+                    toWhom: "Specification Committee",
                     dropdownList: [],
                     sendSelect: (value) => this.handleForward(value)
                 }
 
-            } else {
-                date = <Calendar datesubChange={(dateValue) => this.datesubChange(dateValue)}/>
-                forward_to = {
-                    toWhom: "হিসাবরক্ষক",
-                    dropdownList: [],
-                    sendSelect: (value) => this.handleForward(value)
-                }
             }
             var side = <SideBar forwardTo={forward_to}
                                 goToNote={'/Note/' + this.props.RFQ_details._id}/>;
@@ -287,7 +275,7 @@ class MeetingNotice extends Component {
                                             লক্ষ্যে
                                             স্বল্প মূল্যের ক্রয়ের জন্য দরপত্র প্রস্তাব ও মূল্যায়ন কমিটি (TEC) এর সভা
                                             অদ্য
-                                            {date}
+                                            {this.datefromcreate(this.props.RFQ_details.step78meetingDate)}
                                             ইং তারিখ দুপুর ৩:৩০ ঘটিকার সময় ডিআরআইসিএম সভা কক্ষে অনুষ্ঠিত হবে
                                             ।
                                             (meeting date) <br/>

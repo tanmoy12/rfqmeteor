@@ -33,7 +33,7 @@ export default class StandardDocumentPageThree extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQno}
+                                    <strong>RFQ NO :  {this.props.RFQno} </strong>
                                 </div>
 
 

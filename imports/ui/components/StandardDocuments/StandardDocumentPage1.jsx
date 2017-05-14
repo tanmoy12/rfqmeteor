@@ -9,6 +9,16 @@ export default class StandardDocumentPage1 extends Component {
         this.state = {}
     }
 
+    datefromcreate(createdAt) {
+        console.log(createdAt);
+        if(createdAt) {
+            return createdAt.toISOString();
+        }
+        else{
+            return '.....................';
+        }
+    }
+
     render() {
         //console.log(this.props);
         return (
@@ -90,19 +100,15 @@ export default class StandardDocumentPage1 extends Component {
                                 awarded) respectively. </p>
 
 
-                            <div className="form-inline">
-                                <span className="text">6. Quotation in a sealed envelope or by fax or through electronic mail shall be
-                                    submitted to the office of the undersigned <strong>on or before</strong>
-                                </span>
-                                <span className="text">
-                                    <Calendar datesubChange={(dateValue) => this.props.datesubChange(dateValue)}/>
-                                </span>
-                                <span className="text">The envelope containing the Quotation must be clearly marked
-                                    <strong>“Quotation for Supply of
-                                        {this.props.RFQ.title}” </strong> and <strong>DO NOT OPEN BEFORE</strong>
-                                    ................................... Quotations received later than the time
-                                    specified here in shall not be accepted.
-                                </span>
+                            <div className="form-inline pull-left">
+                                <p className="text">6. Quotation in a sealed envelope or by fax or through electronic mail shall be
+                                    submitted to the office of the undersigned <strong>on or before  </strong>
+                                    <Calendar datesubChange={(dateValue, formatDate) => this.props.datesubChange(dateValue, formatDate)}/>
+                                      The envelope containing the Quotation must be clearly marked
+                                    <strong> “Quotation for Supply of {this.props.RFQ.title}” </strong> and
+                                    <strong> DO NOT OPEN BEFORE {(this.props.dateSelect)} </strong>
+                                    Quotations received later than the time specified here in shall not be accepted.
+                                </p>
                             </div>
 
 

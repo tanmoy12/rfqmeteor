@@ -8,7 +8,7 @@ export default class StandardDocumentApply5 extends Component {
 
         this.state = {
             signed: false,
-            date: ''
+            date: '................'
         }
     }
 
@@ -55,7 +55,7 @@ export default class StandardDocumentApply5 extends Component {
                             <td className="col-md-1">{detail.item_no}</td>
                             <td className="col-md-3">{detail.desc}</td>
                             <td><textarea readOnly defaultValue={detail.spec} rows="4" cols="50"></textarea></td>
-                            <td><textarea onChange={that.props.handleProductUpdate} name="making" id={detail.id}
+                            <td className="textedit"><textarea onChange={that.props.handleProductUpdate} name="making" id={detail.id}
                                           defaultValue={detail.making} rows="4" cols="50"></textarea></td>
                             <td className="col-md-2 text-center">{detail.qty}</td>
                         </tr>
@@ -76,17 +76,15 @@ export default class StandardDocumentApply5 extends Component {
         }
         if (this.state.signed) {
             signBlock =
-                <div className="col-md-6 center-block">
-                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                <div className="col-md-12 center-block">
+                    <img id="signPic" src={link} alt="User Image"/>
                     <p id="signLabel"><strong>Signature
                         of Quotationer with Seal</strong></p>
                 </div>
         } else {
             signBlock =
-                <div className="col-md-6 center-block form-group">
-                    <div className="col-md-1">
-                    </div>
-                    <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
+                <div className="col-md-12 center-block form-group">
+                    <div id="signblock" className="col-md-12 form-style-4">
                         <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password" ref="password"
                                placeholder="Password"/><br/>
                     </div>
@@ -106,7 +104,7 @@ export default class StandardDocumentApply5 extends Component {
                         <div className="row">
                             <div className="col-md-12 text-center">
                                 <p id="text-stnd">
-                                    <strong>Technical Specification of Chemicals</strong>
+                                    <strong>Technical Specification of {this.props.RFQ.chahida.title}</strong>
                                 </p>
                             </div>
                         </div>
@@ -118,11 +116,12 @@ export default class StandardDocumentApply5 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
+                                    <strong>RFQ NO : {this.props.RFQ.standard.RFQ_no} </strong>
                                 </div>
                             </div>
                             <div className="col-md-6 text-right">
-                                {this.datefromcreate(this.props.RFQ.standard.createdAt)}
+                                <p id="dateload"><strong>DATE
+                                    : {this.datefromcreate(this.props.RFQ.standard.createdAt)}</strong></p>
                             </div>
                         </div>
                     </div>
@@ -162,11 +161,11 @@ export default class StandardDocumentApply5 extends Component {
                     <table id="customers" className="table">
                         <tbody>
                         <tr>
-                            <td colSpan="3" scope="colgroup" className="text-center">
+                            <td colSpan="4" scope="colgroup" className="text-center">
                                 {signBlock}
                             </td>
 
-                            <td colSpan="9" rowSpan="2" scope="colgroup">
+                            <td colSpan="8" rowSpan="2" scope="colgroup">
                                 <br/>
                                 <br/>
                                 <br/>DATE: {this.state.date}
@@ -174,7 +173,7 @@ export default class StandardDocumentApply5 extends Component {
 
                         </tr>
                         <tr>
-                            <td className="text-center" colSpan="4" scope="colgroup">
+                            <td className="form-style-4" colSpan="4" scope="colgroup">
                                 <strong>{Meteor.user().profile.name}</strong>
                             </td>
                         </tr>

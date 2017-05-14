@@ -92,7 +92,7 @@ class StandardDocumentLoad extends Component {
     render() {
 
         if (this.props.RFQ && this.props.Dcc && this.props.Director) {
-            var forward_to;
+            var forward_to,allowApplication;
 
             if (this.props.RFQ.step_no == 4 && Meteor.userId() == this.props.RFQ.standard.accountant.user_id) {
                 forward_to = {
@@ -101,22 +101,19 @@ class StandardDocumentLoad extends Component {
                     sendSelect: (value) => this.handleForward(value)
                 }
             } else if (this.props.RFQ.step_no == 5 && Meteor.userId() == this.props.RFQ.standard.director.user_id) {
-                forward_to = {
-                    toWhom: "Specification Committee",
-                    dropdownList: this.props.Dcc,
-                    sendSelect: (value) => this.handleForward(value)
-                }
+                allowApplication = (value) => this.handleForward(value)
             }
 
             var side = <SideBar forwardTo={forward_to}
-                                goToNote={'/Note/' + this.props.RFQ._id}/>;
+                                goToNote={'/Note/' + this.props.RFQ._id}
+                                allowApplication={allowApplication} />;
             return (
                 <div className="container">
                     <div className="row">
                         <div className="col-md-3">
                             {side}
                         </div>
-                        <div className="col-md-9">
+                        <div className="col-md-8">
                             <div className="col-md-12">
                                 <StandardDocumentLoad1 RFQ={this.props.RFQ}/>
 

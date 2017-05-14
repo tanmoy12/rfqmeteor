@@ -154,14 +154,14 @@ class ChahidaPotroLoad extends Component {
             return (
                 <div className="col-md-6 center-block">
                     <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                    <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                         <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                             <strong>{user.name}</strong></p>
                         <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
                             <strong>{this.datefromcreate(user.sign_date)}</strong>
                         </p>
                     </div>
-                    <hr id="signhr" style={{width: "80%"}}/>
+                    <hr id="signhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor}</strong></p>
                 </div>
             )
@@ -172,22 +172,20 @@ class ChahidaPotroLoad extends Component {
                     return (
                         <div className="col-md-6 center-block">
                             <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                            <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                                 <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                                     <strong>{Meteor.user().profile.name}</strong></p>
                                 <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
                                     <strong>{this.dateTodayString()}</strong>
                                 </p>
                             </div>
-                            <hr id="signhr" style={{width: "80%"}}/>
+                            <hr id="signhr" style={{width: "100%"}}/>
                             <p id="signTag"><strong>{signfor}</strong></p>
                         </div>
                     )
                 } else {
                     return (
                         <div className="col-md-6 center-block form-group">
-                            <div className="col-md-1">
-                            </div>
                             <div id="signblock" className="form-style-4">
                                 <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
                                        ref="password"
@@ -198,7 +196,7 @@ class ChahidaPotroLoad extends Component {
                                     <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
                                         <strong>{Meteor.user().profile.name}</strong></p>
                                 </div>
-                                <hr id="signhr" style={{width: "80%"}}/>
+                                <hr id="signhr" style={{width: "100%"}}/>
                                 <p id="signTag"><strong>{signfor}</strong></p>
                             </div>
                         </div>
@@ -208,7 +206,7 @@ class ChahidaPotroLoad extends Component {
             else {
                 return (
                     <div className="col-md-6 center-block">
-                        <hr id="unsignhr" style={{width: "80%"}}/>
+                        <hr id="unsignhr" style={{width: "100%"}}/>
                         <p id="signTag"><strong>{signfor} </strong></p>
                     </div>
                 )
@@ -217,7 +215,7 @@ class ChahidaPotroLoad extends Component {
         else {
             return (
                 <div className="col-md-6 center-block">
-                    <hr id="unsignhr" style={{width: "80%"}}/>
+                    <hr id="unsignhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor} </strong></p>
                 </div>
             )
@@ -323,7 +321,7 @@ class ChahidaPotroLoad extends Component {
                 }
             } else if (chahida_potro.substep_no == 3 && Meteor.userId() == this.props.RFQ_details.chahida.director.user_id) {
                 forward_to = {
-                    toWhom: "Specification committee",
+                    toWhom: "Specification Committee",
                     dropdownList: this.props.SpOf,
                     sendSelect: (value) => this.handleForward(value)
                 }
@@ -339,7 +337,7 @@ class ChahidaPotroLoad extends Component {
 
 
                         </div>
-                        <div className="col-md-9">
+                        <div className="col-md-8">
                             <div id="chahidajumbo" className="jumbotron text-center">
                                 <div className="row">
                                     <div className="title-top col-md-12">

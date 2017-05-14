@@ -1,253 +1,523 @@
-import React, {Component, PropTypes} from 'react';
-import {createContainer} from 'meteor/react-meteor-data';
-import ReactDOM from 'react-dom';
+import React, {Component, PropTypes} from "react";
+import {createContainer} from "meteor/react-meteor-data";
+import SideBar from "./SideBar";
 
-export default class Minutes extends Component {
+class Minutes extends Component {
+    constructor(props) {
+        super(props);
+        //  this.state.products = [];
+        this.state = {
+            company: '',
+            amount: ''
+        };
+    }
+
+    datefromcreate(createdAt) {
+        var date = createdAt.getDate();
+        var month = createdAt.getMonth() + 1;
+        var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
+    genTableCom() {
+        var i = 0;
+        var title = this.props.RFQ_details.chahida.title;
+        return this.props.RFQ_details.standard_apply.map(function (apply) {
+            i++;
+            return (
+                <tr key={i}>
+                    <td>{apply.company.user_id}</td>
+                    <td>Supply of {title}</td>
+                    <td>{apply.amount}</td>
+                </tr>
+            )
+        });
+    }
+
+    selCompany(evt) {
+
+        var item = {
+            id: evt.target.id,
+            name: evt.target.name,
+            value: evt.target.value
+        };
+        var that = this;
+        this.props.RFQ_details.standard_apply.map(function (apply) {
+            if (apply.company.user_id == item.value) {
+                that.setState({
+                    company: item.value,
+                    amount: apply.amount
+                });
+            }
+        });
+    }
+
+    convertNumberToWords(amount) {
+        var words = [];
+        words[0] = '';
+        words[1] = 'One';
+        words[2] = 'Two';
+        words[3] = 'Three';
+        words[4] = 'Four';
+        words[5] = 'Five';
+        words[6] = 'Six';
+        words[7] = 'Seven';
+        words[8] = 'Eight';
+        words[9] = 'Nine';
+        words[10] = 'Ten';
+        words[11] = 'Eleven';
+        words[12] = 'Twelve';
+        words[13] = 'Thirteen';
+        words[14] = 'Fourteen';
+        words[15] = 'Fifteen';
+        words[16] = 'Sixteen';
+        words[17] = 'Seventeen';
+        words[18] = 'Eighteen';
+        words[19] = 'Nineteen';
+        words[20] = 'Twenty';
+        words[30] = 'Thirty';
+        words[40] = 'Forty';
+        words[50] = 'Fifty';
+        words[60] = 'Sixty';
+        words[70] = 'Seventy';
+        words[80] = 'Eighty';
+        words[90] = 'Ninety';
+        amount = amount.toString();
+        var atemp = amount.split(".");
+        var number = atemp[0].split(",").join("");
+        var n_length = number.length;
+        var words_string = "";
+        var value;
+        if (n_length <= 9) {
+            var n_array = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+            var received_n_array = new Array();
+            for (var i = 0; i < n_length; i++) {
+                received_n_array[i] = number.substr(i, 1);
+            }
+            for (var i = 9 - n_length, j = 0; i < 9; i++, j++) {
+                n_array[i] = received_n_array[j];
+            }
+            for (var i = 0, j = 1; i < 9; i++, j++) {
+                if (i == 0 || i == 2 || i == 4 || i == 7) {
+                    if (n_array[i] == 1) {
+                        n_array[j] = 10 + parseInt(n_array[j]);
+                        n_array[i] = 0;
+                    }
+                }
+            }
+            value = "";
+            for (var i = 0; i < 9; i++) {
+                if (i == 0 || i == 2 || i == 4 || i == 7) {
+                    value = n_array[i] * 10;
+                } else {
+                    value = n_array[i];
+                }
+                if (value != 0) {
+                    words_string += words[value] + " ";
+                }
+                if ((i == 1 && value != 0) || (i == 0 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Crores ";
+                }
+                if ((i == 3 && value != 0) || (i == 2 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Lakhs ";
+                }
+                if ((i == 5 && value != 0) || (i == 4 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Thousand ";
+                }
+                if (i == 6 && value != 0 && (n_array[i + 1] != 0 && n_array[i + 2] != 0)) {
+                    words_string += "Hundred and ";
+                } else if (i == 6 && value != 0) {
+                    words_string += "Hundred ";
+                }
+            }
+            words_string = words_string.split("  ").join(" ");
+        }
+        return words_string;
+    }
+
+    genCompanies() {
+        return (
+            <select onChange={this.selCompany.bind(this)} ref="companies" className="form-control"
+                    style={{color: "black"}}>
+                {
+                    this.props.RFQ_details.standard_apply.map(function (apply) {
+                        return (<option value={apply.company.user_id} key={apply.company.user_id}
+                                        style={{color: "black"}}>{apply.company.user_id}</option>)
+                    })
+                }
+            </select>
+        )
+    }
+
+    handleSign() {
+        Meteor.call('updateAllowanceNikosh', this.props.RFQ_details._id, Meteor.userId());
+    }
+
+    passwordcheck(e) {
+        if (e.key === 'Enter') {
+            var that = this;
+            var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+            var digest = Package.sha.SHA256(password);
+            Meteor.call('checkPassword', digest, function (err, result) {
+                if (result) {
+                    //that.handleSign();
+                    that.setState({
+                        signed: true
+                    })
+                }
+                else {
+                    Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
+                }
+            });
+        }
+    }
+
+    datefromcreate(createdAt) {
+        var date = createdAt.getDate();
+        var month = createdAt.getMonth() + 1;
+        var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
+    dateTodayString() {
+        var d = new Date();
+        var date = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
+    genSignBlock(user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link = '';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
+            return (
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                            <strong>{user.name}</strong></p>
+                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                            <strong>{this.datefromcreate(user.sign_date)}</strong>
+                        </p>
+                    </div>
+                </div>
+            )
+        }
+        else if (user.user_id && !user.signed) {
+            if (Meteor.userId() == user.user_id) {
+                if (this.state.signed) {
+                    return (
+                        <div className="col-md-6 center-block">
+                            <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
+                                    <strong>{Meteor.user().profile.name}</strong></p>
+                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
+                                    <strong>{this.dateTodayString()}</strong>
+                                </p>
+                            </div>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div className="col-md-6 center-block form-group">
+                            <div className="col-md-1">
+                            </div>
+                            <div id="signblock" className="form-style-4">
+                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)}
+                                       type="password" name="password"
+                                       ref="password"
+                                       placeholder="Password"/><br/>
+                            </div>
+                            <div>
+                                <div className="form-inline">
+                                    <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
+                                        <strong>{Meteor.user().profile.name}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
+            }
+            else {
+                return (
+                    <div className="col-md-6 center-block">
+                    </div>
+                )
+            }
+        }
+        else {
+            return (
+                <div className="col-md-6 center-block">
+                </div>
+            )
+        }
+    }
+
+    genTable() {
+        var that = this;
+        //this.handleSign();
+        return this.props.RFQ_details.allowance_nikosh.map(function (member) {
+            var block = that.genSignBlock(member);
+            //console.log(member);
+            return (
+                <tr key={member.user_id}>
+                    <td>০১</td>
+                    <td>{member.name}</td>
+                    <td>বৈজ্ঞানিক কর্মকর্তা <br/>
+                        ডিআরআইসিএম, বিসিএসআইআর <br/>
+                        ও সভাপতি, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
+                        কমিটি
+                    </td>
+                    <td>{block}</td>
+                </tr>
+            );
+        });
+    }
+
 
     render() {
-        return (
-            <div className="container">
-                <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="title-top col-md-12">
-                                <img src="../dricmlogo.jpg" className="center-block"/>
-                                <h3>Designated Reference Institute for Chemical Measurements (DRiCM) </h3>
-                                <h3>Bangladesh Council of Scientific & Industrial Research (BCSIR)</h3>
-                                <hr/>
-                            </div>
-                        </div>
+        if (this.props.RFQ_details) {
+            return (
+                <div className="container">
+                    <div className="col-md-3">
+                        <SideBar/>
                     </div>
-                    <div className="row">
-                        <div className="col-md-12">
-
-                            <div id="meeting">
-                                <p>
-                                    <strong> Sub: Minutes of the meeting of Tender Evaluation Committee (TEC) held on
-                                        28-02-16 at
-                                        3:30 pm (RFQ no. 39.378.007.08.02(01-1).01.2016; dt: 09.02.2016)
-                                    </strong>
-                                </p>
-
-                                <p className="text-justify">
-                                    <br/>
-                                    A meeting of the Tender Evaluation Committee (TEC) for “Supply of Chemicals” (RFQ
-                                    no. 39.378.007.08.02(01-1).01.2016; dt: 09.02.2016) for Designated Reference
-                                    Institute for Chemical Measurements was held on 28 February 2016 at 3:30 pm under
-                                    the chairmanship of Farzana Hossain, Scientific Officer, DRiCM, BCSIR.
-
-                                </p>
-
-                                <p className="text-center">
-                                    <br/>
-                                    <strong>Technical Report of Supply of Chemicals</strong>
-                                </p>
-
-                                <p>
-                                    <br/>
-                                    After threadbare discussion and on the basis of comparative statements, committee
-                                    opined that Technical Evaluation of Supply of Chemicals for Designated Reference
-                                    Institute for Chemical Measurements, three tenders were submitted by three different
-                                    tenderers. The name of the bidder and their comparative quoted price are given
-                                    below-
-
-                                </p>
-
-                                <div className="table table-bordered table-responsive">
-                                    <table className="table">
-                                        <thead className="text-center">
-                                        <tr>
-                                            <th>Name of the Tenderers</th>
-                                            <th>Name of the Work</th>
-                                            <th>Quoted price In BD Tk.</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Millennium Dreams Co.</td>
-                                            <td>Supply of Chemicals</td>
-                                            <td>1,40,000.00</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>SAS Corporation</td>
-                                            <td>Supply of Chemicals</td>
-                                            <td>1,50,150.00</td>
-                                        </tr>
-
-
-                                        <tr>
-                                            <td>RG Associates</td>
-                                            <td>Supply of Chemicals</td>
-                                            <td>1,53,700.00</td>
-                                        </tr>
-                                        </tbody>
-
-                                    </table>
-
-                                </div>
-
-                                <p>
-                                    <br/>
-                                    After a careful scrutiny, it has been found that the tenders submitted by three
-                                    different bidders, Millennium Dreams Co., SAS Corporation and RG Associates meet all
-                                    the requirements as specified in the technical specification. And all three are
-                                    technically responsive. Among them, Millennium Dreams Co. quote the lowest price
-                                    (TK. 1,40,000.00) which is also within the estimated cost. The offer given by
-                                    Millennium Dreams Co. sufficiently meets the requirements of the qualifications,
-                                    financial and commercial terms and conditions set out in the RFQ document.
-
-                                </p>
-
-
-                            </div>
-                            <div>
-                                <hr/>
-                                <h4>Dr. Qudrat-I-Khuda Road, Dhanmondi, Dhaka-1205</h4>
-                                <h4>Tel : 02 9671830, 01715032057</h4>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="chahidajumbo" className="col-md-10 jumbotron text-center">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="title-top col-md-12">
-                                <img src="../dricmlogo.jpg" className="center-block"/>
-                                <h3>Designated Reference Institute for Chemical Measurements (DRiCM) </h3>
-                                <h3>Bangladesh Council of Scientific & Industrial Research (BCSIR)</h3>
-                                <hr/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-12">
-
-                            <div id="meeting">
-                                <p>
-                                    <strong> Recommendations</strong>
-                                </p>
-
-                                <p className="text-justify">
-                                    <br/>
-                                    <strong>Considering the qualification, technical specification, financial terms and
-                                        conditions set out in the tender document and the price offered by the tenderer,
-                                        the
-                                        committee unanimously recommended the Technically Evaluated lowest price Tk.
-                                        1,40,000.00 (One Lac Forty Thousand Taka Only) quoted by Millennium Dreams Co.
-                                        for
-                                        award for Supply of Chemicals.
-                                    </strong>
-                                </p>
-
-                                <p>
-                                    <br/>
-                                    The Tender Evaluation Committee certifies that the examination and Evaluation has
-                                    followed the requirements of the Regulations, the Procedures and tender document,
-                                    that all facts and information have been correctly reflected in the Evaluation
-                                    Report and that no substantial or important information has been omitted and we do
-                                    hereby declare and confirm that we have no business or other links to any of the
-                                    competing tenders.</p>
-
-                                <p>
-                                    <br/>
-                                    After threadbare discussion and on the basis of comparative statements, committee
-                                    opined that Technical Evaluation of Supply of Chemicals for Designated Reference
-                                    Institute for Chemical Measurements, three tenders were submitted by three different
-                                    tenderers. The name of the bidder and their comparative quoted price are given
-                                    below-
-
-                                </p>
-
-                                <div className="row">
-                                    <div id="text-stnd" className="col-lg-12 ">
-                                        <div className="col-lg-6 col-md-6 text-center">
-                                            <p>
-                                                <br/>
-                                                <br/>
-                                                <br/>
-                                                <br/>
-                                                (Sumiya Akter) <br/>
-                                                Scientific Officer <br/>
-                                                DRiCM, BCSIR <br/>
-                                                & Member- Secretary, TEC
-                                            </p>
-                                        </div>
-
-                                        <div className="col-lg-6 col-md-6 text-center">
-                                            <p>
-                                                <br/>
-                                                <br/>
-                                                <br/>
-                                                <br/>
-                                                (Md. Juwel Hossen) <br/>
-                                                Scientific Officer <br/>
-                                                DRiCM, BCSIR <br/>
-                                                & Member, TEC
-
-                                            </p>
-                                        </div>
-
-                                        <div className="col-lg-6 col-md-6 text-center">
-                                            <p>
-                                                <br/>
-                                                <br/>
-                                                <br/>
-                                                (Md. Abdul Hai) <br/>
-                                                Technical Officer (Purchase) <br/>
-                                                BCSIR <br/>
-                                                & Member, TEC
-
-                                            </p>
-                                        </div>
-
-                                        <div className="col-lg-6 col-md-6 text-center">
-                                            <p>
-                                                <br/>
-                                                <br/>
-                                                <br/>
-                                                (Dr. Bilkis Ara Begum) <br/>
-                                                PSO & Head,Chemistry Division <br/>
-                                                Bangladesh Atomic Energy Center,Dhaka <br/>
-                                                & Member, TEC
-
-                                            </p>
-                                        </div>
+                    <div className="col-md-9">
+                        <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="title-top col-md-12">
+                                        <img src="../dricmlogo.jpg" className="center-block"/>
+                                        <h3>Designated Reference Institute for Chemical Measurements (DRiCM) </h3>
+                                        <h3>Bangladesh Council of Scientific & Industrial Research (BCSIR)</h3>
+                                        <hr/>
                                     </div>
                                 </div>
-                                <div className="text-center">
-                                    <p>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        <br/>
-                                        (Farzana Hossain) <br/>
-                                        Scientific Officer <br/>
-                                        DRiCM, BCSIR <br/>
-                                        &Chairman, TEC
-                                    </p>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+
+                                    <div id="meeting">
+                                        <p>
+                                            <strong> Sub: Minutes of the meeting of Tender Evaluation Committee (TEC)
+                                                held
+                                                on
+                                                {this.datefromcreate(this.props.RFQ_details.step78meetingDate)} at
+                                                3:30 pm (RFQ no. {this.props.RFQ_details.standard.RFQ_no};
+                                                dt: {this.datefromcreate(this.props.RFQ_details.standard.createdAt)})
+                                            </strong>
+                                        </p>
+
+                                        <p className="text-justify">
+                                            <br/>
+                                            A meeting of the Tender Evaluation Committee (TEC) for “Supply
+                                            of {this.props.RFQ_details.chahida.title}”
+                                            (RFQ no. {this.props.RFQ_details.standard.RFQ_no};
+                                            dt: {this.datefromcreate(this.props.RFQ_details.standard.createdAt)})
+                                            for Designated Reference
+                                            Institute for Chemical Measurements was held
+                                            on {this.datefromcreate(this.props.RFQ_details.step78meetingDate)} at 3:30
+                                            pm
+                                            under
+                                            the chairmanship of Farzana Hossain, Scientific Officer, DRiCM, BCSIR.
+
+                                        </p>
+
+                                        <p className="text-center">
+                                            <br/>
+                                            <strong>Technical Report of Supply
+                                                of {this.props.RFQ_details.chahida.title}</strong>
+                                        </p>
+
+                                        <p>
+                                            <br/>
+                                            After threadbare discussion and on the basis of comparative statements,
+                                            committee
+                                            opined that Technical Evaluation of Supply
+                                            of {this.props.RFQ_details.chahida.title} for Designated Reference
+                                            Institute for Chemical
+                                            Measurements, {this.props.RFQ_details.standard_apply.length}
+                                            tenders were submitted by {this.props.RFQ_details.standard_apply.length}
+                                            different
+                                            tenderers. The name of the bidder and their comparative quoted price are
+                                            given
+                                            below-
+
+                                        </p>
+
+                                        <div className="table table-bordered table-responsive">
+                                            <table className="table">
+                                                <thead className="text-center">
+                                                <tr>
+                                                    <th>Name of the Tenderers</th>
+                                                    <th>Name of the Work</th>
+                                                    <th>Quoted price In BD Tk.</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {this.genTableCom()}
+
+                                                </tbody>
+
+                                            </table>
+
+                                        </div>
+
+                                        <p>
+                                            <br/>
+                                            After a careful scrutiny, it has been found that the tenders submitted
+                                            by {this.props.RFQ_details.standard_apply.length}
+                                            different bidders, {this.genCompanies()} Associates
+                                            meet
+                                            all
+                                            the requirements as specified in the technical specification. And
+                                            all {this.props.RFQ_details.standard_apply.length}
+                                            are
+                                            technically responsive. Among them, {this.state.user_id} quote the lowest
+                                            price
+                                            (TK. {this.state.amount}) which is also within the estimated cost. The offer
+                                            given
+                                            by
+                                            {this.state.user_id} sufficiently meets the requirements of the
+                                            qualifications,
+                                            financial and commercial terms and conditions set out in the RFQ document.
+
+                                        </p>
+
+
+                                    </div>
+                                    <div>
+                                        <hr/>
+                                        <h4>Dr. Qudrat-I-Khuda Road, Dhanmondi, Dhaka-1205</h4>
+                                        <h4>Tel : 02 9671830, 01715032057</h4>
+                                    </div>
+
 
                                 </div>
                             </div>
+                        </div>
 
 
-                            <div>
-                                <hr/>
-                                <h4>Dr. Qudrat-I-Khuda Road, Dhanmondi, Dhaka-1205</h4>
-                                <h4>Tel : 02 9671830, 01715032057</h4>
+                        <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="title-top col-md-12">
+                                        <img src="../dricmlogo.jpg" className="center-block"/>
+                                        <h3>Designated Reference Institute for Chemical Measurements (DRiCM) </h3>
+                                        <h3>Bangladesh Council of Scientific & Industrial Research (BCSIR)</h3>
+                                        <hr/>
+                                    </div>
+                                </div>
                             </div>
+                            <div className="row">
+                                <div className="col-md-12">
+
+                                    <div id="meeting">
+                                        <p>
+                                            <strong> Recommendations</strong>
+                                        </p>
+
+                                        <p className="text-justify">
+                                            <br/>
+                                            <strong>Considering the qualification, technical specification, financial
+                                                terms
+                                                and
+                                                conditions set out in the tender document and the price offered by the
+                                                tenderer,
+                                                the
+                                                committee unanimously recommended the Technically Evaluated lowest price
+                                                Tk.
+                                                {this.state.amount} ({this.convertNumberToWords(this.state.amount)}
+                                                Only) quoted by
+                                                {this.state.company}
+                                                for
+                                                award for Supply of {this.props.RFQ_details.chahida.title}.
+                                            </strong>
+                                        </p>
+
+                                        <p>
+                                            <br/>
+                                            The Tender Evaluation Committee certifies that the examination and
+                                            Evaluation
+                                            has
+                                            followed the requirements of the Regulations, the Procedures and tender
+                                            document,
+                                            that all facts and information have been correctly reflected in the
+                                            Evaluation
+                                            Report and that no substantial or important information has been omitted and
+                                            we
+                                            do
+                                            hereby declare and confirm that we have no business or other links to any of
+                                            the
+                                            competing tenders.</p>
+
+                                        <p>
+                                            <br/>
+                                            After threadbare discussion and on the basis of comparative statements,
+                                            committee
+                                            opined that Technical Evaluation of {this.props.RFQ_details.chahida.title}
+                                            of Chemicals for Designated
+                                            Reference
+                                            Institute for Chemical Measurements.
+
+                                        </p>
+                                        {this.genTable()}
+
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <hr/>
+                                    <h4>Dr. Qudrat-I-Khuda Road, Dhanmondi, Dhaka-1205</h4>
+                                    <h4>Tel : 02 9671830, 01715032057</h4>
+                                </div>
 
 
+                            </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
-
-        );
+            );
+        } else {
+            return (
+                <div>
+                    Loading...
+                </div>
+            )
+        }
     }
 }
+
+Minutes.propTypes = {
+    RFQ_details: PropTypes.object
+};
+
+export default createContainer(props => {
+    return {
+        RFQ_details: RFQDetails.findOne({_id: props.id}),
+    };
+}, Minutes);

@@ -61,17 +61,15 @@ export default class StandardDocumentApply4 extends Component {
         }
         if (this.state.signed) {
             signBlock =
-                <div className="col-md-6 center-block">
-                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                <div className="col-md-12 center-block">
+                    <img id="signPic" src={link}  alt="User Image"/>
                     <p id="signLabel"><strong>Signature
                         of Quotationer with Seal</strong></p>
                 </div>
         } else {
             signBlock =
-                <div className="col-md-6 center-block form-group">
-                    <div className="col-md-1">
-                    </div>
-                    <div id="signblock" className="col-md-10 col-md-offset-1 form-style-4">
+                <div className="col-md-12 center-block form-group">
+                    <div id="signblock" className="col-md-12 form-style-4">
                         <input onKeyPress={this.passwordcheck.bind(this)} type="password" name="password" ref="password"
                                placeholder="Password"/><br/>
                     </div>
@@ -102,7 +100,7 @@ export default class StandardDocumentApply4 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
+                                    <strong>RFQ NO : {this.props.RFQ.standard.RFQ_no} </strong>
                                 </div>
                             </div>
                             <div className="col-md-6">
