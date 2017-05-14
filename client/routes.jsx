@@ -22,6 +22,7 @@ import Minutes from '../imports/ui/components/Minutes';
 import CompanyS from '../imports/ui/components/CompanyS';
 import WO from '../imports/ui/components/WO';
 import LoginandSignup from '../imports/ui/components/LogInandSignUp';
+import RFQSellingList from '../imports/ui/components/RFQSellingList';
 
 
 
@@ -199,6 +200,14 @@ FlowRouter.route('/login', {
     action(){
         mount(LayoutDash, {
             content: (<LoginandSignup />)
+        })
+    }
+});
+
+FlowRouter.route('/RfqSellinglist', {
+    action(){
+        mount(LayoutDash, {
+            content: (<RFQSellingList />)
         })
     }
 });
