@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from "react";
 import ReactDOM from "react-dom";
 import {createContainer} from "meteor/react-meteor-data";
 
-export default class StandardApplyLoad2 extends Component {
+export default class StandardLoadApply2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -67,14 +67,14 @@ export default class StandardApplyLoad2 extends Component {
             return (
                 <div className="col-md-6 center-block">
                     <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                    <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                         <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                             <strong>{user.name}</strong></p>
                         <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
                             <strong>{this.datefromcreate(user.sign_date)}</strong>
                         </p>
                     </div>
-                    <hr id="signhr" style={{width: "80%"}}/>
+                    <hr id="signhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor}</strong></p>
                 </div>
             )
@@ -85,22 +85,20 @@ export default class StandardApplyLoad2 extends Component {
                     return (
                         <div className="col-md-6 center-block">
                             <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                            <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                                 <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                                     <strong>{Meteor.user().profile.name}</strong></p>
                                 <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
                                     <strong>{this.dateTodayString()}</strong>
                                 </p>
                             </div>
-                            <hr id="signhr" style={{width: "80%"}}/>
+                            <hr id="signhr" style={{width: "100%"}}/>
                             <p id="signTag"><strong>{signfor}</strong></p>
                         </div>
                     )
                 } else {
                     return (
                         <div className="col-md-6 center-block form-group">
-                            <div className="col-md-1">
-                            </div>
                             <div id="signblock" className="form-style-4">
                                 <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
                                        ref="password"
@@ -111,7 +109,7 @@ export default class StandardApplyLoad2 extends Component {
                                     <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
                                         <strong>{Meteor.user().profile.name}</strong></p>
                                 </div>
-                                <hr id="signhr" style={{width: "80%"}}/>
+                                <hr id="signhr" style={{width: "100%"}}/>
                                 <p id="signTag"><strong>{signfor}</strong></p>
                             </div>
                         </div>
@@ -121,7 +119,7 @@ export default class StandardApplyLoad2 extends Component {
             else {
                 return (
                     <div className="col-md-6 center-block">
-                        <hr id="unsignhr" style={{width: "80%"}}/>
+                        <hr id="unsignhr" style={{width: "100%"}}/>
                         <p id="signTag"><strong>{signfor} </strong></p>
                     </div>
                 )
@@ -130,7 +128,7 @@ export default class StandardApplyLoad2 extends Component {
         else {
             return (
                 <div className="col-md-6 center-block">
-                    <hr id="unsignhr" style={{width: "80%"}}/>
+                    <hr id="unsignhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor} </strong></p>
                 </div>
             )
@@ -202,13 +200,13 @@ export default class StandardApplyLoad2 extends Component {
                         </div>
                     </div>
                 </div>
-                {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.standard.director)}
+                <div className="row">
+                    {this.genSignBlock("অনুমোদনকারী", this.props.RFQ.standard.director)}
+                    <div className="col-md-6">
+
+                    </div>
+                </div>
                 <p className="text text-left">
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
                     (Dr. Mala Khan) <br/>
                     In- Charge <br/>
                     Designated Reference Institute for Chemical Measurements (DRiCM) <br/>

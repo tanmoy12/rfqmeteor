@@ -30,7 +30,11 @@ class StandardApplyLoad extends Component {
                     link = cursor.link();
                 }
             }
-            var side = <SideBar />;
+            var goToNote;
+            if(Meteor.user().profile.designation){
+                goToNote='/Note/' + this.props.RFQ._id;
+            }
+            var side = <SideBar goToNote={goToNote}/>;
 
             var header =
                 <div className="title-top col-md-12">
@@ -50,7 +54,7 @@ class StandardApplyLoad extends Component {
                         <div className="col-md-3">
                             {side}
                         </div>
-                        <div className="col-md-9">
+                        <div className="col-md-8">
                             <div className="col-md-12">
                                 <StandardDocumentLoad1 stan={stan} RFQ={this.props.RFQ} head={header} foot={footer}/>
 

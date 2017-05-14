@@ -30,8 +30,8 @@ export default class StandardApplyLoad4 extends Component {
         }
         if (user.signed) {
             return (
-                <div className="col-md-6 center-block">
-                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                <div className="col-md-12 center-block">
+                    <img id="signPic" src={link} alt="User Image"/>
                     <p id="signLabel"><strong>Signature
                         of Quotationer with Seal</strong></p>
                 </div>
@@ -39,8 +39,8 @@ export default class StandardApplyLoad4 extends Component {
         }
         else {
             return (
-                <div className="col-md-6 center-block">
-                    <hr id="unsignhr" style={{width: "80%"}}/>
+                <div className="col-md-12 center-block">
+                    <hr id="unsignhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor} </strong></p>
                 </div>
             )
@@ -171,7 +171,7 @@ export default class StandardApplyLoad4 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
+                                    <strong>RFQ NO : {this.props.RFQ.standard.RFQ_no} </strong>
                                 </div>
                             </div>
                             <div className="col-md-6">

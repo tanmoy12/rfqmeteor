@@ -251,11 +251,6 @@ CompanySchema = new SimpleSchema({
         label: "user",
         optional: true
     },
-    username: {
-        type: String,
-        label: 'username',
-        optional: true
-    },
     pic: {
         type: String,
         label: 'pic',

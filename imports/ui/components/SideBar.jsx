@@ -91,7 +91,7 @@ export default class SideBar extends Component {
                 <div>
                     <li>
                         <a className="sidebar_a" href={this.props.standardBlock.link}><span
-                            className="glyphicon glyphicon-pencil"></span>Standard Document</a>
+                            className="glyphicon glyphicon-blackboard"></span>Standard Document</a>
                     </li>
                 </div>
         }
@@ -199,20 +199,28 @@ export default class SideBar extends Component {
         if (this.props.applications) {
             var that = this;
             var i = 0;
-            application =
+            var app =
                 this.props.applications.map(function (application) {
                     i++;
                     return (
-                        <div key={i}>
-                            <li className="sidebar_li">
-                                <a className="sidebar_a"
-                                   href={"/StandardApplyLoad/" + that.props.RFQ_id + "/" + application.company.user_id}>
-                                    {application.company.user_id}
-                                </a>
-                            </li>
-                        </div>
+                        <li key={i} className="sidebar_li" style={{marginLeft: "8%", height: "25px"}}>
+                            <a className="sidebar_a"
+                               href={"/StandardApplyLoad/" + that.props.RFQ_id + "/" + application.company.user_id}>
+                                <span className="glyphicon glyphicon-circle-arrow-down"></span>{application.company.name}
+                            </a>
+                        </li>
                     )
-                })
+                });
+            application =
+                <div key={i}>
+                    <li style={{height: "30px"}} className="sidebar_li">
+                        <a className="sidebar_a"
+                           href="#">
+                            <span className="glyphicon glyphicon-briefcase"></span>RFQ Selling List
+                        </a>
+                    </li>
+                    {app}
+                </div>
 
         }
 

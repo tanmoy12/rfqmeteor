@@ -345,7 +345,7 @@ class Note extends Component {
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="title-top col-md-12">
-                                        <img src="../dricmlogo.jpg" className="center-block"/>
+                                        <img src="/dricmlogo.jpg" className="center-block"/>
                                         <h3> ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস </h3>
                                         <h3> বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ </h3>
                                         <hr/>
@@ -411,7 +411,7 @@ class Note extends Component {
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="title-top col-md-12">
-                                            <img src="../dricmlogo.jpg" className="center-block"/>
+                                            <img src="/dricmlogo.jpg" className="center-block"/>
                                             <h3> ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস </h3>
                                             <h3> বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ </h3>
                                             <hr/>
@@ -476,7 +476,7 @@ class Note extends Component {
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="title-top col-md-12">
-                                            <img src="../dricmlogo.jpg" className="center-block"/>
+                                            <img src="/dricmlogo.jpg" className="center-block"/>
                                             <h3> ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস </h3>
                                             <h3> বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ </h3>
                                             <hr/>
@@ -585,7 +585,7 @@ class Note extends Component {
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="title-top col-md-12">
-                                            <img src="../dricmlogo.jpg" className="center-block"/>
+                                            <img src="/dricmlogo.jpg" className="center-block"/>
                                             <h3> ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস </h3>
                                             <h3> বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ </h3>
                                             <hr/>
@@ -676,7 +676,7 @@ class Note extends Component {
                                 <div className="row">
                                     <div className="col-md-12">
                                         <div className="title-top col-md-12">
-                                            <img src="../dricmlogo.jpg" className="center-block"/>
+                                            <img src="/dricmlogo.jpg" className="center-block"/>
                                             <h3> ডেজিগনেটেড রেফারেন্স ইনস্টিটিউট ফর কেমিক্যাল মেজারমেন্টস </h3>
                                             <h3> বাংলাদেশ বিজ্ঞান ও শিল্প গবেষণা পরিষদ </h3>
                                             <hr/>
