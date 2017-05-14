@@ -651,7 +651,9 @@ hr {
 
 }
 
-
+.incharge{
+    margin-bottom: 20px;
+}
 
 #meeting{
     font-size: large;
@@ -809,6 +811,7 @@ p.text{
     font-size: 14px;
     line-height: 1.4;
     margin-bottom: 2em;
+    margin-top: 2em;
 
 }
 p.text2{

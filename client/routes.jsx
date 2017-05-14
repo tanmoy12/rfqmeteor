@@ -211,3 +211,11 @@ FlowRouter.route('/login', {
         })
     }
 });
+
+FlowRouter.route('/RfqSellinglist', {
+    action(){
+        mount(LayoutDash, {
+            content: (<RFQSellingList />)
+        })
+    }
+});
