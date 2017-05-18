@@ -20,6 +20,16 @@ UserSignFalse = new SimpleSchema({
         label: 'name',
         optional: true
     },
+    designation: {
+        type: String,
+        label: 'des',
+        optional: true
+    },
+    comdes: {
+        type: String,
+        label: 'comdes',
+        optional: true
+    },
     pic: {
         type: String,
         label: 'pic',
@@ -256,6 +266,16 @@ CompanySchema = new SimpleSchema({
         label: 'pic',
         optional: true
     },
+    seal: {
+        type: String,
+        label: 'seal',
+        optional: true
+    },
+    address: {
+        type: String,
+        label: 'address',
+        optional: true
+    },
     signed: {
         type: Boolean,
         label: "signed",
@@ -272,6 +292,19 @@ CompanySchema = new SimpleSchema({
         label: 'name',
         optional: true
     }
+});
+
+minutesSchema = new SimpleSchema({
+   company: {
+       type: CompanySchema,
+       label: 'company',
+       optional: true
+   },
+    members: {
+        type: [UserSignFalse],
+        label: 'minmembers',
+        optional: true
+    },
 });
 
 StandardApplySchema = new SimpleSchema({
@@ -398,6 +431,11 @@ RFQDetailsSchema = new SimpleSchema({
     company_s: {
         type: [UserSignFalse],
         label: 'cs',
+        optional: true
+    },
+    minutes: {
+        type: minutesSchema,
+        label: 'minutes',
         optional: true
     }
 });

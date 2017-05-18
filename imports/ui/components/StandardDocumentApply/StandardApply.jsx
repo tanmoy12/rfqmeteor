@@ -149,10 +149,12 @@ export default class StandardDocumentApply extends Component {
                 var company = {
                     user_id: Meteor.userId(),
                     name: Meteor.user().profile.name,
-                    pic: Meteor.user().profile.SealPic,
+                    pic: Meteor.user().profile.ProPic,
+                    seal: Meteor.user().profile.SealPic,
+                    address: Meteor.user().profile.description,
                     signed: true,
                     sign_date: new Date()
-                }
+                };
                 var standardApply= {
                     amount: this.state.estimate,
                     createdAt: new Date(),

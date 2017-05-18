@@ -71,15 +71,8 @@ class AllowanceNikosh extends Component {
         }
         if (user.signed) {
             return (
-                <div className="col-md-6 center-block">
-                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
-                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
-                            <strong>{user.name}</strong></p>
-                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
-                            <strong>{this.datefromcreate(user.sign_date)}</strong>
-                        </p>
-                    </div>
+                <div className="col-md-12 center-block">
+                    <img id="signPic" src={link} alt="User Image"/>
                 </div>
             )
         }
@@ -87,32 +80,19 @@ class AllowanceNikosh extends Component {
             if (Meteor.userId() == user.user_id) {
                 if (this.state.signed) {
                     return (
-                        <div className="col-md-6 center-block">
-                            <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
-                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
-                                    <strong>{Meteor.user().profile.name}</strong></p>
-                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
-                                    <strong>{this.dateTodayString()}</strong>
-                                </p>
-                            </div>
+                        <div className="col-md-12 center-block">
+                            <img id="signPic" src={link} alt="User Image"/>
                         </div>
                     )
                 } else {
                     return (
-                        <div className="col-md-6 center-block form-group">
-                            <div className="col-md-1">
-                            </div>
+                        <div className="col-md-12 center-block form-group">
                             <div id="signblock" className="form-style-4">
                                 <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
                                        ref="password"
                                        placeholder="Password"/><br/>
                             </div>
                             <div>
-                                <div className="form-inline">
-                                    <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
-                                        <strong>{Meteor.user().profile.name}</strong></p>
-                                </div>
                             </div>
                         </div>
                     )
@@ -120,14 +100,14 @@ class AllowanceNikosh extends Component {
             }
             else {
                 return (
-                    <div className="col-md-6 center-block">
+                    <div className="col-md-12 center-block">
                     </div>
                 )
             }
         }
         else {
             return (
-                <div className="col-md-6 center-block">
+                <div className="col-md-12 center-block">
                 </div>
             )
         }
@@ -141,22 +121,15 @@ class AllowanceNikosh extends Component {
         }
         if (user.signed) {
             return (
-                <div className="col-md-6 center-block">
-                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
-                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
-                            <strong>{user.name}</strong></p>
-                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
-                            <strong>{this.datefromcreate(user.sign_date)}</strong>
-                        </p>
-                    </div>
+                <div className="col-md-12 center-block">
+                    <img id="signPic" src={link} alt="User Image"/>
                 </div>
             )
         }
 
         else {
             return (
-                <div className="col-md-6 center-block">
+                <div className="col-md-12 center-block">
                 </div>
             )
         }
@@ -165,16 +138,18 @@ class AllowanceNikosh extends Component {
     genTable(){
         var that=this;
         //this.handleSign();
+        var i=0;
         return this.props.RFQ_details.allowance_nikosh.map(function (member) {
             var block=that.genSignBlock(member);
             //console.log(member);
+            i++;
             return (
                 <tr key={member.user_id}>
-                    <td>০১</td>
+                    <td>{i}</td>
                     <td>{member.name}</td>
-                    <td>বৈজ্ঞানিক কর্মকর্তা <br/>
-                        ডিআরআইসিএম, বিসিএসআইআর <br/>
-                        ও সভাপতি, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
+                    <td>{member.designation}<br/>
+                        {"DRiCM , BCSIR"}<br/>
+                        {member.comdes}, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
                         কমিটি
                     </td>
                     <td>{block}</td>
@@ -186,16 +161,17 @@ class AllowanceNikosh extends Component {
     genTable2(){
         var that=this;
         //this.handleSign();
+        var i=0;
         return this.props.RFQ_details.allowance_nikosh.map(function (member) {
             var block=that.genSignBlock2(member);
             //console.log(member);
+            i++;
             return (
                 <tr key={member.user_id}>
-                    <td>০১</td>
+                    <td>{i}</td>
                     <td>{member.name}<br/>
-                        বৈজ্ঞানিক কর্মকর্তা <br/>
-                        ডিআরআইসিএম, বিসিএসআইআর <br/>
-                        ও সভাপতি, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
+                        {"DRiCM , BCSIR"}<br/>
+                        {member.comdes}, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
                         কমিটি
                     </td>
                     <td scope="colgroup">৩০০/-</td>
@@ -215,7 +191,7 @@ class AllowanceNikosh extends Component {
                         <SideBar goToNote={'/Note/' + this.props.RFQ_details._id}
                         />
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-8">
                         <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                             <div className="row">
                                 <div className="col-md-12">

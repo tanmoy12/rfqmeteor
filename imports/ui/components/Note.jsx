@@ -255,7 +255,7 @@ class Note extends Component {
                 name: "চাহিদা পত্র",
                 link: '/ChahidaPotroload/' + RFQItem._id
             };
-            var stanCreate, stanLoad, allowanceNikosh, meetingNotice, cs, applications, RFQ_id, forward_to;
+            var stanCreate, stanLoad, allowanceNikosh, meetingNotice,createMeetingNotice, cs, applications, RFQ_id, forward_to,minutes, minutesCreate;
             var step7Acc = this.genSignBlock("হিসাবরক্ষক", this.props.RFQ_details.step78accountant);
             var step8Dir = this.genSignBlock("অনুমোদনকারী", this.props.RFQ_details.step78director);
             var step8Block =
@@ -272,10 +272,12 @@ class Note extends Component {
                     link: "/StandardDocumentLoad/" + this.props.RFQ_details._id
                 };
                 var that = this;
-                applications = this.props.RFQ_details.standard_apply;
                 RFQ_id = this.props.RFQ_details._id;
                 standardDate = this.datefromcreate(this.props.RFQ_details.standard.createdAt);
                 standardNum = this.props.RFQ_details.standard_apply.length;
+            }
+            if (this.props.RFQ_details.step_no > 5) {
+                applications = this.props.RFQ_details.standard_apply;
             }
             if (this.props.RFQ_details.step_no == 6 && Meteor.userId() == this.props.RFQ_details.step78accountant.user_id) {
                 step7Acc = this.genSignBlockFull("হিসাবরক্ষক", this.props.RFQ_details.step78accountant);
@@ -310,7 +312,7 @@ class Note extends Component {
             }
             //console.log(applications);
             if (this.props.RFQ_details.step_no == 8 && Meteor.userId() == this.props.RFQ_details.meeting.initiator.user_id) {
-                meetingNotice = "/MeetingNotice/" + this.props.RFQ_details._id;
+                createMeetingNotice = "/MeetingNotice/" + this.props.RFQ_details._id;
 
             }
             //console.log(standardNum);
@@ -320,6 +322,16 @@ class Note extends Component {
             if (this.props.RFQ_details.step_no > 8) {
                 allowanceNikosh = "/AllowanceNikosh/" + this.props.RFQ_details._id;
                 cs = "/cs/" + this.props.RFQ_details._id;
+
+            }
+            if(this.props.RFQ_details.step_no ==9 ){
+                var ch;
+                this.props.RFQ_details.minutes.members.map(function (mem) {
+                    if(mem.comdes== 'Chairman') ch=mem;
+                });
+                if(ch && Meteor.user()== ch.user_id){
+                    minutesCreate = "/Minutes/" + this.props.RFQ_details._id;
+                }
             }
 
             //console.log(forward_to);
@@ -332,9 +344,12 @@ class Note extends Component {
                                 createStandardDoc={stanCreate}
                                 standardBlock={stanLoad}
                                 allowanceNikosh={allowanceNikosh}
+                                createMeetingNotice={createMeetingNotice}
                                 meetingNotice={meetingNotice}
                                 cs={cs}
                                 applications={applications}
+                                minutes={minutes}
+                                minutesCreate={minutesCreate}
                                 RFQ_id={RFQ_id}
                                 forwardTo={forward_to}
                             />
@@ -438,9 +453,7 @@ class Note extends Component {
                                     {this.genSignBlock("অনুমোদনকারী", this.props.RFQ_details.standard.director)}
 
                                     <p className="text">
-                                        ৭। {standardDate} তারিখে দরপত্র আহ্বানের প্রেক্ষিতে মোট
-                                        {standardNum} টি দরপত্র পাওয়া
-                                        গিয়েছে।
+                                        ৭। {standardDate} তারিখে দরপত্র আহ্বানের প্রেক্ষিতে মোট {standardNum} টি দরপত্র পাওয়া গিয়েছে।
                                         দরপত্রগুলো যাচাই-বাছাই করার জন্য স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র ও প্রস্তাব
                                         মূল্যায়ন কমিটির সভা আহ্বান করা যেতে পারে।
                                     </p>
@@ -452,6 +465,8 @@ class Note extends Component {
                                     <br/>
                                     <br/>
                                     {step8Block}
+                                    <br/>
+                                    <br/>
 
                                 </div>
                                 <div className="notefooter">

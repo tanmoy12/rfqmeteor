@@ -18,7 +18,7 @@ import LoginCaraousal from '../imports/ui/components/LoginCaraousal';
 import FileUpload from '../imports/ui/components/FileUpload';
 import AllowanceNikosh from '../imports/ui/components/AllowanceNikosh';
 import MeetingNotice from '../imports/ui/components/MeetingNotice';
-import Minutes from '../imports/ui/components/Minutes';
+import Minutes from '../imports/ui/components/MinuteWrapper';
 import CompanyS from '../imports/ui/components/CompanyS';
 import WO from '../imports/ui/components/WO';
 import LoginandSignup from '../imports/ui/components/LogInandSignUp';
@@ -68,14 +68,6 @@ FlowRouter.route('/demochahidapotro', {
     }
 });
 
-FlowRouter.route('/RFQSellingList', {
-    action(){
-        mount(LayoutDash, {
-            content: (<RFQSellingList />)
-        })
-    }
-});
-
 FlowRouter.route('/settings', {
     action(){
         mount(LayoutDash, {
@@ -120,6 +112,14 @@ FlowRouter.route('/Minutes/:id', {
     action(params){
         mount(LayoutDash, {
             content: (<Minutes id={params.id}/>)
+        })
+    }
+});
+
+FlowRouter.route('/RFQSellingList/:id', {
+    action(params){
+        mount(LayoutDash, {
+            content: (<RFQSellingList id={params.id}/>)
         })
     }
 });

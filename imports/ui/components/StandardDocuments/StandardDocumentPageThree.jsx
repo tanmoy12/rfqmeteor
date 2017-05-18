@@ -53,8 +53,7 @@ export default class StandardDocumentPageThree extends Component {
                             <p className="text">
                                 I/We, the undersigned, offer to supply in conformity with the Terms and
                                 Conditions for delivery of the Goods and related services named <strong>Supply
-                                of
-                                {this.props.RFQ.title} </strong>
+                                of {this.props.RFQ.title} </strong>
                             </p>
 
                             <p className="text">

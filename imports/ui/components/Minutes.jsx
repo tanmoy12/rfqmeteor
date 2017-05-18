@@ -2,13 +2,14 @@ import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
 import SideBar from "./SideBar";
 
-class Minutes extends Component {
+export default class Minutes extends Component {
     constructor(props) {
         super(props);
         //  this.state.products = [];
+        var that=this;
         this.state = {
-            company: '',
-            amount: ''
+            company: that.props.RFQ_details.standard_apply[0].company.name,
+            amount: that.props.RFQ_details.standard_apply[0].amount
         };
     }
 
@@ -32,7 +33,7 @@ class Minutes extends Component {
             i++;
             return (
                 <tr key={i}>
-                    <td>{apply.company.user_id}</td>
+                    <td>{apply.company.name}</td>
                     <td>Supply of {title}</td>
                     <td>{apply.amount}</td>
                 </tr>
@@ -148,7 +149,7 @@ class Minutes extends Component {
                 {
                     this.props.RFQ_details.standard_apply.map(function (apply) {
                         return (<option value={apply.company.user_id} key={apply.company.user_id}
-                                        style={{color: "black"}}>{apply.company.user_id}</option>)
+                                        style={{color: "black"}}>{apply.company.name}</option>)
                     })
                 }
             </select>
@@ -156,7 +157,7 @@ class Minutes extends Component {
     }
 
     handleSign() {
-        Meteor.call('updateAllowanceNikosh', this.props.RFQ_details._id, Meteor.userId());
+        Meteor.call('updateMinutes', this.props.RFQ_details._id, Meteor.userId());
     }
 
     passwordcheck(e) {
@@ -166,7 +167,7 @@ class Minutes extends Component {
             var digest = Package.sha.SHA256(password);
             Meteor.call('checkPassword', digest, function (err, result) {
                 if (result) {
-                    //that.handleSign();
+                    that.handleSign();
                     that.setState({
                         signed: true
                     })
@@ -213,15 +214,9 @@ class Minutes extends Component {
         }
         if (user.signed) {
             return (
-                <div className="col-md-6 center-block">
-                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
-                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
-                            <strong>{user.name}</strong></p>
-                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
-                            <strong>{this.datefromcreate(user.sign_date)}</strong>
-                        </p>
-                    </div>
+                <div className="col-md-12 center-block">
+                    <img id="signPic" src={link} alt="User Image"/>
+
                 </div>
             )
         }
@@ -229,33 +224,19 @@ class Minutes extends Component {
             if (Meteor.userId() == user.user_id) {
                 if (this.state.signed) {
                     return (
-                        <div className="col-md-6 center-block">
-                            <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
-                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
-                                    <strong>{Meteor.user().profile.name}</strong></p>
-                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
-                                    <strong>{this.dateTodayString()}</strong>
-                                </p>
-                            </div>
+                        <div className="col-md-12 center-block">
+                            <img id="signPic" src={link} alt="User Image"/>
+
                         </div>
                     )
                 } else {
                     return (
-                        <div className="col-md-6 center-block form-group">
-                            <div className="col-md-1">
-                            </div>
+                        <div className="col-md-12 center-block form-group">
                             <div id="signblock" className="form-style-4">
                                 <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)}
                                        type="password" name="password"
                                        ref="password"
                                        placeholder="Password"/><br/>
-                            </div>
-                            <div>
-                                <div className="form-inline">
-                                    <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
-                                        <strong>{Meteor.user().profile.name}</strong></p>
-                                </div>
                             </div>
                         </div>
                     )
@@ -263,14 +244,14 @@ class Minutes extends Component {
             }
             else {
                 return (
-                    <div className="col-md-6 center-block">
+                    <div className="col-md-12 center-block">
                     </div>
                 )
             }
         }
         else {
             return (
-                <div className="col-md-6 center-block">
+                <div className="col-md-12 center-block">
                 </div>
             )
         }
@@ -279,16 +260,18 @@ class Minutes extends Component {
     genTable() {
         var that = this;
         //this.handleSign();
-        return this.props.RFQ_details.allowance_nikosh.map(function (member) {
+        var i=0;
+        return this.props.RFQ_details.minutes.members.map(function (member) {
             var block = that.genSignBlock(member);
             //console.log(member);
+            i++;
             return (
                 <tr key={member.user_id}>
-                    <td>০১</td>
+                    <td>{i}</td>
                     <td>{member.name}</td>
-                    <td>বৈজ্ঞানিক কর্মকর্তা <br/>
-                        ডিআরআইসিএম, বিসিএসআইআর <br/>
-                        ও সভাপতি, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
+                    <td>{member.name}<br/>
+                        {"DRiCM , BCSIR"}<br/>
+                        {member.comdes}, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
                         কমিটি
                     </td>
                     <td>{block}</td>
@@ -297,20 +280,32 @@ class Minutes extends Component {
         });
     }
 
+    submitCom(value){
+
+    }
+
 
     render() {
         if (this.props.RFQ_details) {
+            var ch;
+            this.props.RFQ_details.minutes.members.map(function (mem) {
+               if(mem.comdes== 'Chairman') ch=mem;
+            });
             return (
                 <div className="container">
                     <div className="col-md-3">
-                        <SideBar/>
+                        <SideBar clickFunc={{
+                                    name: "Submit Company",
+                                    sendSelect: (value) => this.submitCom(value)
+                                }}
+                                 goToNote={'/Note/' + this.props.RFQ_details._id}/>
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-8">
                         <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="title-top col-md-12">
-                                        <img src="../dricmlogo.jpg" className="center-block"/>
+                                        <img src="/dricmlogo.jpg" className="center-block"/>
                                         <h3>Designated Reference Institute for Chemical Measurements (DRiCM) </h3>
                                         <h3>Bangladesh Council of Scientific & Industrial Research (BCSIR)</h3>
                                         <hr/>
@@ -324,8 +319,7 @@ class Minutes extends Component {
                                         <p>
                                             <strong> Sub: Minutes of the meeting of Tender Evaluation Committee (TEC)
                                                 held
-                                                on
-                                                {this.datefromcreate(this.props.RFQ_details.step78meetingDate)} at
+                                                on {this.datefromcreate(this.props.RFQ_details.step78meetingDate)} at
                                                 3:30 pm (RFQ no. {this.props.RFQ_details.standard.RFQ_no};
                                                 dt: {this.datefromcreate(this.props.RFQ_details.standard.createdAt)})
                                             </strong>
@@ -342,7 +336,7 @@ class Minutes extends Component {
                                             on {this.datefromcreate(this.props.RFQ_details.step78meetingDate)} at 3:30
                                             pm
                                             under
-                                            the chairmanship of Farzana Hossain, Scientific Officer, DRiCM, BCSIR.
+                                            the chairmanship of {ch.name}, {ch.designation}, DRiCM, BCSIR.
 
                                         </p>
 
@@ -359,9 +353,8 @@ class Minutes extends Component {
                                             opined that Technical Evaluation of Supply
                                             of {this.props.RFQ_details.chahida.title} for Designated Reference
                                             Institute for Chemical
-                                            Measurements, {this.props.RFQ_details.standard_apply.length}
-                                            tenders were submitted by {this.props.RFQ_details.standard_apply.length}
-                                            different
+                                            Measurements, {this.props.RFQ_details.standard_apply.length} tenders
+                                            were submitted by {this.props.RFQ_details.standard_apply.length} different
                                             tenderers. The name of the bidder and their comparative quoted price are
                                             given
                                             below-
@@ -394,14 +387,12 @@ class Minutes extends Component {
                                             meet
                                             all
                                             the requirements as specified in the technical specification. And
-                                            all {this.props.RFQ_details.standard_apply.length}
-                                            are
+                                            all {this.props.RFQ_details.standard_apply.length} are
                                             technically responsive. Among them, {this.state.user_id} quote the lowest
                                             price
                                             (TK. {this.state.amount}) which is also within the estimated cost. The offer
                                             given
-                                            by
-                                            {this.state.user_id} sufficiently meets the requirements of the
+                                            by {this.state.user_id} sufficiently meets the requirements of the
                                             qualifications,
                                             financial and commercial terms and conditions set out in the RFQ document.
 
@@ -449,11 +440,8 @@ class Minutes extends Component {
                                                 tenderer,
                                                 the
                                                 committee unanimously recommended the Technically Evaluated lowest price
-                                                Tk.
-                                                {this.state.amount} ({this.convertNumberToWords(this.state.amount)}
-                                                Only) quoted by
-                                                {this.state.company}
-                                                for
+                                                Tk. {this.state.amount} ({this.convertNumberToWords(this.state.amount)}
+                                                Only) quoted by {this.state.company} for
                                                 award for Supply of {this.props.RFQ_details.chahida.title}.
                                             </strong>
                                         </p>
@@ -478,13 +466,33 @@ class Minutes extends Component {
                                             <br/>
                                             After threadbare discussion and on the basis of comparative statements,
                                             committee
-                                            opined that Technical Evaluation of {this.props.RFQ_details.chahida.title}
-                                            of Chemicals for Designated
+                                            opined that Technical Evaluation of {this.props.RFQ_details.chahida.title} of Chemicals for Designated
                                             Reference
                                             Institute for Chemical Measurements.
 
                                         </p>
-                                        {this.genTable()}
+                                        <div className="row">
+                                            <div className="col-lg-12 ">
+                                                <div className="table table-bordered table-responsive">
+                                                    <table className="table">
+                                                        <thead className="text-center">
+                                                        <th>ক্র.নং</th>
+                                                        <th id="nss">কর্মকর্তার নাম</th>
+                                                        <th id="nss">পদবী ও প্রতিষ্ঠান</th>
+                                                        <th id="nss">স্বাক্ষর</th>
+                                                        </thead>
+                                                        <tbody>
+                                                        {this.genTable()}
+
+                                                        </tbody>
+
+                                                    </table>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
 
                                     </div>
                                 </div>
@@ -511,13 +519,3 @@ class Minutes extends Component {
         }
     }
 }
-
-Minutes.propTypes = {
-    RFQ_details: PropTypes.object
-};
-
-export default createContainer(props => {
-    return {
-        RFQ_details: RFQDetails.findOne({_id: props.id}),
-    };
-}, Minutes);

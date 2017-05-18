@@ -19,7 +19,6 @@ class StandardDocumentLoad extends Component {
         }
     }
 
-
     dateToday() {
         var d = new Date();
         var date = d.getDate();

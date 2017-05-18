@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from "react";
-import {createContainer} from 'meteor/react-meteor-data';
-import ReactDOM from 'react-dom';
-
+import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
 import SideBar from "./SideBar";
 
 class CompanyS extends Component {
@@ -113,7 +112,7 @@ class CompanyS extends Component {
         return this.props.RFQ_details.standard_apply.map(function (application) {
             i++;
             return (
-                <td key={i} id="nss">{application.company.user_id}
+                <td key={i} className="text-center"><strong>{application.company.name}</strong>
                 </td>
             )
         })
@@ -194,10 +193,10 @@ class CompanyS extends Component {
         var detailNum = apply[0].StandardApply.length;
         console.log(applyNum);
         console.log(detailNum);
-        var transposed= [];
-        for(var i=0;i<detailNum;i++){
-            var vert= [];
-            for(var j=0;j<applyNum;j++){
+        var transposed = [];
+        for (var i = 0; i < detailNum; i++) {
+            var vert = [];
+            for (var j = 0; j < applyNum; j++) {
                 //console.log(apply[j].StandardApply[i]);
                 vert.push(apply[j].StandardApply[i]);
             }
@@ -205,13 +204,13 @@ class CompanyS extends Component {
         }
 
         //console.log(transposed);
-        var i=-1;
-        var that=this;
+        var i = -1;
+        var that = this;
         return transposed.map(function (t) {
             i++;
             var standard = that.props.RFQ_details.standard.standard_details[i];
-            var j=0;
-            var Table= t.map(function (app) {
+            var j = 0;
+            var Table = t.map(function (app) {
                 j++;
                 return (
                     <td key={j} className="text-left">
@@ -220,7 +219,7 @@ class CompanyS extends Component {
                         Quantity: {app.qty} <br/>
                         Make: {app.making} <br/>
 
-                        <strong>{app.total}</strong>
+                        <strong>{app.total} TK/=</strong>
                     </td>
                 )
             });
@@ -285,15 +284,8 @@ class CompanyS extends Component {
         }
         if (user.signed) {
             return (
-                <div className="col-md-6 center-block">
-                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
-                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
-                            <strong>{user.name}</strong></p>
-                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
-                            <strong>{this.datefromcreate(user.sign_date)}</strong>
-                        </p>
-                    </div>
+                <div className="col-md-12 center-block">
+                    <img id="signPic" src={link} alt="User Image"/>
                 </div>
             )
         }
@@ -301,33 +293,18 @@ class CompanyS extends Component {
             if (Meteor.userId() == user.user_id) {
                 if (this.state.signed) {
                     return (
-                        <div className="col-md-6 center-block">
-                            <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                            <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
-                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
-                                    <strong>{Meteor.user().profile.name}</strong></p>
-                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
-                                    <strong>{this.dateTodayString()}</strong>
-                                </p>
-                            </div>
+                        <div className="col-md-12 center-block">
+                            <img id="signPic" src={link} alt="User Image"/>
                         </div>
                     )
                 } else {
                     return (
-                        <div className="col-md-6 center-block form-group">
-                            <div className="col-md-1">
-                            </div>
+                        <div className="col-md-12 center-block form-group">
                             <div id="signblock" className="form-style-4">
                                 <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)}
                                        type="password" name="password"
                                        ref="password"
                                        placeholder="Password"/><br/>
-                            </div>
-                            <div>
-                                <div className="form-inline">
-                                    <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
-                                        <strong>{Meteor.user().profile.name}</strong></p>
-                                </div>
                             </div>
                         </div>
                     )
@@ -335,14 +312,14 @@ class CompanyS extends Component {
             }
             else {
                 return (
-                    <div className="col-md-6 center-block">
+                    <div className="col-md-12 center-block">
                     </div>
                 )
             }
         }
         else {
             return (
-                <div className="col-md-6 center-block">
+                <div className="col-md-12 center-block">
                 </div>
             )
         }
@@ -358,9 +335,8 @@ class CompanyS extends Component {
                 <tr key={member.user_id}>
                     <td>০১</td>
                     <td>{member.name}<br/>
-                        বৈজ্ঞানিক কর্মকর্তা <br/>
-                        ডিআরআইসিএম, বিসিএসআইআর <br/>
-                        ও সভাপতি, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
+                        {"DRiCM , BCSIR"}<br/>
+                        {member.comdes}, স্বল্পমূল্যের ক্রয়ের জন্য দরপত্র <br/> ও প্রস্তাব মূল্যায়ন
                         কমিটি
                     </td>
                     <td scope="colgroup">{block}</td>
@@ -395,8 +371,7 @@ class CompanyS extends Component {
                                         <div className="col-md-6">
                                             <div className="row">
                                                 <div className="col-md-12 pull-left">
-                                        <span
-                                            className="pull-left"><strong>RFQ No :  <b>{this.props.RFQ_details.standard.RFQ_no}</b></strong></span>
+                                        <span className="pull-left"><strong>RFQ No :  <b>{this.props.RFQ_details.standard.RFQ_no}</b></strong></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -413,7 +388,7 @@ class CompanyS extends Component {
                                             <thead className="text-left">
                                             <tr>
                                                 <td>S/N</td>
-                                                <td id="nss">As tender document</td>
+                                                <td className="text-center">As tender document</td>
                                                 {this.genApplyHead()}
 
                                             </tr>
@@ -484,7 +459,8 @@ class CompanyS extends Component {
                                 </table>
 
                             </div>
-
+                            <br/>
+                            <br/>
                             <div className="row">
                                 <div className="col-lg-12 ">
                                     <div className="table table-bordered table-responsive">

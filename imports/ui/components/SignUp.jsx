@@ -530,7 +530,7 @@ export default class SignUp extends Component {
                             </div>
 
                             <textarea className="signUpInput" ref="description" rows="5" cols="70"
-                                      placeholder="Description"></textarea>
+                                      placeholder="Address"></textarea>
 
 
                             <div className="row">
