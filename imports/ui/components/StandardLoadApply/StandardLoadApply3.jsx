@@ -22,7 +22,7 @@ export default class StandardApplyLoad3 extends Component {
     }
 
     genSignBlock(signfor, user) {
-        const cursor = ImagesCol.findOne({_id: user.pic});
+        const cursor = ImagesCol.findOne({_id: user.seal});
         var link = '';
         if (cursor) {
             link = cursor.link();

@@ -21,7 +21,7 @@ export default class StandardApplyLoad5 extends Component {
     }
 
     genSignBlock(signfor, user) {
-        const cursor = ImagesCol.findOne({_id: user.pic});
+        const cursor = ImagesCol.findOne({_id: user.seal});
         var link = '';
         if (cursor) {
             link = cursor.link();

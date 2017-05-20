@@ -1,16 +1,29 @@
 import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
 import SideBar from "./SideBar";
 
 export default class Minutes extends Component {
     constructor(props) {
         super(props);
         //  this.state.products = [];
-        var that=this;
-        this.state = {
-            company: that.props.RFQ_details.standard_apply[0].company.name,
-            amount: that.props.RFQ_details.standard_apply[0].amount
-        };
+        var that = this;
+        if (that.props.RFQ_details.step_no == 9) {
+            this.state = {
+                companyId: that.props.RFQ_details.standard_apply[0].company.user_id,
+                company: that.props.RFQ_details.standard_apply[0].company.name,
+                amount: that.props.RFQ_details.standard_apply[0].amount,
+                signed: false
+            };
+        }
+        else if (that.props.RFQ_details.step_no > 9) {
+            this.state = {
+                companyId: that.props.RFQ_details.minutes.company.user_id,
+                company: that.props.RFQ_details.minutes.company.name,
+                amount: that.props.RFQ_details.minutes.amount,
+                signed: false
+            };
+        }
     }
 
     datefromcreate(createdAt) {
@@ -52,8 +65,9 @@ export default class Minutes extends Component {
         this.props.RFQ_details.standard_apply.map(function (apply) {
             if (apply.company.user_id == item.value) {
                 that.setState({
-                    company: item.value,
-                    amount: apply.amount
+                    company: apply.company.name,
+                    amount: apply.amount,
+                    companyId: apply.company.user_id
                 });
             }
         });
@@ -167,7 +181,7 @@ export default class Minutes extends Component {
             var digest = Package.sha.SHA256(password);
             Meteor.call('checkPassword', digest, function (err, result) {
                 if (result) {
-                    that.handleSign();
+                    if (that.props.RFQ_details.step_no == 10) that.handleSign();
                     that.setState({
                         signed: true
                     })
@@ -260,7 +274,7 @@ export default class Minutes extends Component {
     genTable() {
         var that = this;
         //this.handleSign();
-        var i=0;
+        var i = 0;
         return this.props.RFQ_details.minutes.members.map(function (member) {
             var block = that.genSignBlock(member);
             //console.log(member);
@@ -280,25 +294,71 @@ export default class Minutes extends Component {
         });
     }
 
-    submitCom(value){
+    submitCom(value) {
+        if (this.state.signed && this.state.companyId) {
+            var that = this;
+            var com;
+            this.props.RFQ_details.standard_apply.map(function (apply) {
+                if (apply.company.user_id == that.state.companyId) {
+                    com = apply.company;
+                }
+            });
+            var updateForm = {
+                step_no: 10,
+                'minutes.amount': this.state.amount,
+                'minutes.company': com,
+                'step1011accountant.user_id': this.props.RFQ_details.chahida.accountant.user_id,
+                'step1011accountant.name': this.props.RFQ_details.chahida.accountant.name,
+                'step1011accountant.pic': this.props.RFQ_details.chahida.accountant.pic
+            };
 
+            RFQDetails.update(
+                this.props.RFQ_details._id,
+                {
+                    $set: updateForm
+                }, function (err, res) {
+                    if (err) {
+                        console.log(err);
+                        Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
+                    }
+                    else {
+                        FlowRouter.go('/Note/' + that.props.RFQ_details._id);
+                    }
+                });
+            that.handleSign();
+        }
+        else {
+            Bert.alert('Please Sign the Document & Select a company!!', 'danger', 'growl-top-right');
+
+        }
     }
 
 
     render() {
         if (this.props.RFQ_details) {
-            var ch;
+            var ch, comSel,side;
             this.props.RFQ_details.minutes.members.map(function (mem) {
-               if(mem.comdes== 'Chairman') ch=mem;
+                if (mem.comdes == 'Chairman') ch = mem;
             });
+            if (this.props.RFQ_details.step_no == 9) {
+                comSel = this.genCompanies();
+                side= <SideBar clickFunc={{
+                        name: "Submit Company",
+                        sendSelect: (value) => this.submitCom(value)
+                    }} goToNote={'/Note/' + this.props.RFQ_details._id}
+                    />
+            }
+            else if (this.props.RFQ_details.step_no > 9) {
+                //console.log(this.props.RFQ_details.step_no);
+                comSel = this.state.company;
+                side= <SideBar goToNote={'/Note/' + this.props.RFQ_details._id}
+                />
+            }
+
             return (
                 <div className="container">
                     <div className="col-md-3">
-                        <SideBar clickFunc={{
-                                    name: "Submit Company",
-                                    sendSelect: (value) => this.submitCom(value)
-                                }}
-                                 goToNote={'/Note/' + this.props.RFQ_details._id}/>
+                        {side}
                     </div>
                     <div className="col-md-8">
                         <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
@@ -328,14 +388,13 @@ export default class Minutes extends Component {
                                         <p className="text-justify">
                                             <br/>
                                             A meeting of the Tender Evaluation Committee (TEC) for “Supply
-                                            of {this.props.RFQ_details.chahida.title}”
-                                            (RFQ no. {this.props.RFQ_details.standard.RFQ_no};
-                                            dt: {this.datefromcreate(this.props.RFQ_details.standard.createdAt)})
-                                            for Designated Reference
+                                            of {this.props.RFQ_details.chahida.title}” (RFQ
+                                            no. {this.props.RFQ_details.standard.RFQ_no};
+                                            dt: {this.datefromcreate(this.props.RFQ_details.standard.createdAt)}) for
+                                            Designated Reference
                                             Institute for Chemical Measurements was held
                                             on {this.datefromcreate(this.props.RFQ_details.step78meetingDate)} at 3:30
-                                            pm
-                                            under
+                                            pm under
                                             the chairmanship of {ch.name}, {ch.designation}, DRiCM, BCSIR.
 
                                         </p>
@@ -382,22 +441,18 @@ export default class Minutes extends Component {
                                         <p>
                                             <br/>
                                             After a careful scrutiny, it has been found that the tenders submitted
-                                            by {this.props.RFQ_details.standard_apply.length}
-                                            different bidders, {this.genCompanies()} Associates
-                                            meet
-                                            all
-                                            the requirements as specified in the technical specification. And
+                                            by {this.props.RFQ_details.standard_apply.length} different
+                                            bidders, {comSel} Associates
+                                            meet all the requirements as specified in the technical specification. And
                                             all {this.props.RFQ_details.standard_apply.length} are
-                                            technically responsive. Among them, {this.state.user_id} quote the lowest
+                                            technically responsive. Among them, {this.state.company} quote the lowest
                                             price
                                             (TK. {this.state.amount}) which is also within the estimated cost. The offer
                                             given
-                                            by {this.state.user_id} sufficiently meets the requirements of the
-                                            qualifications,
-                                            financial and commercial terms and conditions set out in the RFQ document.
-
+                                            by {this.state.company} sufficiently meets the requirements of the
+                                            qualifications, financial and commercial terms and conditions set out in the
+                                            RFQ document.
                                         </p>
-
 
                                     </div>
                                     <div>
@@ -440,8 +495,8 @@ export default class Minutes extends Component {
                                                 tenderer,
                                                 the
                                                 committee unanimously recommended the Technically Evaluated lowest price
-                                                Tk. {this.state.amount} ({this.convertNumberToWords(this.state.amount)}
-                                                Only) quoted by {this.state.company} for
+                                                Tk. {this.state.amount}, ({this.convertNumberToWords(this.state.amount)} Only)
+                                                quoted by {this.state.company} for
                                                 award for Supply of {this.props.RFQ_details.chahida.title}.
                                             </strong>
                                         </p>
@@ -466,7 +521,8 @@ export default class Minutes extends Component {
                                             <br/>
                                             After threadbare discussion and on the basis of comparative statements,
                                             committee
-                                            opined that Technical Evaluation of {this.props.RFQ_details.chahida.title} of Chemicals for Designated
+                                            opined that Technical Evaluation of supply
+                                            of {this.props.RFQ_details.chahida.title} for Designated
                                             Reference
                                             Institute for Chemical Measurements.
 
@@ -476,10 +532,12 @@ export default class Minutes extends Component {
                                                 <div className="table table-bordered table-responsive">
                                                     <table className="table">
                                                         <thead className="text-center">
-                                                        <th>ক্র.নং</th>
-                                                        <th id="nss">কর্মকর্তার নাম</th>
-                                                        <th id="nss">পদবী ও প্রতিষ্ঠান</th>
-                                                        <th id="nss">স্বাক্ষর</th>
+                                                        <tr>
+                                                            <th>ক্র.নং</th>
+                                                            <th id="nss">কর্মকর্তার নাম</th>
+                                                            <th id="nss">পদবী ও প্রতিষ্ঠান</th>
+                                                            <th id="nss">স্বাক্ষর</th>
+                                                        </tr>
                                                         </thead>
                                                         <tbody>
                                                         {this.genTable()}

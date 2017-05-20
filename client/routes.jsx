@@ -185,6 +185,14 @@ FlowRouter.route('/cs/:id', {
     }
 });
 
+FlowRouter.route('/WO/:id', {
+    action(params){
+        mount(LayoutDash, {
+            content: (<WO id={params.id}/>)
+        })
+    }
+});
+
 FlowRouter.route('/CompanyS', {
     action(){
         mount(LayoutDash, {
@@ -192,17 +200,6 @@ FlowRouter.route('/CompanyS', {
         })
     }
 });
-
-
-FlowRouter.route('/WO', {
-    action(){
-        mount(LayoutDash, {
-            content: (<WO />)
-        })
-    }
-});
-
-
 
 FlowRouter.route('/login', {
     action(){

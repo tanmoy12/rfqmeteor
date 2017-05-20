@@ -28,6 +28,11 @@ export default class SideBar extends Component {
         FlowRouter.go(this.props.minutesCreate);
     }
 
+    gotoWoCreate(e) {
+        e.preventDefault();
+        FlowRouter.go(this.props.WOCreate);
+    }
+
     render() {
         var forward_to_style = {
             // backgroundColor: "#7a9c9c",
@@ -197,6 +202,7 @@ export default class SideBar extends Component {
                 </div>
         }
         if (this.props.minutesCreate) {
+            //console.log(this.props.minutesCreate);
             minutes =
                 <div>
                     <li>
@@ -214,6 +220,29 @@ export default class SideBar extends Component {
                         </div>
                     </li>
                 </div>
+            //console.log(minutes);
+        }
+        var WO;
+        if (this.props.WOCreate) {
+            //console.log(this.props.minutesCreate);
+            WO =
+                <div>
+                    <li>
+                        <div style={{
+                            padding: "3.5%",
+                            color: "#5e5e5e"
+                        }}>
+                            <div>
+                                <input
+                                    onClick={this.gotoWoCreate.bind(this)}
+                                    type="submit" name="login-submit"
+                                    id="submit-all"
+                                    className="btn btn-primary sidebarButt" value="Create Work Order"/>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            //console.log(minutes);
         }
         if (this.props.clickFunc) {
             clickFunc =
@@ -321,7 +350,9 @@ export default class SideBar extends Component {
                     {allowanceNikosh}
                     {cs}
                     {minutes}
+                    {WO}
                     {clickFunc}
+
                     {create_forward_block}
                 </ul>
             </div>

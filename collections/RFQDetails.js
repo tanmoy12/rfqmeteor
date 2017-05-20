@@ -300,6 +300,11 @@ minutesSchema = new SimpleSchema({
        label: 'company',
        optional: true
    },
+    amount: {
+        type: Number,
+        label: 'amount',
+        optional: true
+    },
     members: {
         type: [UserSignFalse],
         label: 'minmembers',
@@ -363,6 +368,29 @@ MeetingNoticeSchema = new SimpleSchema({
     dateOfMeeting: {
         type: Date,
         label: 'date',
+        optional: true
+    }
+});
+
+PurchaseOrderSchema = new SimpleSchema({
+    createdAt: {
+        type: Date,
+        label: 'date',
+        optional: true
+    },
+    initiator: {
+        type: UserSignFalse,
+        label: 'ini',
+        optional: true
+    },
+    director: {
+        type: UserSignFalse,
+        label: 'dir',
+        optional: true
+    },
+    order_no: {
+        type: String,
+        label: 'orderno',
         optional: true
     }
 });
@@ -436,6 +464,21 @@ RFQDetailsSchema = new SimpleSchema({
     minutes: {
         type: minutesSchema,
         label: 'minutes',
+        optional: true
+    },
+    step1011accountant: {
+        type: UserSignFalse,
+        label: 'step7acc',
+        optional: true
+    },
+    step1011director: {
+        type: UserSignFalse,
+        label: 'step7dir',
+        optional: true
+    },
+    purchase: {
+        type: PurchaseOrderSchema,
+        label: 'purchase',
         optional: true
     }
 });

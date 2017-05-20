@@ -73,6 +73,25 @@ Meteor.methods({
 });
 
 Meteor.methods({
+    updateMinutes2: function(rfq_id, user_id) {
+        check(rfq_id, String);
+        check(user_id, String);
+
+        RFQDetails.update(
+            {
+                _id : rfq_id,
+                'minutes.members.user_id': user_id
+            },
+            {
+                $set: {
+                    'minutes.members.$.signed': false,
+                    'minutes.members.$.sign_date': null
+                }
+            });
+    }
+});
+
+Meteor.methods({
     removeFromCommittee: function(user_id) {
         check(user_id, String);
 
