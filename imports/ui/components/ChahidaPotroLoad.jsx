@@ -143,7 +143,6 @@ class ChahidaPotroLoad extends Component {
         return dateshow;
     }
 
-
     genSignBlock(signfor, user) {
         const cursor = ImagesCol.findOne({_id: user.pic});
         var link = '';

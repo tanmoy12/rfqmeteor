@@ -480,6 +480,16 @@ RFQDetailsSchema = new SimpleSchema({
         type: PurchaseOrderSchema,
         label: 'purchase',
         optional: true
+    },
+    step1516accountant: {
+        type: UserSignFalse,
+        label: 'step15acc',
+        optional: true
+    },
+    step1516director: {
+        type: UserSignFalse,
+        label: 'step16dir',
+        optional: true
     }
 });
 

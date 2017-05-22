@@ -21,7 +21,12 @@ export default class App extends Component {
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                             </button>
-                            <a className="navbar-brand" href="">Bingoaps</a>
+                            <a className="navbar-brand" href="#" style={{paddingLeft: "10%", paddingTop: "3.3%"}}>
+                                <span >
+                                    <img src="/dricmlogo.jpg" style={{width: "27%", height: "auto"}}/>
+                                </span>
+                                <span style={{paddingLeft: "4%", paddingTop: "6.2%"}}>DRICM</span>
+                            </a>
                         </div>
                         <div id="navbar" className="collapse navbar-collapse">
                             <ul className="nav navbar-nav navbar-right">
@@ -39,10 +44,13 @@ export default class App extends Component {
                         </div>
                     </div>
                 </nav>
-                <div style={{marginBottom: "50%"}}>
-                    <SignUp/>
+                {/*<div style={{marginBottom: "50%"}}>*/}
+                    {/*<SignUp/>*/}
+                {/*</div>*/}
+                <Caraousal/>
+                <div>
+                    <Footer/>
                 </div>
-                {/*<Caraousal/>*/}
             </div>
 
         );

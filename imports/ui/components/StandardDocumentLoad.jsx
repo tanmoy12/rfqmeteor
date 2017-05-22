@@ -155,22 +155,22 @@ StandardDocumentLoad.propTypes = {
 };
 
 export default createContainer(props => {
-    var RFQ = RFQDetails.findOne(props.id);
-    var Director, Dcc;
-    if (RFQ) {
-        Dcc = Meteor.users.find(
-            {
-                _id: RFQ.chahida.accountant.user_id
-            }).fetch();
-        Director = Meteor.users.find(
-            {
-                _id: RFQ.chahida.director.user_id
-            }).fetch()
-    }
-    return {
-        RFQ: RFQ,
-        Dcc: Dcc,
-        Director: Director
-    };
+        var RFQ = RFQDetails.findOne(props.id);
+        var Director, Dcc;
+        if (RFQ) {
+            Dcc = Meteor.users.find(
+                {
+                    _id: RFQ.chahida.accountant.user_id
+                }).fetch();
+            Director = Meteor.users.find(
+                {
+                    _id: RFQ.chahida.director.user_id
+                }).fetch()
+        }
+        return {
+            RFQ: RFQ,
+            Dcc: Dcc,
+            Director: Director
+        };
 }, StandardDocumentLoad);
 

@@ -28,7 +28,12 @@ export default class App extends Component {
     };
 
     render() {
-
+        var msg ;
+        if(this.state.message){
+            msg= <div className="alert alert-danger">
+                    <strong> {this.state.message}</strong>
+                </div>
+        }
         return (
             <form autoComplete="off" onSubmit={this.handleLogin.bind(this)}>
                 <div className="form-group">
@@ -42,16 +47,10 @@ export default class App extends Component {
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" ref="password" className="form-control" placeholder="Password"/>
-                        <div className="alert alert-danger">
-                            <strong> {this.state.message}</strong>
-                        </div>
+                        {msg}
                 </div>
                 <div className="form-group">
                     <div className="row">
-                        <div className="col-xs-7">
-                            <input type="checkbox" name="remember" id="remember"/>
-                                <label htmlFor="remember"> Remember Me</label>
-                        </div>
                         <div className="col-xs-5 pull-right">
                             <input type="submit" className="form-control btn btn-success" value="Log In"/>
                         </div>

@@ -244,6 +244,16 @@ export default class SideBar extends Component {
                 </div>
             //console.log(minutes);
         }
+        if (this.props.WO) {
+            WO =
+                <div>
+                    <li>
+                        <a className="sidebar_a" href={this.props.WO}>
+                            <span className="glyphicon glyphicon-file"></span>Work Order
+                        </a>
+                    </li>
+                </div>
+        }
         if (this.props.clickFunc) {
             clickFunc =
                 <div>

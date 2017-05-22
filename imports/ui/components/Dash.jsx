@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import ReactDOM from 'react-dom';
+import Footer from './Footer';
 
 import RFQBox from './RFQBox';
 

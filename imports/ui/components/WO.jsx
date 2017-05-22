@@ -1,14 +1,14 @@
-import React, {Component, PropTypes} from 'react';
-import {createContainer} from 'meteor/react-meteor-data';
-import ReactDOM from 'react-dom';
-
-import SideBar from './SideBar';
+import React, {Component, PropTypes} from "react";
+import {createContainer} from "meteor/react-meteor-data";
+import ReactDOM from "react-dom";
+import SideBar from "./SideBar";
 
 class WO extends Component {
     constructor(props) {
         super(props);
         //  this.state.products = [];
         this.state = {
+            signed: false
         };
     }
 
@@ -122,8 +122,7 @@ class WO extends Component {
         return words_string;
     }
 
-    addDays(){
-        var someDate = new Date();
+    addDays(someDate) {
         var numberOfDaysToAdd = 20;
         someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
 
@@ -140,13 +139,6 @@ class WO extends Component {
             return (
                 <div className="col-md-6 center-block">
                     <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
-                        <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
-                            <strong>{user.name}</strong></p>
-                        <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
-                            <strong>{this.datefromcreate(user.sign_date)}</strong>
-                        </p>
-                    </div>
                     <hr id="signhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor}</strong></p>
                 </div>
@@ -158,13 +150,7 @@ class WO extends Component {
                     return (
                         <div className="col-md-6 center-block">
                             <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                            <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
-                                <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
-                                    <strong>{Meteor.user().profile.name}</strong></p>
-                                <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
-                                    <strong>{this.dateTodayString()}</strong>
-                                </p>
-                            </div>
+
                             <hr id="signhr" style={{width: "100%"}}/>
                             <p id="signTag"><strong>{signfor}</strong></p>
                         </div>
@@ -173,18 +159,12 @@ class WO extends Component {
                     return (
                         <div className="col-md-6 center-block form-group">
                             <div id="signblock" className="form-style-4">
-                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)} type="password" name="password"
+                                <input style={{float: "center"}} onKeyPress={this.passwordcheck.bind(this)}
+                                       type="password" name="password"
                                        ref="password"
                                        placeholder="Password"/><br/>
                             </div>
-                            <div>
-                                <div className="form-inline">
-                                    <p id="signLabel" style={{display: "inline-flex", float: "center"}}>
-                                        <strong>{Meteor.user().profile.name}</strong></p>
-                                </div>
-                                <hr id="signhr" style={{width: "100%"}}/>
-                                <p id="signTag"><strong>{signfor}</strong></p>
-                            </div>
+                            <hr id="signhr" style={{width: "100%"}}/>
                         </div>
                     )
                 }
@@ -208,12 +188,192 @@ class WO extends Component {
         }
     }
 
+    genSignBlocked(signfor, user) {
+        const cursor = ImagesCol.findOne({_id: user.pic});
+        var link = '';
+        if (cursor) {
+            link = cursor.link();
+        }
+        if (user.signed) {
+            return (
+                <div className="col-md-6 center-block">
+                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+
+                    <hr id="signhr" style={{width: "100%"}}/>
+                    <p id="signTag"><strong>{signfor}</strong></p>
+                </div>
+            )
+        }
+        else if (user.user_id && !user.signed) {
+            if (Meteor.userId() == user.user_id) {
+                if (this.state.signed) {
+                    return (
+                        <div className="col-md-6 center-block">
+                            <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+
+                            <hr id="signhr" style={{width: "100%"}}/>
+                            <p id="signTag"><strong>{signfor}</strong></p>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div className="col-md-6 center-block">
+                            <hr id="unsignhr" style={{width: "100%"}}/>
+                            <p id="signTag"><strong>{signfor} </strong></p>
+                        </div>
+                    )
+                }
+            }
+            else {
+                return (
+                    <div className="col-md-6 center-block">
+                        <hr id="unsignhr" style={{width: "100%"}}/>
+                        <p id="signTag"><strong>{signfor} </strong></p>
+                    </div>
+                )
+            }
+        }
+        else {
+            return (
+                <div className="col-md-6 center-block">
+                    <hr id="unsignhr" style={{width: "100%"}}/>
+                    <p id="signTag"><strong>{signfor} </strong></p>
+                </div>
+            )
+        }
+    }
+
+    handleForward(value) {
+        //console.log(value);
+        var that = this;
+        var orderno;
+        if (this.props.RFQ_details.step_no == 12) {
+            this.state.signed = true;
+            orderno = ReactDOM.findDOMNode(this.refs.orderno).value.trim();
+        }
+        if (this.props.RFQ_details.step_no == 13){
+            orderno=true;
+        }
+
+
+        if (this.state.signed && orderno) {
+            var StandardForm;
+            if (this.props.RFQ_details.step_no == 12) {
+                StandardForm = {
+                    step_no: 13,
+                    'purchase.order_no': orderno,
+                    'purchase.createdAt': new Date(),
+                    'purchase.initiator.signed': true,
+                    'purchase.initiator.sign_date': new Date(),
+                    'purchase.director.user_id': this.props.RFQ_details.chahida.director.user_id,
+                    'purchase.director.name': this.props.RFQ_details.chahida.director.name,
+                    'purchase.director.pic': this.props.RFQ_details.chahida.director.pic
+                };
+            }
+            else if (this.props.RFQ_details.step_no == 13) {
+                StandardForm = {
+                    step_no: 14,
+                    'purchase.director.signed': true,
+                    'purchase.director.sign_date': new Date(),
+
+                    'step1516accountant.user_id': this.props.RFQ_details.chahida.accountant.user_id,
+                    'step1516accountant.name': this.props.RFQ_details.chahida.accountant.name,
+                    'step1516accountant.pic': this.props.RFQ_details.chahida.accountant.pic
+                };
+            }
+
+            RFQDetails.update(
+                that.props.RFQ_details._id,
+                {
+                    $set: StandardForm
+                }, function (err, res) {
+                    if (err) {
+                        console.log(err);
+                        Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
+                    }
+                    else {
+                        FlowRouter.go('/Note/' + that.props.RFQ_details._id);
+                    }
+                });
+        } else {
+            Bert.alert('Please Fill Up All Details!!', 'danger', 'growl-top-right');
+        }
+    }
+
+    passwordcheck(e) {
+        if (e.key === 'Enter') {
+            var that = this;
+            var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+            var digest = Package.sha.SHA256(password);
+            Meteor.call('checkPassword', digest, function (err, result) {
+                if (result) {
+                    that.setState({
+                        signed: true
+                    })
+                }
+                else {
+                    Bert.alert('Incorrect Password!!', 'danger', 'growl-top-right');
+                }
+            });
+        }
+    }
+
+    datefromcreate(createdAt) {
+        var date = createdAt.getDate();
+        var month = createdAt.getMonth() + 1;
+        var year = createdAt.getFullYear();
+        var dateshow;
+        if (month < 10) {
+            dateshow = date + '/0' + month + '/' + year;
+        } else {
+            dateshow = date + '/' + month + '/' + year;
+        }
+        return dateshow;
+    }
+
     render() {
-        if(this.props.RFQ_details) {
+        if (this.props.RFQ_details && this.props.Dir) {
+            var viewApp, goToNote;
+            var forward_to, dropdownList, date;
+            var order = <div className="col-md-12 pull-left">
+                            <span className="pull-left"><strong>Purchase order no: <b>{this.props.RFQ_details.purchase.order_no}</b></strong></span>
+                        </div>
+            if (this.props.RFQ_details.step_no == 12 && Meteor.userId() == this.props.RFQ_details.purchase.initiator.user_id) {
+                forward_to = {
+                    toWhom: "অনুমোদনকারী",
+                    dropdownList: this.props.Dir,
+                    sendSelect: (value) => this.handleForward(value)
+                };
+                date = new Date();
+                order = <div className="col-md-12 form-style-4">
+                            <label htmlFor="orderno">
+                            <span>Purchase order No :</span>
+                            <input style={{
+                                    width: "60%"
+                                }} ref="orderno" placeholder="Order No." name="orderno" type="text"/>
+                            </label>
+                        </div>
+            }
+            var clickFunc;
+            if (this.props.RFQ_details.step_no == 13 && Meteor.userId() == this.props.RFQ_details.purchase.director.user_id) {
+                clickFunc = {
+                    name: 'Send to Company',
+                    sendSelect: (value) => this.handleForward(value)
+                };
+            }
+            if(this.props.RFQ_details.step_no > 12){
+                date= this.props.RFQ_details.purchase.createdAt
+            }
+            if (Meteor.user().profile.tradelicenseno) {
+                viewApp = "/StandardApplyLoad/" + this.props.RFQItem._id + "/" + Meteor.userId();
+            }
+            else if (Meteor.user().profile.designation) {
+                goToNote = '/Note/' + this.props.RFQ_details._id;
+            }
             return (
                 <div className="container">
                     <div className="col-md-3">
-                        <SideBar/>
+                        <SideBar viewApp={viewApp} goToNote={goToNote} forwardTo={forward_to} clickFunc={clickFunc}/>
                     </div>
                     <div className="col-md-8">
                         <div id="chahidajumbo" className="col-md-12 jumbotron text-center">
@@ -239,19 +399,12 @@ class WO extends Component {
                                     <div className="row">
                                         <div className="col-md-9">
                                             <div className="row">
-                                                <div className="col-md-12 form-style-4">
-                                                    <label htmlFor="orderno">
-                                                        <span>Purchase order No :</span>
-                                                        <input style={{
-                                                            width: "60%"
-                                                        }} ref="orderno" placeholder="Order No." name="orderno"
-                                                               type="text"/>
-                                                    </label>
-                                                </div>
+                                                {order}
                                             </div>
                                         </div>
                                         <div className="col-md-3">
-                                            {this.dateToday()}
+                                            <p id="dateload"><strong>DATE
+                                                : {this.datefromcreate(date)}</strong></p>
                                         </div>
                                     </div>
 
@@ -278,11 +431,15 @@ class WO extends Component {
                                             </tr>
 
                                             <tr>
-                                                <td className="text-left"><strong>Delivery Date: {this.datefromcreate(this.addDays())}</strong></td>
-                                                <td className="text-left"><strong>Order Value: TK. {this.convertNumberToWords(this.props.RFQ_details.minutes.amount)}/=</strong></td>
+                                                <td className="text-left"><strong>Delivery
+                                                    Date: {this.datefromcreate(this.addDays(date))}</strong></td>
+                                                <td className="text-left"><strong>Order Value:
+                                                    TK. {this.convertNumberToWords(this.props.RFQ_details.minutes.amount)}/=</strong>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td colSpan="2" className="text-center"><strong>Delivery: As per Terms and
+                                                <td colSpan="2" className="text-center"><strong>Delivery: As per Terms
+                                                    and
                                                     Conditions</strong></td>
                                             </tr>
 
@@ -292,10 +449,15 @@ class WO extends Component {
                                     </div>
                                     <div>
                                         <p className="text">The Purchaser has accepted your Quotation
-                                            dated <strong>{this.datefromcreate(this.props.RFQ_details.standard.createdAt)} </strong> for
-                                            the supply of Goods and related services as listed below and requests that you supply the Goods and
-                                            related services within the delivery date stated above, in the quantities and units in
-                                            conformity with the Technical Specifications under the Terms and Conditions as annexed.
+                                            dated
+                                            <strong>{this.datefromcreate(this.props.RFQ_details.standard.createdAt)} </strong>
+                                            for
+                                            the supply of Goods and related services as listed below and requests that
+                                            you supply the Goods and
+                                            related services within the delivery date stated above, in the quantities
+                                            and units in
+                                            conformity with the Technical Specifications under the Terms and Conditions
+                                            as annexed.
                                         </p>
 
                                     </div>
@@ -304,16 +466,19 @@ class WO extends Component {
                                         <table className="table">
                                             <thead>
                                             <tr>
-                                                <td colSpan="2" className="text-center"><strong>ORDER ITEMS</strong></td>
+                                                <td colSpan="2" className="text-center"><strong>ORDER ITEMS</strong>
+                                                </td>
 
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
                                                 <td className="text-center">
-                                                    Attached Certified photocopy of approved Priced Schedule for Goods and
+                                                    Attached Certified photocopy of approved Priced Schedule for Goods
+                                                    and
                                                     related services <br/>
-                                                    Attached Certified photocopy of approved Technical Specification of the
+                                                    Attached Certified photocopy of approved Technical Specification of
+                                                    the
                                                     Goods Required <br/>
                                                     Attached Certified photocopy of Terms and Conditions
                                                 </td>
@@ -333,11 +498,12 @@ class WO extends Component {
                                                     Project” <br/>
                                                     BCSIR, Dr. Qudrat-i-Khuda Road, Dhanmondi, Dhaka-1205 <br/>
                                                     Phone No: 02 9671830, 01715032057, Fax No: 02 8613819 <br/>
-                                                    e-mail:malakhan_07@yahoo.com <br/>
+                                                    <br/>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td className="text-left" colSpan="2">Date: {this.datefromcreate(new Date())}</td>
+                                                <td className="text-left" colSpan="2">
+                                                    Date: {this.datefromcreate(this.props.RFQ_details.purchase.createdAt)}</td>
                                             </tr>
                                             </tbody>
 
@@ -381,57 +547,69 @@ class WO extends Component {
                                         <p className="text">
                                             1. Terms and Conditions contained herein shall be binding upon both the
                                             Procuring
-                                            Entity and the Supplier for the purpose of administration and management of this
+                                            Entity and the Supplier for the purpose of administration and management of
+                                            this
                                             Contract.
                                         </p>
                                         <p className="text">
                                             2. Implementation and interpretation of these Terms and Conditions shall, in
-                                            general, be under the purview of the Public Procurement Act, 2006 and the Public
+                                            general, be under the purview of the Public Procurement Act, 2006 and the
+                                            Public
                                             Procurement Rules, 2008.
                                         </p>
 
                                         <p className="text">
-                                            3. The Supplier shall have to complete the delivery in all respects within 20
+                                            3. The Supplier shall have to complete the delivery in all respects within
+                                            20
                                             days
                                             of issuing the Purchase Order in conformity with the Terms and Conditions.
                                         </p>
                                         <p className="text">
-                                            4. The Supplier shall be entitled to an extension of the Delivery Schedule if
+                                            4. The Supplier shall be entitled to an extension of the Delivery Schedule
+                                            if
                                             the
-                                            Procuring Entity delays in receiving the Goods and related services or if Force
-                                            Majeure situation occurs or for any other reasons acceptable to the Procuring
+                                            Procuring Entity delays in receiving the Goods and related services or if
+                                            Force
+                                            Majeure situation occurs or for any other reasons acceptable to the
+                                            Procuring
                                             Entity
                                             on justifiable grounds duly recorded.
                                         </p>
                                         <p className="text">
-                                            5. All delivery under the Contract shall at all times be open to examination,
+                                            5. All delivery under the Contract shall at all times be open to
+                                            examination,
                                             inspection, measurements, testing, commissioning, and supervision of the
                                             Procuring
                                             Entity or his/her authorized representative.
                                         </p>
                                         <p className="text">
-                                            6. The Procuring Entity shall check and verify the delivery made by the Supplier
+                                            6. The Procuring Entity shall check and verify the delivery made by the
+                                            Supplier
                                             in
                                             conformity with the Technical Specifications and notify the Supplier of any
                                             Defects
                                             found.
                                         </p>
                                         <p className="text">
-                                            7. If the Goods are found to be defective or otherwise not in accordance with
+                                            7. If the Goods are found to be defective or otherwise not in accordance
+                                            with
                                             the
                                             specifications, the Procuring Entity may reject the supplies by giving due
                                             notice to
                                             the Supplier, with reasons.
                                         </p>
                                         <p className="text">
-                                            8. The Supplier shall be entirely responsible for payment of all taxes, duties,
+                                            8. The Supplier shall be entirely responsible for payment of all taxes,
+                                            duties,
                                             fees, and such other levies under the Applicable Law.
                                         </p>
                                         <p className="text">
-                                            9. Notwithstanding any other practice, the payment shall be based on the actual
+                                            9. Notwithstanding any other practice, the payment shall be based on the
+                                            actual
                                             delivery of goods on the basis of the quantity of each item of Goods in
                                             accordance
-                                            with the Priced Schedule and Specifications. 100% of the Contract price of the
+                                            with the Priced Schedule and Specifications. 100% of the Contract price of
+                                            the
                                             Goods
                                             and related services shall be paid after submission and acceptance of the
                                             Delivery
@@ -440,7 +618,8 @@ class WO extends Component {
                                         <p className="text">
                                             10. The Supplier’s rates or prices shall be inclusive of profit and overhead
                                             and,
-                                            all kinds of taxes, duties, fees, levies, and other charges to be paid under the
+                                            all kinds of taxes, duties, fees, levies, and other charges to be paid under
+                                            the
                                             Applicable Law.
                                         </p>
                                         <p className="text">
@@ -450,23 +629,28 @@ class WO extends Component {
                                         </p>
 
                                         <p className="text">
-                                            12. The minimum Warranty Period of the Supplies shall be 12 months starting from
+                                            12. The minimum Warranty Period of the Supplies shall be 12 months starting
+                                            from
                                             the
                                             date of completion of delivery in the form of submission by the Supplier and
                                             acceptance by the Procuring Entity, of the Delivery Chalan.
                                         </p>
 
                                         <p className="text">
-                                            13. The Supplier shall remain liable to fulfil the obligations pursuant to Rule
+                                            13. The Supplier shall remain liable to fulfil the obligations pursuant to
+                                            Rule
                                             40 (5) of the Public Procurement Rules, 2008.
                                         </p>
 
                                         <p className="text">
-                                            14. The Supplier shall keep the Procurement Entity harmless and indemnify from
+                                            14. The Supplier shall keep the Procurement Entity harmless and indemnify
+                                            from
                                             any
-                                            claim, loss of property or life to himself/herself, his/her workmen or staff,
+                                            claim, loss of property or life to himself/herself, his/her workmen or
+                                            staff,
                                             any
-                                            staff of the Procurement Entity or any third party while delivering the Goods
+                                            staff of the Procurement Entity or any third party while delivering the
+                                            Goods
                                             and
                                             related services.
                                         </p>
@@ -519,11 +703,13 @@ class WO extends Component {
                                         <p className="text">
                                             18. The Procuring Entity contracting shall amend the Contract incorporating
                                             required
-                                            approved changes subsequently introduced to the original Terms and Conditions in
+                                            approved changes subsequently introduced to the original Terms and
+                                            Conditions in
                                             line with Rules, where necessary.
                                         </p>
                                         <p className="text">
-                                            19. The Procuring Entity may, by written Notice sent to the Supplier, terminate
+                                            19. The Procuring Entity may, by written Notice sent to the Supplier,
+                                            terminate
                                             the
                                             Contract in whole or in part at any time, if the Supplier: <br/>
                                         </p>
@@ -538,14 +724,16 @@ class WO extends Component {
                                             c. fails to perform any other obligation(s) under the Contract.
                                         </p>
                                         <p className="text">
-                                            20. The Procuring Entity and the Supplier shall use their best efforts to settle
+                                            20. The Procuring Entity and the Supplier shall use their best efforts to
+                                            settle
                                             amicably all possible disputes arising out of or in connection with this
                                             Contract or
                                             its interpretation.
                                         </p>
                                         <p className="text">
                                             21. The Supplier shall be subject to, and aware of provision on corruption,
-                                            fraudulence, collusion and coercion in Section 64 of the Public Procurement Act,
+                                            fraudulence, collusion and coercion in Section 64 of the Public Procurement
+                                            Act,
                                             2006 and Rule 127 of the Public Procurement Rules, 2008.
                                         </p>
                                     </div>
@@ -556,7 +744,7 @@ class WO extends Component {
                                             <tr>
                                                 <td className="text-left">For the Purchaser:
                                                     <div className="row">
-                                                        {this.genSignBlock('', this.props.RFQ_details.purchase.director)}
+                                                        {this.genSignBlocked('', this.props.RFQ_details.purchase.director)}
                                                         <div className="col-md-6">
 
                                                         </div>
@@ -568,7 +756,6 @@ class WO extends Component {
                                                     Project” <br/>
                                                     BCSIR, Dr. Qudrat-i-Khuda Road, Dhanmondi, Dhaka-1205 <br/>
                                                     Phone No: 02 9671830, 01715032057, Fax No: 02 8613819 <br/>
-                                                    <strong>e-mail:malakhan_07@yahoo.com</strong>
                                                 </td>
                                                 <td className="text-left">
                                                     For the Supplier:
@@ -584,7 +771,7 @@ class WO extends Component {
                                             </tr>
                                             <tr>
                                                 <td className="text-left">
-                                                    Date: {this.datefromcreate(new Date())}
+                                                    Date: {this.datefromcreate(date)}
                                                 </td>
                                                 <td className="text-left">
                                                     Date:
@@ -612,9 +799,9 @@ class WO extends Component {
         }
         else {
             return (
-              <div>
-                  Loading...
-              </div>
+                <div>
+                    Loading...
+                </div>
             );
         }
     }
@@ -635,11 +822,6 @@ export default createContainer(props => {
     return {
         RFQ_details: RFQ,
         Acc: Acc,
-        Dir: Dir,
-        SpOf: Meteor.users.find(
-            {
-                'profile.committee.name': "Specification Committee",
-                'profile.committee.des': 'Shochib'
-            }).fetch()
+        Dir: Dir
     };
 }, WO);

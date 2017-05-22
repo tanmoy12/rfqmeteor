@@ -22,6 +22,7 @@ class DashHeader extends Component {
         e.preventDefault();
         FlowRouter.go('/dashboard');
     }
+
     renderNots(){
         return this.props.nots.map(function (not) {
             return <Not key={not._id} notitem={not}/>
