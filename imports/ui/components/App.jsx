@@ -44,10 +44,12 @@ export default class App extends Component {
                         </div>
                     </div>
                 </nav>
-                {/*<div style={{marginBottom: "50%"}}>*/}
-                    {/*<SignUp/>*/}
-                {/*</div>*/}
-                <Caraousal/>
+                <div>
+                    <Caraousal/>
+                </div>
+                <div style={{marginBottom: "50%"}}>
+                    <SignUp/>
+                </div>
                 <div>
                     <Footer/>
                 </div>
