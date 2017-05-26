@@ -373,10 +373,10 @@ input:focus::-webkit-input-placeholder {
     z-index: 1000;
     display: none;
     min-width: 100px;
-    width: 200px;
+    width: 350px;
     margin: 2px 0 0;
     list-style: none;
-    font-size: 12px;
+    font-size: 10px;
     background-color: #fff;
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.15);
@@ -473,7 +473,7 @@ input:focus::-webkit-input-placeholder {
 
 .dropdown-toolbar .dropdown-toolbar-title {
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 
@@ -531,7 +531,7 @@ input:focus::-webkit-input-placeholder {
 }
 
 .notification-title {
-    font-size: 15px;
+    font-size: 12px;
     text-align: center;
 }
 .notification-meta {
@@ -553,7 +553,7 @@ a.notification:hover{
     padding-top: 2px;
     padding: 4px;
     margin: 0px;
-    font-size: medium;
+    font-size: 12px;
     padding-bottom: 1px;
     text-decoration: none;
 }

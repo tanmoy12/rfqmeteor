@@ -3,6 +3,9 @@ Notifications = new Mongo.Collection('notifications');
 Notifications.allow({
     insert: function (userId, doc) {
         return !!userId;
+    },
+    remove: function (userId, doc) {
+        return !!userId;
     }
 });
 
@@ -30,9 +33,13 @@ NotificationsSchema = new SimpleSchema({
         type: String,
         label: 'RFQ_id'
     },
-    title: {
+    link: {
         type: String,
-        label: 'title'
+        label: 'link',
+    },
+    task: {
+        type: String,
+        label: 'task'
     },
     from: {
         type: UserFrom,
