@@ -1,291 +1,172 @@
-import React, {Component, PropTypes} from 'react';
-import ReactDOM from "react-dom";
+import React, {Component, PropTypes} from "react";
 import {createContainer} from "meteor/react-meteor-data";
-import $ from 'jquery';
+import ReactDOM from "react-dom";
 
-import Member from './Members';
-
-var specCommDivRows = [];
-var spec_id = [];
-class Committee extends Component {
+export default class Committee extends Component {
     constructor(props) {
         super(props);
+
+        var des=['Chairman', 'Member', 'Member Secretary'];
+        this.props.members.map(function (mem) {
+            //console.log(des);
+            if (mem.profile.committee.des == 'Chairman') {
+                var I= des.indexOf('Chairman');
+                des.splice(I, 1);
+            } else if (mem.profile.committee.des == 'Shochib') {
+                var I= des.indexOf('Member Secretary');
+                des.splice(I, 1);
+            }
+        });
+        //console.log(des);
         this.state = {
-            bgColorComm: "#337ab7",
-            commDivShow: false,
-            noOfSpecCommMem: 0,
-            specCommButtClassRows: [],
-            specCommMemAdd: [],
-            init: [],
-            initialize: false,
-
-        };
-
-        var ind_id = parseInt(this.props.idx);
-        specCommDivRows[ind_id] = [];
-        spec_id[ind_id] = 0;
-        this.state.init[ind_id] = true;
+            des: des
+        }
     }
 
-    commClicked(e) {
-        var ind_id = parseInt(this.props.idx);
+    addMember(e) {
+        e.preventDefault();
+        var selectId = ReactDOM.findDOMNode(this.refs.selectName).value.trim();
+        var selectDes = ReactDOM.findDOMNode(this.refs.selectDes).value.trim();
 
-        var col = "#337ab7";
-        if (!this.state.commDivShow) {
-            col = "#32127a";
+        var des;
+        if (selectDes == 'Chairman') {
+            des = 'Chairman';
+        } else if (selectDes == 'Member Secretary') {
+            des = 'Shochib';
+        } else if (selectDes == 'Member') {
+            des = 'Shodosho';
         }
+        //console.log(selectId);
+        //console.log(des);
+        var that=this;
+        Meteor.call('addMember', selectId, des, that.props.name);
 
-        var newBgColorComm = col;
-        this.state.specCommButtClassRows = [];
-        this.state.specCommButtClassRows.push("btn btn-success btn-add bb");
-        var ind_id = parseInt(this.props.idx);
-        if (this.state.init[ind_id]) {
-            this.state.specCommMemAdd[ind_id] = false;
-            this.state.init[ind_id] = false;
-            specCommDivRows[ind_id] = [];
-            spec_id[ind_id] = 0;
+        if (des == 'Chairman') {
+            var I= this.state.des.indexOf('Chairman');
+            this.state.des.splice(I, 1);
+        } else if (des == 'Shochib') {
+            var I= this.state.des.indexOf('Shochib');
+            this.state.des.splice(I, 1);
         }
-        if(spec_id[ind_id]>0){
-            this.state.initialize = true;
-        }
-
-        this.setState({
-            bgColorComm: newBgColorComm,
-            commDivShow: !this.state.commDivShow,
-        });
-
-        // console.log("specCommButtClassRows : "+this.state.specCommButtClassRows);
-
 
     }
 
-    specCommMemAddButtClick(todo, re, serial) {
-        var x = parseInt(this.state.noOfSpecCommMem);
-        var ind_id = parseInt(this.props.idx);
-        if (todo == "add") {
-            this.state.specCommMemAdd[ind_id] = true;
-            //this.state.initialize = true;
-            x++;
-        }
-        this.setState({
-            noOfSpecCommMem: x,
-            initialize: true,
-        });
 
+    deleteMember(id, des){
+        //e.preventDefault();
+        console.log(id);
+        console.log(des);
+        Meteor.call('removeMember', id);
+        if(des=='Chairman') this.state.des.push('Chairman');
+        else if(des=='Shochib') this.state.des.push('Member Secretary');
     }
 
-    doneCommittee(ara, id, idTail){
-        //FOR SENDING DATA TO SERVER
-        console.log("DATA IS GETTING READY FOR SERVER : ****************************");
-        let noOfChairman = 0;
-        let noOfShochib = 0;
-        let errorFlag = 0;
+    renderCommittee() {
+        var i=0;
+        var that=this;
+        var des;
+        return  this.props.members.map(function (mem) {
+            i++;
+            if(mem.profile.committee.des == 'Chairman') des= 'Chairman';
+            else if(mem.profile.committee.des == 'Shochib') des= 'Member Secretary';
+            else if(mem.profile.committee.des == 'Shodosho') des= 'Member';
+            return <tr key={i}>
+                <td className="col-md-1 text-left">{i}</td>
+                <td className="col-md-5 text-left">{mem.profile.name}</td>
+                <td className="col-md-4 text-left">{des}</td>
+                <td className="col-md-2 text-center">
+                    <button
+                            onClick={(value, val2) => that.deleteMember(mem._id, mem.profile.committee.des)}
+                            className="btn btn-default btn-sm">
+                        <span className="glyphicon glyphicon-minus"></span>
+                    </button>
 
-        for(let i=0;i<ara[id].length;i++){
-
-            let s1 = '#' + i.toString() + idTail + "selected1";
-            let s2 = '#' + i.toString() + idTail + "selected2";
-
-            let name = $(s1).text();
-            let desig = $(s2).text();
-            let idx = $(s1+"butt").val();
-            //console.log("VALUE OF BUTT IS : "+ $(s1+"butt").val())
-
-
-            if(name=="Name" || desig=="Designation"){
-                errorFlag = 1;
-                break;
-            }
-            if(name=="" || desig==""){
-                //DELETED ITEM
-                continue;
-            }
-
-            if(desig=="Chairperson"){
-                desig = "Chairman";
-                //console.log("plus Chairperson!!");
-                noOfChairman++;
-            }
-            else if(desig=="সদস্যসচিব"){
-                desig="Shochib";
-                noOfShochib++;
-            }
-            else if(desig=="Member"){
-                desig="member";
-            }
-
-
-            console.log("NUMBER : "+ (i));
-            console.log("NAME : "+name);
-            console.log("DESIGNATION : "+desig);
-            console.log("ID : "+idx);
-
-
-        }
-        if(noOfChairman>1){
-            //console.log("More than one Chairperson!!");
-            Bert.alert('More than one Chairperson!!', 'danger', 'growl-top-right');
-        }
-        else if(noOfShochib>1){
-            //console.log("More than one সদস্যসচিব!!");
-            Bert.alert('More than one সদস্যসচিব!!', 'danger', 'growl-top-right');
-        }
-        else if(errorFlag==1){
-            Bert.alert('Empty Fields Cannot Be Left Behind!!', 'danger', 'growl-top-right');
-        }
-        else{
-            let com_name = this.props.name;
-            com_name +=  " has been successfully created";
-            Bert.alert(com_name, 'success', 'growl-top-right');
-        }
-        console.log("DATA IS SERVED FOR SERVER : ****************************");
+                </td>
+            </tr>
+        })
     }
 
 
     render() {
 
         if (this.props.members && this.props.allusers) {
-            console.log("FOR COMMITTE NO : "+ this.props.idx);
-            console.log("MEMBERS");
-            console.log(this.props.members);
-            console.log("ALL USERS");
-            console.log(this.props.allusers);
+            return (
+                <div className="container">
+                    <div className="row">
+                        <div className="pull-left col-md-8">
+                            <div style={{marginTop: "10px"}} id="tabledesc" className="table">
 
-            let ind_id = parseInt(this.props.idx);
-            let ref_val = "_" + this.props.refVal;
-            //console.log("ref value : "+ref_val);
-            let serial = spec_id[ind_id];
-            let memAra = specCommDivRows[ind_id];
-            let that = this;
+                                <table id="customers" className="table table-responsive table-bordered table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th className="col-md-12 text-center">{this.props.name}</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <table id="customers" className="table table-responsive table-bordered table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th className="col-md-1 text-center">No.</th>
+                                        <th className="col-md-5 text-center">Name</th>
+                                        <th className="col-md-4 text-center">Designation</th>
+                                        <th className="col-md-2 text-center"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {
+                                       this.renderCommittee()
+                                    }
+                                    </tbody>
+                                </table>
 
-            if(!this.state.initialize) {
-                this.props.members.map(function (member, index) {
-                    //console.log("ALL USERS FROM COMMITTEE : ");
-                    //console.log(that.props.allusers);
-                    //console.log(user);
-                    let refValue = index.toString() + ref_val;
-                    memAra[index] = <Member serial={serial} ref_val={refValue}
-                                        allUsersList={that.props.allusers} name={member.profile.name}
-                                        des={member.profile.committee.des} idx={member._id}/>
-                });
-                spec_id[ind_id] = this.props.members.length;
-            }
-
-
-        }
-
-        var specCommDiv;
-        var ind_id = parseInt(this.props.idx);
-        //console.log("IND_ID : "+ind_id);
-        if (this.state.commDivShow) {
-            var x = parseInt(this.state.noOfSpecCommMem);
-            var ref_val = spec_id[ind_id].toString() + "_" + this.props.refVal;
-            console.log("ref_val : " + ref_val);
-
-
-            //CREATE ADD_BUTTON & DONE_BUTTON
-            var done_val = "_" + this.props.refVal;
-
-            var buttons =
-                <div className="control-group" id="fields" style={{display: "inline"}}>
-                    <div className="controls">
-                        <form role="form" autocomplete="off">
-                            <div className="entry input-group col-xs-5">
-                                <button className="btn btn-success btn-add bb" style={{
-                                    marginBottom: "7px",
-                                    float: "right",
-                                    fontSize: "14px",
-                                    fontWeight: "bold",
-                                    paddingLeft: "3.3%",
-                                    paddingRight: "3.3%",
-                                }}
-                                        onClick={this.specCommMemAddButtClick.bind(this, "add", ref_val, "")}
-                                        title="Add More To Committee" type="button" value="Add More">
-                                    <span className="glyphicon glyphicon-plus" style={{marginRight: 0}}></span>
-                                </button>
-                                <button className="btn btn-add bb" style={{
-                                    marginBottom: "7px",
-                                    float: "right",
-                                    fontSize: "14px",
-                                    fontWeight: "bold",
-                                    paddingLeft: "3.3%",
-                                    paddingRight: "3.3%",
-                                    marginRight: "3%",
-                                    backgroundColor: "#4682b4",
-                                    color: "white",
-                                }}
-                                        onClick={this.doneCommittee.bind(this, specCommDivRows, ind_id, done_val)}
-                                        title="Done Editing Committee" type="button" value="Done Editing Committee">
-                                    <span className="glyphicon glyphicon-ok" style={{marginRight: 0}}></span>
-                                </button>
                             </div>
-                        </form>
+
+                            <div style={{borderRadius: "3px"}}>
+                                <div className="col-md-1"></div>
+                                <div className="col-md-5">
+                                    <select id="committeeDiv" ref="selectName" className="col-md-5 form-control">
+                                        {
+                                            this.props.allusers.map(function (User) {
+                                                return (<option value={User._id} key={User._id}
+                                                                style={{color: "black"}}>
+                                                    {User.profile.name}</option>)
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                                <div className="col-md-4">
+                                    <select id="committeeDiv" ref="selectDes" className="col-md-4 form-control">
+                                        {
+                                            this.state.des.map(function (des) {
+                                                return (<option value={des} key={des}
+                                                                style={{color: "black"}}>
+                                                    {des}</option>)
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                                <div className="col-md-2">
+                                    <button id="committeeDiv"
+                                            onClick={this.addMember.bind(this)}
+                                            className="btn btn-default btn-sm">
+                                        <span className="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-
-
-            if (this.state.specCommMemAdd[ind_id]) {
-                console.log("NEW MEMBER ADDED!!!!!!");
-                console.log(spec_id[ind_id]);
-                addClickFunc = this.specCommMemAddButtClick.bind(this);
-                specCommDivRows[ind_id].push(<Member serial={spec_id[ind_id]} ref_val={ref_val}
-                                                     allUsersList={this.props.allusers} name="Name" des="Designation" idx="idx"/>);
-                this.state.specCommMemAdd[ind_id] = false;
-                spec_id[ind_id]++;
-                console.log("AFTER THAT : "+ spec_id[ind_id]);
-            }
-            //console.log("FROM :"+this.props.refVal);
-            //console.log(specCommDivRows);
-
+            )
         }
-
-
-        var specCommDivRow2 = [];
-        specCommDivRow2[ind_id] = [];
-        if (this.state.commDivShow) {
-
-            for (var i = 0; i < specCommDivRows[ind_id].length; i++) {
-                specCommDivRow2[ind_id].push(specCommDivRows[ind_id][i]);
-            }
+        else {
+            return (
+                <div>
+                    Loading...
+                </div>
+            )
         }
-        // console.log("FINAL: ");
-        // console.log(specCommDivRow2[ind_id]);
-
-        var specCommitte =
-            <div>
-                <button type="button" className="btn btn-primary bb"
-                        style={{width: "100%", backgroundColor: this.state.bgColorComm}}
-                        onClick={this.commClicked.bind(this)}>
-                    {this.props.name}
-                </button>
-                {specCommDivRow2[ind_id]}
-                {buttons}
-            </div>
-
-
-
-        return (
-            <div ref={this.props.refVal} style={{borderLeft: "1px solid #337ab7", borderRight: "1px solid #337ab7", borderBottom: "1px solid #337ab7", borderRadius: "5px"}}>
-                {specCommitte}
-            </div>
-        );
     }
 }
-
-export default createContainer(props => {
-    //console.log(props.name);
-    return {
-        members: Meteor.users.find(
-            {
-                'profile.committee.name': props.name,
-
-            }).fetch(),
-        allusers: Meteor.users.find(
-            {
-                'profile.committee.name': {$ne: props.name}
-            },
-        ).fetch()
-
-    };
-}, Committee);

@@ -211,7 +211,7 @@ class ChahidaPotro extends Component {
                             type: 1,
                             title: title,
                             RFQ_id: Rfqid,
-                            task: 'asked for verication of Requisition form of RFQ ' + title,
+                            task: 'asked for verication of Requisition form of RFQ ',
                             link: '/ChahidaPotroload/' + Rfqid
                         };
                         Notifications.insert(NotificationForm, function (err, res) {

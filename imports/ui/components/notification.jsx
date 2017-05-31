@@ -36,7 +36,7 @@ export default class Not extends Component {
                     </div>
                 </div>
                 <div className="media-body">
-                    <p><strong>{not.from.name}</strong> {message}
+                    <p><strong>{not.from.name}</strong> {message} <strong>{not.title}</strong>
                     </p>
                     <p id="noti">{this.datefromcreate(not.createdAt)}</p>
                 </div>

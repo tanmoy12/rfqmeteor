@@ -37,6 +37,10 @@ NotificationsSchema = new SimpleSchema({
         type: String,
         label: 'link',
     },
+    title: {
+        type: String,
+        label: 'title',
+    },
     task: {
         type: String,
         label: 'task'

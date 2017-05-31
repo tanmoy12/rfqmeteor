@@ -577,7 +577,8 @@ a.notification:hover{
 }
 
 #noti{
-    font-size: xx-small;
+    float: right;
+    font-size: small;
     font-style: italic;
     margin-left: 1px;
     margin-top: -10px;
@@ -1420,6 +1421,12 @@ opacity */
     /*padding-top: 1.5%;*/
     background-color: #e7e7e7;
 
+}
+
+#committeeDiv {
+    display: inline;
+
+    margin-top: 5px;
 }
 
 

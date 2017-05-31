@@ -188,7 +188,31 @@ export default class StandardDocuments extends Component {
                             Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
                         }
                         else {
-                            FlowRouter.go('/Note/' + that.props.RFQ._id);
+                            Meteor.call('removeNotification', Meteor.userId(), that.props.RFQ._id, 4);
+                            var from = {
+                                user_id: Meteor.userId(),
+                                name: Meteor.user().profile.name,
+                                pic: Meteor.user().profile.ProPic,
+                            };
+                            var Rfqid = that.props.RFQ._id;
+                            var NotificationForm = {
+                                from: from,
+                                to_id: that.props.RFQ.chahida.accountant.user_id,
+                                type: 5,
+                                title: that.props.RFQ.chahida.title,
+                                RFQ_id: Rfqid,
+                                task: 'asked for verification of Standard document of RFQ ',
+                                link: "/StandardDocumentLoad/" + Rfqid
+                            };
+                            Notifications.insert(NotificationForm, function (err, res) {
+                                if (err) {
+                                    console.log(err);
+                                    Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');
+                                }
+                                else {
+                                    FlowRouter.go('/Note/' + Rfqid);
+                                }
+                            });
                         }
                     });
 

@@ -6,7 +6,6 @@ import {LayoutDash} from '../imports/ui/layouts/LayoutDash';
 import App from '../imports/ui/components/App';
 import Dash from '../imports/ui/components/Dash';
 import ChahidaPotro from '../imports/ui/components/ChahidaPotro';
-import DemoChahidaPotro from '../imports/ui/components/DemoChahidaPotro';
 import Settings from '../imports/ui/components/Settings';
 import ChahidaPotroLoad from '../imports/ui/components/ChahidaPotroLoad';
 import Note from '../imports/ui/components/Note';
@@ -21,7 +20,6 @@ import MeetingNotice from '../imports/ui/components/MeetingNotice';
 import Minutes from '../imports/ui/components/MinuteWrapper';
 import CompanyS from '../imports/ui/components/CompanyS';
 import WO from '../imports/ui/components/WO';
-import LoginandSignup from '../imports/ui/components/LogInandSignUp';
 import RFQSellingList from '../imports/ui/components/RFQSellingList';
 
 
@@ -55,15 +53,6 @@ FlowRouter.route('/File', {
     action(){
         mount(LayoutDash, {
             content: (<FileUpload />)
-        })
-    }
-});
-
-
-FlowRouter.route('/demochahidapotro', {
-    action(){
-        mount(LayoutDash, {
-            content: (<DemoChahidaPotro />)
         })
     }
 });
@@ -197,14 +186,6 @@ FlowRouter.route('/CompanyS', {
     action(){
         mount(LayoutDash, {
             content: (<CompanyS />)
-        })
-    }
-});
-
-FlowRouter.route('/login', {
-    action(){
-        mount(LayoutDash, {
-            content: (<LoginandSignup />)
         })
     }
 });

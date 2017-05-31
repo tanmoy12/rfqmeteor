@@ -29,6 +29,11 @@ class DashHeader extends Component {
         });
     }
 
+    gotoSettings(e){
+        e.preventDefault();
+        FlowRouter.go('/settings');
+    }
+
     render() {
         let user = "";
         let link= "";
@@ -38,6 +43,14 @@ class DashHeader extends Component {
             const cursor = ImagesCol.findOne({_id: Meteor.user().profile.ProPic});
             if (cursor) {
                 link = cursor.link();
+            }
+            var settings;
+            if(Meteor.user().profile.admin==1){
+                settings = <li>
+                    <button onClick={this.gotoSettings.bind(this)} type="submit" className="btn btn-default btn-custom btn-sm pull-left">
+                        <i className="fa fa-cog"> Settings</i>
+                    </button>
+                </li>
             }
             return (
                 <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -107,12 +120,8 @@ class DashHeader extends Component {
                                         </li>
                                         <li className="divider"></li>
 
-                                        <li>
-                                            <button type="submit" className="btn btn-default btn-custom btn-sm pull-left">
-                                                <i className="fa fa-cog"> Settings</i>
-                                            </button>
+                                        {settings}
 
-                                        </li>
                                         <li>
                                             <button onClick={this.logout.bind(this)} type="submit"
                                                     className="btn btn-default btn-custom btn-sm pull-right">

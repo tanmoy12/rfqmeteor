@@ -104,3 +104,61 @@ Meteor.methods({
             });
     }
 });
+
+Meteor.methods({
+    removeNotification: function(to_id, rfq_id, type) {
+        check(to_id, String);
+        check(rfq_id, String);
+        check(type, Number);
+
+        Notifications.remove(
+            {
+                to_id : to_id,
+                RFQ_id : rfq_id,
+                type : type
+            }
+        )
+    }
+});
+
+Meteor.methods({
+    addMember: function (selectId, des, name) {
+        check(selectId, String);
+        check(des, String);
+        check(name, String);
+
+        // Meteor.users.update(
+        //     selectId,
+        //     {
+        //         $set: {
+        //             'profile.committee' : ''
+        //         }
+        //     }
+        // )
+
+        Meteor.users.update(
+            selectId,
+            {
+                $set: {
+                    'profile.committee.name': name,
+                    'profile.committee.des' : des
+                }
+            }
+        );
+    }
+});
+
+Meteor.methods({
+    removeMember: function (selectId) {
+        check(selectId, String);
+
+        Meteor.users.update(
+            selectId,
+            {
+                $set: {
+                    'profile.committee.name' : ''
+                }
+            }
+        );
+    }
+});
