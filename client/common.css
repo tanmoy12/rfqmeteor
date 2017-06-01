@@ -7,6 +7,50 @@
 
 /*LoginandsignUp*/
 
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.container {
+    min-height: 100%;
+}
+
+.footer-distributed {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+.nav-tabs li {
+    padding: 0;
+    text-align: center;
+}
+
+
+/**
+ * Footer Styles
+ */
+
 .box{
     position: absolute;
     top: 25%;
@@ -263,6 +307,10 @@ input:focus::-webkit-input-placeholder {
     padding-bottom: 20px;
     box-shadow: 1px 5px 14px 2px skyblue;
 
+}
+
+#shadowPut {
+    box-shadow: 1px 1px 3px 1px skyblue;
 }
 
 #Dasboardjumbo{
@@ -671,12 +719,9 @@ hr {
 
 }
 
-
-
 .main-layout {
     background: #EAEBEF;
 }
-
 
 #year {
     width: 180px;
