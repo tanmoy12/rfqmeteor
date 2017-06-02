@@ -83,6 +83,7 @@ export default class SignUp extends Component {
                             email: email,
                             password: password,
                             profile: {
+                                type: 0,
                                 designation: designation,
                                 mobno: mobno,
                                 ProPic: fileObjPro._id,
@@ -341,6 +342,7 @@ export default class SignUp extends Component {
                                     email: email,
                                     password: password,
                                     profile: {
+                                        type: 1,
                                         tradelicenseno: tradelicenseno,
                                         ownername: ownername,
                                         description: description,
@@ -530,7 +532,7 @@ export default class SignUp extends Component {
                             </div>
 
                             <textarea className="signUpInput" ref="description" rows="5" cols="70"
-                                      placeholder="Description"></textarea>
+                                      placeholder="Address"></textarea>
 
 
                             <div className="row">

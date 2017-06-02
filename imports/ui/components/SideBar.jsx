@@ -18,6 +18,21 @@ export default class SideBar extends Component {
         FlowRouter.go(this.props.createStandardDoc);
     }
 
+    gotoMeeting(e) {
+        e.preventDefault();
+        FlowRouter.go(this.props.createMeetingNotice);
+    }
+
+    gotoMinutes(e) {
+        e.preventDefault();
+        FlowRouter.go(this.props.minutesCreate);
+    }
+
+    gotoWoCreate(e) {
+        e.preventDefault();
+        FlowRouter.go(this.props.WOCreate);
+    }
+
     render() {
         var forward_to_style = {
             // backgroundColor: "#7a9c9c",
@@ -91,7 +106,7 @@ export default class SideBar extends Component {
                 <div>
                     <li>
                         <a className="sidebar_a" href={this.props.standardBlock.link}><span
-                            className="glyphicon glyphicon-pencil"></span>Standard Document</a>
+                            className="glyphicon glyphicon-blackboard"></span>Standard Document</a>
                     </li>
                 </div>
         }
@@ -136,7 +151,7 @@ export default class SideBar extends Component {
                 </div>
         }
         //Go To Note
-        var go_to_note, cs;
+        var go_to_note, cs, createMeetingNotice,clickFunc,minutes;
         if (this.props.goToNote) {
             go_to_note =
                 <div>
@@ -152,7 +167,7 @@ export default class SideBar extends Component {
                 <div>
                     <li>
                         <a className="sidebar_a" href={this.props.allowanceNikosh}>
-                            Allowance Nikosh
+                            <span className="glyphicon glyphicon-film"></span>Allowance Nikosh
                         </a>
                     </li>
                 </div>
@@ -162,8 +177,99 @@ export default class SideBar extends Component {
                 <div>
                     <li>
                         <a className="sidebar_a" href={this.props.meetingNotice}>
-                            Meeting Notice
+                            <span className="glyphicon glyphicon-file"></span>Meeting Notice
                         </a>
+                    </li>
+                </div>
+        }
+        if (this.props.createMeetingNotice) {
+            createMeetingNotice =
+                <div>
+                    <li>
+                        <div style={{
+                            padding: "3.5%",
+                            color: "#5e5e5e"
+                        }}>
+                            <div>
+                                <input
+                                    onClick={this.gotoMeeting.bind(this)}
+                                    type="submit" name="login-submit"
+                                    id="submit-all"
+                                    className="btn btn-primary sidebarButt" value="Create Meeting Notice"/>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+        }
+        if (this.props.minutesCreate) {
+            //console.log(this.props.minutesCreate);
+            minutes =
+                <div>
+                    <li>
+                        <div style={{
+                            padding: "3.5%",
+                            color: "#5e5e5e"
+                        }}>
+                            <div>
+                                <input
+                                    onClick={this.gotoMinutes.bind(this)}
+                                    type="submit" name="login-submit"
+                                    id="submit-all"
+                                    className="btn btn-primary sidebarButt" value="Minutes Of Meeting"/>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            //console.log(minutes);
+        }
+        var WO;
+        if (this.props.WOCreate) {
+            //console.log(this.props.minutesCreate);
+            WO =
+                <div>
+                    <li>
+                        <div style={{
+                            padding: "3.5%",
+                            color: "#5e5e5e"
+                        }}>
+                            <div>
+                                <input
+                                    onClick={this.gotoWoCreate.bind(this)}
+                                    type="submit" name="login-submit"
+                                    id="submit-all"
+                                    className="btn btn-primary sidebarButt" value="Create Work Order"/>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            //console.log(minutes);
+        }
+        if (this.props.WO) {
+            WO =
+                <div>
+                    <li>
+                        <a className="sidebar_a" href={this.props.WO}>
+                            <span className="glyphicon glyphicon-file"></span>Work Order
+                        </a>
+                    </li>
+                </div>
+        }
+        if (this.props.clickFunc) {
+            clickFunc =
+                <div>
+                    <li>
+                        <div style={{
+                            padding: "3.5%",
+                            color: "#5e5e5e"
+                        }}>
+                            <div>
+                                <input
+                                    onClick={this.props.clickFunc.sendSelect}
+                                    type="submit" name="login-submit"
+                                    id="submit-all"
+                                    className="btn btn-primary sidebarButt" value={this.props.clickFunc.name}/>
+                            </div>
+                        </div>
                     </li>
                 </div>
         }
@@ -172,11 +278,22 @@ export default class SideBar extends Component {
                 <div>
                     <li className="sidebar_li">
                         <a className="sidebar_a" href={this.props.cs}>
-                            CS
+                            <span className="glyphicon glyphicon-triangle-right"></span>Company Sales
                         </a>
                     </li>
                 </div>
         }
+        if (this.props.minutes) {
+            minutes =
+                <div>
+                    <li className="sidebar_li">
+                        <a className="sidebar_a" href={this.props.minutes}>
+                            <span className="glyphicon glyphicon-folder-close"></span>Minutes Of Meeting
+                        </a>
+                    </li>
+                </div>
+        }
+
         if (this.props.Apply) {
             go_to_note =
                 <div>
@@ -199,20 +316,28 @@ export default class SideBar extends Component {
         if (this.props.applications) {
             var that = this;
             var i = 0;
-            application =
+            var app =
                 this.props.applications.map(function (application) {
                     i++;
                     return (
-                        <div key={i}>
-                            <li className="sidebar_li">
-                                <a className="sidebar_a"
-                                   href={"/StandardApplyLoad/" + that.props.RFQ_id + "/" + application.company.user_id}>
-                                    {application.company.user_id}
-                                </a>
-                            </li>
-                        </div>
+                        <li key={i} className="sidebar_li" style={{marginLeft: "8%", height: "25px"}}>
+                            <a className="sidebar_a"
+                               href={"/StandardApplyLoad/" + that.props.RFQ_id + "/" + application.company.user_id}>
+                                <span className="glyphicon glyphicon-circle-arrow-down"></span>{application.company.name}
+                            </a>
+                        </li>
                     )
-                })
+                });
+            application =
+                <div key={i} style={{marginBottom: "10px"}}>
+                    <li style={{height: "30px"}} className="sidebar_li">
+                        <a className="sidebar_a"
+                           href={"/RFQSellingList/" + that.props.RFQ_id}>
+                            <span className="glyphicon glyphicon-briefcase"></span>RFQ Selling List
+                        </a>
+                    </li>
+                    {app}
+                </div>
 
         }
 
@@ -229,11 +354,15 @@ export default class SideBar extends Component {
 
                     {create_standard_block}
                     {create_standard_doc_butt_create}
-
+                    {application}
+                    {createMeetingNotice}
                     {meetingNotice}
                     {allowanceNikosh}
                     {cs}
-                    {application}
+                    {minutes}
+                    {WO}
+                    {clickFunc}
+
                     {create_forward_block}
                 </ul>
             </div>

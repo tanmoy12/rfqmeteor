@@ -19,7 +19,6 @@ class StandardDocumentLoad extends Component {
         }
     }
 
-
     dateToday() {
         var d = new Date();
         var date = d.getDate();
@@ -48,7 +47,7 @@ class StandardDocumentLoad extends Component {
         var ini= this.props.Dcc[0];
 
         if (this.state.signed) {
-            var StandardForm;
+            var StandardForm, type, id, task, link;
             if (this.props.RFQ.step_no == 4) {
                 StandardForm = {
                     step_no: 5,
@@ -58,6 +57,10 @@ class StandardDocumentLoad extends Component {
                     'standard.director.name': this.props.RFQ.chahida.director.name,
                     'standard.director.pic': this.props.RFQ.chahida.director.pic
                 };
+                type=6;
+                id= this.props.RFQ.chahida.director.user_id;
+                task= 'asked for verification of Standard document of RFQ ';
+                link= "/StandardDocumentLoad/";
             }
             else if (this.props.RFQ.step_no == 5) {
                 StandardForm = {
@@ -69,6 +72,10 @@ class StandardDocumentLoad extends Component {
                     'step78accountant.name': this.props.RFQ.chahida.accountant.name,
                     'step78accountant.pic': this.props.RFQ.chahida.accountant.pic
                 };
+                type= 7;
+                id= this.props.RFQ.chahida.accountant.user_id;
+                task= 'asked for verification of company applications of RFQ ';
+                link= '/Note/';
             }
 
             RFQDetails.update(
@@ -81,7 +88,31 @@ class StandardDocumentLoad extends Component {
                         Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
                     }
                     else {
-                        FlowRouter.go('/Note/' + that.props.RFQ._id);
+                        Meteor.call('removeNotification', Meteor.userId(), that.props.RFQ._id, type-1);
+                        var from = {
+                            user_id: Meteor.userId(),
+                            name: Meteor.user().profile.name,
+                            pic: Meteor.user().profile.ProPic,
+                        };
+                        var Rfqid = that.props.RFQ._id;
+                        var NotificationForm = {
+                            from: from,
+                            to_id: id,
+                            type: type,
+                            title: that.props.RFQ.chahida.title,
+                            RFQ_id: Rfqid,
+                            task: task,
+                            link: link + Rfqid
+                        };
+                        Notifications.insert(NotificationForm, function (err, res) {
+                            if (err) {
+                                console.log(err);
+                                Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');
+                            }
+                            else {
+                                FlowRouter.go('/Note/' + Rfqid);
+                            }
+                        });
                     }
                 });
         } else {
@@ -156,22 +187,22 @@ StandardDocumentLoad.propTypes = {
 };
 
 export default createContainer(props => {
-    var RFQ = RFQDetails.findOne(props.id);
-    var Director, Dcc;
-    if (RFQ) {
-        Dcc = Meteor.users.find(
-            {
-                _id: RFQ.chahida.accountant.user_id
-            }).fetch();
-        Director = Meteor.users.find(
-            {
-                _id: RFQ.chahida.director.user_id
-            }).fetch()
-    }
-    return {
-        RFQ: RFQ,
-        Dcc: Dcc,
-        Director: Director
-    };
+        var RFQ = RFQDetails.findOne(props.id);
+        var Director, Dcc;
+        if (RFQ) {
+            Dcc = Meteor.users.find(
+                {
+                    _id: RFQ.chahida.accountant.user_id
+                }).fetch();
+            Director = Meteor.users.find(
+                {
+                    _id: RFQ.chahida.director.user_id
+                }).fetch()
+        }
+        return {
+            RFQ: RFQ,
+            Dcc: Dcc,
+            Director: Director
+        };
 }, StandardDocumentLoad);
 

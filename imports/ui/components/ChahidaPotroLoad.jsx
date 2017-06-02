@@ -143,7 +143,6 @@ class ChahidaPotroLoad extends Component {
         return dateshow;
     }
 
-
     genSignBlock(signfor, user) {
         const cursor = ImagesCol.findOne({_id: user.pic});
         var link = '';
@@ -247,7 +246,7 @@ class ChahidaPotroLoad extends Component {
             }
 
             if (AcOff) {
-                var updateForm;
+                var updateForm, type, task , link;
                 if (this.props.RFQ_details.chahida.substep_no == 1) {
                     updateForm = {
                         'chahida.substep_no': 2,
@@ -257,6 +256,9 @@ class ChahidaPotroLoad extends Component {
                         'chahida.accountant.name': AcOff.profile.name,
                         'chahida.accountant.pic': AcOff.profile.seal
                     }
+                    type=2;
+                    task= 'asked for accounts verification of Requisition form of RFQ ';
+                    link= '/ChahidaPotroload/';
                 }
                 else if (this.props.RFQ_details.chahida.substep_no == 2) {
                     updateForm = {
@@ -267,6 +269,9 @@ class ChahidaPotroLoad extends Component {
                         'chahida.director.name': AcOff.profile.name,
                         'chahida.director.pic': AcOff.profile.seal
                     }
+                    type=3;
+                    task= 'asked for verification of Requisition form of RFQ ';
+                    link= '/ChahidaPotroload/';
                 }
                 else if (this.props.RFQ_details.chahida.substep_no == 3) {
                     updateForm = {
@@ -278,6 +283,9 @@ class ChahidaPotroLoad extends Component {
                         'standard.initiator.name': AcOff.profile.name,
                         'standard.initiator.pic': AcOff.profile.seal
                     }
+                    type=4;
+                    task= 'asked to create Standard Document of RFQ ';
+                    link= '/Note/';
                 }
                 var that = this;
                 RFQDetails.update(
@@ -290,7 +298,31 @@ class ChahidaPotroLoad extends Component {
                             Bert.alert('UnKnown Error!!', 'danger', 'growl-top-right');
                         }
                         else {
-                            FlowRouter.go('/Note/' + that.props.RFQ_details._id);
+                            Meteor.call('removeNotification', Meteor.userId(), that.props.RFQ_details._id, type-1);
+                            var from = {
+                                user_id: Meteor.userId(),
+                                name: Meteor.user().profile.name,
+                                pic: Meteor.user().profile.ProPic,
+                            };
+                            var Rfqid = that.props.RFQ_details._id;
+                            var NotificationForm = {
+                                from: from,
+                                to_id: AcOff._id,
+                                type: type,
+                                title: that.props.RFQ_details.chahida.title,
+                                RFQ_id: Rfqid,
+                                task: task,
+                                link: link + Rfqid
+                            };
+                            Notifications.insert(NotificationForm, function (err, res) {
+                                if (err) {
+                                    console.log(err);
+                                    Bert.alert('Unknown Error3!!', 'danger', 'growl-top-right');
+                                }
+                                else {
+                                    FlowRouter.go('/Note/' + Rfqid);
+                                }
+                            });
                         }
                     });
             }

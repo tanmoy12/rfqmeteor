@@ -26,11 +26,8 @@ export default class Not extends Component {
         if (cursor) {
             link = cursor.link();
         }
-        var message= '';
-        if(not.type==1){
-            message = 'asked to verify a Chahida potro';
-        }
-        var rfqlink= '/Note/' + not.RFQ_id;
+        var message= not.task;
+        var rfqlink= not.link;
         return (
             <a key={not._id} href={rfqlink} className="notification col-md-12 ">
                 <div className="media-left">
@@ -39,7 +36,7 @@ export default class Not extends Component {
                     </div>
                 </div>
                 <div className="media-body">
-                    <p><strong>{not.from.username}</strong> {message}
+                    <p><strong>{not.from.name}</strong> {message} <strong>{not.title}</strong>
                     </p>
                     <p id="noti">{this.datefromcreate(not.createdAt)}</p>
                 </div>

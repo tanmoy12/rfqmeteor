@@ -20,6 +20,16 @@ UserSignFalse = new SimpleSchema({
         label: 'name',
         optional: true
     },
+    designation: {
+        type: String,
+        label: 'des',
+        optional: true
+    },
+    comdes: {
+        type: String,
+        label: 'comdes',
+        optional: true
+    },
     pic: {
         type: String,
         label: 'pic',
@@ -251,14 +261,19 @@ CompanySchema = new SimpleSchema({
         label: "user",
         optional: true
     },
-    username: {
-        type: String,
-        label: 'username',
-        optional: true
-    },
     pic: {
         type: String,
         label: 'pic',
+        optional: true
+    },
+    seal: {
+        type: String,
+        label: 'seal',
+        optional: true
+    },
+    address: {
+        type: String,
+        label: 'address',
         optional: true
     },
     signed: {
@@ -277,6 +292,24 @@ CompanySchema = new SimpleSchema({
         label: 'name',
         optional: true
     }
+});
+
+minutesSchema = new SimpleSchema({
+   company: {
+       type: CompanySchema,
+       label: 'company',
+       optional: true
+   },
+    amount: {
+        type: Number,
+        label: 'amount',
+        optional: true
+    },
+    members: {
+        type: [UserSignFalse],
+        label: 'minmembers',
+        optional: true
+    },
 });
 
 StandardApplySchema = new SimpleSchema({
@@ -335,6 +368,29 @@ MeetingNoticeSchema = new SimpleSchema({
     dateOfMeeting: {
         type: Date,
         label: 'date',
+        optional: true
+    }
+});
+
+PurchaseOrderSchema = new SimpleSchema({
+    createdAt: {
+        type: Date,
+        label: 'date',
+        optional: true
+    },
+    initiator: {
+        type: UserSignFalse,
+        label: 'ini',
+        optional: true
+    },
+    director: {
+        type: UserSignFalse,
+        label: 'dir',
+        optional: true
+    },
+    order_no: {
+        type: String,
+        label: 'orderno',
         optional: true
     }
 });
@@ -403,6 +459,36 @@ RFQDetailsSchema = new SimpleSchema({
     company_s: {
         type: [UserSignFalse],
         label: 'cs',
+        optional: true
+    },
+    minutes: {
+        type: minutesSchema,
+        label: 'minutes',
+        optional: true
+    },
+    step1011accountant: {
+        type: UserSignFalse,
+        label: 'step7acc',
+        optional: true
+    },
+    step1011director: {
+        type: UserSignFalse,
+        label: 'step7dir',
+        optional: true
+    },
+    purchase: {
+        type: PurchaseOrderSchema,
+        label: 'purchase',
+        optional: true
+    },
+    step1516accountant: {
+        type: UserSignFalse,
+        label: 'step15acc',
+        optional: true
+    },
+    step1516director: {
+        type: UserSignFalse,
+        label: 'step16dir',
         optional: true
     }
 });

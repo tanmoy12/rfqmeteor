@@ -22,7 +22,7 @@ export default class StandardApplyLoad3 extends Component {
     }
 
     genSignBlock(signfor, user) {
-        const cursor = ImagesCol.findOne({_id: user.pic});
+        const cursor = ImagesCol.findOne({_id: user.seal});
         var link = '';
         if (cursor) {
             link = cursor.link();
@@ -30,15 +30,15 @@ export default class StandardApplyLoad3 extends Component {
         if (user.signed) {
             return (
                 <div className="col-md-6 center-block">
-                    <img id="signPic" src={link} className="img-circle" alt="User Image"/>
-                    <div className="form-inline" style={{marginLeft: "20%", marginRight: "20%"}}>
+                    <img id="signPic" src={link} alt="User Image"/>
+                    <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                         <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                             <strong>{user.name}</strong></p>
                         <p id="signLabel" style={{display: "inline-flex", float: "right"}}>
                             <strong>{this.datefromcreate(user.sign_date)}</strong>
                         </p>
                     </div>
-                    <hr id="signhr" style={{width: "80%"}}/>
+                    <hr id="signhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor}</strong></p>
                 </div>
             )
@@ -46,7 +46,7 @@ export default class StandardApplyLoad3 extends Component {
         else {
             return (
                 <div className="col-md-6 center-block">
-                    <hr id="unsignhr" style={{width: "80%"}}/>
+                    <hr id="unsignhr" style={{width: "100%"}}/>
                     <p id="signTag"><strong>{signfor} </strong></p>
                 </div>
             )
@@ -70,7 +70,7 @@ export default class StandardApplyLoad3 extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="text-left">
-                                    <strong>RFQ NO : </strong> {this.props.RFQ.standard.RFQ_no}
+                                    <strong>RFQ NO : {this.props.RFQ.standard.RFQ_no} </strong>
                                 </div>
 
 
@@ -90,13 +90,11 @@ export default class StandardApplyLoad3 extends Component {
                         <div classID="standardbody">
                             <p className="text">
                                 I/We, the undersigned, offer to supply in conformity with the Terms and
-                                Conditions for delivery of the Goods and related services named <strong>Supply
-                                of
-                                {this.props.RFQ.title} </strong>
+                                Conditions for delivery of the Goods and related services named <strong> Supply of {this.props.RFQ.title} </strong>
                             </p>
 
                             <p className="text">
-                                The total Price of my/our Quotation is BDT <strong> {this.props.stan.amount} </strong>
+                                The total Price of my/our Quotation is BDT <strong> {this.props.stan.amount} /=</strong>
                             </p>
 
                             <p className="text">
@@ -129,8 +127,7 @@ export default class StandardApplyLoad3 extends Component {
 
                             <p className="text">
                                 I/We have examined and have no reservations to the RFQ Document issued by
-                                you on
-                                <strong> {this.datefromcreate(this.props.stan.createdAt)} </strong>
+                                you on <strong> {this.datefromcreate(this.props.stan.createdAt)} </strong>
                             </p>
 
                             <p className="text">

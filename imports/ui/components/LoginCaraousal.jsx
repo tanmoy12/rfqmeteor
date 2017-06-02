@@ -6,7 +6,7 @@ export default class LoginCaraousal extends Component {
 
     autoplayFunc(){
         $('#myCarousel').carousel({
-            interval: 3000,
+            interval: 6000,
             cycle: true
         });
     }
@@ -24,22 +24,29 @@ export default class LoginCaraousal extends Component {
                     </ol>
 
                     <div className="carousel-inner" role="listbox">
+                        <div className="item">
+                            <img className="d-block img-fluid" src="/img1.jpg" alt="Third slide"  style={{width: "100%"}}/>
+                            <div className=" carousel-caption">
+                                <h3>DRICM</h3>
+                                <p>Designated Reference Institute for Chemical Measurements</p>
+                            </div>
+                        </div>
                         <div className="item active">
-                            <img className="d-block img-fluid" src="/img1.jpg" alt="First slide" style={{width: "100%"}}/>
+                            <img className="d-block img-fluid" src="/img2.jpg" alt="First slide" style={{width: "100%"}}/>
                             <div className=" carousel-caption">
                                 <h3>DRICM</h3>
                                 <p>Designated Reference Institute for Chemical Measurements</p>
                             </div>
                         </div>
                         <div className="item">
-                            <img className="d-block img-fluid" src="/img2.jpg" alt="Second slide"  style={{width: "100%"}}/>
+                            <img className="d-block img-fluid" src="/img3.jpg" alt="Second slide"  style={{width: "100%"}}/>
                             <div className=" carousel-caption">
                                 <h3>DRICM</h3>
                                 <p>Designated Reference Institute for Chemical Measurements</p>
                             </div>
                         </div>
                         <div className="item">
-                            <img className="d-block img-fluid" src="/img3.jpg" alt="Third slide"  style={{width: "100%"}}/>
+                            <img className="d-block img-fluid" src="/img4.jpg" alt="Third slide"  style={{width: "100%"}}/>
                             <div className=" carousel-caption">
                                 <h3>DRICM</h3>
                                 <p>Designated Reference Institute for Chemical Measurements</p>

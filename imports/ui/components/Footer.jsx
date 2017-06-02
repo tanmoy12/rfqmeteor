@@ -1,11 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
-import $ from 'jquery';
-import Committee from './Committee';
-
 
 export default class Footer extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -13,13 +9,9 @@ export default class Footer extends Component {
         };
     }
 
-
-
-
     render() {
-
         return (
-            <footer className="footer-distributed navbar-fixed-bottom">
+            <footer className="footer-distributed">
 
                 <div className="footer-right ">
 
@@ -32,21 +24,8 @@ export default class Footer extends Component {
 
                 <div className="footer-left">
 
-                    {/*<p className="footer-links">*/}
-                        {/*<a href="#">Home</a>*/}
-                        {/*·*/}
-                        {/*<a href="#">Blog</a>*/}
-                        {/*·*/}
-                        {/*<a href="#">Pricing</a>*/}
-                        {/*·*/}
-                        {/*<a href="#">About</a>*/}
-                        {/*·*/}
-                        {/*<a href="#">Faq</a>*/}
-                        {/*·*/}
-                        {/*<a href="#">Contact</a>*/}
-                    {/*</p>*/}
 
-                    <a className="navbar-brand" href="">Company Name &copy; 2015</a>
+                    <a className="navbar-brand" href=""> eRFQ System &copy; 2017</a>
                 </div>
 
             </footer>

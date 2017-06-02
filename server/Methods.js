@@ -54,6 +54,44 @@ Meteor.methods({
 });
 
 Meteor.methods({
+    updateMinutes: function(rfq_id, user_id) {
+        check(rfq_id, String);
+        check(user_id, String);
+
+        RFQDetails.update(
+            {
+                _id : rfq_id,
+                'minutes.members.user_id': user_id
+            },
+            {
+                $set: {
+                    'minutes.members.$.signed': true,
+                    'minutes.members.$.sign_date': new Date()
+                }
+            });
+    }
+});
+
+Meteor.methods({
+    updateMinutes2: function(rfq_id, user_id) {
+        check(rfq_id, String);
+        check(user_id, String);
+
+        RFQDetails.update(
+            {
+                _id : rfq_id,
+                'minutes.members.user_id': user_id
+            },
+            {
+                $set: {
+                    'minutes.members.$.signed': false,
+                    'minutes.members.$.sign_date': null
+                }
+            });
+    }
+});
+
+Meteor.methods({
     removeFromCommittee: function(user_id) {
         check(user_id, String);
 
@@ -64,5 +102,63 @@ Meteor.methods({
                     'profile.committee': ''
                 }
             });
+    }
+});
+
+Meteor.methods({
+    removeNotification: function(to_id, rfq_id, type) {
+        check(to_id, String);
+        check(rfq_id, String);
+        check(type, Number);
+
+        Notifications.remove(
+            {
+                to_id : to_id,
+                RFQ_id : rfq_id,
+                type : type
+            }
+        )
+    }
+});
+
+Meteor.methods({
+    addMember: function (selectId, des, name) {
+        check(selectId, String);
+        check(des, String);
+        check(name, String);
+
+        // Meteor.users.update(
+        //     selectId,
+        //     {
+        //         $set: {
+        //             'profile.committee' : ''
+        //         }
+        //     }
+        // )
+
+        Meteor.users.update(
+            selectId,
+            {
+                $set: {
+                    'profile.committee.name': name,
+                    'profile.committee.des' : des
+                }
+            }
+        );
+    }
+});
+
+Meteor.methods({
+    removeMember: function (selectId) {
+        check(selectId, String);
+
+        Meteor.users.update(
+            selectId,
+            {
+                $set: {
+                    'profile.committee.name' : ''
+                }
+            }
+        );
     }
 });

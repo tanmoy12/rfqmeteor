@@ -210,9 +210,10 @@ class ChahidaPotro extends Component {
                             to_id: ScOff._id,
                             type: 1,
                             title: title,
-                            RFQ_id: Rfqid
+                            RFQ_id: Rfqid,
+                            task: 'asked for verication of Requisition form of RFQ ',
+                            link: '/ChahidaPotroload/' + Rfqid
                         };
-                        //NotificationsSchema.validate(NotificationForm);
                         Notifications.insert(NotificationForm, function (err, res) {
                             if (err) {
                                 console.log(err);
@@ -221,7 +222,7 @@ class ChahidaPotro extends Component {
                             else {
                                 FlowRouter.go('/Note/' + Rfqid);
                             }
-                        })
+                        });
                     }
                 });
 

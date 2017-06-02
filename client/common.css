@@ -7,6 +7,50 @@
 
 /*LoginandsignUp*/
 
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.container {
+    min-height: 100%;
+}
+
+.footer-distributed {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+.nav-tabs li {
+    padding: 0;
+    text-align: center;
+}
+
+
+/**
+ * Footer Styles
+ */
+
 .box{
     position: absolute;
     top: 25%;
@@ -270,7 +314,7 @@ body {
 
 /* General sizing */
 ul.dropdown-lr {
-    width: 300px;
+    width: 270px;
 }
 
 
@@ -305,7 +349,7 @@ h3{
 .form-control {
     height: 10%;
     width: 100%;
-    background-color: transparent;
+    /*background-color: transparent;*/
     border-style: solid;
     border-width: 0 0 1px 0;
     border-color: darkred;
@@ -334,8 +378,12 @@ input:focus::-webkit-input-placeholder {
 
 }
 
+#shadowPut {
+    box-shadow: 1px 1px 3px 1px skyblue;
+}
+
 #Dasboardjumbo{
-    background: #ebf5fd;
+    background: white;
 
 }
 
@@ -441,10 +489,11 @@ input:focus::-webkit-input-placeholder {
     right: 0;
     z-index: 1000;
     display: none;
-    min-width: 285px;
+    min-width: 100px;
+    width: 350px;
     margin: 2px 0 0;
     list-style: none;
-    font-size: 12px;
+    font-size: 10px;
     background-color: #fff;
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.15);
@@ -541,7 +590,7 @@ input:focus::-webkit-input-placeholder {
 
 .dropdown-toolbar .dropdown-toolbar-title {
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 
@@ -599,7 +648,7 @@ input:focus::-webkit-input-placeholder {
 }
 
 .notification-title {
-    font-size: 15px;
+    font-size: 12px;
     text-align: center;
 }
 .notification-meta {
@@ -621,7 +670,7 @@ a.notification:hover{
     padding-top: 2px;
     padding: 4px;
     margin: 0px;
-    font-size: medium;
+    font-size: 12px;
     padding-bottom: 1px;
     text-decoration: none;
 }
@@ -645,7 +694,8 @@ a.notification:hover{
 }
 
 #noti{
-    font-size: xx-small;
+    float: right;
+    font-size: small;
     font-style: italic;
     margin-left: 1px;
     margin-top: -10px;
@@ -730,9 +780,9 @@ hr {
 }
 
 #meeting{
-    font-size: large;
+    font-size: 16px;
     font-family: "Times New Roman", Times, serif;
-    line-height: 1.8;
+    line-height: 1.6;
     text-align: justify;
 
 }
@@ -743,12 +793,9 @@ hr {
 
 }
 
-
-
 .main-layout {
     background: #EAEBEF;
 }
-
 
 #year {
     width: 180px;
@@ -886,7 +933,6 @@ p.text{
     line-height: 1.4;
     margin-bottom: 2em;
     margin-top: 2em;
-
 }
 p.text2{
     text-align: justify;
@@ -1289,9 +1335,9 @@ opacity */
     color: #5e5e5e;
     display: block;
     font-size: 15px;
-    height: 40px;
+    height: 35px;
     line-height: 40px;
-    padding: 0 10px;
+    padding: 0 15px;
     text-align: left;
     text-decoration: none;
     transition: all 300ms;
@@ -1494,6 +1540,12 @@ opacity */
     /*padding-top: 1.5%;*/
     background-color: #e7e7e7;
 
+}
+
+#committeeDiv {
+    display: inline;
+
+    margin-top: 5px;
 }
 
 

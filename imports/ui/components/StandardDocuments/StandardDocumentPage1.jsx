@@ -99,8 +99,7 @@ export default class StandardDocumentPage1 extends Component {
                                 (if
                                 awarded) respectively. </p>
 
-
-                            <div className="form-inline pull-left">
+                            <div className="form-inline pull-left text">
                                 <p className="text">6. Quotation in a sealed envelope or by fax or through electronic mail shall be
                                     submitted to the office of the undersigned <strong>on or before  </strong>
                                     <Calendar datesubChange={(dateValue, formatDate) => this.props.datesubChange(dateValue, formatDate)}/>
