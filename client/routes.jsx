@@ -23,6 +23,8 @@ import CompanyS from '../imports/ui/components/CompanyS';
 import WO from '../imports/ui/components/WO';
 import LoginandSignup from '../imports/ui/components/LogInandSignUp';
 import RFQSellingList from '../imports/ui/components/RFQSellingList';
+import SignUp2 from '../imports/ui/components/SignUp2';
+
 
 
 
@@ -208,6 +210,14 @@ FlowRouter.route('/RfqSellinglist', {
     action(){
         mount(LayoutDash, {
             content: (<RFQSellingList />)
+        })
+    }
+});
+
+FlowRouter.route('/SignUp2', {
+    action(){
+        mount(LayoutDash, {
+            content: (<SignUp2 />)
         })
     }
 });
