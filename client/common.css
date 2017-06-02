@@ -56,56 +56,125 @@ body {
 .box{
     position: absolute;
     top: 25%;
-    left: 15%;
-    right: 15%;
+    left: 20%;
+    right: 20%;
     background: #FFFFFF;
-    padding-left: 4%;
-    padding-right: 4%;
-    padding-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 1%;
     padding-bottom: 2%;
     margin-bottom: 2%;
     border-radius: 5px;
     -webkit-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
     box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
-    font-size: large;
+    font-size: medium;
 }
 
 .logo img{
     height: 120px;
     weight:120px;
-    padding: 10px 0 0 10px;
-    margin-top: 30%;
+    padding: 5px 0 0 5px;
+    margin-top: 1%;
 
 }
 
 .loginbtn .btn,
 .loginbtn .btn:hover{
-    margin-top: 5px;
-    padding: 20px;
+    margin-top: 10px;
+    padding: 5px;
     border: none;
-    font-size: larger;
+    font-size: medium;
     font-weight: 500;
     font-family: Tahoma;
-    background-color: transparent;
-    color: #000000;
+    background-color: #1d5d90;
+    color: #FFFFFF;
 }
 
 
 
-.loginuser input{
+.employee > input{
     background: transparent;
-    margin-top: 5%;
+    margin-top: 10%;
     margin-bottom: 2%;
     border: none;
     border-bottom: 1px solid darkred;
-    width: 85%;
+    width: 100%;
     outline: none;
     padding: 0 0 0 0;
     font-size: medium;
     font-family: Tahoma;
     float: left;
     margin-left: 10px;
+}
+
+.employee > textarea{
+    background: transparent;
+    margin-top: 10%;
+    margin-bottom: 2%;
+    border: none;
+    border-bottom: 1px solid darkred;
+    width: 100%;
+    outline: none;
+    padding: 0 0 0 0;
+    font-size: medium;
+    font-family: Tahoma;
+    float: left;
+    margin-left: 10px;
+}
+
+.imagebox{
+    position: absolute;
+    width: 2in;
+    height: 2in;
+    border: 1px solid black;
+    margin-top: 45px;
+    margin-left: 50%;
+    font-size: 12px;
+}
+
+.picinput{
+    margin-top: 40%;
+    margin-left: 10px;
+}
+
+.btnimg > button{
+    margin-top: 42%;
+    margin-left: 20%;
+    border-radius: 0px;
+}
+
+.signaturebox{
+    position: absolute;
+    width: 1.5in;
+    height: 1in;
+    border: 1px solid black;
+    margin-top: 45px;
+    margin-left: 52%;
+    font-size: 8px;
+
+}
+
+.btnimg2 > button{
+    margin-top: 25%;
+    margin-left: 22%;
+    border-radius: 0px;
+}
+
+.submit-btn {
+    margin-left: 15%;
+    margin-right: 25px ;
+    margin-top: 20px;
+}
+
+.submit-btn > button{
+    border-radius: 0px;
+    font-size: medium;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
 }
 
 .forgotpass a{
@@ -639,6 +708,11 @@ a.notification:hover{
     margin-top: -15px;
     padding:15px;
 
+}
+
+
+#signup2{
+    text-align: center;
 }
 
 #input{
