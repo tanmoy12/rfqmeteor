@@ -53,17 +53,16 @@ body {
  * Footer Styles
  */
 
-.box{
-    position: absolute;
-    top: 25%;
-    left: 20%;
-    right: 20%;
+#loginbox{
+    margin-top: 60px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 2%;
     background: #FFFFFF;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
     padding-top: 1%;
     padding-bottom: 2%;
-    margin-bottom: 2%;
     border-radius: 5px;
     -webkit-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 4px 21px 1px rgba(0,0,0,0.75);
@@ -123,15 +122,34 @@ body {
     margin-left: 10px;
 }
 
+
 .imagebox{
     position: absolute;
     width: 2in;
     height: 2in;
     border: 1px solid black;
     margin-top: 45px;
-    margin-left: 50%;
+    margin-left: 32%;
     font-size: 12px;
 }
+
+.companylogobox{
+    position: absolute;
+    width: 1.5in;
+    height: 1in;
+    border: 1px solid black;
+    margin-top: 45px;
+    margin-left: 35%;
+    font-size: 8px;
+}
+
+.btnlogocomp > button{
+    margin-top: 22%;
+    margin-left: 21%;
+    border-radius: 0px;
+    font-size: small;
+}
+
 
 .picinput{
     margin-top: 40%;
@@ -139,10 +157,11 @@ body {
 }
 
 .btnimg > button{
-    margin-top: 42%;
-    margin-left: 20%;
+    margin-top: 37%;
+    margin-left: 18%;
     border-radius: 0px;
 }
+
 
 .signaturebox{
     position: absolute;
@@ -150,15 +169,29 @@ body {
     height: 1in;
     border: 1px solid black;
     margin-top: 45px;
-    margin-left: 52%;
+    margin-left: 35%;
     font-size: 8px;
 
 }
 
 .btnimg2 > button{
-    margin-top: 25%;
+    margin-top: 22%;
     margin-left: 22%;
     border-radius: 0px;
+}
+
+.btntrd > button{
+    margin-top: 22%;
+    margin-left: 21%;
+    border-radius: 0px;
+    font-size: small;
+}
+
+.btntrd2 > button{
+    margin-top: 22%;
+    margin-left: 20%;
+    border-radius: 0px;
+    font-size: small;
 }
 
 .submit-btn {
