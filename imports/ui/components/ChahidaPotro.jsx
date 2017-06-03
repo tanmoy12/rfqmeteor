@@ -296,7 +296,7 @@ class ChahidaPotro extends Component {
             }
         }
         return (
-            <div className="container">
+            <div className="container fade in active">
                 <div className="row">
                     <div className="col-md-3">
                         <SideBar ref="SideBar"
