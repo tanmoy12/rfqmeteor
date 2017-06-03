@@ -29,10 +29,9 @@ class Dash extends Component {
         return (
             <div>
                 <div className="container fade in active">
-                    <div className="col-md-3">
-                        <Sidebar/>
+                    <div className="col-md-1 col-lg-1">
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-10 col-lg-10">
                         <div style={{marginTop : "3px"}} className="pull-right">
                             <button id="shadowPut" onClick={this.createRFQ.bind(this)} className="btn btn-primary"
                                     data-toggle="modal" data-target="#popupwindow">

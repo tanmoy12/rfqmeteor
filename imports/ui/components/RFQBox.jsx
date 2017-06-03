@@ -46,19 +46,19 @@ export default class RFQBox extends Component {
             }
         });
         if (applied) {
-            diffDays = <button onClick={this.gotoRFQApplied.bind(this)} className="btn btn-primary"><span
+            diffDays = <button onClick={this.gotoRFQApplied.bind(this)} className="btn btn-primary btn-rfq"><span
                 className="glyphicon glyphicon-hand-right"></span>View Application</button>
         }
         else {
             if (this.props.RFQItem.step_no >= 6 && d < this.props.RFQItem.standard.apply_date && Meteor.user().profile.tradelicenseno) {
                 var daysLeft = this.props.RFQItem.standard.apply_date - d;
-                diffDays = <button href="#" className="btn btn-primary"><span
+                diffDays = <button href="#" className="btn btn-primary btn-rfq"><span
                     className="glyphicon glyphicon-time"></span>{Math.floor(daysLeft / (1000 * 3600 * 24))} Days
                     Remaning</button>
-                applyDiv = <button onClick={this.gotoRFQApply.bind(this)} className="btn btn-primary"><span
+                applyDiv = <button onClick={this.gotoRFQApply.bind(this)} className="btn btn-primary btn-rfq"><span
                     className="glyphicon glyphicon-hand-right"></span>Apply for RFQ</button>
             } else if (Meteor.user().profile.designation) {
-                moreinfo = <button onClick={this.gotoNote.bind(this)} className="btn btn-primary"><span
+                moreinfo = <button onClick={this.gotoNote.bind(this)} className="btn btn-primary btn-rfq"><span
                     className="glyphicon glyphicon-tasks"></span>More Info</button>
             }
         }
@@ -71,11 +71,9 @@ export default class RFQBox extends Component {
                     </div>
 
                     <div id="Dasboardjumbo" className="media-body">
-                        <p id="dashrfq">RFQ TITLE</p>
                         <div>
                             <h4 id="rfqboxh4">{this.props.RFQItem.title}</h4>
                         </div>
-                        <p id="dashrfq">Date</p>
                         <div>
                             <h4><strong>{this.dateString(this.props.RFQItem.chahida.createdAt)}</strong></h4>
                         </div>

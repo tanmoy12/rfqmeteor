@@ -23,7 +23,7 @@ body {
     position: relative;
     margin: 0;
     padding-bottom: 6rem;
-    min-height: 100%;
+    min-height: 110%;
     font-family: "Helvetica Neue", Arial, sans-serif;
     background-color: #EAEBEF;
 }
@@ -435,9 +435,10 @@ input:focus::-webkit-input-placeholder {
 }
 
 #rfqimg{
-    width: 130px;
-    height: 130px;
+    width: 80px;
+    height: 80px;
     margin-top: 10px;
+    margin-right: 20px;
 }
 
 #RFQ{
@@ -452,7 +453,7 @@ input:focus::-webkit-input-placeholder {
 
 #flag {
     width: auto;
-    height: 150px;
+    height: 120px;
     margin-top: 20px;
     margin-bottom: 20px;
     position: relative;
@@ -462,8 +463,8 @@ input:focus::-webkit-input-placeholder {
     letter-spacing: 0.2em;
     text-align: left;
     text-transform: uppercase;
-    box-shadow: 1px 5px 14px 2px skyblue;
-    border-radius: 10px 10px 10px 10px;
+    box-shadow: 1px 1px 1px 2px skyblue;
+    border: 1px solid;
 }
 
 
@@ -472,12 +473,11 @@ input:focus::-webkit-input-placeholder {
 
 #mysidemenu .btn {
     position: relative;
-    padding: 10px;
-    width: 145px;
+    height: 30px;
+    width: inherit;
     text-decoration: none;
     font-size: 12px;
     color: white;
-    box-shadow: 2px 0px 2px 2px darkgrey;
     margin-bottom: 10px;
     margin-top: 10px;
     font-weight: bold;
@@ -701,10 +701,20 @@ a.notification:hover{
     margin-top: 25px;
 }
 
+#dashrfqbox{
+    margin-left: -2%;
+}
+
 #rfqboxh4{
-    font-family: "Tahoma";
+    font-family: "Calibri Light";
     font-weight: bold;
-    font-size: 25px;
+    font-size: 24px;
+    color: #292c2f;
+}
+
+.btn-rfq {
+    width: 10px;
+    height: auto;
 }
 
 
@@ -1299,7 +1309,7 @@ opacity */
 
 /*FIXED VERTICAL NAVBAR*/
 .navbar-fixed-left {
-    width: 17%;
+    width: 18%;
     position: fixed;
     border-radius: 0;
     height: 100%;

@@ -24,9 +24,6 @@ import RFQSellingList from '../imports/ui/components/RFQSellingList';
 import SignUp2 from '../imports/ui/components/SignUp2';
 
 
-
-
-
 FlowRouter.route('/', {
     action(){
         mount(LayoutLogin, {
