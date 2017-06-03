@@ -19,6 +19,7 @@ class Dash extends Component {
     }
 
     renderRFQs() {
+        console.log(this.props.RFQList);
         return this.props.RFQList.map(function (RFQItem) {
             return <RFQBox key={RFQItem._id} RFQItem={RFQItem}/>
         });
