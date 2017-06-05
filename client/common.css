@@ -23,7 +23,7 @@ body {
     position: relative;
     margin: 0;
     padding-bottom: 6rem;
-    min-height: 110%;
+    min-height: 100%;
     font-family: "Helvetica Neue", Arial, sans-serif;
     background-color: #EAEBEF;
 }
@@ -124,23 +124,21 @@ body {
 
 
 .imagebox{
-    position: absolute;
-    width: 2in;
-    height: 2in;
+    width: 175px;
+    height: 225px;
     border: 1px solid black;
-    margin-top: 45px;
-    margin-left: 32%;
-    font-size: 12px;
 }
 
 .companylogobox{
-    position: absolute;
-    width: 1.5in;
-    height: 1in;
+    width: 250px;
+    height: auto;
     border: 1px solid black;
-    margin-top: 45px;
-    margin-left: 35%;
-    font-size: 8px;
+}
+
+.tradebox{
+    width: 80px;
+    height: 85px;
+    border: 1px solid black;
 }
 
 .btnlogocomp > button{
@@ -164,13 +162,9 @@ body {
 
 
 .signaturebox{
-    position: absolute;
-    width: 1.5in;
-    height: 1in;
+    width: 240px;
+    height: 90px;
     border: 1px solid black;
-    margin-top: 45px;
-    margin-left: 35%;
-    font-size: 8px;
 
 }
 
@@ -237,8 +231,8 @@ body {
 /* navbar*/
 
 .navbar{
-    background-color: #000000;
-    margin-bottom: 0px;
+
+    background-color: #292c2f;
 }
 
 
@@ -378,7 +372,7 @@ h3{
 .main-layout{
     background: #EAEBEF;
     margin: 0;
-    padding-top: 30px;
+    padding-top: 1%;
 }
 
 .form-control {
@@ -1094,8 +1088,8 @@ input[type=number]::-webkit-outer-spin-button {
 .login {
     font-family: sans-serif;
     width: 50%;
-    position: absolute;
-    top: 15%;
+    position: relative;
+    margin-top: 1%;
     left: 25%;
     /*background: rgba(0,0,0,0.2);*/
     background: #EAEBEF;
@@ -1137,6 +1131,22 @@ input[type=number]::-webkit-outer-spin-button {
     color: #46485c;
     /*box-shadow: 0px 1px 0px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);*/
 }
+
+.optionStyle {
+    height: 35px;
+    width: 100%;
+    margin-top: 45px;
+    padding-bottom: 5px;
+    border: 0;
+    background: transparent;
+    border-bottom: 1px solid darkred;
+    border-radius: 4px;
+    border-color: darkred;
+    outline: none;
+    color: #46485c;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);
+}
+
 
 .signUpInputInline {
 
@@ -1224,19 +1234,6 @@ input[type=number]::-webkit-outer-spin-button {
     opacity: 0;
 }
 
-.optionStyle {
-    height: 35px;
-    width: 100%;
-    /*margin-bottom: 10%;*/
-    /*background-color: transparent;*/
-    background-color: #efecea;
-    border-style: solid;
-    border-width: 0 0 1px 0;
-    border-color: darkred;
-    outline:0;
-    color: #736e6b;
-    box-shadow: 1px 1px 1px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);
-}
 
 
 
@@ -1270,7 +1267,7 @@ opacity */
     border-radius: 3px;
     text-align: left;
     padding: 10px;
-    width: 80%;
+    width: 100%;
     margin: 0;
     left: 0;
     position: relative;
@@ -1301,9 +1298,7 @@ opacity */
 
 /*DEMO CHAHIDA POTRO STARTS*/
 .container{
-    margin-left: 0;
-    margin-right: 0;
-    width: 95%;
+    width: 100%;
 }
 
 

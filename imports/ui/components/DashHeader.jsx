@@ -23,20 +23,20 @@ class DashHeader extends Component {
         FlowRouter.go('/dashboard');
     }
 
-    renderNots(){
+    renderNots() {
         return this.props.nots.map(function (not) {
             return <Not key={not._id} notitem={not}/>
         });
     }
 
-    gotoSettings(e){
+    gotoSettings(e) {
         e.preventDefault();
         FlowRouter.go('/settings');
     }
 
     render() {
         let user = "";
-        let link= "";
+        let link = "";
         if (Meteor.user() && this.props.images && this.props.nots) {
             user = Meteor.user().profile.name;
             //console.log(Meteor.user().profile.ProPic);
@@ -45,29 +45,33 @@ class DashHeader extends Component {
                 link = cursor.link();
             }
             var settings;
-            if(Meteor.user().profile.admin==1){
+            if (Meteor.user().profile.admin == 1) {
                 settings = <li>
-                    <button onClick={this.gotoSettings.bind(this)} type="submit" className="btn btn-default btn-custom btn-sm pull-left">
+                    <button onClick={this.gotoSettings.bind(this)} type="submit"
+                            className="btn btn-default btn-custom btn-sm pull-left">
                         <i className="fa fa-cog"> Settings</i>
                     </button>
                 </li>
             }
             return (
                 <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                    <div className="container" style={{paddingLeft: "3%"}}>
-                        <div className="navbar-header">
+                    <div className="container">
+                        <div className="navbar-header" style={{marginLeft: "2rem", marginRight: "5rem"}}>
 
-                            <a onClick={this.gotoHome.bind(this)} className="navbar-brand" href="#" style={{padding: 0, paddingTop: "3.3%"}}>
+                            <a onClick={this.gotoHome.bind(this)} className="navbar-brand" href="#"
+                               style={{padding: 0, paddingTop: "3.3%"}}>
                                 <span >
                                     <img src="/dricmlogo.jpg" style={{width: "27%", height: "auto"}}/>
                                 </span>
-                                <span style={{paddingLeft: "4%", paddingTop: "6.2%"}}>DRICM</span>
+                                <span style={{paddingLeft: "4%", paddingTop: "6.2%"}}>eRFQ</span>
                             </a>
                         </div>
 
 
-                        <div id="navbar" className="collapse navbar-collapse">
-                            <ul className="nav navbar-right top-nav">
+                        <div id="navbar" className="collapse navbar-collapse"
+                             style={{marginLeft: "2rem", marginRight: "2rem"}}>>
+                            <ul className="nav navbar-right navbar-nav top-nav">
+
                                 <li className="dropdown dropdown-notification">
                                     <a href="#notifications-panel" className="dropdown-toggle" data-toggle="dropdown">
                                         <i className="fa fa-bell notification-icon"></i>
@@ -91,7 +95,7 @@ class DashHeader extends Component {
 
                                 <li className="dropdown">
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                                        <img id="profile" src={link} className="profile-image img-circle"/>
+                                        <img id="profile" src={link} className="profile-image"/>
 
                                         <span id="UserId">{user}</span>
                                     </a>
@@ -109,7 +113,8 @@ class DashHeader extends Component {
                                                     </div>
                                                     <div className="col-md-8">
                                                         <p id="userfont" className="text-center">{user}</p>
-                                                        <p id="designation" className="text-center">Scientific Officer</p>
+                                                        <p id="designation" className="text-center">Scientific
+                                                            Officer</p>
                                                         <p className="text-left">
                                                             <a href="#"
                                                                className="btn btn-primary btn-block btn-xs">Profile</a>
@@ -183,7 +188,8 @@ class DashHeader extends Component {
                                                     </div>
                                                     <div className="col-md-8">
                                                         <p id="userfont" className="text-center">{user}</p>
-                                                        <p id="designation" className="text-center">Scientific Officer</p>
+                                                        <p id="designation" className="text-center">Scientific
+                                                            Officer</p>
                                                         <p className="text-left">
                                                             <a href="#"
                                                                className="btn btn-primary btn-block btn-xs">Profile</a>
@@ -195,7 +201,8 @@ class DashHeader extends Component {
                                         <li className="divider"></li>
 
                                         <li>
-                                            <button type="submit" className="btn btn-default btn-custom btn-sm pull-left">
+                                            <button type="submit"
+                                                    className="btn btn-default btn-custom btn-sm pull-left">
                                                 <i className="fa fa-cog"> Settings</i>
                                             </button>
 
@@ -227,7 +234,7 @@ DashHeader.propTypes = {
 
 export default createContainer(() => {
     Meteor.subscribe('allUserData');
-    Meteor.subscribe('notifications', Meteor.userId());
+    Meteor.subscribe('allnotifications');
     return {
         nots: Notifications.find().fetch(),
         images: ImagesCol.find().fetch(),

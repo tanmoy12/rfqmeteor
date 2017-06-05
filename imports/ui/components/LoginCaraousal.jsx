@@ -25,28 +25,28 @@ export default class LoginCaraousal extends Component {
 
                     <div className="carousel-inner" role="listbox">
                         <div className="item">
-                            <img className="d-block img-fluid" src="/img1.jpg" alt="Third slide"  style={{width: "100%"}}/>
+                            <img className="d-block img-fluid" src="/img1.jpg" alt="Third slide"  style={{height: "100%", width: "100%"}}/>
                             <div className=" carousel-caption">
                                 <h3>DRICM</h3>
                                 <p>Designated Reference Institute for Chemical Measurements</p>
                             </div>
                         </div>
                         <div className="item active">
-                            <img className="d-block img-fluid" src="/img2.jpg" alt="First slide" style={{width: "100%"}}/>
+                            <img className="d-block img-fluid" src="/img2.jpg" alt="First slide" style={{height: "100%", width: "100%"}}/>
                             <div className=" carousel-caption">
                                 <h3>DRICM</h3>
                                 <p>Designated Reference Institute for Chemical Measurements</p>
                             </div>
                         </div>
                         <div className="item">
-                            <img className="d-block img-fluid" src="/img3.jpg" alt="Second slide"  style={{width: "100%"}}/>
+                            <img className="d-block img-fluid" src="/img3.jpg" alt="Second slide"  style={{height: "100%", width: "100%"}}/>
                             <div className=" carousel-caption">
                                 <h3>DRICM</h3>
                                 <p>Designated Reference Institute for Chemical Measurements</p>
                             </div>
                         </div>
                         <div className="item">
-                            <img className="d-block img-fluid" src="/img4.jpg" alt="Third slide"  style={{width: "100%"}}/>
+                            <img className="d-block img-fluid" src="/img4.jpg" alt="Third slide"  style={{height: "100%", width: "100%"}}/>
                             <div className=" carousel-caption">
                                 <h3>DRICM</h3>
                                 <p>Designated Reference Institute for Chemical Measurements</p>

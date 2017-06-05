@@ -21,8 +21,7 @@ import Minutes from '../imports/ui/components/MinuteWrapper';
 import CompanyS from '../imports/ui/components/CompanyS';
 import WO from '../imports/ui/components/WO';
 import RFQSellingList from '../imports/ui/components/RFQSellingList';
-import SignUp2 from '../imports/ui/components/SignUp2';
-
+import SignUp from "../imports/ui/components/SignUp";
 
 FlowRouter.route('/', {
     action(){
@@ -197,10 +196,13 @@ FlowRouter.route('/RfqSellinglist', {
     }
 });
 
-FlowRouter.route('/SignUp2', {
+FlowRouter.route('/signup', {
     action(){
-        mount(LayoutDash, {
-            content: (<SignUp2 />)
+        mount(LayoutLogin, {
+            content: (<SignUp />)
         })
     }
 });
+
+
+

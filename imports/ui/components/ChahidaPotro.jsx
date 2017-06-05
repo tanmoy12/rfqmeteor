@@ -264,7 +264,7 @@ class ChahidaPotro extends Component {
             if (this.state.signed) {
                 signBlock =
                     <div className="col-md-6 center-block">
-                        <img id="signPic" src={link} className="img-circle" alt="User Image"/>
+                        <img id="signPic" src={link} alt="User Image"/>
                         <div className="form-inline" style={{marginLeft: "5%", marginRight: "5%"}}>
                             <p id="signLabel" style={{display: "inline-flex", float: "left"}}>
                                 <strong>{Meteor.user().profile.name}</strong></p>

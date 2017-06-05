@@ -58,9 +58,14 @@ export default class App extends Component {
                 </div>
                 <div className="form-group">
                     <div className="row">
-                        <div className="col-lg-12">
-                            <div className="text-center">
-                                <a href="#" tabIndex="5" className="forgot-password">Forgot Password?</a>
+                        <div className="col-lg-4">
+                            <div className="text-left">
+                                <a href="/signup"  className="forgot-password">Sign Up</a>
+                            </div>
+                        </div>
+                        <div className="col-lg-8">
+                            <div className="text-right">
+                                <a href="#"  className="forgot-password">Forgot Password?</a>
                             </div>
                         </div>
                     </div>
