@@ -234,7 +234,7 @@ DashHeader.propTypes = {
 
 export default createContainer(() => {
     Meteor.subscribe('allUserData');
-    Meteor.subscribe('allnotifications');
+    Meteor.subscribe('notifications', Meteor.userId());
     return {
         nots: Notifications.find().fetch(),
         images: ImagesCol.find().fetch(),

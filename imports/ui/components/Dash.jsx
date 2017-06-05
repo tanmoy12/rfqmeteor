@@ -32,14 +32,14 @@ class Dash extends Component {
                     <div className="col-md-1 col-lg-1">
                     </div>
                     <div className="col-md-10 col-lg-10">
-                        <div style={{marginTop : "3px"}} className="pull-right">
+                        <div style={{marginTop : "5px"}} className="pull-right">
                             <button id="shadowPut" onClick={this.createRFQ.bind(this)} className="btn btn-primary"
                                     data-toggle="modal" data-target="#popupwindow">
                                 <span className="glyphicon glyphicon-edit"></span> Create an
                                 RFQ today
                             </button>
                         </div>
-                        <ul className="nav nav-tabs">
+                        <ul style={{ fontSize: "17px"}} className="nav nav-tabs">
                             <li className="active"><a data-toggle="tab" href="#home">Running RFQs</a></li>
                             <li><a data-toggle="tab" href="#menu1">Complete RFQs</a></li>
                         </ul>
@@ -47,7 +47,7 @@ class Dash extends Component {
                         <div className="tab-content">
                             <div id="home" className="tab-pane fade in active">
                                 <div>
-                                    <input style={{width: "50%", marginTop : "10px", fontSize: "15px"}} className='form-control'
+                                    <input style={{width: "50%", height: "35px", marginTop : "10px", fontSize: "17px"}} className='form-control'
                                            placeholder='Search RFQs' type='text'
                                     />
                                 </div>
@@ -55,7 +55,7 @@ class Dash extends Component {
                             </div>
                             <div id="menu1" className="tab-pane fade">
                                 <div>
-                                    <input style={{width: "50%", marginTop : "10px", fontSize: "15px"}} className='form-control'
+                                    <input style={{width: "50%", height: "35px", marginTop : "10px", fontSize: "17px"}} className='form-control'
                                            placeholder='Search RFQs' type='text'
                                     />
                                 </div>
