@@ -834,7 +834,8 @@ hr {
     height: 600px;
     width: 100%;
     padding: 30px 0 30px;
-    margin-top: 50px;
+    margin: 0px;
+    padding: 0px;
     background-image: url(RAIN.jpg);
     background-position: center center;
     background-repeat: no-repeat;
