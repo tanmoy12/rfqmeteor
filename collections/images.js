@@ -1,6 +1,6 @@
 ImagesCol = new FilesCollection({
     collectionName: 'Images',
-    storagePath: '/data',
+    storagePath: '../data',
 
     allowClientCode: false, // Disallow remove files from Client
     onBeforeUpload: function (file) {
