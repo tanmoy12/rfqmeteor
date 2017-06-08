@@ -1120,10 +1120,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 .login {
     font-family: sans-serif;
-    width: 50%;
+    width: 60%;
     position: relative;
     margin-top: 1%;
-    left: 25%;
+    left: 20%;
     /*background: rgba(0,0,0,0.2);*/
     background: #EAEBEF;
     padding-left: 4%;
